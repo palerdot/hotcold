@@ -1,0 +1,980 @@
+body{
+	padding: 0;
+	margin: 0;
+}
+
+#custom_lesson_form{
+	
+}
+
+	#create_course_row{
+		margin: 0;
+	}
+
+	#lesson_input_holder{
+		
+	}
+
+	#total_char_label{
+		font-weight: bold;
+		padding: 0.5em;	
+		color: blue;
+	}
+	
+	#custom_lesson_input_label{
+		color: blue;
+		font-weight: bold;
+	}
+
+	#custom_lesson_input{
+		width: 98%;
+		overflow-y: auto;
+	}
+	
+	#custom_time_tables{
+		width: 98%;
+		margin-top: 1em;
+	}
+	
+	#course_time{
+		width: 17%;
+		float: left;
+		font-weight: bold;
+	}
+	
+	#course_time_info{
+		width: 80%;
+		float: right;
+	}
+	
+	#custom_lesson_launch{
+		font-weight: bold;
+	}
+	
+	#no_input_error{
+		width: 40%;
+		text-align: center;
+		display: none;
+		margin: 0 3.5em;
+	}
+
+#close_bar, #completion_indicator{
+	position: absolute;
+	top: 0;
+	height: 7%;
+	width: 98%;
+	border: none;
+	margin: 0 0.5em;
+}
+
+#completion_indicator{
+	display: none;
+	left: 1%;
+	width: 95%;
+	font-size: 90%;
+	font-weight: bold;
+}
+
+	#saved_block{
+		position: absolute;
+		top: 10%;
+		left: 6%;
+		width: 20%;
+		height: 80%;
+		background-color: #999999;
+		border: thin solid grey;
+	}
+	
+	#time_saved_label{
+		position: absolute;
+		top: 30%;
+		left: 30%;
+		width: 25%;
+		height: 50%;
+	}
+	
+	#time_saved{
+		position: absolute;
+		top: 30%;
+		left: 50%;
+		width: 50%;
+		height: 50%;
+	}
+
+	#space_to_start{
+		position: absolute;
+		top: 5%;
+		left: 38%;
+		color: #CC6600;
+		font-weight: bold;
+		font-size: 100%;
+		border-radius: 0.5em;
+		background-color: #FFFF00;
+		border: medium solid #CC6600;
+		padding: 0.4em 1.2em;
+	}
+	
+	#space_to_resume{
+		display: none;
+		position: absolute;
+		top: 5%;
+		left: 40%;
+		color: #CC6600;
+		border: medium solid #CC6600;
+		background-color: #FFFF00;
+		font-weight: bold;
+		font-size: 100%;
+		border-radius: 0.5em;
+		padding: 0.4em 1.2em;
+	
+	}
+	
+	.space_start{
+		background-color: #FFFF00;
+	}
+	
+	.space_resume{
+		background-color: #FFFF00;
+	}
+	
+	.pager li a{
+		background-color: inherit;
+		border: medium solid blue;
+		color: blue;
+		font-weight: blue;
+	}
+	
+	#abort_button, #completed_button{
+		position: absolute;
+		top: 5%;
+		left: 6%;
+	}
+	
+	#completed_button{
+		left: 45%;
+	}
+	
+	#abort_button{
+		display: none;
+		border: medium solid red;
+		font-weight: bold;
+		font-size: 100%;
+		color: red;
+		padding: 0.4em 1.5em;
+		border-radius: 0.5em; 
+		cursor: pointer;
+	}
+	
+	#abort_button:hover{
+		background-color: #FFE6E6;
+		box-shadow: 0 0 1.5em red;
+	}
+	
+	#completed_button{
+		display: none;
+		border: medium solid green;
+		background-color: #94ff70;
+		font-weight: bold;
+		font-size: 100%;
+		color: green;
+		padding: 1% 2%;
+		border-radius: 0.5em;
+		box-shadow: 0 0 1.5em green;
+		outline: none;
+	}
+	
+	#redo_button{
+		position: absolute;
+		top: 5%;
+		left: 20%;
+		display: none;
+		border: medium solid #0066ff;
+		font-weight: bold;
+		font-size: 100%;
+		color: #0066ff;
+		padding: 1% 2%;
+		border-radius: 0.5em;
+		outline: none;
+		cursor: pointer;
+	}
+	
+	#redo_button:hover{
+		box-shadow: 0 0 1.5em #0066ff;
+	}
+
+	
+	
+
+	#pause_button, #resume_button, #back_to_course_button{
+		position: absolute;
+		top: 5%;
+		left: 86%;
+		display: none;
+	}
+	
+	#back_to_course_button{
+		left: 70%;
+		display: none;
+		border: medium solid #cc3300;
+		font-weight: bold;
+		font-size: 100%;
+		color: #cc3300;
+		padding: 1% 2%;
+		border-radius: 0.5em; 
+		cursor: pointer;
+	}
+	
+	#back_to_course_button:hover{
+		box-shadow: 0 0 0.5em #cc3300;
+	}
+	
+	#pause_button{
+		display: none;
+		border: medium solid #cc3300;
+		font-weight: bold;
+		font-size: 100%;
+		color: #cc3300;
+		padding: 0.4em 1.5em;
+		border-radius: 0.5em; 
+		cursor: pointer;
+	}
+	
+	#pause_button:hover{
+		background-color: #F2CCBF;
+		box-shadow: 0 0 1.5em #F2CCBF;
+	}
+	
+	#resume_button{
+		display: none;
+		border: thin solid #cc3300;
+		font-weight: bold;
+		font-size: 100%;
+		background-color: #cc3300;
+		color: white;
+		padding: 1% 2%;
+		box-shadow: 0 0 1em #cc3300;
+		border-radius: 1em;
+		outline: none;
+	}
+
+#course_window{
+
+	position: absolute;
+	top: 0;
+	width: 98%;
+	height: 98%;
+	display: none;
+	color: grey;
+	z-index: 101;
+	text-align: center;
+	background-color: rgba(255, 255, 255, 1);
+}
+
+
+canvas{
+	border: thin solid #f2f2f2;
+}
+
+	#a_holder{
+
+		position: absolute;
+		top: 8%;
+		left: 2%;
+		border: none;
+		width: 95%;
+		height: 25%;
+
+	}
+
+
+	#a_y_label{
+
+		display: inline-block;
+		float: left;
+		position: absolute;
+		top: 15%;
+		left: 3%;
+		font-size: 70%;
+		font-weight: bold;
+
+	}
+
+	#a_y_label div{
+
+		margin: 0;
+		padding: 0.2em 0;
+
+	}
+
+	#a_label{
+
+		position: absolute;
+		top: 1%;
+		left: 45%;
+		font-size: 70%;
+		font-weight: bold;
+	}
+
+	#a{
+
+		position: absolute;
+		top: 15%;
+		left: 7%;
+	
+	}
+
+	#b_holder{
+
+		position: absolute;
+		top: 35%;
+		left: 2%;
+		border: none;
+		width: 95%;
+		height: 25%;
+
+	}
+
+	#b_label{
+
+		position: absolute;
+		top: 1%;
+		left: 35%;
+		font-size: 70%;
+		font-weight: bold;
+
+	}
+
+	#b_y_label{
+
+		display: inline-block;
+		float: left;
+		position: absolute;
+		top: 49%;
+		left: 3%;
+		font-size: 70%;
+		font-weight: bold;
+
+	}
+
+	#b{
+		position: absolute;
+		top: 15%;
+		left: 7%;
+
+	}
+	
+	#b_legend{
+		position: absolute;
+		top: 85%;
+		height: 10%;
+		width: 90%;
+		font-size: 75%;
+		font-weight: bold;
+	}
+	
+		#gross_color{
+			position: absolute;
+			top: 30%;
+			left: 12%;
+			width: 20%;
+			height: 80%;
+			background-color: orange;
+		}
+		
+		#g_label{
+			position: absolute;
+			top: 10%;
+			left: 33%;
+		}
+		
+		#net_color{
+			position: absolute;
+			top: 30%;
+			left: 60%;
+			width: 20%;
+			height: 80%;
+			background-color: #00FF00;
+		}
+		
+		#n_label{
+			position: absolute;
+			top: 10%;
+			left: 81%;
+		}
+	
+	.live_data{
+		width: 50%;
+	}
+	
+	
+	
+	#c{
+		position: absolute;
+		top: 70%;
+		left: 2%;
+		border: thin solid #f2f2f2;
+		width: 95%;
+		height: 35%;
+		font-size: 150%;
+		overflow-y: auto;
+	}
+	
+	#c div, #c_label div{
+		text-align: center;
+		width: 90%;
+		font-weight: bold;
+		margin: 0.2em;
+		padding: 0.65em 0;	
+	}
+	
+	#c div span, #c_label div span{
+		display: inline-block;
+		text-align: center;
+		width: 22%;
+		
+	}
+	
+	#c_label{
+		position: absolute;
+		top: 61%;
+		left: 2%;
+		border: thin solid #f2f2f2;
+		width: 95%;
+		height: 8%;
+		font-size: 100%;
+		color: grey;
+	}
+	
+	
+
+@media screen 
+and (max-width: 980px) {
+
+	#right_pane{
+		display: none;
+	}
+	
+	#left_pane{
+		width: 100%;
+		height: 100%;
+		z-index: 101;
+	}
+	
+	
+	
+
+}
+
+@media screen 
+and (min-width: 981px) {
+
+
+	#left_pane{
+		position: absolute;
+		top: 0;
+		left: 1%;
+		border: none;
+		height: 90%;
+		width: 61%;
+		float: left;
+		z-index: 101;
+	}
+
+	#right_pane{
+		position: absolute;
+		top: 0%;
+		right: 1%;
+		border: none;
+		height: 86%;
+		width: 35%;
+		float: right;
+		padding: 1em;
+	}
+
+}
+
+#info_bar{
+	position: absolute;
+	top: 8%;
+	left: 1%;
+	height: 11%;
+	width: 96%;
+	border: none;
+	padding: 0.5em;
+	border-radius: 0.5em;
+}
+
+	#timer_label{
+		position: absolute;
+		top: 1%;
+		left: 0.1%;
+		width: 20%;
+		height: 20%;
+		text-align: center;
+		padding: 1%;
+		color: #bd9c59;
+		font-weight: bold;
+		font-size: 75%;
+		vertical-align: baseline;
+		line-height: 1.5em;
+	}
+	
+	#gross_label{
+	
+		position: absolute;
+		top: 1%;
+		left: 20%;
+		width: 23%;
+		height: 20%;
+		text-align: center;
+		padding: 1%;
+		color: #ff9900;
+		font-weight: bold;
+		font-size: 75%;
+		vertical-align: baseline;
+		line-height: 1.5em;
+	
+	}
+	
+	#net_label{
+	
+		position: absolute;
+		top: 1%;
+		left: 41%;
+		width: 20%;
+		height: 20%;
+		text-align: center;
+		padding: 1%;
+		color: #00cc00;
+		font-weight: bold;
+		font-size: 75%;
+		vertical-align: baseline;
+		line-height: 1.5em;
+	
+	}
+	
+	#accuracy_label{
+	
+		position: absolute;
+		top: 1%;
+		left: 62%;
+		width: 20%;
+		height: 20%;
+		text-align: center;
+		padding: 1%;
+		color: #0066FF;
+		font-weight: bold;
+		font-size: 75%;
+		vertical-align: baseline;
+		line-height: 1.5em;
+	
+	
+	}
+	
+	#completed_label{
+	
+		position: absolute;
+		top: 1%;
+		left: 80%;
+		width: 20%;
+		height: 20%;
+		text-align: center;
+		padding: 1%;
+		color: #cc3300;
+		font-weight: bold;
+		font-size: 75%;
+		vertical-align: baseline;
+		line-height: 1.5em;
+	
+	
+	}
+
+	#timer_div{
+		position: absolute;
+		top: 35%;
+		left: 2%;
+		width: 15%;
+		height: 40%;
+		text-align: center;
+		padding: 1%;
+		color: #bd9c59;
+		font-weight: bold;
+		font-size: 100%;
+		vertical-align: baseline;
+		line-height: 2em;
+	}
+	
+	#min, #sec{
+		color: #bd9c59;
+		font-weight: bold;
+		font-size: 150%;
+	}
+	
+	
+	#type_speed{
+		position: absolute;
+		top: 35%;
+		left: 26%;
+		width: 10%;
+		height: 40%;
+		text-align: center;
+		padding: 1%;
+		color: #ff9900;
+		font-weight: bold;
+		font-size: 150%;
+		vertical-align: baseline;
+		line-height: 1em;
+	}
+	
+	#net_type_speed{
+		position: absolute;
+		top: 35%;
+		left: 46%;
+		width: 10%;
+		height: 40%;
+		text-align: center;
+		padding: 1%;
+		color: #00cc00;
+		font-weight: bold;
+		font-size: 150%;
+		vertical-align: baseline;
+		line-height: 1em;
+	}
+	
+	#accuracy{
+	
+		position: absolute;
+		top: 35%;
+		left: 65%;
+		width: 14%;
+		height: 40%;
+		text-align: center;
+		padding: 1%;
+		color: #0066FF;
+		font-weight: bold;
+		font-size: 150%;
+		vertical-align: baseline;
+		line-height: 1em;
+	
+	}
+	
+	#completed{
+	
+		position: absolute;
+		top: 35%;
+		left: 85%;
+		width: 10%;
+		height: 40%;
+		text-align: center;
+		padding: 1%;
+		color: #cf3300;
+		font-weight: bold;
+		font-size: 150%;
+		vertical-align: baseline;
+		line-height: 1em;
+	
+	}
+	
+	
+
+
+#lesson_view{
+	position: absolute;
+	top: 21%;
+	left: 1%;
+	height: 5%;
+	width: 92%;
+	border: thin solid #f2f2f2;
+	padding: 5% 3%;
+	vertical-align: baseline;
+	font-size: 220%; 
+	border-radius: 0.625em;
+}
+
+	
+
+#keyboard{
+	position: absolute;
+	top: 41%;
+	left: 1%;
+	height: 62%;
+	width: 96%;
+	border: thin solid #f2f2f2;
+	padding: 1%;
+	border-radius: 0.625em;
+}
+
+
+
+
+#finger_canvas, #fin_spans{
+	
+		position: absolute;
+		left: 36%;
+		
+}
+
+#fin_spans{
+
+	z-index: 201;
+
+}
+
+.finger{
+
+	display: inline-block;
+	width: 0.7em;
+	height: 0.7em;
+	background-color: red;
+	border-radius: 1em;
+
+}
+
+	#fin_1{
+		position: absolute;
+		top: 30%;
+		left: 0.6%;
+	}
+
+	#fin_2{
+		
+		position: absolute;
+		top: 13%;
+		left: 8%;
+		
+	}
+	
+	#fin_3{
+		position: absolute;
+		top: 1%;
+		left: 21%;
+	}
+	
+	#fin_4{
+		position: absolute;
+		top: 11%;
+		left: 32%;
+	}
+	
+	
+	#fin_5{
+		position: absolute;
+		top: 77%;
+		left: 43%;
+	}
+	
+	#fin_6{
+		position: absolute;
+		top: 77%;
+		left: 53%;
+	}
+	
+	#fin_7{
+		position: absolute;
+		top: 11%;
+		left: 63%;
+	}
+	
+	#fin_8{
+		position: absolute;
+		top: 1%;
+		left: 75%;
+	}
+	
+	#fin_9{
+		position: absolute;
+		top: 10%;
+		left: 88%;
+	}
+	
+	#fin_10{
+		position: absolute;
+		top: 30%;
+		left: 97%;
+	}
+
+
+	#f{
+		position: absolute;
+		top: 0;
+		left: 0;
+		border: none;
+		
+	}
+	
+
+#canvas_holder{
+	width: 20%;
+	height: 10%;
+}
+
+.keys{
+	display: inline-block;
+	border: medium solid #999999;
+	border-radius: 0.313em;
+	width: 4%;
+	height: 4%;
+	text-align: center;
+	padding: 0.02%;
+	margin: 0.6% 0.5%;
+	font-size: 100%;
+	color: #999999;
+	font-weight: bold;
+	white-space: pre;
+	text-decoration: none;
+	font-style: normal;
+	
+}
+
+.backlit{
+
+	background-color: #808080;
+	color: white;
+
+}
+
+
+#top_row, #middle_row, #bottom_row, #num_row, #space_row{
+	margin: 0.313em;
+}
+
+#key_32{
+	width: 65%;
+}
+
+#bksp_key{
+	width: 8%;
+}
+
+#caps_key{
+	width: 9%;
+}
+
+#enter_key{
+	width: 8%;
+}
+
+#shift_right{
+	width: 20%;
+}
+
+#shift_left{
+	width: 5%;
+}
+
+.key_before{
+	text-decoration: none;
+	border-bottom: medium solid grey;
+}
+
+.key_ok{
+	text-decoration: none;
+	color: #00cc00;
+	border: 0;
+	border-bottom-style: none;
+}
+
+.key_not_ok{
+	text-decoration: none;
+	color: red;
+	border: 0;
+	border-bottom-style: none;
+}
+
+.o_line{
+	text-decoration: overline;
+	font-style: normal;
+	
+}
+
+.u_line{
+	text-decoration: underline;
+	font-style: normal;
+}
+
+
+	.light_blue{
+		outline:none;
+	    	border: medium solid #0099FF;
+	    	box-shadow:0 0 1.5em #0099FF;
+	}
+	
+	.bg_light_blue{
+		color: #0099FF;
+	}
+	
+	.blue{
+		outline: none;
+	    	border: medium solid #9900FF;
+	    	box-shadow:0 0 1.5em #9900FF;
+	}
+	
+	.bg_blue{
+		color: #9900FF;
+	}
+	
+	.green{
+		outline:none;
+	    	border: medium solid #00CC00;
+	    	box-shadow:0 0 1.5em #00CC00;
+	
+	}
+	
+	.bg_green{
+		color: #00CC00;
+	}
+	
+	.light_green{
+		outline:none;
+	    	border: medium solid #00FF00;
+	    	box-shadow:0 0 1.5em #00FF00;
+	}
+	
+	.bg_light_green{
+		color: #00FF00;
+	}
+	
+	.yellow{
+		outline:none;
+	    	border: medium solid #FFCC00;
+	    	box-shadow:0 0 1.5em #FFCC00;
+	
+	}
+	
+	.bg_yellow{
+		color: #FFCC00;
+	}
+	
+	.orange{
+		outline:none;
+	    	border: medium solid #FF9900;
+	    	box-shadow:0 0 1.5em #FF9900;
+	
+	}
+	
+	.bg_orange{
+		color: #FF9900;
+	}
+	
+	.red_1{
+		outline:none;
+	    	border: medium solid #FF7373;
+	    	box-shadow:0 0 1.5em #FF7373;
+	}
+	
+	.bg_red_1{
+		color: #FF7373;
+	}
+	
+	.red_2{
+		outline:none;
+	    	border: medium solid #FF0000;
+	    	box-shadow:0 0 1.5em #FF0000;
+	
+	}
+	
+	.bg_red_2{
+		color: #FF0000;
+	}
+
+

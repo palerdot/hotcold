@@ -1,0 +1,111 @@
+    
+.page_holder{
+	
+}  
+
+.hotcold-brand{
+	float: left;
+	width: auto;
+}
+
+.hotcold-letter{
+	display: inline-block;
+	border: medium solid #f2f2f2;
+	border-radius: 0.313em;
+	width: auto;
+	height: auto;
+	text-align: center;
+	padding: 0.5em 0.7em;
+	margin: 0 0.4em;
+	font-size: 100%;
+	color: grey;
+	font-weight: bold;
+	white-space: pre;
+	text-decoration: none;
+	font-style: normal;
+}
+
+.h{
+	outline:none;
+	color: #FF0000;
+	border-color: #FF0000;
+	box-shadow:0 0 1.5em #FF0000;
+}
+
+.o{
+	outline:none;
+	color: #FF7373;
+	border-color: #FF7373;
+	box-shadow:0 0 1.5em #FF7373;
+}
+
+.t{
+	outline:none;
+	color: #FF9900;
+	border-color: #FF9900;
+	box-shadow:0 0 1.5em #FF9900;
+}
+
+.c{
+	outline:none;
+	color: #00CC00;
+	border-color: #00CC00;
+	box-shadow:0 0 1.5em #00CC00;
+}
+
+.ll{
+	outline:none;
+	color: #00FF00;
+	border-color: #00FF00;
+	box-shadow:0 0 1.5em #00FF00;
+}
+
+.o-blue, .l{
+	outline:none;
+	color: #0099FF;
+	border-color: #0099FF;
+	box-shadow:0 0 1.5em #0099FF;
+}
+
+.d{
+	outline:none;
+	color: #9900FF;
+	border-color: #9900FF;
+	box-shadow:0 0 1.5em #9900FF;
+}
+
+.course_info{
+	margin-bottom: 5%;
+}
+
+.course_pages{
+	margin-top: 3%;
+	display: none;
+}
+
+.alert-yellow{
+	color: #cc6600;
+     background-color: #FFFFb2;
+     border-color: #ffd699;
+     line-height: 2em;
+}
+
+
+.difficulty{
+	margin: 15% 0;
+}
+
+#theme_form{
+	white-space: pre;
+}
+
+#course_window{
+	display: none;
+}  
+
+#course_tab{
+	
+}
+    
+    
+
