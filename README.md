@@ -12,9 +12,16 @@ Please read and understand the getting started guide thoroughly before attemptin
 
 *************************************************************************************************************************************************
 
+This project has won second place in Mozilla dev derby for the month of April 2013. 
+It can be viewed live at this dev derby url: https://developer.mozilla.org/en-US/demos/detail/hot-cold-typing
+
+**************************************************************************************************************************************************
+
 General Info:
 
 This section has some general information on the application.
+
+This application uses modern html5 features like web workers and canvas. It is necessary to have support for these two in your browser to experience the app in your browser.
 
 This application uses two libraries
 
