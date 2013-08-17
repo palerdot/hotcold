@@ -240,7 +240,7 @@
 			
 			var is_firefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
 			
-			if(is_firefox){
+			if(is_firefox && Hotcold.course_started){
 			
 				//firefox has a quick find; let us disable that to prevent key mismatch and accidental window resize
 				
@@ -255,11 +255,7 @@
 					break;
 					
 				}
-				
-				
-				
-				
-				
+					
 			}				
 		
 		if(e.ctrlKey){

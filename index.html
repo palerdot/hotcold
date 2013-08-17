@@ -37,9 +37,6 @@
     		//check if the browser supports canvas and web workers
     		
     		$(document).ready(function(){
-    		
-    			console.log("Canvas supported "+canvas_support());
-    			console.log("web worker supported "+web_worker_support());
     			
     			function canvas_support(){
     				return !!document.createElement('canvas').getContext;
