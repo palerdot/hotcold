@@ -12,19 +12,71 @@
     <link rel = "stylesheet" href = "css/main.css" media="screen" />
     <link href="css/interface.css" rel="stylesheet" media="screen">
 
-    <!-- START:  -->
-    <!-- END:  -->
-    
+	<style>
+	
+		#read_info{
+			position: static;
+		}
+		
+	
+	</style>
+
+    <!-- START: adding javascript libraries -->
     
     <script src="bootstrap/js/jquery.js"></script>
     <script src = 'js/hotcold.js'></script>
     <script src = 'js/main.js'></script>
     <script src = 'js/timer.js'></script>
-    <script src="bootstrap/js/bootstrap.js"></script>
+    
     <script src="bootstrap/js/bootstrap.min.js"></script>
     
+    <!-- END: end of javascript libraries -->
     
-    <!-- <script type="text/javascript" src="http://twitter.github.com/bootstrap/assets/js/bootstrap-dropdown.js"></script> -->
+    <script>
+    
+    		//check if the browser supports canvas and web workers
+    		
+    		$(document).ready(function(){
+    		
+    			console.log("Canvas supported "+canvas_support());
+    			console.log("web worker supported "+web_worker_support());
+    			
+    			function canvas_support(){
+    				return !!document.createElement('canvas').getContext;
+    			}
+    			
+    			function web_worker_support(){
+    				return !!window.Worker;
+    			}
+    			
+    			var s_text = '';
+    			var r_info = $('#read_info');
+    			
+    			if(!canvas_support() && !web_worker_support()){
+    				s_text = 'Your browser does not support web workers and canvas functionality required for this application';
+    				r_info.addClass('alert-error').removeClass('alert-success').text(s_text);
+    			}else if (!canvas_support() || !web_worker_support()){
+    				
+    				if(!canvas_support){
+    					s_text = 'Your browser does not support canvas functionality required for this application';
+    					r_info.addClass('alert-error').removeClass('alert-success').text(s_text);
+    				}
+    				
+    				if(!web_worker_support){
+    					s_text = 'Your browser does not support web workers functionality required for this application';
+    					r_info.addClass('alert-error').removeClass('alert-success').text(s_text);
+    				}
+    				
+    			}
+    			
+    			
+    		
+    		});
+    
+    </script>
+    
+    
+    <!-- <script src="bootstrap/js/bootstrap.js"></script> -->
     
     </head>
     
@@ -62,7 +114,7 @@
 		</div>	
 		<!-- END: end of top navbar holding the home, courses and about tabs -->		
 		
-		<div class="alert alert-success text-center"><strong>INFO: </strong>Please read and understand the <strong><a href = "get-started.html">Getting Started guide</a></strong> thoroughly before attempting the courses</div>	  	
+		<div class="alert alert-success text-center" id = "read_info"><strong>INFO: </strong>Please read and understand the <strong><a href = "get-started.html">Getting Started guide</a></strong> thoroughly before attempting the courses</div>	  	
 		
 		<div class = "text-center">
 		
