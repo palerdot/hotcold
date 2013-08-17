@@ -44,37 +44,7 @@
 			 	margin-top: 5px;
 		    }
 		    
-		    #fork_button{
-				display: inline-block;
-				width: auto;
-				height: auto;
-				padding: 11%;
-				margin: 8% 0;
-				
-				font-size: 16px;
-				font-weight: bold;
-				text-decoration: none;
-				text-align: center;
-				
-				background-color: #dedede;
-				color: #333;
-				
-				vertical-align: 100%;
-			
-				-webkit-border-radius: 5px;
-				-moz-border-radius: 5px;
-				border-radius: 5px;
-				
-				border: medium solid #dedede;
-				cursor: pointer;
-				transition: 0.5s;
-			}
 		
-				#fork_button:hover{
-					background-color: #fff;
-					border: medium solid #fff;
-				}
-			
 			.github-icon{
 				display: inline-block;
 				width: 14px;
@@ -85,6 +55,11 @@
 				background-image: url("bootstrap/img/github-icon.png");
 				background-position: 0 0;
 				background-repeat: no-repeat;
+				float: left;
+			}
+			
+			#fork_button{
+				white-space: pre;
 			}
 	    
     </style>
@@ -112,7 +87,7 @@
 				<li class="active"><a href = "home.html"><button class = "btn btn-large btn-info" id = "about_button"><i class = "icon-home"> </i> Home</button></a></li>
 				<li class="active"><a href = "get-started.html"><button class = "btn btn-large btn-warning" id = "get_started_button"><i class = "icon-briefcase"> </i>  Get Started</button></a></li>
 			     <li class="active"><a href = "courses.html"><button class = "btn btn-large btn-success" id = "courses_button"><i class = "icon-leaf"> </i>  Courses</button></a></li>
-				<li class="active"><a href = "http://github.com/palerdot/hotcold" target = "_blank"><button class = "" id = "fork_button"><i class = "github-icon"> </i>  Fork</button></a></li>
+				<li class="active"><a href = "http://github.com/palerdot/hotcold" target = "_blank"><button class = "btn btn-large" id = "fork_button"><i class = "github-icon"> </i>  Fork</button></a></li>
 			  </ul>
 			  	  
       		  </div>	
