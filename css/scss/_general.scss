@@ -1,0 +1,217 @@
+@import "_colors";
+
+body {
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+
+        &.day-theme {
+            input, textarea, select, option, .form-control:disabled {
+                background-color: $DT_body_bg_color;
+                color: $DT_body_text_color;
+            }   
+        }
+
+        &.night-theme {
+            input, textarea, select, option, .form-control:disabled {
+                background-color: $NT_body_bg_color;
+                color: $NT_body_text_color;
+            }   
+        }
+
+        .form-control:disabled {
+            opacity: 0.5;
+        }
+
+        select {
+            text-align-last: center;
+        }
+}
+
+#read_info {
+    position: static;
+}
+
+.m-none {
+    margin: 0 !important;
+}
+
+.border-bot-none {
+    border-bottom: none !important;
+}
+
+.border-top-none {
+    border-top: none !important;
+}
+
+.p-none {
+    padding: 0 !important;
+}
+
+.p-right-none {
+    padding-right: 0 !important;
+}
+
+a {
+    color: $link_color;
+}
+
+// -----------------------------------------------------------------------------------------------
+// START: chrome scrollbar styles 
+.night-theme {
+    ::-webkit-scrollbar {
+        height: 5px;
+        width: 5px;
+        background: #222222;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #555555;
+        -webkit-border-radius: 0;
+        -webkit-box-shadow: 0px 1px 2px rgba(255, 255, 255, 0.75);
+    } 
+
+    textarea {
+        border-color: #777777 !important;
+        resize: none;
+    }
+
+    table {
+        border-color: #777777 !important;
+        th, td {
+            border-color: #777777 !important;
+        }
+    }
+}
+
+.day-theme {
+    ::-webkit-scrollbar {
+        height: 7px;
+        width: 7px;
+        background: #DEDEDE;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #A6A6A6;
+        -webkit-border-radius: 0;
+        -webkit-box-shadow: 0px 1px 2px rgba(255, 255, 255, 0.75);
+    }
+
+    textarea {
+        border-color: #A6A6A6 !important;
+        resize: none;
+    }
+
+    table {
+        border-color: #A6A6A6 !important;
+        th, td {
+            border-color: #A6A6A6 !important;
+        }
+    }   
+}
+// END: chrome scrollbar styles
+// -----------------------------------------------------------------------------------------------
+
+// START: hotcold header letter styles
+
+.hotcold-brand {
+    height: auto;
+    width: auto;
+}
+
+.hotcold-letter {
+    display: inline-block;
+    border: medium solid #f2f2f2;
+    border-radius: 0.313em;
+    width: auto;
+    height: auto;
+    text-align: center;
+    padding: 0.5em 0.7em;
+    margin: 0 0.4em;
+    font-size: 100%;
+    color: grey;
+    font-weight: bold;
+    white-space: pre;
+    text-decoration: none;
+    font-style: normal;
+}
+
+.h {
+    outline: none;
+    color: $HC_RED;
+    border-color: $HC_RED;
+    box-shadow: 0 0 1.5em $HC_RED;
+}
+
+.o {
+    outline: none;
+    color: $HC_RED1;
+    border-color: $HC_RED1;
+    box-shadow: 0 0 1.5em $HC_RED1;
+}
+
+.t {
+    outline: none;
+    color: $HC_ORANGE;
+    border-color: $HC_ORANGE;
+    box-shadow: 0 0 1.5em $HC_ORANGE;
+}
+
+.c {
+    outline: none;
+    color: $HC_GREEN;
+    border-color: $HC_GREEN;
+    box-shadow: 0 0 1.5em $HC_GREEN;
+}
+
+.ll {
+    outline: none;
+    color: $HC_LIGHT_GREEN;
+    border-color: $HC_LIGHT_GREEN;
+    box-shadow: 0 0 1.5em $HC_LIGHT_GREEN;
+}
+
+.o-blue,
+.l {
+    outline: none;
+    color: $HC_LIGHT_BLUE;
+    border-color: $HC_LIGHT_BLUE;
+    box-shadow: 0 0 1.5em $HC_LIGHT_BLUE;
+}
+
+.d {
+    outline: none;
+    color: $HC_BLUE;
+    border-color: $HC_BLUE;
+    box-shadow: 0 0 1.5em $HC_BLUE;
+}
+
+.course_info {
+    margin-bottom: 5%;
+}
+
+.course_pages {
+    display: none;
+}
+
+.alert-yellow {
+    color: #cc6600;
+    background-color: $HC_ALERT_YELLOW;
+    border-color: $HC_ALERT_YELLOW_BORDER;
+    line-height: 2em;
+}
+
+.difficulty {
+    margin: 15% 0;
+}
+
+#theme_form {
+    white-space: pre;
+}
+
+#course_window {
+    display: none;
+}
+
+// END: hotcold header letter styles
+// -----------------------------------------------------------------------------------------------

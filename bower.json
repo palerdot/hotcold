@@ -1,0 +1,31 @@
+{
+  "name": "hotcold",
+  "description": "Interactive Touch Typing learning application with live graphs and statistics",
+  "main": "",
+  "authors": [
+    "palerdot"
+  ],
+  "license": "",
+  "keywords": [
+    "touch-typing"
+  ],
+  "homepage": "https://github.com/palerdot/hotcold",
+  "moduleType": [
+    "globals"
+  ],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "2.2.4",
+    "bootstrap": "^3.3.6"
+  },
+  "resolutions": {
+    "jquery": "2.2.4"
+  }
+}

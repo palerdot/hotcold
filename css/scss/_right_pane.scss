@@ -1,0 +1,178 @@
+@import "_colors";
+
+// --------------------------------------------------------------------------------------------------------------
+// START: right pane
+#saved_block {
+    display: inline-block;
+    height: 1.1em;
+    background-color: $NT_saved_block_color;
+    border: thin solid grey;
+}
+
+#time_saved_label {
+    height: 50%;
+}
+
+#time_saved {
+    height: 50%;
+}
+
+#fullscreen-toggle {
+    border: medium solid $HC_LIGHT_BLUE;
+    color: $HC_LIGHT_BLUE;
+    padding: 0.22em 0.33em;
+
+    &:hover{
+        box-shadow: 0 0 1.5em $HC_LIGHT_BLUE;
+    }
+}
+
+
+
+#right_pane canvas {
+    position: absolute;
+    top: 15%;
+    left: 7%;
+
+    border: thin solid #f2f2f2;
+}
+
+.graph_holder {
+    position: absolute;
+    
+    border: none;
+    left: 2%;
+    width: 95%; 
+    height: 25%;
+}
+
+.graph_label {
+    position: absolute;
+    width: 100%;
+
+    top: 2%;
+    left: 5%;
+    font-size: 0.7em;
+    font-weight: bold;
+    text-align: center;
+}
+
+.graph_y_label {
+    position: absolute;
+    left: 3%;
+
+    display: inline-block;
+    float: left;
+    
+    font-size: 0.7em;
+    font-weight: bold;
+}
+
+#a_holder {
+    top: 13%;
+}
+
+#a_y_label {
+    top: 17%;
+    div {
+        margin: 0;
+        padding: 0.2em 0;
+    }
+}
+
+#b_y_label {
+    top: 51%;
+}
+
+#b_holder {
+    top: 38%;
+}
+
+.b_legend {
+    position: absolute;
+    top: 85%;
+    height: 10%;
+    width: 90%;
+    font-size: 0.75em;
+    font-weight: bold;
+
+    .legend_color {
+        position: absolute;
+        top: 30%;
+        
+        width: 20%;
+        height: 50%;
+    }
+
+    #gross_color {
+        left: 12%;
+        background: $gross_speed_color;
+    }
+
+    #net_color {
+        left: 60%;
+        background: $net_speed_color;
+    }
+
+    .legend_label {
+        position: absolute;
+        top: 10%;
+        left: 33%;
+    }
+
+    #g_label {
+        left: 33%;
+    }
+
+    #n_label {
+        left: 81%;
+    }
+}
+
+// key statistics styles
+.live_data {
+    width: 50%;
+}
+
+.c_section {
+    position: absolute;
+    /* left: 9%; */
+    right: 0%;
+    width: 91%;
+}
+
+#c {
+    top: 75%;
+    border: thin solid #333333;
+    height: 30%;
+    font-size: 1.5em;
+    overflow-y: auto;
+}
+
+#c_label {
+    top: 65%;
+    border: thin solid #333333;
+    height: 8%;
+    font-size: 1em;
+    color: grey;
+}
+
+#c div, #c_label div {
+    text-align: center;
+    width: 90%;
+    font-weight: bold;
+    margin: 0.2em;
+    padding: 0.65em 0;  
+}
+
+#c div span, #c_label div span {
+    display: inline-block;
+    text-align: center;
+    width: 22%;
+}
+
+// END: right pane
+// --------------------------------------------------------------------------------------------------------------
+
+
+

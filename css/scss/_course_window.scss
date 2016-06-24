@@ -1,0 +1,91 @@
+@import "_colors";
+@import "_left_pane";
+@import "_right_pane";
+
+// --------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------
+
+@media screen 
+and (max-width: 980px) {
+
+    #right_pane {
+        display: none;
+    }
+    
+    #left_pane{
+        width: 100%;
+        height: 100%;
+        z-index: 101;
+    }
+
+}
+
+@media screen 
+and (min-width: 981px) {
+
+    #left_pane{
+        position: absolute;
+        top: 0;
+        left: 1%;
+        border: none;
+        height: 90%;
+        width: 61%;
+        float: left;
+        z-index: 101;
+    }
+
+    #right_pane{
+        position: absolute;
+        top: 0%;
+        right: 1%;
+        border: none;
+        height: 90%;
+        width: 35%;
+        float: right;
+
+        margin-right: 1%;
+    }
+
+}
+
+// --------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------
+#course_window {
+    position: absolute;
+    top: 1%;
+    width: 100%;
+    height: 100%;
+    display: none;
+    color: grey;
+    z-index: 101;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    background-color: rgba(255, 255, 255, 1);
+    overflow-x: none;
+
+    text-align: center;
+    overflow: none;
+}
+
+#create-course-li {
+    a {
+        background-color: $create_course_button_color;
+        text-decoration: none;
+    }
+    a:hover {
+        background-color: $create_course_button_color;
+        box-shadow: 0 0 1.5em $create_course_button_color;
+    }
+}
+
+.btn-success {
+    background-color: $create_course_button_color;
+    &:hover {
+        background-color: $create_course_button_color;
+        box-shadow: 0 0 1.5em $create_course_button_color;   
+    }
+}
+// --------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------
+

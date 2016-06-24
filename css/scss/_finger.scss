@@ -1,0 +1,81 @@
+// --------------------------------------------------------------------------------------------------------------
+// START: Finger canvas styles
+.fings {
+    position: absolute;
+    left: 36%;
+}
+
+#fin_spans{
+    z-index: 201;
+}
+
+.finger{
+    position: absolute;
+    display: inline-block;
+    width: 0.7em;
+    height: 0.7em;
+    background-color: red;
+    border-radius: 1em;
+}
+
+#fin_1 {
+    top: 30%;
+    left: 0.6%;
+}
+
+#fin_2 {
+    top: 13%;
+    left: 8%;
+}
+
+#fin_3 {
+    top: 1%;
+    left: 21%;
+}
+
+#fin_4 {
+    top: 11%;
+    left: 32%;
+}
+
+
+#fin_5 {
+    top: 77%;
+    left: 43%;
+}
+
+#fin_6 {
+    top: 77%;
+    left: 53%;
+}
+
+#fin_7 {
+    top: 11%;
+    left: 63%;
+}
+
+#fin_8 {
+    top: 1%;
+    left: 75%;
+}
+
+#fin_9 {
+    top: 10%;
+    left: 88%;
+}
+
+#fin_10 {
+    top: 30%;
+    left: 97%;
+}
+
+
+#f {
+    top: 0;
+    left: 0;
+    border: none;
+}
+
+
+// END: Finger styles
+// --------------------------------------------------------------------------------------------------------------

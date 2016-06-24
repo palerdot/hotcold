@@ -1,0 +1,37 @@
+{
+  "name": "hotcold",
+  "version": "1.0.0",
+  "description": "Interactive Touch Typing learning application with live graphs and statistics",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/palerdot/hotcold.git"
+  },
+  "keywords": [
+    "Touch",
+    "Typing"
+  ],
+  "author": "palerdot",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/palerdot/hotcold/issues"
+  },
+  "homepage": "https://github.com/palerdot/hotcold#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "bower": "^1.7.9",
+    "browserify": "^13.0.1",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-jsvalidate": "^2.1.0",
+    "gulp-prettify": "^0.4.0",
+    "gulp-print": "^2.0.1",
+    "gulp-sass": "^2.3.2",
+    "main-bower-files": "^2.13.1",
+    "run-sequence": "^1.2.1",
+    "vinyl-source-stream": "^1.1.0"
+  }
+}

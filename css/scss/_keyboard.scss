@@ -1,0 +1,207 @@
+// --------------------------------------------------------------------------------------------------------------
+// START: keyboard styles
+#keyboard {
+    position: absolute;
+    top: 45%;
+    left: 1%;
+    height: 65%;
+    width: 100%;
+    padding: 1%;
+    border-radius: 0;
+
+        .night-theme & {
+            border-bottom: thin solid $NT_border_color;        
+        }
+
+        .day-theme & {
+            border-bottom: thin solid $DT_border_color;   
+        }
+}
+
+.keys {
+    display: inline-block;
+    border: 2px solid #999999;
+    border-radius: 0.313em;
+    width: 5%;
+    height: 5%;
+    text-align: center;
+    margin: 0.6% 0.3%;
+    font-size: 100%;
+    color: #999999;
+    font-weight: bold;
+    text-decoration: none;
+    font-style: normal;
+
+        .top-k {
+            height: 50%;
+            width: 100%;
+            vertical-align: baseline;
+        }
+
+        .middle-k {
+            height: 100%;
+        }
+
+        .bottom-k {
+            height: 50%;
+            width: 100%;
+            vertical-align: bottom;
+        }
+}
+
+.backlit {
+    background-color: #808080;
+    color: white;
+}
+
+#top_row,
+#middle_row,
+#bottom_row,
+#num_row,
+#space_row {
+    margin: 0.313em;
+}
+
+#key_32 {
+    width: 55%;
+}
+
+#bksp_key {
+    width: 8%;
+}
+
+#tab_key {
+    width: 8%;
+}
+
+#caps_key {
+    width: 9%;
+}
+
+#enter_key {
+    width: 10%;
+}
+
+#shift_right {
+    width: 15%;
+}
+
+#shift_left {
+    width: 10%;
+}
+
+.alt-key, .ctrl-key {
+    width: 7%;
+}
+
+.key_before {
+    text-decoration: none;
+    border-bottom: medium solid grey;
+}
+
+.key_ok {
+    text-decoration: none;
+    color: $HC_GREEN;
+    border: 0;
+    border-bottom-style: none;
+}
+
+.key_not_ok {
+    text-decoration: none;
+    color: red;
+    border: 0;
+    border-bottom-style: none;
+}
+
+.o_line {
+    text-decoration: overline;
+    font-style: normal;
+}
+
+.u_line {
+    text-decoration: underline;
+    font-style: normal;
+}
+
+.light_blue {
+    outline: none;
+    border: medium solid $HC_LIGHT_BLUE;
+    box-shadow: 0 0 1.5em $HC_LIGHT_BLUE;
+}
+
+.bg_light_blue {
+    color: $HC_LIGHT_BLUE;
+}
+
+.blue {
+    outline: none;
+    border: medium solid $HC_BLUE;
+    box-shadow: 0 0 1.5em $HC_BLUE;
+}
+
+.bg_blue {
+    color: $HC_BLUE;
+}
+
+.green {
+    outline: none;
+    border: medium solid $HC_GREEN;
+    box-shadow: 0 0 1.5em $HC_GREEN;
+}
+
+.bg_green {
+    color: $HC_GREEN;
+}
+
+.light_green {
+    outline: none;
+    border: medium solid $HC_LIGHT_GREEN;
+    box-shadow: 0 0 1.5em $HC_LIGHT_GREEN;
+}
+
+.bg_light_green {
+    color: $HC_LIGHT_GREEN;
+}
+
+.yellow {
+    outline: none;
+    border: medium solid $HC_YELLOW;
+    box-shadow: 0 0 1.5em $HC_YELLOW;
+}
+
+.bg_yellow {
+    color: $HC_YELLOW;
+}
+
+.orange {
+    outline: none;
+    border: medium solid $HC_ORANGE;
+    box-shadow: 0 0 1.5em $HC_ORANGE;
+}
+
+.bg_orange {
+    color: $HC_ORANGE;
+}
+
+.red_1 {
+    outline: none;
+    border: medium solid $HC_RED1;
+    box-shadow: 0 0 1.5em $HC_RED1;
+}
+
+.bg_red_1 {
+    color: $HC_RED1;
+}
+
+.red_2 {
+    outline: none;
+    border: medium solid $HC_RED;
+    box-shadow: 0 0 1.5em $HC_RED;
+}
+
+.bg_red_2 {
+    color: $HC_RED;
+}
+
+// END: keyboard styles
+// --------------------------------------------------------------------------------------------------------------
