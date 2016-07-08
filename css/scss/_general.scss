@@ -1,18 +1,28 @@
 @import "_colors";
+@import "_transitions";
 
 body {
     padding: 0;
     margin: 0;
-    overflow: hidden;
+    overflow: auto;
 
         &.day-theme {
+
+            background-color: $DT_body_bg_color !important;
+            color: $DT_body_text_color !important;
+
             input, textarea, select, option, .form-control:disabled {
                 background-color: $DT_body_bg_color;
                 color: $DT_body_text_color;
-            }   
+            }
+
         }
 
         &.night-theme {
+
+            background-color: $NT_body_bg_color !important;
+            color: $NT_body_text_color !important ;
+
             input, textarea, select, option, .form-control:disabled {
                 background-color: $NT_body_bg_color;
                 color: $NT_body_text_color;
@@ -23,9 +33,56 @@ body {
             opacity: 0.5;
         }
 
-        select {
-            text-align-last: center;
+        .modal-content {
+            & div, & .close {
+                background: $home_highlight_bg_color !important;
+                color: $home_highlight_text_color;
+                border-color: $help_faq_border !important;    
+            }
+
+            .modal-body {
+                //height: 477px;
+                //overflow-y: auto;    
+            }
+            
         }
+
+        .popover {
+            color: white;
+            border-color: transparent;
+            border-color: $HC_LIGHT_BLUE;
+            background-color: $HC_LIGHT_BLUE;
+            box-shadow: 0 0 1.5em $HC_LIGHT_BLUE;
+
+            &.right .arrow:after {
+                border-right-color: #696969;
+            }
+
+            &.left .arrow:after {
+                border-left-color: #696969;
+            }
+
+            &.top .arrow:after {
+                border-top-color: #696969;
+            }
+
+            &.bottom .arrow:after {
+                border-bottom-color: #696969;
+            }
+
+        }
+
+        .popover-title {
+            background: #3D3D3D;
+            border-color: #696969;
+            text-align: center;
+        }
+
+        .popover-content {
+            text-align: center;
+            background: #696969;
+        }
+
 }
 
 #read_info {
@@ -34,6 +91,10 @@ body {
 
 .m-none {
     margin: 0 !important;
+}
+
+.m-top-half-em {
+    margin-top: 0.5em !important;
 }
 
 .border-bot-none {
@@ -54,6 +115,23 @@ body {
 
 a {
     color: $link_color;
+}
+
+// default bootstrap color overrides
+.btn-success {
+    background-color: $create_course_button_color;
+    &:hover {
+        background-color: $create_course_button_color;
+        box-shadow: 0 0 1.5em $create_course_button_color;   
+    }
+}
+
+.label-success {
+    background-color: $create_course_button_color;
+}
+
+.label-warning {
+    background-color: $HC_ORANGE;
 }
 
 // -----------------------------------------------------------------------------------------------
@@ -82,6 +160,7 @@ a {
             border-color: #777777 !important;
         }
     }
+
 }
 
 .day-theme {
@@ -186,13 +265,7 @@ a {
     box-shadow: 0 0 1.5em $HC_BLUE;
 }
 
-.course_info {
-    margin-bottom: 5%;
-}
 
-.course_pages {
-    display: none;
-}
 
 .alert-yellow {
     color: #cc6600;
@@ -201,17 +274,40 @@ a {
     line-height: 2em;
 }
 
-.difficulty {
-    margin: 15% 0;
-}
 
-#theme_form {
-    white-space: pre;
-}
 
-#course_window {
-    display: none;
+.page_holder {
+    margin-top: 3.3em;
 }
 
 // END: hotcold header letter styles
 // -----------------------------------------------------------------------------------------------
+
+// header button group styles
+.header-download-group {
+
+    .header-link {
+        border: medium solid $HC_LIGHT_BLUE;
+        color: $HC_LIGHT_BLUE;
+        box-shadow: 0 0 0.5em $HC_LIGHT_BLUE;
+        font-weight: bold;
+
+            &:hover {
+                box-shadow: 0 0 1.5em $HC_LIGHT_BLUE;
+            }
+    }
+
+}
+
+.header-info-group {
+    .info-link {
+        border: medium solid $HC_ORANGE;
+        color: $HC_ORANGE;
+        box-shadow: 0 0 0.5em $HC_ORANGE;
+        font-weight: bold;
+
+            &:hover {
+                box-shadow: 0 0 1.5em $HC_ORANGE;
+            }   
+    }
+}

@@ -34,12 +34,32 @@
             cursor: pointer;
         }
 
+        .right-section .btn {
+            display: none;
+            border: medium solid $pause_button_color;
+            color: $pause_button_color;
+
+                &:hover {
+                    box-shadow: 0 0 1.5em $pause_button_color;        
+                }
+        }
+
         #abort_button {
             border: medium solid $abort_button_color;
             color: $abort_button_color;
 
                 &:hover {
                     box-shadow: 0 0 1.5em $abort_button_color;        
+                }
+        }
+
+        #back_to_course_button {
+            border: medium solid $pause_button_color;
+            color: $pause_button_color;
+            display: none;
+
+                &:hover {
+                    box-shadow: 0 0 1.5em $pause_button_color;        
                 }
         }
 
@@ -58,16 +78,6 @@
             border: medium solid $completed_button_color;
             background-color: $completed_button_bg_color;
             color: $completed_button_color;
-        }
-
-        .pause-section .btn {
-            display: none;
-            border: medium solid $pause_button_color;
-            color: $pause_button_color;
-
-                &:hover {
-                    box-shadow: 0 0 1.5em $pause_button_color;        
-                }
         }
 
         #resume_button {

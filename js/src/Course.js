@@ -45,7 +45,6 @@ var CourseWrapper = function ( HC, Canvas, $el, Timer ) {
             if ( i >= 65 && i <= 90 ) {
 
                 //we have caps letters; assign them appropriate divs of small letters in the virtual keyboard;
-
                 var code = String.fromCharCode( i )
                                     .toLowerCase()
                                     .charCodeAt( 0 );
@@ -79,9 +78,10 @@ var CourseWrapper = function ( HC, Canvas, $el, Timer ) {
             switch ( course_no ) {
 
                 case 0:
+
                     lesson = convertJson();
-                    //console.log(lesson);
-                    minutes = $( "input:radio[name=custom_time]:checked" ).val();
+                    // we need to check if it is default 1 min or custom time
+                    minutes = $el.free_time.is(":checked") ? 1 : $el.custom_duration.val();
                     self.prepare();
 
                     break;
@@ -559,7 +559,7 @@ var CourseWrapper = function ( HC, Canvas, $el, Timer ) {
             Canvas.clean_canvas();
             //initiate the worker 
 
-            helper = new Worker( 'js/helper.js' );
+            helper = new Worker( 'js/hotcold_stat_helper.js' );
 
             helper.addEventListener( 'message', function ( event ) {
 
@@ -575,11 +575,11 @@ var CourseWrapper = function ( HC, Canvas, $el, Timer ) {
 
                 if ( result.highlight.format == 2 ) {
                     keys[ result.highlight.code ]
-                        .children( '.bottom' )
+                        .children( '.bottom-k' )
                         .addClass( 'u_line' );
                 } else {
                     keys[ result.highlight.code ]
-                        .children( '.bottom' )
+                        .children( '.bottom-k' )
                         .removeClass( 'u_line' );
                 }
 
@@ -951,6 +951,19 @@ var CourseWrapper = function ( HC, Canvas, $el, Timer ) {
             }
 
             //add for special characters
+            // let us first deal with special characters that need right shift highlight
+            var r_shift_special_char_codes = [33, 64, 35, 36, 37];
+            if ( $.inArray(code, r_shift_special_char_codes) > -1 ) {
+                Hotcold.right_shift = true;
+                r_shift.addClass("backlit");
+            }
+
+            // now let us deal with special chars for which left shift highlight is needed
+            var l_shift_special_char_codes = [94, 38, 42, 40, 41, 95, 43, 123, 124, 125, 58, 34, 60, 62, 63];
+            if ( $.inArray(code, l_shift_special_char_codes) > -1 ) {
+                Hotcold.left_shift = true;
+                l_shift.addClass("backlit");
+            }
 
             keys[ code ].addClass( 'backlit' );
 

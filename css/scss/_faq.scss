@@ -1,0 +1,94 @@
+@import "_colors";
+
+.help-faq {
+    margin: 0.3em;
+    padding: 0.5em;
+    border-radius: 0.3em;
+    // border: thin solid $NT_body_bg_color;
+}
+
+.help-q {
+    font-weight: bold;
+    font-size: 1.33em;
+    color: $HC_LIGHT_BLUE !important;
+    border-bottom: thin solid $NT_border_color;
+}
+
+.help-a {
+    padding: 0.5em 0;
+    font-size: 1.1em;
+    line-height: 1.7em;
+}
+
+.help-chart {
+    td, th {
+        border: none;
+        text-align: center;
+    }
+}
+
+.key-level-1 {
+    outline: none;
+    color: $HC_RED;
+    border-color: $HC_RED;
+    box-shadow: 0 0 1.5em $HC_RED;
+}
+
+.key-level-2 {
+    outline: none;
+    color: $HC_RED1;
+    border-color: $HC_RED1;
+    box-shadow: 0 0 1.5em $HC_RED1;
+}
+
+.key-level-3 {
+    outline: none;
+    color: $HC_ORANGE;
+    border-color: $HC_ORANGE;
+    box-shadow: 0 0 1.5em $HC_ORANGE;
+}
+
+.key-level-4 {
+    outline: none;
+    color: $HC_YELLOW;
+    border-color: $HC_YELLOW;
+    box-shadow: 0 0 1.5em $HC_YELLOW;
+}
+
+.key-level-5 {
+    outline: none;
+    color: $HC_LIGHT_GREEN;
+    border-color: $HC_LIGHT_GREEN;
+    box-shadow: 0 0 1.5em $HC_LIGHT_GREEN;
+}
+
+.key-level-6 {
+    outline: none;
+    color: $HC_GREEN;
+    border-color: $HC_GREEN;
+    box-shadow: 0 0 1.5em $HC_GREEN;
+}
+
+.key-level-7 {
+    outline: none;
+    color: $HC_LIGHT_BLUE;
+    border-color: $HC_LIGHT_BLUE;
+    box-shadow: 0 0 1.5em $HC_LIGHT_BLUE;
+}
+
+.key-level-8 {
+    outline: none;
+    color: $HC_BLUE;
+    border-color: $HC_BLUE;
+    box-shadow: 0 0 1.5em $HC_BLUE;
+}
+
+.gross-speed-label {
+    color: $gross_speed_color;
+    font-weight: bold;
+}
+
+.net-speed-label {
+    color: $net_speed_color;
+    font-weight: bold;
+}

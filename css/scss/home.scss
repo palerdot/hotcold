@@ -1,0 +1,51 @@
+@import "_colors";
+@import "_general";
+
+body {
+    padding-top: 6em;
+}
+
+.carousel-holder {
+    padding-bottom: 3em;
+    border-bottom: thin solid $NT_border_color;
+}
+
+.carousel-caption {
+    background: $NT_body_bg_color;
+    opacity: 0.8;
+    left: 0;
+    right: 0;
+    width: 100%;
+}
+
+.home-section {
+    margin-bottom: 3em;
+    padding-bottom: 3em;
+    border-bottom: thin solid $home_highlight_bg_color;
+
+    .header {
+        margin-bottom: 1em;
+
+        h1 {
+            font-size: 3.3em;
+        }    
+    }
+
+    .info-section {
+        background-color: $home_highlight_bg_color;
+        color: $home_highlight_text_color;
+        margin: 0.5em 0;
+        padding: 1em;
+        font-size: 1.33em;
+        border-radius: 3px;
+        line-height: 2em;
+            &.tiny-text {
+                font-size: 1em;
+            }
+    }
+
+    .download-section {
+        margin: 1em 0;
+    }
+
+}

@@ -241,8 +241,8 @@ var CanvasWrapper = function ( HC, $el, Theme ) {
 
             //move the x axis
 
-            Hotcold.canvas_a.x += 5;
-            Hotcold.canvas_b.x += 5;
+            Hotcold.canvas_a.x += Hotcold.timer_speed_step;
+            Hotcold.canvas_b.x += Hotcold.timer_speed_step;
 
             // also save the current width/height for reference
             Hotcold.canvas_b.ref_width.push( Hotcold.canvas_b.width );
@@ -372,7 +372,7 @@ var CanvasWrapper = function ( HC, $el, Theme ) {
 
             var fin_image = new Image();
 
-            fin_image.src = "images/viral-copy.gif";
+            fin_image.src = "images/viralgal.png";
 
             fin_image.onload = function () {
                 ctx_f.drawImage( fin_image, 0, 0, canvasWidth, canvasHeight );

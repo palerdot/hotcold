@@ -13,9 +13,13 @@ var APP = {
     $el: jquery_el,
 
     start: function () {
-        console.log( "config ", HC_CONFIG, HC_CONFIG.APPMODE );
+        console.log( "config ", HC_CONFIG );
         this.initializeEvents();
+        this.initAppMode();
     },
+
+    // ----------------------------------------------------
+    // START: HELPER FUNCTIONS
 
     isFullScreen: function () {
         // ref: http://stackoverflow.com/a/7855739/1410291
@@ -27,11 +31,11 @@ var APP = {
     },
 
     requestFullScreen: function () {
-        var el = document.getElementById("course_window"),
+        var el = document.getElementById( "course_window" ),
             rfs = el.requestFullScreen || el.webkitRequestFullScreen || el.mozRequestFullScreen;
 
         // call the appropriate function
-        rfs.call(el);
+        rfs.call( el );
     },
 
     cancelFullScreen: function () {
@@ -39,11 +43,126 @@ var APP = {
         document.cancelFullScreen();
     },
 
+    isProModeAllowed: function () {
+        // check if the free course time is selected
+        if ( HC_CONFIG.APPMODE == "PRO" ) {
+            return true;
+        }
+        return this.$el.free_time.is( ":checked" );
+    },
+
+    getProModeInfo: function () {
+
+        var msg = "You can specify a custom time for your own course in PRO version. Get the Chrome App for the Pro Version!";
+
+        var $holder = $( "<div>" )
+                        .html( HC_CONFIG.messages[ HC_CONFIG.type ] || msg );
+
+        var $b_holder = $( "<div>" )
+                            .addClass("text-center");
+
+        var $button = $( "<a>" )
+            .attr( "href", HC_CONFIG.PRO_CRX_URL )
+            .attr( "target", "_blank" )
+            .addClass( "btn btn-primary" )
+            .html( "Download" )
+            .appendTo( $b_holder );
+
+        $holder.append( $b_holder );
+
+        return $holder.get( 0 );
+
+    },
+
+    // END: HELPER FUNCTIONS
+    // ----------------------------------------------------
+
+    initAppMode: function () {
+        HC_CONFIG.APPMODE == "FREE" ? this.initFreeMode() : this.initProMode();
+    },
+
+    initFreeMode: function () {
+
+        var self = this; // save reference
+
+        this.$el.pro_label
+            .text( "PRO" )
+            .addClass( "label label-primary" );
+
+        // init the popups
+        this.$el.pro_label
+            .popover( {
+                container: "body",
+                title: "Get PRO App",
+                content: "You can specify a custom time for your own course in PRO App",
+                html: true,
+                trigger: "manual",
+                placement: "auto"
+            } );
+
+        this.$el.pro_label.hover( function () {
+            $( this ).popover( "show" );
+        }, function () {
+            $( this ).popover( "hide" );
+        } );
+
+        // also init the popover on the prepare & launch button
+        this.$el.prepare_lesson
+            .popover( {
+                container: "body",
+                title: "Get PRO Version",
+                // content: "<div>You can specify a custom time for your own course in PRO version.<div class='text-center'><button class='btn btn-primary'>Download</button></div></div>",
+                content: self.getProModeInfo(),
+                html: true,
+                trigger: "manual",
+                placement: "auto"
+            } );
+
+        this.$el.body.click( function ( e ) {
+            if ( e.target.id == "custom_lesson_launch" ) {
+                e.preventDefault();
+                return;
+            }
+            self.$el.prepare_lesson.popover( "hide" );
+        } );
+
+    },
+
+    initProMode: function () {
+        console.log( "Porumai! initing PRO mode" );
+    },
+
+    initHelpGuide: function () {
+
+        var self = this; // save reference
+
+        // init the helpguide modal
+        this.$el.guide_modal.modal( {
+            show: false
+        } );
+
+        // help guide
+        this.$el.guide.click( function () {
+            
+            console.log( "will show help guide" );
+            $.get("help.html", function (data) {
+                // got the help data content
+                self.$el.guide_content.html( data );
+                // show the modal
+                self.$el.guide_modal.modal("show");
+            });
+            
+        } );
+
+    },
+
     initializeEvents: function () {
 
         var self = this; // save reference
 
         console.log( "initing events ", this, this.$el.d_theme );
+
+        this.initHelpGuide();
 
         // day theme setting
         this.$el.d_theme.click( function () {
@@ -110,7 +229,6 @@ var APP = {
         } );
 
         this.$el.fs_toggle.click( function () {
-            console.log("TOGGLING");
             if ( self.isFullScreen() ) {
                 self.cancelFullScreen();
             } else {
@@ -334,17 +452,40 @@ var APP = {
         var self = this;
 
         this.$el.custom_lesson.keyup( function () {
-            if ( $( this ).val().length > 0 ) {
+
+            var CLI_LENGTH = $( this ).val().trim().length;
+
+            if ( CLI_LENGTH > 0 ) {
                 self.$el.no_input.hide();
+                self.$el.clear_cli_input.show();
+                // remove the red border warning
+                self.$el.cli.removeClass( "no-input" );
+            } else {
+                self.$el.no_input.show();
+                self.$el.clear_cli_input.hide();
             }
-            self.$el.char_length.html( $( this ).val().trim().length );
+            self.$el.char_length.html( CLI_LENGTH );
         } );
 
         this.$el.prepare_lesson.click( function () {
 
             if ( self.$el.custom_lesson.val().trim().length == 0 ) {
                 self.$el.no_input.show();
+                self.$el.clear_cli_input.hide();
+                // add the red border warning
+                self.$el.cli.addClass( "no-input" );
             } else {
+                // remove the red border warning
+                self.$el.cli.removeClass( "no-input" );
+                // before launching the custom lesson check if custom time is allowed
+                if ( !self.isProModeAllowed() ) {
+                    console.log( "PORUMAI! APP IS IN FREE MODE" );
+                    // show the popover
+                    $( this ).popover( "show" );
+                    // DO NOT PROCEED   
+                    return;
+                }
+
                 //there is an input; prepare custom lesson
                 Hotcold.curr_course = new Course();
                 Hotcold.curr_course.init( 0 );
@@ -352,6 +493,27 @@ var APP = {
                 self.$el.c_win.fadeIn();
             }
 
+        } );
+
+        this.$el.custom_duration.on( "change", function () {
+            var cd = parseInt( $( this ).val(), 10 );
+            self.$el.cd_ph.text( cd );
+
+            var base_chars = 125,
+                easy_chars = cd * base_chars,
+                medium_chars = cd * 2 * base_chars;
+
+            self.$el.cd_easy_ph.text( easy_chars );
+            self.$el.cd_medium_ph.text( easy_chars + " - " + medium_chars );
+            self.$el.cd_hard_ph.text( medium_chars );
+        } );
+
+        // clearing the input box
+        this.$el.clear_cli_input.on( "click", function () {
+            console.log( "Porumai! will clear the custom input" );
+            self.$el.cli.val( "" );
+            // trigger a keyup
+            self.$el.cli.trigger( "keyup" );
         } );
 
     },
@@ -470,6 +632,12 @@ var APP = {
             .removeClass( "night-theme" )
             .addClass( "day-theme" );
 
+        this.$el.themes
+            .removeClass( "current-theme" );
+
+        this.$el.d_theme
+            .addClass( "current-theme" );
+
         this.$el.c_win.css( {
             'background-color': Theme.day.body_bg
         } );
@@ -485,7 +653,7 @@ var APP = {
         this.$el.lv.css( "color", Theme.day.text_color );
 
         Hotcold.canvas_normal_line = Theme.day.canvas_normal_line;
-        Hotcold.canvas_ref_line = Theme[Theme.current].canvas_ref_line;
+        Hotcold.canvas_ref_line = Theme[ Theme.current ].canvas_ref_line;
 
         this.$el.canvas_a.css( "border-color", Theme.day.canvas_border );
         this.$el.canvas_b.css( "border-color", Theme.day.canvas_border );
@@ -510,6 +678,12 @@ var APP = {
             .removeClass( "day-theme" )
             .addClass( "night-theme" );
 
+        this.$el.themes
+            .removeClass( "current-theme" );
+
+        this.$el.n_theme
+            .addClass( "current-theme" );
+
         this.$el.c_win.css( {
             'background-color': Theme.night.body_bg
         } );
@@ -525,7 +699,7 @@ var APP = {
         this.$el.lv.css( "color", Theme.night.text_color );
 
         Hotcold.canvas_normal_line = Theme.night.canvas_normal_line;
-        Hotcold.canvas_ref_line = Theme[Theme.current].canvas_ref_line;
+        Hotcold.canvas_ref_line = Theme[ Theme.current ].canvas_ref_line;
 
         this.$el.canvas_a.css( "border-color", Theme.night.canvas_border );
         this.$el.canvas_b.css( "border-color", Theme.night.canvas_border );

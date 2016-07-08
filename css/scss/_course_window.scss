@@ -78,14 +78,6 @@ and (min-width: 981px) {
         box-shadow: 0 0 1.5em $create_course_button_color;
     }
 }
-
-.btn-success {
-    background-color: $create_course_button_color;
-    &:hover {
-        background-color: $create_course_button_color;
-        box-shadow: 0 0 1.5em $create_course_button_color;   
-    }
-}
 // --------------------------------------------------------------------------------------------------------------
 // --------------------------------------------------------------------------------------------------------------
 

@@ -14,7 +14,7 @@ var TimerWrapper = function ( HC, $el, Theme, Canvas ) {
             Hotcold.timer_id = setInterval( Timer.updateTimer, 1000 );
             Hotcold.key_gap_timer_id = setInterval( Timer.monitor_key_gap, 500 );
             Hotcold.word_speed = setInterval( Timer.updateSpeed, 1000 );
-            Hotcold.canvas_a.timer = setInterval( Canvas.Update, ( Hotcold.curr_course.get_time() ) * 60 * 1000 / ( Hotcold.canvas_a.width / 5 ) );
+            Hotcold.canvas_a.timer = setInterval( Canvas.Update, ( Hotcold.curr_course.get_time() ) * 60 * 1000 / ( Hotcold.canvas_a.width / Hotcold.timer_speed_step ) );
 
             $el.space.removeClass( 'space_resume' );
             $el.space_to_resume.hide();

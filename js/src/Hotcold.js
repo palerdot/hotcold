@@ -20,6 +20,8 @@ var Hotcold = {
     net_speed: 0,
     accuracy: 100,
 
+    timer_speed_step: 3,
+
     prev_pattern: 0,
     prev_key: 0,
     right_shift: false,

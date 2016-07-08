@@ -21,6 +21,7 @@
     border: medium solid $HC_LIGHT_BLUE;
     color: $HC_LIGHT_BLUE;
     padding: 0.22em 0.33em;
+    cursor: pointer;
 
     &:hover{
         box-shadow: 0 0 1.5em $HC_LIGHT_BLUE;

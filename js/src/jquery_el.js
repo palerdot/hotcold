@@ -1,19 +1,43 @@
 // all the jquery elements of the Hotcold app
 var $el = {
+
+    body: $("body"),
+
+    guide: $("#help-guide"),
+    guide_modal: $("#help-guide-modal"),
+    guide_content: $("#help-guide-content"),
+
     c_home: $( '#back_to_course_button' ),
     lv: $( '#lesson_view' ),
     c_win: $( '#course_window' ),
     c_tab: $( '#course_tab' ),
     c_course: $( '#create_course_tab' ),
+
     d_theme: $( '#day_theme' ),
     n_theme: $( '#night_theme' ),
+    themes: $(".theme"),
+
     keys: $( '.keys' ),
     f_canvas_holder: $( '#finger_canvas_holder' ),
     f_span_holder: $("#fin_spans"),
     backlit: $( '.backlit' ),
     s_block: $( '#saved_block' ),
+
+    right_shift: $( "#shift_right" ),
+    left_shift: $( "shift_left" ),
+
     course_time: $( '#course_time' ),
-    cli: $( '#custom_lesson_input' ),
+    free_time: $("#free_course_time"),
+
+    custom_time: $("#custom_course_time"),
+    custom_duration: $("#custom_course_duration"),
+
+    cd_ph: $(".custom_duration_placeholder"),
+    cd_easy_ph: $(".custom_duration_easy_placeholder"),
+    cd_medium_ph: $(".custom_duration_medium_placeholder"),
+    cd_hard_ph: $(".custom_duration_hard_placeholder"),
+
+    pro_label: $(".pro-label"),
 
     nav_bar: $("#hotcold-navigation-bar"),
 
@@ -67,7 +91,12 @@ var $el = {
 
     custom_lesson: $( '#custom_lesson_input' ),
     char_length: $( '#total_characters' ),
+
     no_input: $( '#no_input_error' ),
+    cli: $( '#custom_lesson_input' ),
+    clear_cli_input: $("#clear_custom_lesson_input"),
+    
+
     prepare_lesson: $( '#custom_lesson_launch' ),
     sp1: $( '#show_all_key_page_1' ),
     sp2: $( '#show_all_key_page_2' ),

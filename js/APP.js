@@ -1,6 +1,30 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 module.exports={
-    "APPMODE": "FREE"
+    "VERSION": "2.0.0",
+    "APPMODE": "FREE",
+    "PRO_CRX_URL": "https://google.co.in",
+
+    "type": "desktop",
+
+    "downloads": {
+        "linux_32": "https://www.google.co.in/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#newwindow=1&q=linux+32+bit",
+        "linux_64": "https://www.dropbox.com/s/fy9wxqsn50i65bq/Hotcold-2.0.0-linux-x64.tar.gz?dl=1",
+
+        "windows_32": "https://www.google.co.in/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#newwindow=1&q=windows+32+bit",
+        "windows_64": "https://www.google.co.in/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#newwindow=1&q=windows+64+bit",
+
+        "mac_64": "https://www.google.co.in/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#newwindow=1&q=mac+64+bit"
+    },
+
+    "messages": {
+
+        "crx": "You can specify a custom time for your own course in PRO version. Get the Chrome App for the Pro Version!",
+
+        "desktop": "You can specify a custom time for your own course in PRO version. PRO Desktop version coming soon! Please try the Chrome App for the Pro Version.",
+
+        "web": "You can specify a custom time for your own course in PRO version. PRO Web version coming soon! Please try the Chrome App for the Pro Version."
+
+    }
 }
 },{}],2:[function(require,module,exports){
 var CanvasWrapper = function ( HC, $el, Theme ) {
@@ -246,8 +270,8 @@ var CanvasWrapper = function ( HC, $el, Theme ) {
 
             //move the x axis
 
-            Hotcold.canvas_a.x += 5;
-            Hotcold.canvas_b.x += 5;
+            Hotcold.canvas_a.x += Hotcold.timer_speed_step;
+            Hotcold.canvas_b.x += Hotcold.timer_speed_step;
 
             // also save the current width/height for reference
             Hotcold.canvas_b.ref_width.push( Hotcold.canvas_b.width );
@@ -377,7 +401,7 @@ var CanvasWrapper = function ( HC, $el, Theme ) {
 
             var fin_image = new Image();
 
-            fin_image.src = "images/viral-copy.gif";
+            fin_image.src = "images/viralgal.png";
 
             fin_image.onload = function () {
                 ctx_f.drawImage( fin_image, 0, 0, canvasWidth, canvasHeight );
@@ -626,7 +650,6 @@ var CourseWrapper = function ( HC, Canvas, $el, Timer ) {
             if ( i >= 65 && i <= 90 ) {
 
                 //we have caps letters; assign them appropriate divs of small letters in the virtual keyboard;
-
                 var code = String.fromCharCode( i )
                                     .toLowerCase()
                                     .charCodeAt( 0 );
@@ -660,9 +683,10 @@ var CourseWrapper = function ( HC, Canvas, $el, Timer ) {
             switch ( course_no ) {
 
                 case 0:
+
                     lesson = convertJson();
-                    //console.log(lesson);
-                    minutes = $( "input:radio[name=custom_time]:checked" ).val();
+                    // we need to check if it is default 1 min or custom time
+                    minutes = $el.free_time.is(":checked") ? 1 : $el.custom_duration.val();
                     self.prepare();
 
                     break;
@@ -1140,7 +1164,7 @@ var CourseWrapper = function ( HC, Canvas, $el, Timer ) {
             Canvas.clean_canvas();
             //initiate the worker 
 
-            helper = new Worker( 'js/helper.js' );
+            helper = new Worker( 'js/hotcold_stat_helper.js' );
 
             helper.addEventListener( 'message', function ( event ) {
 
@@ -1156,11 +1180,11 @@ var CourseWrapper = function ( HC, Canvas, $el, Timer ) {
 
                 if ( result.highlight.format == 2 ) {
                     keys[ result.highlight.code ]
-                        .children( '.bottom' )
+                        .children( '.bottom-k' )
                         .addClass( 'u_line' );
                 } else {
                     keys[ result.highlight.code ]
-                        .children( '.bottom' )
+                        .children( '.bottom-k' )
                         .removeClass( 'u_line' );
                 }
 
@@ -1532,6 +1556,19 @@ var CourseWrapper = function ( HC, Canvas, $el, Timer ) {
             }
 
             //add for special characters
+            // let us first deal with special characters that need right shift highlight
+            var r_shift_special_char_codes = [33, 64, 35, 36, 37];
+            if ( $.inArray(code, r_shift_special_char_codes) > -1 ) {
+                Hotcold.right_shift = true;
+                r_shift.addClass("backlit");
+            }
+
+            // now let us deal with special chars for which left shift highlight is needed
+            var l_shift_special_char_codes = [94, 38, 42, 40, 41, 95, 43, 123, 124, 125, 58, 34, 60, 62, 63];
+            if ( $.inArray(code, l_shift_special_char_codes) > -1 ) {
+                Hotcold.left_shift = true;
+                l_shift.addClass("backlit");
+            }
 
             keys[ code ].addClass( 'backlit' );
 
@@ -2058,6 +2095,8 @@ var Hotcold = {
     net_speed: 0,
     accuracy: 100,
 
+    timer_speed_step: 3,
+
     prev_pattern: 0,
     prev_key: 0,
     right_shift: false,
@@ -2221,7 +2260,7 @@ var TimerWrapper = function ( HC, $el, Theme, Canvas ) {
             Hotcold.timer_id = setInterval( Timer.updateTimer, 1000 );
             Hotcold.key_gap_timer_id = setInterval( Timer.monitor_key_gap, 500 );
             Hotcold.word_speed = setInterval( Timer.updateSpeed, 1000 );
-            Hotcold.canvas_a.timer = setInterval( Canvas.Update, ( Hotcold.curr_course.get_time() ) * 60 * 1000 / ( Hotcold.canvas_a.width / 5 ) );
+            Hotcold.canvas_a.timer = setInterval( Canvas.Update, ( Hotcold.curr_course.get_time() ) * 60 * 1000 / ( Hotcold.canvas_a.width / Hotcold.timer_speed_step ) );
 
             $el.space.removeClass( 'space_resume' );
             $el.space_to_resume.hide();
@@ -2386,9 +2425,13 @@ var APP = {
     $el: jquery_el,
 
     start: function () {
-        console.log( "config ", HC_CONFIG, HC_CONFIG.APPMODE );
+        console.log( "config ", HC_CONFIG );
         this.initializeEvents();
+        this.initAppMode();
     },
+
+    // ----------------------------------------------------
+    // START: HELPER FUNCTIONS
 
     isFullScreen: function () {
         // ref: http://stackoverflow.com/a/7855739/1410291
@@ -2400,11 +2443,11 @@ var APP = {
     },
 
     requestFullScreen: function () {
-        var el = document.getElementById("course_window"),
+        var el = document.getElementById( "course_window" ),
             rfs = el.requestFullScreen || el.webkitRequestFullScreen || el.mozRequestFullScreen;
 
         // call the appropriate function
-        rfs.call(el);
+        rfs.call( el );
     },
 
     cancelFullScreen: function () {
@@ -2412,11 +2455,126 @@ var APP = {
         document.cancelFullScreen();
     },
 
+    isProModeAllowed: function () {
+        // check if the free course time is selected
+        if ( HC_CONFIG.APPMODE == "PRO" ) {
+            return true;
+        }
+        return this.$el.free_time.is( ":checked" );
+    },
+
+    getProModeInfo: function () {
+
+        var msg = "You can specify a custom time for your own course in PRO version. Get the Chrome App for the Pro Version!";
+
+        var $holder = $( "<div>" )
+                        .html( HC_CONFIG.messages[ HC_CONFIG.type ] || msg );
+
+        var $b_holder = $( "<div>" )
+                            .addClass("text-center");
+
+        var $button = $( "<a>" )
+            .attr( "href", HC_CONFIG.PRO_CRX_URL )
+            .attr( "target", "_blank" )
+            .addClass( "btn btn-primary" )
+            .html( "Download" )
+            .appendTo( $b_holder );
+
+        $holder.append( $b_holder );
+
+        return $holder.get( 0 );
+
+    },
+
+    // END: HELPER FUNCTIONS
+    // ----------------------------------------------------
+
+    initAppMode: function () {
+        HC_CONFIG.APPMODE == "FREE" ? this.initFreeMode() : this.initProMode();
+    },
+
+    initFreeMode: function () {
+
+        var self = this; // save reference
+
+        this.$el.pro_label
+            .text( "PRO" )
+            .addClass( "label label-primary" );
+
+        // init the popups
+        this.$el.pro_label
+            .popover( {
+                container: "body",
+                title: "Get PRO App",
+                content: "You can specify a custom time for your own course in PRO App",
+                html: true,
+                trigger: "manual",
+                placement: "auto"
+            } );
+
+        this.$el.pro_label.hover( function () {
+            $( this ).popover( "show" );
+        }, function () {
+            $( this ).popover( "hide" );
+        } );
+
+        // also init the popover on the prepare & launch button
+        this.$el.prepare_lesson
+            .popover( {
+                container: "body",
+                title: "Get PRO Version",
+                // content: "<div>You can specify a custom time for your own course in PRO version.<div class='text-center'><button class='btn btn-primary'>Download</button></div></div>",
+                content: self.getProModeInfo(),
+                html: true,
+                trigger: "manual",
+                placement: "auto"
+            } );
+
+        this.$el.body.click( function ( e ) {
+            if ( e.target.id == "custom_lesson_launch" ) {
+                e.preventDefault();
+                return;
+            }
+            self.$el.prepare_lesson.popover( "hide" );
+        } );
+
+    },
+
+    initProMode: function () {
+        console.log( "Porumai! initing PRO mode" );
+    },
+
+    initHelpGuide: function () {
+
+        var self = this; // save reference
+
+        // init the helpguide modal
+        this.$el.guide_modal.modal( {
+            show: false
+        } );
+
+        // help guide
+        this.$el.guide.click( function () {
+            
+            console.log( "will show help guide" );
+            $.get("help.html", function (data) {
+                // got the help data content
+                self.$el.guide_content.html( data );
+                // show the modal
+                self.$el.guide_modal.modal("show");
+            });
+            
+        } );
+
+    },
+
     initializeEvents: function () {
 
         var self = this; // save reference
 
         console.log( "initing events ", this, this.$el.d_theme );
+
+        this.initHelpGuide();
 
         // day theme setting
         this.$el.d_theme.click( function () {
@@ -2483,7 +2641,6 @@ var APP = {
         } );
 
         this.$el.fs_toggle.click( function () {
-            console.log("TOGGLING");
             if ( self.isFullScreen() ) {
                 self.cancelFullScreen();
             } else {
@@ -2707,17 +2864,40 @@ var APP = {
         var self = this;
 
         this.$el.custom_lesson.keyup( function () {
-            if ( $( this ).val().length > 0 ) {
+
+            var CLI_LENGTH = $( this ).val().trim().length;
+
+            if ( CLI_LENGTH > 0 ) {
                 self.$el.no_input.hide();
+                self.$el.clear_cli_input.show();
+                // remove the red border warning
+                self.$el.cli.removeClass( "no-input" );
+            } else {
+                self.$el.no_input.show();
+                self.$el.clear_cli_input.hide();
             }
-            self.$el.char_length.html( $( this ).val().trim().length );
+            self.$el.char_length.html( CLI_LENGTH );
         } );
 
         this.$el.prepare_lesson.click( function () {
 
             if ( self.$el.custom_lesson.val().trim().length == 0 ) {
                 self.$el.no_input.show();
+                self.$el.clear_cli_input.hide();
+                // add the red border warning
+                self.$el.cli.addClass( "no-input" );
             } else {
+                // remove the red border warning
+                self.$el.cli.removeClass( "no-input" );
+                // before launching the custom lesson check if custom time is allowed
+                if ( !self.isProModeAllowed() ) {
+                    console.log( "PORUMAI! APP IS IN FREE MODE" );
+                    // show the popover
+                    $( this ).popover( "show" );
+                    // DO NOT PROCEED   
+                    return;
+                }
+
                 //there is an input; prepare custom lesson
                 Hotcold.curr_course = new Course();
                 Hotcold.curr_course.init( 0 );
@@ -2725,6 +2905,27 @@ var APP = {
                 self.$el.c_win.fadeIn();
             }
 
+        } );
+
+        this.$el.custom_duration.on( "change", function () {
+            var cd = parseInt( $( this ).val(), 10 );
+            self.$el.cd_ph.text( cd );
+
+            var base_chars = 125,
+                easy_chars = cd * base_chars,
+                medium_chars = cd * 2 * base_chars;
+
+            self.$el.cd_easy_ph.text( easy_chars );
+            self.$el.cd_medium_ph.text( easy_chars + " - " + medium_chars );
+            self.$el.cd_hard_ph.text( medium_chars );
+        } );
+
+        // clearing the input box
+        this.$el.clear_cli_input.on( "click", function () {
+            console.log( "Porumai! will clear the custom input" );
+            self.$el.cli.val( "" );
+            // trigger a keyup
+            self.$el.cli.trigger( "keyup" );
         } );
 
     },
@@ -2843,6 +3044,12 @@ var APP = {
             .removeClass( "night-theme" )
             .addClass( "day-theme" );
 
+        this.$el.themes
+            .removeClass( "current-theme" );
+
+        this.$el.d_theme
+            .addClass( "current-theme" );
+
         this.$el.c_win.css( {
             'background-color': Theme.day.body_bg
         } );
@@ -2858,7 +3065,7 @@ var APP = {
         this.$el.lv.css( "color", Theme.day.text_color );
 
         Hotcold.canvas_normal_line = Theme.day.canvas_normal_line;
-        Hotcold.canvas_ref_line = Theme[Theme.current].canvas_ref_line;
+        Hotcold.canvas_ref_line = Theme[ Theme.current ].canvas_ref_line;
 
         this.$el.canvas_a.css( "border-color", Theme.day.canvas_border );
         this.$el.canvas_b.css( "border-color", Theme.day.canvas_border );
@@ -2883,6 +3090,12 @@ var APP = {
             .removeClass( "day-theme" )
             .addClass( "night-theme" );
 
+        this.$el.themes
+            .removeClass( "current-theme" );
+
+        this.$el.n_theme
+            .addClass( "current-theme" );
+
         this.$el.c_win.css( {
             'background-color': Theme.night.body_bg
         } );
@@ -2898,7 +3111,7 @@ var APP = {
         this.$el.lv.css( "color", Theme.night.text_color );
 
         Hotcold.canvas_normal_line = Theme.night.canvas_normal_line;
-        Hotcold.canvas_ref_line = Theme[Theme.current].canvas_ref_line;
+        Hotcold.canvas_ref_line = Theme[ Theme.current ].canvas_ref_line;
 
         this.$el.canvas_a.css( "border-color", Theme.night.canvas_border );
         this.$el.canvas_b.css( "border-color", Theme.night.canvas_border );
@@ -2922,20 +3135,44 @@ APP.start();
 },{"../../config.json":1,"./Canvas.js":2,"./Course.js":3,"./Hotcold.js":4,"./Theme.js":5,"./Timer.js":6,"./jquery_el.js":8}],8:[function(require,module,exports){
 // all the jquery elements of the Hotcold app
 var $el = {
+
+    body: $("body"),
+
+    guide: $("#help-guide"),
+    guide_modal: $("#help-guide-modal"),
+    guide_content: $("#help-guide-content"),
+
     c_home: $( '#back_to_course_button' ),
     lv: $( '#lesson_view' ),
     c_win: $( '#course_window' ),
     c_tab: $( '#course_tab' ),
     c_course: $( '#create_course_tab' ),
+
     d_theme: $( '#day_theme' ),
     n_theme: $( '#night_theme' ),
+    themes: $(".theme"),
+
     keys: $( '.keys' ),
     f_canvas_holder: $( '#finger_canvas_holder' ),
     f_span_holder: $("#fin_spans"),
     backlit: $( '.backlit' ),
     s_block: $( '#saved_block' ),
+
+    right_shift: $( "#shift_right" ),
+    left_shift: $( "shift_left" ),
+
     course_time: $( '#course_time' ),
-    cli: $( '#custom_lesson_input' ),
+    free_time: $("#free_course_time"),
+
+    custom_time: $("#custom_course_time"),
+    custom_duration: $("#custom_course_duration"),
+
+    cd_ph: $(".custom_duration_placeholder"),
+    cd_easy_ph: $(".custom_duration_easy_placeholder"),
+    cd_medium_ph: $(".custom_duration_medium_placeholder"),
+    cd_hard_ph: $(".custom_duration_hard_placeholder"),
+
+    pro_label: $(".pro-label"),
 
     nav_bar: $("#hotcold-navigation-bar"),
 
@@ -2989,7 +3226,12 @@ var $el = {
 
     custom_lesson: $( '#custom_lesson_input' ),
     char_length: $( '#total_characters' ),
+
     no_input: $( '#no_input_error' ),
+    cli: $( '#custom_lesson_input' ),
+    clear_cli_input: $("#clear_custom_lesson_input"),
+    
+
     prepare_lesson: $( '#custom_lesson_launch' ),
     sp1: $( '#show_all_key_page_1' ),
     sp2: $( '#show_all_key_page_2' ),

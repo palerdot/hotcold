@@ -1,6 +1,53 @@
-.pager li a {
-    background-color: inherit;
-    border: medium solid blue;
-    color: blue;
-    font-weight: blue;
+@import "_colors";
+
+.theme-group {
+
+    span {
+        background-color: inherit;
+        border: thin solid $HC_LIGHT_BLUE;
+        color: $HC_LIGHT_BLUE;
+        box-shadow: 0 0 0 $HC_LIGHT_BLUE;
+        font-weight: bold;
+        margin: 0.1em 0;
+
+            &:hover {
+                background-color: inherit;
+                color: $HC_LIGHT_BLUE;
+                box-shadow: 0 0 1.5em $HC_LIGHT_BLUE;
+            }
+
+            &.current-theme {
+                margin: 0;
+                color: $HC_LIGHT_BLUE;
+                border: medium solid $HC_LIGHT_BLUE;
+                box-shadow: 0 0 0.5em $HC_LIGHT_BLUE;   
+            }   
+    }
+}
+
+.pager li {
+
+    &.disabled {
+        a {
+            background-color: inherit;
+            opacity: 0.75;
+
+            &:hover {
+                background-color: inherit;
+                box-shadow: none;
+            } 
+        }
+    }
+
+    a {
+        background-color: inherit;
+        border: medium solid $HC_LIGHT_BLUE;
+        color: $HC_LIGHT_BLUE;
+        font-weight: bold;
+
+        &:hover {
+            background-color: inherit;
+            box-shadow: 0 0 1.5em $HC_LIGHT_BLUE;    
+        }
+    }
 }

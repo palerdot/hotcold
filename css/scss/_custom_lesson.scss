@@ -2,6 +2,11 @@
 
 textarea {
     resize: none;
+
+        &.no-input {
+            border: thin solid $HC_RED1 !important;
+            box-shadow: 0 0 1.5em $HC_RED1 !important;
+        }
 }
 
 #custom_lesson_form {
@@ -34,6 +39,7 @@ textarea {
         label {
             margin: 0;
             padding: 0;
+            margin-left: 2em;
         }
 
         td {
@@ -58,11 +64,20 @@ textarea {
     text-align: center;
     padding: 0; 
     margin: 0;
+    border-radius: none;
+    border: thin solid $HC_RED1;
+    color: $HC_RED1;
+}
+
+#clear_custom_lesson_input {
+    border: thin solid $HC_RED1;
+    color: $HC_RED1;
+    background: none;
+    border-radius: none;
+
     display: none;
 
-        .alert {
-            padding: 0; 
-            margin: 0;
-            border-radius: none;
+        &:hover {
+            box-shadow: 0 0 1.5em $HC_RED1;
         }
 }
