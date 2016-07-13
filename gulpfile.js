@@ -92,7 +92,7 @@ gulp.task( "build-releases", function ( cb ) {
 } );
 
 gulp.task( "build-web", function (cb) {
-    runSequence( ["clean-web"], ["copy-web-files"], cb );
+    runSequence( ["default"], ["clean-web"], ["copy-web-files"], cb );
 } );
 
 gulp.task( "check-branch", function ( cb ) {

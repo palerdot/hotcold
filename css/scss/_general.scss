@@ -6,6 +6,22 @@ body {
     margin: 0;
     overflow: auto;
 
+        a {
+            color: $link_color;
+            text-decoration: none;
+
+                &:hover {
+                    color: $link_color;
+                    text-decoration: underline;
+                }
+
+                &:visited {
+                    color: $link_color;
+                }
+
+                
+        }
+
         &.day-theme {
 
             background-color: $DT_body_bg_color !important;
@@ -85,12 +101,30 @@ body {
 
 }
 
+.twitter-section {
+    color: $link_color;
+
+        a {
+            color: $home_highlight_text_color !important;
+            text-decoration: none;
+
+                &:visited, &:hover {
+                    color: $home_highlight_text_color !important;
+                }
+        }
+
+}
+
 #read_info {
     position: static;
 }
 
 .m-none {
     margin: 0 !important;
+}
+
+.m-right-half-em {
+    margin-right: 0.5em !important;
 }
 
 .m-top-half-em {
@@ -111,10 +145,6 @@ body {
 
 .p-right-none {
     padding-right: 0 !important;
-}
-
-a {
-    color: $link_color;
 }
 
 // default bootstrap color overrides

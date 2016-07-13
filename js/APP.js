@@ -3,28 +3,24 @@ module.exports={
     "VERSION": "2.0.0",
     "APPMODE": "FREE",
     "PRO_CRX_URL": "https://google.co.in",
-
-    "type": "desktop",
-
-    "downloads": {
+    "type": "web",
+    "links": {
         "linux_32": "https://www.google.co.in/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#newwindow=1&q=linux+32+bit",
         "linux_64": "https://www.dropbox.com/s/fy9wxqsn50i65bq/Hotcold-2.0.0-linux-x64.tar.gz?dl=1",
-
-        "windows_32": "https://www.google.co.in/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#newwindow=1&q=windows+32+bit",
-        "windows_64": "https://www.google.co.in/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#newwindow=1&q=windows+64+bit",
-
-        "mac_64": "https://www.google.co.in/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#newwindow=1&q=mac+64+bit"
+        "windows_32": "https://www.dropbox.com/s/fy9wxqsn50i65bq/Hotcold-2.0.0-linux-x64.tar.gz?dl=1",
+        "windows_64": "https://www.dropbox.com/s/fy9wxqsn50i65bq/Hotcold-2.0.0-linux-x64.tar.gz?dl=1",
+        "mac_64": "https://www.google.co.in/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#newwindow=1&q=mac+64+bit",
+        "dev_derby_blog_url": "https://hacks.mozilla.org/2013/06/announcing-the-winners-of-the-april-2013-dev-derby/",
+        "dev_derby_hc_cached": "http://web.archive.org/web/20131107013950/https://developer.mozilla.org/en-US/demos/detail/hot-cold-typing",
+        "dev_derby_down_link": "https://blog.mozilla.org/community/2015/12/18/saying-goodbye-to-demo-studio/",
+        "github_link": "https://github.com/palerdot/hotcold"
     },
-
     "messages": {
-
         "crx": "You can specify a custom time for your own course in PRO version. Get the Chrome App for the Pro Version!",
-
         "desktop": "You can specify a custom time for your own course in PRO version. PRO Desktop version coming soon! Please try the Chrome App for the Pro Version.",
-
         "web": "You can specify a custom time for your own course in PRO version. PRO Web version coming soon! Please try the Chrome App for the Pro Version."
-
-    }
+    },
+    "ORIGINAL_DEV_DERBY_URL": "https://developer.mozilla.org/en-US/demos/detail/hot-cold-typing"
 }
 },{}],2:[function(require,module,exports){
 var CanvasWrapper = function ( HC, $el, Theme ) {
