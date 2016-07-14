@@ -29,6 +29,7 @@ var gulp = require( "gulp" ),
     git = require( "gulp-git" ),
     
     vfs = require( "vinyl-fs" ),
+    shell = require( "gulp-shell" ),
 
     // to change the icons for the windows executables
     rcedit = require( "rcedit" );
