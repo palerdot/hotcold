@@ -678,7 +678,7 @@ var del = require("del");
 
 gulp.task( "clean-gh-pages", function (cb) {
 
-    var dry_run = true,
+    var dry_run = false,
         msg = 'Files and folders ' + (dry_run ? "that would be" : "")  + ' deleted:\n';
 
     // delete all the files in the current directory
@@ -689,7 +689,7 @@ gulp.task( "clean-gh-pages", function (cb) {
 } );
 
 gulp.task( "deploy-gh-pages", shell.task([
-    "tar -xvzf web.tar.gz --strip-components=1"
+    "tar -xvzf web.tar.gz --strip-components=1 && rm web.tar.gz"
 ]));
 
 // END: gh-pages tasks
