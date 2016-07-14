@@ -698,7 +698,7 @@ gulp.task( "clean-gh-pages", function (cb) {
 
 gulp.task( "deploy-gh-pages", shell.task([
     "tar -xvzf web.tar.gz --strip-components=1 && rm web.tar.gz",
-    "echo [auto-web-build] `date +%Y-%m-%d\ %H:%M:%S` > build_log",
+    "echo [auto-web-build] `date +%Y-%m-%d\ %H:%M:%S` >> build_log",
     'git add --all && git commit -m "[auto-web-build] `date +%Y-%m-%d\ %H:%M:%S`"'
 ]));
 
