@@ -89,11 +89,18 @@ gulp.task( "build-basics", function (cb) {
 } )
 
 gulp.task( "default", function ( cb ) {
-    runSequence( [ "build-basics" ], [ "browserify" ], cb );
+    runSequence( [ "build-basics" ], ["init-default-config"], [ "browserify" ], cb );
 } );
 
-gulp.task( "build-releases", function ( cb ) {
-    runSequence( [ "clean-releases" ], [ "build-crx", "build-electron" ], cb );
+gulp.task( "init-default-config", function (cb) {
+    return gulp.src( "./config.json" )
+                .pipe( 
+                    json_editor({
+                        "type": "web",
+                        "APPMODE": "FREE"
+                    }) 
+                )
+                .pipe( gulp.dest( "." ) );
 } );
 
 
@@ -231,6 +238,13 @@ gulp.task( "copy-web-files", function ( cb ) {
 // END: build web tasks
 // ----------------------------------------------------------------------------------------------------
 
+// START: releases section
+
+gulp.task( "build-releases", function ( cb ) {
+    // NOTE: due to the change in the main "config.json" and browserify task we cannot run builds in parallel
+    runSequence( [ "clean-releases" ], [ "build-crx"], ["build-electron" ], cb );
+} );
+
 // cleans the releases folder
 gulp.task( "clean-releases", function () {
     console.log( "cleaning releases folder" );
@@ -238,8 +252,10 @@ gulp.task( "clean-releases", function () {
         .pipe( clean() );
 } );
 
+// END: releases section
+
 // ----------------------------------------------------------------------------------------------------
-// START: chrome extension tasks
+// START: chrome App tasks
 
 gulp.task( "build-crx", function ( cb ) {
     runSequence( [ "build-basics" ], [ "clean-crx" ], [ "prepare-crx-build" ], cb );
@@ -317,7 +333,6 @@ function copy_crx_files (mode, async_cb) {
 
     var copy_index_file = gulp.src( "./index.html" );
 
-    // copy config file and change the mode to "web"
     var copy_config = gulp.src( "./config.json" );
 
     var copy_help_file = gulp.src( "./help.html" );
@@ -388,14 +403,14 @@ function zip_crx_files (mode, async_cb) {
 
 }
 
-// END: chrome extension tasks
+// END: chrome app tasks
 // ----------------------------------------------------------------------------------------------------
 
 // ----------------------------------------------------------------------------------------------------
-// START: electron tasks
+// START: new electron tasks
 
-gulp.task( "build-electron", function ( cb ) {
-    runSequence( [ "default" ], [ "clean-electron" ], [ "wrap-electron-build" ], [ "prepare-electron-binary" ], cb );
+gulp.task( "build-electron", function (cb) {
+    runSequence( ["build-basics"], ["clean-electron"], ["prepare-electron-build"], cb );
 } );
 
 gulp.task( "clean-electron", function ( cb ) {
@@ -404,84 +419,153 @@ gulp.task( "clean-electron", function ( cb ) {
         .pipe( clean() );
 } );
 
-gulp.task( "wrap-electron-build", function ( cb ) {
+gulp.task( "prepare-electron-build", function (cb) {
 
-    console.log( "wrapping electron build" );
+    var modes = ["FREE"];
 
-    var electron_destination = "./releases/electron/";
-    
-    // copying all the required files
-    
-    // first index file
-    electron_copy_index_file();
+    var tasks = _.map( modes, function (mode) {
+        return function (async_cb) {
+            init_electron_mode( mode, async_cb );            
+        };
+    } );
 
-    // copy config file and change the mode to "web"
-    var copy_config = gulp.src( "./config.json" )
-                                .pipe( 
-                                    json_editor({
-                                        "type": "desktop"
-                                    }) 
-                                )
-                                .pipe( gulp.dest( electron_destination ) );
+    async.series( tasks, cb );
 
-    // copy the help html file
-    var copy_help_file = gulp.src( "./help.html", { base: "." } )
-                                .pipe( gulp.dest( electron_destination ) );
-
-    // copy icons "hc-logo.*"
-    var copy_icons = gulp.src( "./icon/hc-logo.{icns,ico,png}" )
-                        .pipe( gulp.dest( electron_destination ) );
-
-    // now all the libraries/css/js
-    var copy_electron_lib = gulp.src( "./lib/**/*", { base: "." } )
-                                .pipe( gulp.dest( electron_destination ) );
-
-    var copy_electron_js = gulp.src( "./js/*.js", { base: "." } )
-                                .pipe( 
-                                    uglify({ 
-                                        compress: {
-                                            drop_console: true
-                                        }  
-                                    }) 
-                                )
-                                .pipe( gulp.dest( electron_destination ) );
-
-    var copy_electron_css = gulp.src( "./css/hotcold.css", { base: "." } )
-                                .pipe( gulp.dest( electron_destination ) );
-
-    var copy_node_package_json = gulp.src( "./package.json*", { base: "." } )
-                                    .pipe( gulp.dest( electron_destination ) );
-
-    var electron_js = gulp.src( "./electron.js*", { base: "." } )
-                            .pipe( gulp.dest( electron_destination ) );
-
-    var copy_lessons = gulp.src( "./lessons/**/*", { base: "." } )
-                            .pipe( gulp.dest( electron_destination ) );
-
-    var copy_images = gulp.src( "./images/*.gif", { base: "." } )
-                            .pipe( gulp.dest( electron_destination ) );
-
-    return merge_stream( 
-            copy_help_file, 
-            copy_icons,
-            copy_electron_lib, 
-            copy_electron_js, 
-            copy_electron_css, 
-            copy_node_package_json, 
-            electron_js, 
-            copy_lessons, 
-            copy_images,
-            copy_config 
-        );
 } );
 
-// prepares the binaries using electron
-gulp.task( "prepare-electron-binary", function ( cb ) {
+function init_electron_mode (mode, async_cb) {
+
+    console.log("will be building electron for: ", mode);
+    // sequence of events: init config, browserify, copy files, zip files
+    var tasks = [
+        // init config
+        function (cb) {
+            init_electron_config( mode, cb );
+        },
+
+        // browserify
+        function (cb) {
+            runSequence( ["browserify"], cb );
+        },
+
+        // copy files
+        function (cb) {
+            copy_electron_files(mode, cb);
+        },
+
+        // prepare the binaries for the platforms
+        function (cb) {
+            prepare_electron_binary(mode, cb);
+        }
+
+    ];
+
+    async.series( tasks, async_cb );
+}
+
+function init_electron_config (mode, async_cb) {
+    console.log("initing electron config ", mode);
+
+    gulp.src( "./config.json" )
+        .pipe( 
+            json_editor({
+                "type": "desktop",
+                "APPMODE": mode
+            }) 
+        )
+        .pipe( gulp.dest( "." ) )
+        // on done indicate to async that it is done
+        .on("end", async_cb);
+}
+
+function copy_electron_files (mode, async_cb) {
+
+    console.log("copying electron files for ", mode);
+
+    var electron_destination = "./releases/electron/" + mode;
+
+    var to_replace = new RegExp('<script src="lib/js/jquery.min.js"></script>'),
+        replace_with = "<script>window.$ = window.jQuery = require('./lib/js/jquery.min.js');</script>";
+
+    var copy_index_file = gulp.src( "./index.html" )
+        // replace jquery library for electron build
+        .pipe( replace({
+            patterns: [
+                {
+                    match: to_replace,
+                    replacement: replace_with
+                }
+            ]
+        }) );
+
+    var copy_config = gulp.src( "./config.json" );
+
+    var copy_help_file = gulp.src( "./help.html" );
+
+    var copy_lib = gulp.src( "./lib/**/*", { base: "." } );
+
+    var copy_js = gulp.src( "./js/*.js", { base: "." } )
+                        .pipe( 
+                            uglify({ 
+                                compress: {
+                                    drop_console: true
+                                }  
+                            }) 
+                        );
+
+    var copy_css = gulp.src( "./css/hotcold.css", { base: "." } );
+
+    var copy_lessons = gulp.src( "./lessons/**/*", { base: "." } );
+
+    var copy_images = gulp.src( "./images/viralgal.png", { base: "." } );
+
+    var copy_init_script = gulp.src( "./electron.js", { base: "." } );
+
+    // copy the node package json as it is important for electron
+    var copy_node_package_json = gulp.src( "./package.json*", { base: "." } );
+
+    // note: electron icons are different
+    var copy_icons = gulp.src( "./icon/hc-logo.{icns,ico,png}" );
+
+    var copy_favicon = gulp.src( "./favicon.ico" );
+
+    var tasks = [
+        copy_index_file, 
+        copy_help_file, 
+        copy_lib, 
+        copy_js, 
+        copy_css, 
+        copy_lessons, 
+        copy_images,
+        copy_init_script, 
+        copy_node_package_json,
+        copy_icons,
+        copy_config
+    ];
+
+    var parallel_tasks = _.map( tasks, function (task) {
+        return function (cb) {
+            task
+                .pipe( gulp.dest( electron_destination ) )
+                .on("end", cb);
+        }
+    } );
+
+    async.parallel( parallel_tasks, async_cb );
+
+}
+
+function prepare_electron_binary (mode, async_cb) {
+    console.log("will prepare electron binary for ", mode);
+
+    var source_dir = "./releases/electron/" + mode,
+        binary_dir = source_dir + "/binaries/";
+
     ELECTRON_PACKAGER( {
         "arch": "all",
-        "dir": "./releases/electron/",
+        "dir": source_dir,
         "platform": [ "win32", "linux", "darwin" ],
-        "out": "./releases/electron/binaries/",
+        "out": binary_dir,
         "app-version": HC_CONFIG.VERSION,
         "build-version": HC_CONFIG.VERSION,
         "icon": "hc-logo"
@@ -497,42 +581,21 @@ gulp.task( "prepare-electron-binary", function ( cb ) {
                 rcedit( buildPath + "/hotcold.exe", {
                     icon: "./releases/electron/hc-logo.ico"
                 }, function ( err ) {
-                    console.log( "windows binary icon change complete ", buildPath, __dirname );
-                    package_electron_build( buildPath, build_arch, os_platform );
+                    package_electron_build( buildPath, build_arch, os_platform, mode );
                 } );
             } else {
-                package_electron_build( buildPath, build_arch, os_platform );    
+                package_electron_build( buildPath, build_arch, os_platform, mode );    
             }
 
         } );
 
-        cb();
+        // let async know that this task is done
+        async_cb();
     } );
-} );
 
-// START: HELPER FUNCTIONS
-
-function electron_copy_index_file() {
-
-    console.log( "Porumai! will copy and process electron index file ", __dirname );
-
-    var to_replace = new RegExp('<script src="lib/js/jquery.min.js"></script>'),
-        replace_with = "<script>window.$ = window.jQuery = require('./lib/js/jquery.min.js');</script>";
-
-    gulp.src( "./index.html" )
-        // replace jquery library for electron build
-        .pipe( replace({
-            patterns: [
-                {
-                    match: to_replace,
-                    replacement: replace_with
-                }
-            ]
-        }) )
-        .pipe( gulp.dest( "./releases/electron/" ) );
 }
 
-function package_electron_build( buildPath, arch, os ) {
+function package_electron_build( buildPath, arch, os, mode ) {
 
     console.log( "Porumai! packaging " + os + " build ", "./" + buildPath + "/**" );
 
@@ -540,6 +603,8 @@ function package_electron_build( buildPath, arch, os ) {
         tar_file_name = file_name + ".tar",
         zip_file_name = file_name + ".zip",
         isLinux = (os == "linux");
+
+    var dist_location = "./releases/electron/" + mode + "/dist/"
 
     // execute the steps in series
     async.series( [
@@ -549,29 +614,29 @@ function package_electron_build( buildPath, arch, os ) {
                 // NOTE: using vinyl-fs because of symlink problems in mac/darwin binary builds
                 vfs.src( "./" + buildPath + "/**/*" )
                     // move to temporary path
-                    .pipe( vfs.dest( "./releases/electron/dist/" + file_name + "/" + file_name ) )
+                    .pipe( vfs.dest( dist_location + file_name + "/" + file_name ) )
                     .on( "end", next );
         },
         function ( next ) {
                 // copy the install instructions
                 vfs.src( "./other/install_instructions/" + os + "/README.txt" )
                     // move to temporary path
-                    .pipe( vfs.dest( "./releases/electron/dist/" + file_name + "/" + file_name ) )
+                    .pipe( vfs.dest( dist_location + file_name + "/" + file_name ) )
                     .on( "end", next );
         },
         function ( next ) {
                 // now let us tar the files
-                vfs.src( "./releases/electron/dist/" + file_name + "/**" )
+                vfs.src( dist_location + file_name + "/**" )
                     // tar if linux, zip if windows or mac
                     .pipe( gulp_if( isLinux, tar(tar_file_name), zip(zip_file_name) ) )
                     // gzip if it is linux
                     .pipe( gulp_if( isLinux, gzip() ) )
-                    .pipe( vfs.dest( "./releases/electron/dist/" ) )
+                    .pipe( vfs.dest( dist_location ) )
                     .on( "end", next );
         },
         function ( next ) {
-                console.log( "cleaning up ?", "./releases/electron/dist/" + file_name );
-                gulp.src( "./releases/electron/dist/" + file_name, { read: false } )
+                console.log( "cleaning up ?", dist_location + file_name );
+                gulp.src( dist_location + file_name, { read: false } )
                     .pipe( clean() )
                     .on( "end", next );
         }
@@ -581,6 +646,12 @@ function package_electron_build( buildPath, arch, os ) {
         } );
 
 }
+
+// END: electron tasks
+// ----------------------------------------------------------------------------------------------------
+
+
+// misc: -----------------------------------------------------------------------------
 
 var rcedit = require( "rcedit" );
 
@@ -592,11 +663,6 @@ gulp.task( "debug-windows-build", function ( cb ) {
         cb();
     } );
 } );
-
-// END: HELPER FUNCTIONS
-
-// END: electron tasks
-// ----------------------------------------------------------------------------------------------------
 
 // build website branch only in gh page branch
 function build_website() {
