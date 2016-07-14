@@ -681,7 +681,7 @@ gulp.task( "build-gh-pages", shell.task([
 
 gulp.task( "clean-gh-pages", function (cb) {
 
-    var dry_run = true,
+    var dry_run = false,
         msg = 'Files and folders ' + (dry_run ? "that would be" : "")  + ' deleted:\n';
 
     // delete all the files in the current directory
