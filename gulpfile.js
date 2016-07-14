@@ -32,7 +32,10 @@ var gulp = require( "gulp" ),
     shell = require( "gulp-shell" ),
 
     // to change the icons for the windows executables
-    rcedit = require( "rcedit" );
+    rcedit = require( "rcedit" ),
+
+    del = require("del"),
+    date_format = require("dateformat");
 
 var ELECTRON_PACKAGER = require( "electron-packager" );
 
@@ -219,7 +222,10 @@ gulp.task( "copy-web-files", function ( cb ) {
                             .pipe( gulp.dest( destination ) );
 
     var copy_favicon = gulp.src( "./favicon.ico" )
-        .pipe( gulp.dest( destination ) );
+                            .pipe( gulp.dest( destination ) );
+
+    var copy_gulpfile = gulp.src( "./gulpfile.js" )
+                            .pipe( gulp.dest( destination ) );
 
     return merge_stream( 
                 copy_home_page,
@@ -231,7 +237,8 @@ gulp.task( "copy-web-files", function ( cb ) {
                 copy_lessons, 
                 copy_images, 
                 copy_favicon,
-                copy_config 
+                copy_config,
+                copy_gulpfile 
             );
 
 } );
@@ -654,7 +661,7 @@ function package_electron_build( buildPath, arch, os, mode ) {
 
 // START: gh-pages tasks
 
-var GH_PAGE_BRANCH = "shell-task";
+var GH_PAGE_BRANCH = "gh-pages";
 
 gulp.task( "gh-pages", function (cb) {
 
@@ -674,7 +681,7 @@ gulp.task( "build-gh-pages", shell.task([
     "gulp build-web && tar -cvzf web.tar.gz web",
 ]));
 
-var del = require("del");
+
 
 gulp.task( "clean-gh-pages", function (cb) {
 
@@ -682,14 +689,17 @@ gulp.task( "clean-gh-pages", function (cb) {
         msg = 'Files and folders ' + (dry_run ? "that would be" : "")  + ' deleted:\n';
 
     // delete all the files in the current directory
-    return del(["./*", "!./web.tar.gz"], {dryRun: dry_run}).then(paths => {
+    // except the web archive and our bower, node installations
+    return del(["./*", "!./web.tar.gz", "!./bower_components", "!./node_modules"], {dryRun: dry_run}).then(paths => {
         console.log(msg, paths.join('\n'));
     });
 
 } );
 
 gulp.task( "deploy-gh-pages", shell.task([
-    "tar -xvzf web.tar.gz --strip-components=1 && rm web.tar.gz"
+    "tar -xvzf web.tar.gz --strip-components=1 && rm web.tar.gz",
+    "echo [auto-web-build] $(date) >> build_log",
+    'git add --all && git commit -m "[auto-web-build] $(date)"'
 ]));
 
 // END: gh-pages tasks
