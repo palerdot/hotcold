@@ -3,7 +3,7 @@ module.exports={
     "VERSION": "2.0.0",
     "APPMODE": "FREE",
     "PRO_CRX_URL": "https://google.co.in",
-    "type": "desktop",
+    "type": "web",
     "links": {
         "linux_32": "https://www.google.co.in/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#newwindow=1&q=linux+32+bit",
         "linux_64": "https://www.dropbox.com/s/fy9wxqsn50i65bq/Hotcold-2.0.0-linux-x64.tar.gz?dl=1",
