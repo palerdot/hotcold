@@ -83,17 +83,20 @@ gulp.task( "browserify", function () {
         .pipe( gulp.dest( './js/' ) );
 } );
 
+// build basics task; copys libs, fonts everything except "changing config" & "browserify"
+gulp.task( "build-basics", function (cb) {
+    runSequence( [ "clean" ], [ "copy-js-lib", "copy-css-lib", "copy-fonts" ], [ "lint" ], ["convert-scss"], cb );
+} )
+
 gulp.task( "default", function ( cb ) {
-    runSequence( [ "clean" ], [ "copy-js-lib", "copy-css-lib", "copy-fonts" ], [ "lint" ], [ "convert-scss", "browserify" ], cb );
+    runSequence( [ "build-basics" ], [ "browserify" ], cb );
 } );
 
 gulp.task( "build-releases", function ( cb ) {
     runSequence( [ "clean-releases" ], [ "build-crx", "build-electron" ], cb );
 } );
 
-gulp.task( "build-web", function (cb) {
-    runSequence( ["default"], ["clean-web"], ["copy-web-files"], cb );
-} );
+
 
 gulp.task( "check-branch", function ( cb ) {
     git_info.branch( function ( branch ) {
@@ -110,6 +113,25 @@ gulp.task( "check-branch", function ( cb ) {
 
 // ----------------------------------------------------------------------------------------------------
 // START: build web tasks
+
+gulp.task( "build-web", function (cb) {
+    runSequence( ["web-basics"], ["clean-web"], ["copy-web-files"], cb );
+} );
+
+gulp.task( "web-basics", function (cb) {
+    runSequence( ["build-basics"], ["init-web-config"], ["browserify"], cb );
+} );
+
+// changes "type => web" in config, before doing browserify
+gulp.task( "init-web-config", function (cb) {
+    return gulp.src( "./config.json" )
+                .pipe( 
+                    json_editor({
+                        "type": "web"
+                    }) 
+                )
+                .pipe( gulp.dest( "." ) );
+} );
 
 // clean the web folder
 // cleans the releases folder
@@ -131,11 +153,17 @@ gulp.task( "copy-web-files", function ( cb ) {
                                 .pipe(htmlmin({collapseWhitespace: true}))
                                 .pipe( gulp.dest( destination ) );
 
-    var download_links = _.map( HC_CONFIG.downloads, function (link, platform) {
+    var links = _.map( HC_CONFIG.links, function (link, key) {
         return {
-            match: new RegExp( "{{" + platform + "}}" ),
+            match: new RegExp( "{{" + key + "}}" ),
             replacement: link
         }
+    } );
+
+    // also replace the version
+    links.push( {
+        match: new RegExp("{{version}}"),
+        replacement: HC_CONFIG.VERSION
     } );
 
     // copy the home.html as index file
@@ -143,7 +171,7 @@ gulp.task( "copy-web-files", function ( cb ) {
                                 .pipe( rename("index.html") )
                                 // replace the download links from config
                                 .pipe( replace({
-                                    patterns: download_links
+                                    patterns: links
                                 }) )
                                 .pipe(htmlmin({collapseWhitespace: true}))
                                 .pipe( gulp.dest( destination ) );
@@ -214,51 +242,87 @@ gulp.task( "clean-releases", function () {
 // START: chrome extension tasks
 
 gulp.task( "build-crx", function ( cb ) {
-    runSequence( [ "default" ], [ "clean-crx" ], [ "copy-crx-files" ], cb );
+    runSequence( [ "build-basics" ], [ "clean-crx" ], [ "prepare-crx-build" ], cb );
 } );
 
 gulp.task( "clean-crx", function ( cb ) {
     console.log( "deleting crx folder" )
     return gulp.src( "./releases/chrome-app", { read: false } )
-        .pipe( clean() );
+                .pipe( clean() );
 } );
 
-gulp.task( "copy-crx-files", function (cb) {
+gulp.task( "prepare-crx-build", function (cb) {
 
     var modes = ["FREE", "PRO"];
 
-    _.each( modes, function (mode) {
-        copy_crx_files( mode );
+    var tasks = _.map( modes, function (mode) {
+        return function (async_cb) {
+            init_crx_mode( mode, async_cb );            
+        };
     } );
 
-    cb();
+    async.series( tasks, cb );
 
 } );
 
-function copy_crx_files (mode) {
+function init_crx_mode (mode, async_cb) {
+    console.log("will be building crx for: ", mode);
+    // sequence of events: init config, browserify, copy files, zip files
+    var tasks = [
+        // init config
+        function (cb) {
+            init_crx_config( mode, cb );
+        },
+
+        // browserify
+        function (cb) {
+            runSequence( ["browserify"], cb );
+        },
+
+        // copy files
+        function (cb) {
+            copy_crx_files(mode, cb);
+        },
+
+        // zip files
+        function (cb) {
+            zip_crx_files(mode, cb);
+        }
+
+    ];
+
+    async.series( tasks, async_cb );
+}
+
+function init_crx_config (mode, cb) {
+    console.log("initing crx config ", mode);
+
+    gulp.src( "./config.json" )
+        .pipe( 
+            json_editor({
+                "type": "crx",
+                "APPMODE": mode
+            }) 
+        )
+        .pipe( gulp.dest( "." ) )
+        // on done indicate to async that it is done
+        .on("end", cb);
+}
+
+function copy_crx_files (mode, async_cb) {
 
     var crx_destination = "./releases/chrome-app/" + mode;
 
     console.log("copying chrome extension files for ", mode);
 
-    var copy_index_file = gulp.src( "./index.html" )
-                                .pipe( gulp.dest( crx_destination ) );
+    var copy_index_file = gulp.src( "./index.html" );
 
     // copy config file and change the mode to "web"
-    var copy_config = gulp.src( "./config.json" )
-                                .pipe( 
-                                    json_editor({
-                                        "type": "crx",
-                                        "APPMODE": mode
-                                    }) 
-                                )
-                                .pipe( gulp.dest( crx_destination ) );
+    var copy_config = gulp.src( "./config.json" );
 
-    var copy_help_file = gulp.src( "./help.html" )
-                                .pipe( gulp.dest( crx_destination ) );
+    var copy_help_file = gulp.src( "./help.html" );
 
-    var copy_lib = gulp.src( "./lib/**/*", { base: "." } )
-                        .pipe( gulp.dest( crx_destination ) );
+    var copy_lib = gulp.src( "./lib/**/*", { base: "." } );
 
     var copy_js = gulp.src( "./js/*.js", { base: "." } )
                         .pipe( 
@@ -267,31 +331,23 @@ function copy_crx_files (mode) {
                                     drop_console: true
                                 }  
                             }) 
-                        )
-                        .pipe( gulp.dest( crx_destination ) );
+                        );
 
-    var copy_css = gulp.src( "./css/hotcold.css", { base: "." } )
-                        .pipe( gulp.dest( crx_destination ) );
+    var copy_css = gulp.src( "./css/hotcold.css", { base: "." } );
 
-    var copy_lessons = gulp.src( "./lessons/**/*", { base: "." } )
-                            .pipe( gulp.dest( crx_destination ) );
+    var copy_lessons = gulp.src( "./lessons/**/*", { base: "." } );
 
-    var copy_images = gulp.src( "./images/viralgal.png", { base: "." } )
-                            .pipe( gulp.dest( crx_destination ) );
+    var copy_images = gulp.src( "./images/viralgal.png", { base: "." } );
 
-    var copy_manifest = gulp.src( "./manifest.json" )
-                            .pipe( gulp.dest( crx_destination ) );
+    var copy_manifest = gulp.src( "./manifest.json" );
 
-    var copy_init_script = gulp.src( "./init_crx.js" )
-                                .pipe( gulp.dest( crx_destination ) );
+    var copy_init_script = gulp.src( "./init_crx.js" );
 
-    var copy_icons = gulp.src( "./icon/icon-*.png" )
-                            .pipe( gulp.dest( crx_destination ) );
+    var copy_icons = gulp.src( "./icon/icon-*.png" );
 
-    var copy_favicon = gulp.src( "./favicon.ico" )
-                            .pipe( gulp.dest( crx_destination ) );
+    var copy_favicon = gulp.src( "./favicon.ico" );
 
-    merge_stream( 
+    var tasks = [
         copy_index_file, 
         copy_help_file, 
         copy_lib, 
@@ -303,7 +359,32 @@ function copy_crx_files (mode) {
         copy_init_script, 
         copy_icons,
         copy_config
-    );
+    ];
+
+    var parallel_tasks = _.map( tasks, function (task) {
+        return function (cb) {
+            task
+                .pipe( gulp.dest( crx_destination ) )
+                .on("end", cb);
+        }
+    } );
+
+    async.parallel( parallel_tasks, async_cb );
+
+}
+
+function zip_crx_files (mode, async_cb) {
+
+    console.log("zipping ", mode);
+
+    var src = "./releases/chrome-app/" + mode,
+        zip_file_name = mode + ".zip";
+
+    vfs.src( src )
+        // zip the folder
+        .pipe( zip(zip_file_name) )
+        .pipe( vfs.dest( "./releases/chrome-app/" ) )
+        .on( "end", async_cb );
 
 }
 

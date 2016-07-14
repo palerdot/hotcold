@@ -1,3 +1,4 @@
+web/
 releases/
 **/bower_components/
 **/node_modules
