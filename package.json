@@ -25,6 +25,7 @@
     "async": "^1.5.2",
     "bower": "^1.7.9",
     "browserify": "^13.0.1",
+    "dateformat": "^1.0.12",
     "del": "^2.2.1",
     "electron-packager": "^7.1.0",
     "electron-prebuilt": "^1.2.5",

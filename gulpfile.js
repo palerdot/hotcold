@@ -652,20 +652,45 @@ function package_electron_build( buildPath, arch, os, mode ) {
 // ----------------------------------------------------------------------------------------------------
 
 
-// misc: -----------------------------------------------------------------------------
+// START: gh-pages tasks
 
-var rcedit = require( "rcedit" );
+var GH_PAGE_BRANCH = "shell-task";
 
-gulp.task( "debug-windows-build", function ( cb ) {
-    rcedit( "./releases/electron/binaries/hotcold-win32-x64/hotcold.exe", {
-        icon: "./icon/icon.ico"
-    }, function ( err ) {
-        console.log( "windows debug complete" );
-        cb();
+gulp.task( "gh-pages", function (cb) {
+
+    git_info.branch( function ( branch ) {
+        console.log( "branch is ", branch );
+        if ( branch == GH_PAGE_BRANCH ) {
+            runSequence(["build-gh-pages"], ["clean-gh-pages"], ["deploy-gh-pages"], cb);
+        } else {
+            console.log("ERROR! not gh pages branch");
+        }
     } );
+
 } );
 
-// build website branch only in gh page branch
-function build_website() {
-    console.log( "will be building website for gh page branch" );
-}
+gulp.task( "build-gh-pages", shell.task([
+    "git archive master | gzip > master.tar.gz && tar -xvzf master.tar.gz",
+    "gulp build-web && tar -cvzf web.tar.gz web",
+]));
+
+var del = require("del");
+
+gulp.task( "clean-gh-pages", function (cb) {
+
+    var dry_run = true,
+        msg = 'Files and folders ' + (dry_run ? "that would be" : "")  + ' deleted:\n';
+
+    // delete all the files in the current directory
+    return del(["./*", "!./web.tar.gz"], {dryRun: dry_run}).then(paths => {
+        console.log(msg, paths.join('\n'));
+    });
+
+} );
+
+gulp.task( "deploy-gh-pages", shell.task([
+    "tar -xvzf web.tar.gz --strip-components=1"
+]));
+
+// END: gh-pages tasks
+
