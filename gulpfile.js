@@ -222,7 +222,10 @@ gulp.task( "copy-web-files", function ( cb ) {
                             .pipe( gulp.dest( destination ) );
 
     var copy_favicon = gulp.src( "./favicon.ico" )
-        .pipe( gulp.dest( destination ) );
+                            .pipe( gulp.dest( destination ) );
+
+    var copy_gulpfile = gulp.src( "./gulpfile.js" )
+                            .pipe( gulp.dest( destination ) );
 
     return merge_stream( 
                 copy_home_page,
@@ -234,7 +237,8 @@ gulp.task( "copy-web-files", function ( cb ) {
                 copy_lessons, 
                 copy_images, 
                 copy_favicon,
-                copy_config 
+                copy_config,
+                copy_gulpfile 
             );
 
 } );
