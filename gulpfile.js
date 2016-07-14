@@ -685,7 +685,8 @@ gulp.task( "clean-gh-pages", function (cb) {
         msg = 'Files and folders ' + (dry_run ? "that would be" : "")  + ' deleted:\n';
 
     // delete all the files in the current directory
-    return del(["./*", "!./web.tar.gz"], {dryRun: dry_run}).then(paths => {
+    // except the web archive and our bower, node installations
+    return del(["./*", "!./web.tar.gz", "!./bower_components", "!./node_modules"], {dryRun: dry_run}).then(paths => {
         console.log(msg, paths.join('\n'));
     });
 
