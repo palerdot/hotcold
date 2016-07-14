@@ -32,7 +32,10 @@ var gulp = require( "gulp" ),
     shell = require( "gulp-shell" ),
 
     // to change the icons for the windows executables
-    rcedit = require( "rcedit" );
+    rcedit = require( "rcedit" ),
+
+    del = require("del"),
+    date_format = require("dateformat");
 
 var ELECTRON_PACKAGER = require( "electron-packager" );
 
@@ -654,7 +657,7 @@ function package_electron_build( buildPath, arch, os, mode ) {
 
 // START: gh-pages tasks
 
-var GH_PAGE_BRANCH = "shell-task";
+var GH_PAGE_BRANCH = "gh-pages";
 
 gulp.task( "gh-pages", function (cb) {
 
@@ -674,7 +677,7 @@ gulp.task( "build-gh-pages", shell.task([
     "gulp build-web && tar -cvzf web.tar.gz web",
 ]));
 
-var del = require("del");
+
 
 gulp.task( "clean-gh-pages", function (cb) {
 
@@ -689,7 +692,9 @@ gulp.task( "clean-gh-pages", function (cb) {
 } );
 
 gulp.task( "deploy-gh-pages", shell.task([
-    "tar -xvzf web.tar.gz --strip-components=1"
+    "tar -xvzf web.tar.gz --strip-components=1",
+    "echo [auto-web-build] `date +%Y-%m-%d\ %H:%M:%S` > build_log",
+    "git commit -am '[auto-web-build] `date +%Y-%m-%d\ %H:%M:%S`'"
 ]));
 
 // END: gh-pages tasks
