@@ -400,7 +400,7 @@ function zip_crx_files (mode, async_cb) {
 
     console.log("zipping ", mode);
 
-    var src = "./releases/chrome-app/" + mode,
+    var src = "./releases/chrome-app/" + mode + "/**",
         zip_file_name = mode + ".zip";
 
     vfs.src( src )
