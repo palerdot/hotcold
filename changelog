@@ -1,4 +1,8 @@
-Version: 2.0.0 [20/07/2016]
+Version: 2.0.1 [15/07/2016]
+-----------------------------------------------------------
+* Hiding Full Screen button in Chrome and Electron Apps
+
+Version: 2.0.0 [14/07/2016]
 -----------------------------------------------------------
 
 * windows and linux desktop apps (both 32 and 64 bit)
