@@ -365,7 +365,8 @@ function copy_crx_files (mode, async_cb) {
     var copy_manifest = gulp.src( "./manifest.json" )
                             .pipe( 
                                 json_editor({
-                                    "name": (mode == "PRO") ? "Hotcold Typing PRO!" : "Hotcold Typing!"
+                                    "name": (mode == "PRO") ? "Hotcold Typing PRO!" : "Hotcold Typing!",
+                                    "version": HC_CONFIG.VERSION
                                 }) 
                             );
 

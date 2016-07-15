@@ -1,9 +1,9 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 module.exports={
-    "VERSION": "2.0.0",
-    "APPMODE": "FREE",
+    "VERSION": "2.0.1",
+    "APPMODE": "PRO",
     "PRO_CRX_URL": "https://google.co.in",
-    "type": "web",
+    "type": "crx",
     "links": {
         "linux_32": "https://www.google.co.in/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#newwindow=1&q=linux+32+bit",
         "linux_64": "https://www.dropbox.com/s/fy9wxqsn50i65bq/Hotcold-2.0.0-linux-x64.tar.gz?dl=1",
@@ -2487,6 +2487,10 @@ var APP = {
 
     initAppMode: function () {
         HC_CONFIG.APPMODE == "FREE" ? this.initFreeMode() : this.initProMode();
+        // also if not web version, for now hide the full screen button
+        if (HC_CONFIG.type != "web") {
+            this.$el.fs_toggle.hide();
+        }
     },
 
     initFreeMode: function () {

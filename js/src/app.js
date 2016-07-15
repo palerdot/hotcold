@@ -79,6 +79,10 @@ var APP = {
 
     initAppMode: function () {
         HC_CONFIG.APPMODE == "FREE" ? this.initFreeMode() : this.initProMode();
+        // also if not web version, for now hide the full screen button
+        if (HC_CONFIG.type != "web") {
+            this.$el.fs_toggle.hide();
+        }
     },
 
     initFreeMode: function () {
