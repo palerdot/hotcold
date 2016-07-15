@@ -17,6 +17,22 @@ body {
 
                 &:visited {
                     color: $link_color;
+                    text-decoration: none;
+                }
+
+                &.btn {
+                    color: white;
+                    text-decoration: none;
+
+                        &:hover {
+                            color: white;
+                            text-decoration: none;
+                        }
+
+                        &:visited {
+                            color: white;
+                            text-decoration: none;
+                        }
                 }
 
                 

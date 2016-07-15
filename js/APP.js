@@ -2,8 +2,8 @@
 module.exports={
     "VERSION": "2.0.1",
     "APPMODE": "PRO",
-    "PRO_CRX_URL": "https://chrome.google.com/webstore/detail/hotcold-typing-pro/aoceloicmloamkmaljmpejphndalilgp?hl=en-US",
-    "type": "crx",
+    "PRO_CRX_URL": "https://chrome.google.com/webstore/detail/hotcold-typing-pro/aoceloicmloamkmaljmpejphndalilgp",
+    "type": "web",
     "links": {
         "linux_32": "https://www.google.co.in/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#newwindow=1&q=linux+32+bit",
         "linux_64": "https://www.dropbox.com/s/fy9wxqsn50i65bq/Hotcold-2.0.0-linux-x64.tar.gz?dl=1",
@@ -13,7 +13,9 @@ module.exports={
         "dev_derby_blog_url": "https://hacks.mozilla.org/2013/06/announcing-the-winners-of-the-april-2013-dev-derby/",
         "dev_derby_hc_cached": "http://web.archive.org/web/20131107013950/https://developer.mozilla.org/en-US/demos/detail/hot-cold-typing",
         "dev_derby_down_link": "https://blog.mozilla.org/community/2015/12/18/saying-goodbye-to-demo-studio/",
-        "github_link": "https://github.com/palerdot/hotcold"
+        "github_link": "https://github.com/palerdot/hotcold",
+        "chrome_free_app": "https://chrome.google.com/webstore/detail/hotcold-typing/gikgnaajhiofmngkodahgpjnpgacmhlc",
+        "chrome_pro_app": "https://chrome.google.com/webstore/detail/hotcold-typing-pro/aoceloicmloamkmaljmpejphndalilgp"
     },
     "messages": {
         "crx": "You can specify a custom time for your own course in PRO version. Get the Chrome App for the Pro Version!",
