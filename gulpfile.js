@@ -362,7 +362,12 @@ function copy_crx_files (mode, async_cb) {
 
     var copy_images = gulp.src( "./images/viralgal.png", { base: "." } );
 
-    var copy_manifest = gulp.src( "./manifest.json" );
+    var copy_manifest = gulp.src( "./manifest.json" )
+                            .pipe( 
+                                json_editor({
+                                    "name": (mode == "PRO") ? "Hotcold Typing PRO" : "Hotcold Typing"
+                                }) 
+                            );
 
     var copy_init_script = gulp.src( "./init_crx.js" );
 
