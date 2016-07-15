@@ -1,6 +1,6 @@
 {
-    "VERSION": "2.0.0",
-    "APPMODE": "FREE",
+    "VERSION": "2.0.1",
+    "APPMODE": "PRO",
     "PRO_CRX_URL": "https://google.co.in",
     "type": "web",
     "links": {

@@ -362,7 +362,13 @@ function copy_crx_files (mode, async_cb) {
 
     var copy_images = gulp.src( "./images/viralgal.png", { base: "." } );
 
-    var copy_manifest = gulp.src( "./manifest.json" );
+    var copy_manifest = gulp.src( "./manifest.json" )
+                            .pipe( 
+                                json_editor({
+                                    "name": (mode == "PRO") ? "Hotcold Typing PRO!" : "Hotcold Typing!",
+                                    "version": HC_CONFIG.VERSION
+                                }) 
+                            );
 
     var copy_init_script = gulp.src( "./init_crx.js" );
 
@@ -400,7 +406,7 @@ function zip_crx_files (mode, async_cb) {
 
     console.log("zipping ", mode);
 
-    var src = "./releases/chrome-app/" + mode,
+    var src = "./releases/chrome-app/" + mode + "/**",
         zip_file_name = mode + ".zip";
 
     vfs.src( src )
