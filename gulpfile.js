@@ -593,7 +593,7 @@ function prepare_electron_binary (mode, async_cb) {
             if ( os_platform == "win32" ) {
                 // use rcedit to change the icon for the windows executable binary
                 rcedit( buildPath + "/hotcold.exe", {
-                    icon: "./releases/electron/hc-logo.ico"
+                    icon: "./releases/electron/" + mode + "/hc-logo.ico"
                 }, function ( err ) {
                     package_electron_build( buildPath, build_arch, os_platform, mode );
                 } );
