@@ -5,14 +5,14 @@
 
 Learn Touch Typing smartly with Hotcold Typing. Get instant key glows based on your accuracy. Watch live graphs and statistics on your performance as you practice touch typing.
 
-##### Key Features:
+## Key Features
 
-    - Live Indication of Accuracy using Key Glows
-    - Instant graphs on Accuracy
-    - Instant graphs on Net Speed, Gross Speed
-    - Detailed Key statistics after every key press
-    - Auto Pausing
-    - Create Custom Course by giving your own text
+- Live Indication of Accuracy using Key Glows
+- Instant graphs on Accuracy
+- Instant graphs on Net Speed, Gross Speed
+- Detailed Key statistics after every key press
+- Auto Pausing
+- Create Custom Course by giving your own text
 
 ## Chrome App
 
