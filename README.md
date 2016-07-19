@@ -1,33 +1,27 @@
-*************************************************************************************************************************************************
-Hot-cold Typing !
-*************************************************************************************************************************************************
+# Hotcold Typing !
 
-Smart touch typing learning with instant key glow indications, live statistics, live graphs and dynamic course creation.
+![Hotcold Typing](icon/icon-128.png?raw=true "Hotcold Typing")
 
-*************************************************************************************************************************************************
 
-Learn touch typing in a smart, easy and colorful way ! Watch your onscreen keys glow in different colors depending on the corresponding key accuracy. All your key statistics are updated and presented after every keypress. You don't have to wait till the end to know your key statistics. Watch live graphs on your accuracy, gross and net speeds during the course, and plan your progress accordingly. Create your own courses on the fly, and have fun learning with all these features. A lot of other intuitive features like differentiating characters from key glows, automatic pausing makes touch typing learning a real fun!.
+Learn Touch Typing smartly with Hotcold Typing. Get instant key glows based on your accuracy. Watch live graphs and statistics on your performance as you practice touch typing.
 
-Please read and understand the getting started guide thoroughly before attempting the courses.
+##### Key Features:
 
-*************************************************************************************************************************************************
+    - Live Indication of Accuracy using Key Glows
+    - Instant graphs on Accuracy
+    - Instant graphs on Net Speed, Gross Speed
+    - Detailed Key statistics after every key press
+    - Auto Pausing
+    - Create Custom Course by giving your own text
 
-This project has won second place in Mozilla dev derby for the month of April 2013. 
-It can be viewed live at this dev derby url: https://developer.mozilla.org/en-US/demos/detail/hot-cold-typing
+## Chrome App
 
-**************************************************************************************************************************************************
+[Free App](https://chrome.google.com/webstore/detail/hotcold-typing/gikgnaajhiofmngkodahgpjnpgacmhlc)
 
-General Info:
+[Pro App](https://chrome.google.com/webstore/detail/hotcold-typing-pro/aoceloicmloamkmaljmpejphndalilgp)
 
-This section has some general information on the application.
+For more info, please visit the [website](http://hotcoldtyping.com)
 
-This application uses modern html5 features like web workers and canvas. It is necessary to have support for these two in your browser to experience the app in your browser.
+### About
 
-This application uses two libraries
-
-- jquery javascript library.
-- Twitter Bootstrap library.
-
-The courses for this application are in a JSON format. Each line of the course is an object which has three arrays: text, code(ascii code) and pattern(finger highlighting pattern). A simple JSON generator file named json_gen_easy.html is present in the folder 'other', which can be used as a reference by those interested. This file consumes some text as an input, where each line is delimited by a newline character. This file can be extended and tweaked by interested people to create their JSON lesson files.  
-
-*************************************************************************************************************************************************
+This project was first created for [2013 April Mozilla Dev Derby](https://hacks.mozilla.org/2013/06/announcing-the-winners-of-the-april-2013-dev-derby/). The application and source code was hosted on [Mozilla Demo Studio](http://web.archive.org/web/20131107013950/https://developer.mozilla.org/en-US/demos/detail/hot-cold-typing) till Mozilla [took down the demo studio](https://blog.mozilla.org/community/2015/12/18/saying-goodbye-to-demo-studio/) site. After that, the project was tweaked a little and moved to this [current home](http://hotcoldtyping.com). The source code of this application is available at this github repository. Feedbacks are greatly appreciated, particularly if you are using this app for learning touch typing.
