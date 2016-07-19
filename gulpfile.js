@@ -138,7 +138,8 @@ gulp.task( "init-web-config", function (cb) {
     return gulp.src( "./config.json" )
                 .pipe( 
                     json_editor({
-                        "type": "web"
+                        "type": "web",
+                        "APPMODE": "FREE"
                     }) 
                 )
                 .pipe( gulp.dest( "." ) );
