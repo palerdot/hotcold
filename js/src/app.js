@@ -82,6 +82,9 @@ var APP = {
         // also if not web version, for now hide the full screen button
         if (HC_CONFIG.type != "web") {
             this.$el.fs_toggle.hide();
+            this.$el.web_home.hide();
+        } else {
+            this.$el.web_home.show();
         }
     },
 

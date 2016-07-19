@@ -1,14 +1,14 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 module.exports={
     "VERSION": "2.0.1",
-    "APPMODE": "FREE",
+    "APPMODE": "PRO",
     "PRO_CRX_URL": "https://chrome.google.com/webstore/detail/hotcold-typing-pro/aoceloicmloamkmaljmpejphndalilgp",
-    "type": "desktop",
+    "type": "crx",
     "links": {
         "linux_32": "https://www.dropbox.com/s/h7t9lymfs86qrqn/Hotcold-2.0.1-linux-ia32.tar.gz?dl=1",
         "linux_64": "https://www.dropbox.com/s/8j99vyxhuybivbs/Hotcold-2.0.1-linux-x64.tar.gz?dl=1",
-        "windows_32": "https://www.dropbox.com/s/gpvzezi7d10u525/Hotcold-2.0.1-win32-ia32.zip?dl=1",
-        "windows_64": "https://www.dropbox.com/s/okwcon218hjivvl/Hotcold-2.0.1-win32-x64.zip?dl=1",
+        "windows_32": "https://www.dropbox.com/s/pr9bf5dobt6cgil/Hotcold-2.0.1-win32-ia32.zip?dl=1",
+        "windows_64": "https://www.dropbox.com/s/l4eqw1cb1rwzs4c/Hotcold-2.0.1-win32-x64.zip?dl=1",
         "mac_64": "https://www.google.co.in/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#newwindow=1&q=mac+64+bit",
         "dev_derby_blog_url": "https://hacks.mozilla.org/2013/06/announcing-the-winners-of-the-april-2013-dev-derby/",
         "dev_derby_hc_cached": "http://web.archive.org/web/20131107013950/https://developer.mozilla.org/en-US/demos/detail/hot-cold-typing",
@@ -2492,6 +2492,9 @@ var APP = {
         // also if not web version, for now hide the full screen button
         if (HC_CONFIG.type != "web") {
             this.$el.fs_toggle.hide();
+            this.$el.web_home.hide();
+        } else {
+            this.$el.web_home.show();
         }
     },
 
@@ -3179,6 +3182,7 @@ var $el = {
     nav_bar: $("#hotcold-navigation-bar"),
 
     fs_toggle: $("#fullscreen-toggle"),
+    web_home: $("#web-home"),
     
     canvas_a: $( '#a' ),
     canvas_b: $( '#b' ),

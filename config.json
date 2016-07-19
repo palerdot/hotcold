@@ -1,8 +1,8 @@
 {
     "VERSION": "2.0.1",
-    "APPMODE": "FREE",
+    "APPMODE": "PRO",
     "PRO_CRX_URL": "https://chrome.google.com/webstore/detail/hotcold-typing-pro/aoceloicmloamkmaljmpejphndalilgp",
-    "type": "desktop",
+    "type": "crx",
     "links": {
         "linux_32": "https://www.dropbox.com/s/h7t9lymfs86qrqn/Hotcold-2.0.1-linux-ia32.tar.gz?dl=1",
         "linux_64": "https://www.dropbox.com/s/8j99vyxhuybivbs/Hotcold-2.0.1-linux-x64.tar.gz?dl=1",

@@ -42,6 +42,7 @@ var $el = {
     nav_bar: $("#hotcold-navigation-bar"),
 
     fs_toggle: $("#fullscreen-toggle"),
+    web_home: $("#web-home"),
     
     canvas_a: $( '#a' ),
     canvas_b: $( '#b' ),
