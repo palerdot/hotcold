@@ -50,6 +50,7 @@
     "gulp-zip": "^3.2.0",
     "main-bower-files": "^2.13.1",
     "merge-stream": "^1.0.0",
+    "node-sass": "^3.8.0",
     "pump": "^1.0.1",
     "rcedit": "^0.5.1",
     "run-sequence": "^1.2.1",
