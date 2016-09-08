@@ -1,39 +1,65 @@
 <!DOCTYPE html>
 <html>
-    
+
     <head>
-        
+
         <title>Hotcold Typing</title>
-        
+
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="UTF-8">
         <meta name="description" content="Learn Touch Typing smartly. Get instant feedback on every keypress as you learn touch typing with live graphs and statistics.">
         <meta name="keywords" content="Touch Typing, Learning, Keyboard, Typewriter, smart, graphs, statistics">
-        
+
         <!-- Bootstrap -->
         <link href="lib/css/bootstrap.min.css" rel="stylesheet" media="screen">
         <!-- Font Awesome -->
         <link href="lib/css/font-awesome.min.css" rel="stylesheet" media="screen">
-        
+
         <!-- main css file -->
         <link href="css/home.css" rel="stylesheet" media="screen">
-        
+
         <!-- START: adding javascript libraries -->
-        
+
         <script src="lib/js/jquery.min.js"></script>
         <script src="lib/js/bootstrap.min.js"></script>
-        
+
         <script src="js/home.js"></script>
-        
+
+        <!-- Begin MailChimp Signup Form -->
+        <!-- START: mailchimp styles -->
+        <link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
+        <style type="text/css">
+            #mc_embed_signup {
+                background: #282828;
+                clear: left;
+                font: 14px Helvetica, Arial, sans-serif;
+                width: 100%;
+            }
+
+            #mc_embed_signup input.email {
+                background: #444;
+                border: #333;
+                color: white;
+            }
+
+            #mc_embed_signup #mc-embedded-subscribe {
+                background: #337ab7;
+                color: white;
+            }
+            /* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
+            We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+        </style>
+        <!-- END: mailchimp styles -->
+
     </head>
-    
+
     <body class="container-fluid night-theme">
-        
+
         <div class="col-md-1"></div>
-        
+
         <!-- START: Courses Page -->
         <div id="home_tab" class="col-md-10 container-fluid hc_page">
-            
+
             <!-- START: start of top navbar -->
             <nav id="hotcold-navigation-bar" class="navbar navbar-default navbar-inverse navbar-fixed-top">
                 <div class="container-fluid row">
@@ -46,14 +72,14 @@
                             <span class="hotcold-letter o-blue">o</span>
                             <span class="hotcold-letter l">l</span>
                             <span class="hotcold-letter d">d</span>
-                            
+
                             <small>
                                 <strong> typing</strong>
                             </small>
                         </a>
-                        
+
                     </div>
-                    
+
                     <div class="col-md-6 text-right navbar-brand navbar-header">
 
                         <div class="btn-group header-info-group m-right-half-em" role="group" aria-label="...">
@@ -61,12 +87,12 @@
                                 <i class="fa fa-keyboard-o"></i> Try Now!
                             </a>
                         </div>
-                        
+
                         <div class="btn-group header-download-group" role="group" aria-label="...">
                             <a href="#desktop-app-download" class="btn header-link">
                                 <i class="fa fa-desktop"></i> Desktop App
                             </a>
-                            
+
                             <a href="#chrome-app-download" class="btn header-link">
                                 <i class="fa fa-chrome"></i> Chrome App
                             </a>
@@ -75,7 +101,7 @@
                 </div>
             </nav>
             <!-- END: end of top navbar holding the home, courses and about tabs -->
-            
+
             <!-- START: CAROUSEL -->
             <div class="carousel-holder">
                 <div id="hotcold-carousel" class="carousel slide" data-ride="carousel">
@@ -85,7 +111,7 @@
                         <li data-target="#hotcold-carousel" data-slide-to="1"></li>
                         <li data-target="#hotcold-carousel" data-slide-to="2"></li>
                     </ol>
-                    
+
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner" role="listbox">
                         <div class="item active">
@@ -113,7 +139,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Controls -->
                     <a class="left carousel-control" href="#hotcold-carousel" role="button" data-slide="prev">
                         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -126,16 +152,16 @@
                 </div>
             </div>
             <!-- END: CAROUSEL -->
-            
+
             <!-- START: Download Chrome App -->
             <div id="chrome-app-download" class="row home-section">
                 <div class="col-md-12 text-center header">
                     <h1>
-                    <i class="fa fa-chrome"></i> Chrome App
+                        <i class="fa fa-chrome"></i> Chrome App
                     </h1>
                 </div>
                 <div class="col-md-12">
-                    
+
                     <div class="col-md-6 text-center">
                         <div class="download-section">
                             <a href="{{chrome_free_app}}" target="_blank" class="btn btn-primary btn-lg">
@@ -143,7 +169,7 @@
                             </a>
                         </div>
                     </div>
-                    
+
                     <div class="col-md-6 text-center">
                         <div class="download-section">
                             <a href="{{chrome_pro_app}}" target="_blank" class="btn btn-primary btn-lg">
@@ -151,23 +177,23 @@
                             </a>
                         </div>
                     </div>
-                    
+
                 </div>
                 <div class="col-md-12 info-section text-center">
                     PRO Version and Free Version are feature wise same, except in PRO version you can set a custom time for your own course.
                 </div>
             </div>
             <!-- END: Download Chrome App -->
-            
+
             <!-- START: Desktop App download -->
             <div id="desktop-app-download" class="row home-section">
                 <div class="col-md-12 text-center header">
                     <h1>
-                    <i class="fa fa-desktop"></i> Desktop App
+                        <i class="fa fa-desktop"></i> Desktop App
                     </h1>
                 </div>
                 <div class="col-md-12">
-                    
+
                     <div class="col-md-4 text-center">
                         <div class="info-section">
                             <h2 class="">
@@ -180,7 +206,7 @@
                                     Free Version (32 bit)
                                 </a>
                             </p>
-                            
+
                             <p>
                                 <a href="{{windows_64}}" class="btn btn-primary btn-md">
                                     Free Version (64 bit)
@@ -188,11 +214,11 @@
                             </p>
                         </div>
                     </div>
-                    
+
                     <div class="col-md-4 text-center">
                         <div class="info-section">
                             <h2>
-                            <i class="fa fa-linux"></i> Linux
+                                <i class="fa fa-linux"></i> Linux
                             </h2>
                         </div>
                         <div class="download-section">
@@ -201,7 +227,7 @@
                                     Free Version (32 bit)
                                 </a>
                             </p>
-                            
+
                             <p>
                                 <a href="{{linux_64}}" class="btn btn-primary btn-md">
                                     Free Version (64 bit)
@@ -209,7 +235,7 @@
                             </p>
                         </div>
                     </div>
-                    
+
                     <div class="col-md-4 text-center">
                         <div class="info-section">
                             <h2>
@@ -224,10 +250,10 @@
                             </p>
                         </div>
                     </div>
-                    
+
                 </div>
                 <div class="col-md-12 info-section text-center tiny-text">
-                    PRO Version Desktop app and Mac Desktop Version - Coming Soon! If you use Chrome browser, Chrome App is the preferred way to use the application. It is same as an installable desktop app and can be easily updated through Chrome. 
+                    PRO Version Desktop app and Mac Desktop Version - Coming Soon! If you use Chrome browser, Chrome App is the preferred way to use the application. It is same as an installable desktop app and can be easily updated through Chrome.
                 </div>
             </div>
             <!-- END: Desktop App download -->
@@ -241,11 +267,16 @@
                 </div>
                 <div class="col-md-12">
                     <p>
-                        This project was first created for <a href="{{dev_derby_blog_url}}" target="_blank">2013 April Mozilla Dev Derby</a>. The application and source code was hosted on <a href="{{dev_derby_hc_cached}}" target="_blank">Mozilla Demo Studio</a> till Mozilla <a href="{{dev_derby_down_link}}" target="_blank">took down the demo studio</a> site. After that, the project was tweaked a little and moved to this current home. The source code of this application is available at github <a href="{{github_link}}" target="_blank">here.</a> Feedbacks are greatly appreciated, particularly if you are using this app for learning touch typing.
+                        This project was first created for
+                        <a href="{{dev_derby_blog_url}}" target="_blank">2013 April Mozilla Dev Derby</a>. The application and source code was hosted on
+                        <a href="{{dev_derby_hc_cached}}" target="_blank">Mozilla Demo Studio</a> till Mozilla
+                        <a href="{{dev_derby_down_link}}" target="_blank">took down the demo studio</a> site. After that, the project was tweaked a little and moved to this current home. The source code of this application is available at github
+                        <a href="{{github_link}}" target="_blank">here.</a> Feedbacks are greatly appreciated, particularly if you are using this app for learning touch typing.
                     </p>
 
                     <div class="col-md-12 info-section text-center tiny-text">
-                        If you need help in using Hotcold Typing! application please drop a mail to <strong>hello@hotcoldtyping.com</strong> email address.
+                        If you need help in using Hotcold Typing! application please drop a mail to
+                        <strong>hello@hotcoldtyping.com</strong> email address.
                     </div>
 
                 </div>
@@ -270,15 +301,47 @@
             </div>
             <!-- END: contact -->
 
+            <!-- START: Subscription form -->
+            <div class="row home-section">
+                <div class="col-md-12 text-center header">
+                    <h1>
+                        Subscribe
+                    </h1>
+                </div>
+                <div class="col-md-12">
+                    <!--start mc_embed_signup-->
+                    <div id="mc_embed_signup">
+                        <form action="//hotcoldtyping.us14.list-manage.com/subscribe/post?u=d09e4445549ac09e1bfc215e2&amp;id=a8c3ed4f6d" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                            <div id="mc_embed_signup_scroll">
+                                <!-- <label for="mce-EMAIL">Subscribe for updates</label> -->
+                                <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+                                <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                                <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                                    <input type="text" name="b_d09e4445549ac09e1bfc215e2_a8c3ed4f6d" tabindex="-1" value="">
+                                </div>
+                                <div class="clear">
+                                    <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!--End mc_embed_signup-->
+                </div>
+                <div class="col-md-12 info-section text-center tiny-text">
+                    Please subscribe and be the first to know about the new features and updates on Hotcold Typing.        
+                </div>
+            </div>
+            <!-- END: Subscription form -->
+
             <footer class="text-center">
                 Version: {{version}}
             </footer>
-            
+
         </div>
         <!-- END: Courses Page -->
-        
+
         <div class="col-md-1"></div>
-        
+
     </body>
-    
+
 </html>
