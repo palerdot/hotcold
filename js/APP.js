@@ -1,6 +1,6 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 module.exports={
-    "VERSION": "2.0.1",
+    "VERSION": "2.0.2",
     "APPMODE": "FREE",
     "PRO_CRX_URL": "https://chrome.google.com/webstore/detail/hotcold-typing-pro/aoceloicmloamkmaljmpejphndalilgp",
     "type": "web",
@@ -601,12 +601,13 @@ var CanvasWrapper = function ( HC, $el, Theme ) {
 module.exports = CanvasWrapper;
 
 },{}],3:[function(require,module,exports){
-var CourseWrapper = function ( HC, Canvas, $el, Timer ) {
+var CourseWrapper = function ( HC, Canvas, $el, Timer, Fingers ) {
 
     var Hotcold = HC,
         Canvas = Canvas,
         $el = $el,
-        Timer = Timer;
+        Timer = Timer,
+        Fingers = Fingers;
 
     function Course() {
 
@@ -1646,6 +1647,20 @@ var CourseWrapper = function ( HC, Canvas, $el, Timer ) {
         }
         // END: get_numeric_div
 
+        //returns finger highlighting pattern
+
+        //1-10 correponding finger from left to right
+        //11-14 right shift plus left hand four fingers
+        //15-18 left shift plus right hand four fingers
+        function get_finger_pattern( code ) {
+
+            var char = String.fromCharCode( code ),
+                pattern = Fingers[ Hotcold.layout ][ char ];
+
+            return  pattern;
+
+        } //end of get_finger_pattern module
+
         // START: convertJson module
         function convertJson() {
 
@@ -1688,7 +1703,7 @@ var CourseWrapper = function ( HC, Canvas, $el, Timer ) {
                         for ( var i = 0; i < last_space; i++ ) {
                             converted[ index ].text.push( str[ i ] );
                             var code = str[ i ].charCodeAt( 0 );
-                            var pattern = get_pattern( code );
+                            var pattern = get_finger_pattern( code );
                             converted[ index ].pattern.push( pattern );
                             converted[ index ].code.push( code );
                         }
@@ -1706,7 +1721,7 @@ var CourseWrapper = function ( HC, Canvas, $el, Timer ) {
                         for ( var i = 0; i < last_index; i++ ) {
                             converted[ index ].text.push( str[ i ] );
                             var code = str[ i ].charCodeAt( 0 );
-                            var pattern = get_pattern( code );
+                            var pattern = get_finger_pattern( code );
                             converted[ index ].pattern.push( pattern );
                             converted[ index ].code.push( code );
                         }
@@ -1725,7 +1740,7 @@ var CourseWrapper = function ( HC, Canvas, $el, Timer ) {
                         for ( var i = 0; i < str.length; i++ ) {
                             converted[ index ].text.push( str[ i ] );
                             var code = str[ i ].charCodeAt( 0 );
-                            var pattern = get_pattern( code );
+                            var pattern = get_finger_pattern( code );
                             converted[ index ].pattern.push( pattern );
                             converted[ index ].code.push( code );
 
@@ -1744,7 +1759,7 @@ var CourseWrapper = function ( HC, Canvas, $el, Timer ) {
                 for ( var i = 0; i < str.length; i++ ) {
                     converted[ index ].text.push( str[ i ] );
                     var code = str[ i ].charCodeAt( 0 );
-                    var pattern = get_pattern( code );
+                    var pattern = get_finger_pattern( code );
                     converted[ index ].pattern.push( pattern );
                     converted[ index ].code.push( code );
                 }
@@ -1752,307 +1767,6 @@ var CourseWrapper = function ( HC, Canvas, $el, Timer ) {
             }
 
             return converted;
-
-            //returns finger highlighting pattern
-
-            //1-10 correponding finger from left to right
-            //11-14 right shift plus left hand four fingers
-            //15-18 left shift plus right hand four fingers
-            function get_pattern( code ) {
-
-                switch ( code ) {
-
-                    case 32:
-                        return 5;
-
-                    case 33:
-                        return 11;
-
-                    case 34:
-                        return 18;
-
-                    case 35:
-                        return 13;
-
-                    case 36:
-                        return 14;
-
-                    case 37:
-                        return 14;
-
-                    case 38:
-                        return 15;
-
-                    case 39:
-                        return 10;
-
-                    case 40:
-                        return 17;
-
-                    case 41:
-                        return 18;
-
-                    case 42:
-                        return 16;
-
-                    case '+':
-                        return 18;
-
-                    case 43:
-                        return 8;
-
-                    case 45:
-                        return 18;
-
-                    case 46:
-                        return 9;
-
-                    case 47:
-                        return 10;
-
-                    case 48:
-                        return 10;
-
-                    case 49:
-                        return 1;
-
-                    case 50:
-                        return 2;
-
-                    case 51:
-                        return 3;
-
-                    case 52:
-                        return 4;
-
-                    case 53:
-                        return 4;
-
-                    case 54:
-                        return 7;
-
-                    case 55:
-                        return 7;
-
-                    case 56:
-                        return 8;
-
-                    case 57:
-                        return 9;
-
-                    case 58:
-                        return 18;
-
-                    case 59:
-                        return 10;
-
-                    case 60:
-                        return 16;
-
-                    case 61:
-                        return 10;
-
-                    case 62:
-                        return 17;
-
-                    case 63:
-                        return 18;
-
-                    case 64:
-                        return 12;
-
-                    case 65:
-                        return 11;
-
-                    case 66:
-                        return 14;
-
-                    case 67:
-                        return 13;
-
-                    case 68:
-                        return 13;
-
-                    case 69:
-                        return 13;
-
-                    case 70:
-                        return 14;
-
-                    case 71:
-                        return 14;
-
-                    case 72:
-                        return 15;
-
-                    case 73:
-                        return 16;
-
-                    case 74:
-                        return 15;
-
-                    case 75:
-                        return 16;
-
-                    case 76:
-                        return 17;
-
-                    case 77:
-                        return 15;
-
-                    case 78:
-                        return 15;
-
-                    case 79:
-                        return 17;
-
-                    case 80:
-                        return 18;
-
-                    case 81:
-                        return 11;
-
-                    case 82:
-                        return 14;
-
-                    case 83:
-                        return 12;
-
-                    case 84:
-                        return 14;
-
-                    case 85:
-                        return 15;
-
-                    case 86:
-                        return 14;
-
-                    case 87:
-                        return 12;
-
-                    case 88:
-                        return 12;
-
-                    case 89:
-                        return 15;
-
-                    case 90:
-                        return 11;
-
-                    case 91:
-                        return 10;
-
-                    case 92:
-                        return 10;
-
-                    case 93:
-                        return 10;
-
-                    case 94:
-                        return 15;
-
-                    case 95:
-                        return 18;
-
-                    case 96:
-                        return 1;
-
-                    case 97:
-                        return 1;
-
-                    case 98:
-                        return 4;
-
-                    case 99:
-                        return 3;
-
-                    case 100:
-                        return 3;
-
-                    case 101:
-                        return 3;
-
-                    case 102:
-                        return 4;
-
-                    case 103:
-                        return 4;
-
-                    case 104:
-                        return 7;
-
-                    case 105:
-                        return 8;
-
-                    case 106:
-                        return 7;
-
-                    case 107:
-                        return 8;
-
-                    case 108:
-                        return 9;
-
-                    case 109:
-                        return 7;
-
-                    case 110:
-                        return 7;
-
-                    case 111:
-                        return 9;
-
-                    case 112:
-                        return 10;
-
-                    case 113:
-                        return 1;
-
-                    case 114:
-                        return 4;
-
-                    case 115:
-                        return 2;
-
-                    case 116:
-                        return 4;
-
-                    case 117:
-                        return 7;
-
-                    case 118:
-                        return 4;
-
-                    case 119:
-                        return 2;
-
-                    case 120:
-                        return 2;
-
-                    case 121:
-                        return 7;
-
-                    case 122:
-                        return 1;
-
-                    case 123:
-                        return 18;
-
-                    case 124:
-                        return 18;
-
-                    case 125:
-                        return 18;
-
-                    case 126:
-                        return 11;
-
-                    default:
-                        return 0;
-
-                }
-
-            } //end of get_pattern module
 
         } 
         // END: convertJson module
@@ -2074,6 +1788,8 @@ module.exports = CourseWrapper;
 //start of Hotcold object
 
 var Hotcold = {
+
+    layout: "qwerty",
 
     key_interval: 0,
     hits: 0,
@@ -2410,11 +2126,13 @@ module.exports = TimerWrapper;
 },{}],7:[function(require,module,exports){
 var Hotcold = require( "./Hotcold.js" ),
     jquery_el = require( "./jquery_el.js" ),
+    Fingers = require( "./fingers.json" ),
     Theme = require( "./Theme.js" ),
     Canvas = require( "./Canvas.js" )( Hotcold, jquery_el, Theme ),
     Timer = require( "./Timer.js" )( Hotcold, jquery_el, Theme, Canvas ),
     Canvas = require( "./Canvas.js" )( Hotcold, jquery_el, Theme ),
-    Course = require( "./Course.js" )( Hotcold, Canvas, jquery_el, Timer );
+    Course = require( "./Course.js" )( Hotcold, Canvas, jquery_el, Timer, Fingers ),
+    KB = require( "./layouts.json" );
 
 var HC_CONFIG = require( "../../config.json" );
 
@@ -2423,9 +2141,100 @@ var APP = {
     $el: jquery_el,
 
     start: function () {
-        console.log( "config ", HC_CONFIG );
+        console.log( "config ", HC_CONFIG, KB, _ );
+
+        this.initKeyboardLayouts();
+
         this.initializeEvents();
         this.initAppMode();
+    },
+
+    initKeyboardLayouts: function () {
+        console.log("Porumai! initing keyboard events ", Hotcold.layout, _.keys( KB ) );
+        var self = this; // save reference
+
+        var $keyboard, $row, $main_key, $top_k, $bottom_k;
+
+        // main keyboard div
+        $keyboard = $("<div>")
+                        .attr("id", this.layout);
+
+        // generate rows from the layout data
+        _.each( KB[Hotcold.layout], function (key_data, row) {
+
+            // generating main row
+            $row = $("<section>")
+                        .attr("id", row);
+
+
+            // generating keys for the row
+            _.each( key_data, function (key) {
+
+                // check if the key is special
+                if (key.special) {
+                    // this is a special key
+                    $main_key = $("<span>")
+                                    .attr("id", key.id)
+                                    .addClass("keys");
+
+                    $main_key
+                        // append the top key
+                        .append(
+                            $("<div>")
+                                .addClass("top-k")
+                                .html( key.keys[0] ? key.keys[0] : "&nbsp;" )
+                        )
+                        // append the bottom key
+                        .append(
+                            $("<div>")
+                                .addClass("bottom-k")
+                                .html( key.keys[1] ? key.keys[1] : "&nbsp;" )
+                        )
+
+                    // all done; append the key to the row
+                    $row.append( $main_key );
+                } 
+                // normal key
+                else {
+                    // in current logic, key id is character code of the top key
+                    var key_id = key.keys[0].toLowerCase().charCodeAt(0);
+
+                    $main_key = $("<span>")
+                                    .attr("id", "key_" + key_id)
+                                    .addClass("keys");
+
+                    
+                    $main_key
+                        // append the top key
+                        .append(
+                            $("<div>")
+                                .addClass("top-k")
+                                .html( key.keys[0] )
+                        )
+                        // append the bottom key
+                        .append(
+                            $("<div>")
+                                .addClass("bottom-k")
+                                .html( key.keys[1] ? key.keys[1] : "&nbsp;" )
+                        )
+
+                    // all done; append the key to the row
+                    $row.append( $main_key );
+                }
+
+            } );
+
+            // all done; append the row to the keyboard
+            $keyboard.append( $row );
+
+        } );
+
+        // keyboard generated
+        // clear the existing keyboard div
+        self.$el.keyboard_layout.empty();
+        // append the new layout to the keyboard div
+        self.$el.keyboard_layout.html( $keyboard );
+
     },
 
     // ----------------------------------------------------
@@ -3137,7 +2946,202 @@ var APP = {
 // start the APP on doc ready
 APP.start();
 
-},{"../../config.json":1,"./Canvas.js":2,"./Course.js":3,"./Hotcold.js":4,"./Theme.js":5,"./Timer.js":6,"./jquery_el.js":8}],8:[function(require,module,exports){
+},{"../../config.json":1,"./Canvas.js":2,"./Course.js":3,"./Hotcold.js":4,"./Theme.js":5,"./Timer.js":6,"./fingers.json":8,"./jquery_el.js":9,"./layouts.json":10}],8:[function(require,module,exports){
+module.exports={
+    "qwerty": {
+        "0": 10,
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4,
+        "5": 4,
+        "6": 7,
+        "7": 7,
+        "8": 8,
+        "9": 9,
+        "~": 11,
+        "`": 1,
+        "!": 11,
+        "@": 12,
+        "#": 13,
+        "$": 14,
+        "%": 14,
+        "^": 15,
+        "&": 15,
+        "*": 16,
+        "(": 17,
+        ")": 18,
+        "_": 18,
+        "-": 18,
+        "+": 8,
+        "=": 10,
+        "q": 1,
+        "Q": 11,
+        "w": 2,
+        "W": 12,
+        "e": 3,
+        "E": 13,
+        "r": 4,
+        "R": 14,
+        "t": 4,
+        "T": 14,
+        "y": 7,
+        "Y": 15,
+        "u": 7,
+        "U": 15,
+        "i": 8,
+        "I": 16,
+        "o": 9,
+        "O": 17,
+        "p": 10,
+        "P": 18,
+        "{": 18,
+        "[": 10,
+        "}": 18,
+        "]": 10,
+        "|": 18,
+        "\\": 10,
+        "a": 1,
+        "A": 11,
+        "s": 2,
+        "S": 12,
+        "d": 3,
+        "D": 13,
+        "f": 4,
+        "F": 14,
+        "g": 4,
+        "G": 14,
+        "h": 7,
+        "H": 15,
+        "j": 7,
+        "J": 15,
+        "k": 8,
+        "K": 16,
+        "l": 9,
+        "L": 17,
+        ":": 18,
+        ";": 10,
+        "\"": 18,
+        "'": 10,
+        "z": 1,
+        "Z": 11,
+        "x": 2,
+        "X": 12,
+        "c": 3,
+        "C": 13,
+        "v": 4,
+        "V": 14,
+        "b": 4,
+        "B": 14,
+        "n": 7,
+        "N": 15,
+        "m": 7,
+        "M": 15,
+        "<": 16,
+        ",": 0,
+        ">": 17,
+        ".": 9,
+        "?": 18,
+        "/": 10
+    },
+
+    "dvorak": {
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": ""
+    }
+
+}
+
+},{}],9:[function(require,module,exports){
 // all the jquery elements of the Hotcold app
 var $el = {
 
@@ -3158,6 +3162,7 @@ var $el = {
     themes: $(".theme"),
 
     keys: $( '.keys' ),
+    keyboard_layout: $( "#keyboard_layout" ),
     f_canvas_holder: $( '#finger_canvas_holder' ),
     f_span_holder: $("#fin_spans"),
     backlit: $( '.backlit' ),
@@ -3276,4 +3281,267 @@ var $el = {
 
 module.exports = $el;
 
+},{}],10:[function(require,module,exports){
+module.exports={
+    "qwerty": {
+        
+        "num_row": [
+            {
+                "keys": ["~", "`"]
+            },
+            {
+                "keys": ["!", "1"]
+            },
+            {
+                "keys": ["@", "2"]
+            },
+            {
+                "keys": ["#", "3"]
+            },
+            {
+                "keys": ["$", "4"]
+            },
+            {
+                "keys": ["%", "5"]
+            },
+            {
+                "keys": ["^", "6"]
+            },
+            {
+                "keys": ["&", "7"]
+            },
+            {
+                "keys": ["*", "8"]
+            },
+            {
+                "keys": ["(", "9"]
+            },
+            {
+                "keys": [")", "0"]
+            },
+            {
+                "keys": ["-", "_"]
+            },
+            {
+                "keys": ["+", "="]
+            },
+            {
+                "keys": ["bksp", ""]
+            }
+        ],
+
+        "top_row": [
+
+            {
+                "special": "true",
+                "id": "tab_key",
+                "keys": ["Tab", ""]
+            },
+
+            {
+                "keys": ["Q", ""]
+            },
+
+            {
+                "keys": ["W", ""]
+            },
+
+            {
+                "keys": ["E", ""]
+            },
+
+            {
+                "keys": ["R", ""]
+            },
+
+            {
+                "keys": ["T", ""]
+            },
+
+            {
+                "keys": ["Y", ""]
+            },
+
+            {
+                "keys": ["U", ""]
+            },
+
+            {
+                "keys": ["I", ""]
+            },
+
+            {
+                "keys": ["O", ""]
+            },
+
+            {
+                "keys": ["P", ""]
+            },
+
+            {
+                "keys": ["{", "["]
+            },
+
+            {
+                "keys": ["}", "]"]
+            },
+
+            {
+                "keys": ["|", "\\"]
+            },
+
+        ],
+
+        "middle_row": [
+
+            {
+                "special": "true",
+                "id": "caps_key",
+                "keys": ["Caps", ""]
+            },
+
+            {
+                "keys": ["A", ""]
+            },
+
+            {
+                "keys": ["S", ""]
+            },
+
+            {
+                "keys": ["D", ""]
+            },
+
+            {
+                "keys": ["F", ""]
+            },
+
+            {
+                "keys": ["G", ""]
+            },
+
+            {
+                "keys": ["H", ""]
+            },
+
+            {
+                "keys": ["J", ""]
+            },
+
+            {
+                "keys": ["K", ""]
+            },
+
+            {
+                "keys": ["L", ""]
+            },
+
+            {
+                "keys": [":", ";"]
+            },
+
+            {
+                "keys": ["\"", "'"]
+            },
+
+            {
+                "special": "true",
+                "id": "enter_key",
+                "keys": ["Enter", ""]
+            }            
+
+        ],
+
+        "bottom_row": [
+
+            {
+                "special": "true",
+                "id": "shift_left",
+                "keys": ["Shift", ""]
+            },
+
+            {
+                "keys": ["Z", ""]
+            },
+
+            {
+                "keys": ["X", ""]
+            },
+
+            {
+                "keys": ["C", ""]
+            },
+
+            {
+                "keys": ["V", ""]
+            },
+
+            {
+                "keys": ["B", ""]
+            },
+
+            {
+                "keys": ["N", ""]
+            },
+
+            {
+                "keys": ["M", ""]
+            },
+
+            {
+                "keys": ["<", ","]
+            },
+
+            {
+                "keys": [">", "."]
+            },
+
+            {
+                "keys": ["?", "\/"]
+            },
+
+            {
+                "special": "true",
+                "id": "shift_right",
+                "keys": ["Shift", ""]
+            },
+
+        ],
+
+        "space_row": [
+
+            {
+                "special": "true",
+                "id": "ctrl_left",
+                "keys": ["Ctrl", ""]
+            },
+
+            {
+                "special": "true",
+                "id": "alt_left",
+                "keys": ["Alt", ""]
+            },
+
+            {
+                "special": "true",
+                "id": "key_32",
+                "keys": ["", ""]
+            },
+
+            {
+                "special": "true",
+                "id": "ctrl_right",
+                "keys": ["Ctrl", ""]
+            },
+
+            {
+                "special": "true",
+                "id": "alt_right",
+                "keys": ["Alt", ""]
+            }
+
+        ]
+
+    }
+}
 },{}]},{},[7]);

@@ -1,10 +1,12 @@
 var Hotcold = require( "./Hotcold.js" ),
     jquery_el = require( "./jquery_el.js" ),
+    Fingers = require( "./fingers.json" ),
     Theme = require( "./Theme.js" ),
     Canvas = require( "./Canvas.js" )( Hotcold, jquery_el, Theme ),
     Timer = require( "./Timer.js" )( Hotcold, jquery_el, Theme, Canvas ),
     Canvas = require( "./Canvas.js" )( Hotcold, jquery_el, Theme ),
-    Course = require( "./Course.js" )( Hotcold, Canvas, jquery_el, Timer );
+    Course = require( "./Course.js" )( Hotcold, Canvas, jquery_el, Timer, Fingers ),
+    KB = require( "./layouts.json" );
 
 var HC_CONFIG = require( "../../config.json" );
 
@@ -13,9 +15,100 @@ var APP = {
     $el: jquery_el,
 
     start: function () {
-        console.log( "config ", HC_CONFIG );
+        console.log( "config ", HC_CONFIG, KB, _ );
+
+        this.initKeyboardLayouts();
+
         this.initializeEvents();
         this.initAppMode();
+    },
+
+    initKeyboardLayouts: function () {
+        console.log("Porumai! initing keyboard events ", Hotcold.layout, _.keys( KB ) );
+        var self = this; // save reference
+
+        var $keyboard, $row, $main_key, $top_k, $bottom_k;
+
+        // main keyboard div
+        $keyboard = $("<div>")
+                        .attr("id", this.layout);
+
+        // generate rows from the layout data
+        _.each( KB[Hotcold.layout], function (key_data, row) {
+
+            // generating main row
+            $row = $("<section>")
+                        .attr("id", row);
+
+
+            // generating keys for the row
+            _.each( key_data, function (key) {
+
+                // check if the key is special
+                if (key.special) {
+                    // this is a special key
+                    $main_key = $("<span>")
+                                    .attr("id", key.id)
+                                    .addClass("keys");
+
+                    $main_key
+                        // append the top key
+                        .append(
+                            $("<div>")
+                                .addClass("top-k")
+                                .html( key.keys[0] ? key.keys[0] : "&nbsp;" )
+                        )
+                        // append the bottom key
+                        .append(
+                            $("<div>")
+                                .addClass("bottom-k")
+                                .html( key.keys[1] ? key.keys[1] : "&nbsp;" )
+                        )
+
+                    // all done; append the key to the row
+                    $row.append( $main_key );
+                } 
+                // normal key
+                else {
+                    // in current logic, key id is character code of the top key
+                    var key_id = key.keys[0].toLowerCase().charCodeAt(0);
+
+                    $main_key = $("<span>")
+                                    .attr("id", "key_" + key_id)
+                                    .addClass("keys");
+
+                    
+                    $main_key
+                        // append the top key
+                        .append(
+                            $("<div>")
+                                .addClass("top-k")
+                                .html( key.keys[0] )
+                        )
+                        // append the bottom key
+                        .append(
+                            $("<div>")
+                                .addClass("bottom-k")
+                                .html( key.keys[1] ? key.keys[1] : "&nbsp;" )
+                        )
+
+                    // all done; append the key to the row
+                    $row.append( $main_key );
+                }
+
+            } );
+
+            // all done; append the row to the keyboard
+            $keyboard.append( $row );
+
+        } );
+
+        // keyboard generated
+        // clear the existing keyboard div
+        self.$el.keyboard_layout.empty();
+        // append the new layout to the keyboard div
+        self.$el.keyboard_layout.html( $keyboard );
+
     },
 
     // ----------------------------------------------------

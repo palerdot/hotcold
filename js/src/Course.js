@@ -1,9 +1,10 @@
-var CourseWrapper = function ( HC, Canvas, $el, Timer ) {
+var CourseWrapper = function ( HC, Canvas, $el, Timer, Fingers ) {
 
     var Hotcold = HC,
         Canvas = Canvas,
         $el = $el,
-        Timer = Timer;
+        Timer = Timer,
+        Fingers = Fingers;
 
     function Course() {
 
@@ -1043,6 +1044,20 @@ var CourseWrapper = function ( HC, Canvas, $el, Timer ) {
         }
         // END: get_numeric_div
 
+        //returns finger highlighting pattern
+
+        //1-10 correponding finger from left to right
+        //11-14 right shift plus left hand four fingers
+        //15-18 left shift plus right hand four fingers
+        function get_finger_pattern( code ) {
+
+            var char = String.fromCharCode( code ),
+                pattern = Fingers[ Hotcold.layout ][ char ];
+
+            return  pattern;
+
+        } //end of get_finger_pattern module
+
         // START: convertJson module
         function convertJson() {
 
@@ -1085,7 +1100,7 @@ var CourseWrapper = function ( HC, Canvas, $el, Timer ) {
                         for ( var i = 0; i < last_space; i++ ) {
                             converted[ index ].text.push( str[ i ] );
                             var code = str[ i ].charCodeAt( 0 );
-                            var pattern = get_pattern( code );
+                            var pattern = get_finger_pattern( code );
                             converted[ index ].pattern.push( pattern );
                             converted[ index ].code.push( code );
                         }
@@ -1103,7 +1118,7 @@ var CourseWrapper = function ( HC, Canvas, $el, Timer ) {
                         for ( var i = 0; i < last_index; i++ ) {
                             converted[ index ].text.push( str[ i ] );
                             var code = str[ i ].charCodeAt( 0 );
-                            var pattern = get_pattern( code );
+                            var pattern = get_finger_pattern( code );
                             converted[ index ].pattern.push( pattern );
                             converted[ index ].code.push( code );
                         }
@@ -1122,7 +1137,7 @@ var CourseWrapper = function ( HC, Canvas, $el, Timer ) {
                         for ( var i = 0; i < str.length; i++ ) {
                             converted[ index ].text.push( str[ i ] );
                             var code = str[ i ].charCodeAt( 0 );
-                            var pattern = get_pattern( code );
+                            var pattern = get_finger_pattern( code );
                             converted[ index ].pattern.push( pattern );
                             converted[ index ].code.push( code );
 
@@ -1141,7 +1156,7 @@ var CourseWrapper = function ( HC, Canvas, $el, Timer ) {
                 for ( var i = 0; i < str.length; i++ ) {
                     converted[ index ].text.push( str[ i ] );
                     var code = str[ i ].charCodeAt( 0 );
-                    var pattern = get_pattern( code );
+                    var pattern = get_finger_pattern( code );
                     converted[ index ].pattern.push( pattern );
                     converted[ index ].code.push( code );
                 }
@@ -1149,307 +1164,6 @@ var CourseWrapper = function ( HC, Canvas, $el, Timer ) {
             }
 
             return converted;
-
-            //returns finger highlighting pattern
-
-            //1-10 correponding finger from left to right
-            //11-14 right shift plus left hand four fingers
-            //15-18 left shift plus right hand four fingers
-            function get_pattern( code ) {
-
-                switch ( code ) {
-
-                    case 32:
-                        return 5;
-
-                    case 33:
-                        return 11;
-
-                    case 34:
-                        return 18;
-
-                    case 35:
-                        return 13;
-
-                    case 36:
-                        return 14;
-
-                    case 37:
-                        return 14;
-
-                    case 38:
-                        return 15;
-
-                    case 39:
-                        return 10;
-
-                    case 40:
-                        return 17;
-
-                    case 41:
-                        return 18;
-
-                    case 42:
-                        return 16;
-
-                    case '+':
-                        return 18;
-
-                    case 43:
-                        return 8;
-
-                    case 45:
-                        return 18;
-
-                    case 46:
-                        return 9;
-
-                    case 47:
-                        return 10;
-
-                    case 48:
-                        return 10;
-
-                    case 49:
-                        return 1;
-
-                    case 50:
-                        return 2;
-
-                    case 51:
-                        return 3;
-
-                    case 52:
-                        return 4;
-
-                    case 53:
-                        return 4;
-
-                    case 54:
-                        return 7;
-
-                    case 55:
-                        return 7;
-
-                    case 56:
-                        return 8;
-
-                    case 57:
-                        return 9;
-
-                    case 58:
-                        return 18;
-
-                    case 59:
-                        return 10;
-
-                    case 60:
-                        return 16;
-
-                    case 61:
-                        return 10;
-
-                    case 62:
-                        return 17;
-
-                    case 63:
-                        return 18;
-
-                    case 64:
-                        return 12;
-
-                    case 65:
-                        return 11;
-
-                    case 66:
-                        return 14;
-
-                    case 67:
-                        return 13;
-
-                    case 68:
-                        return 13;
-
-                    case 69:
-                        return 13;
-
-                    case 70:
-                        return 14;
-
-                    case 71:
-                        return 14;
-
-                    case 72:
-                        return 15;
-
-                    case 73:
-                        return 16;
-
-                    case 74:
-                        return 15;
-
-                    case 75:
-                        return 16;
-
-                    case 76:
-                        return 17;
-
-                    case 77:
-                        return 15;
-
-                    case 78:
-                        return 15;
-
-                    case 79:
-                        return 17;
-
-                    case 80:
-                        return 18;
-
-                    case 81:
-                        return 11;
-
-                    case 82:
-                        return 14;
-
-                    case 83:
-                        return 12;
-
-                    case 84:
-                        return 14;
-
-                    case 85:
-                        return 15;
-
-                    case 86:
-                        return 14;
-
-                    case 87:
-                        return 12;
-
-                    case 88:
-                        return 12;
-
-                    case 89:
-                        return 15;
-
-                    case 90:
-                        return 11;
-
-                    case 91:
-                        return 10;
-
-                    case 92:
-                        return 10;
-
-                    case 93:
-                        return 10;
-
-                    case 94:
-                        return 15;
-
-                    case 95:
-                        return 18;
-
-                    case 96:
-                        return 1;
-
-                    case 97:
-                        return 1;
-
-                    case 98:
-                        return 4;
-
-                    case 99:
-                        return 3;
-
-                    case 100:
-                        return 3;
-
-                    case 101:
-                        return 3;
-
-                    case 102:
-                        return 4;
-
-                    case 103:
-                        return 4;
-
-                    case 104:
-                        return 7;
-
-                    case 105:
-                        return 8;
-
-                    case 106:
-                        return 7;
-
-                    case 107:
-                        return 8;
-
-                    case 108:
-                        return 9;
-
-                    case 109:
-                        return 7;
-
-                    case 110:
-                        return 7;
-
-                    case 111:
-                        return 9;
-
-                    case 112:
-                        return 10;
-
-                    case 113:
-                        return 1;
-
-                    case 114:
-                        return 4;
-
-                    case 115:
-                        return 2;
-
-                    case 116:
-                        return 4;
-
-                    case 117:
-                        return 7;
-
-                    case 118:
-                        return 4;
-
-                    case 119:
-                        return 2;
-
-                    case 120:
-                        return 2;
-
-                    case 121:
-                        return 7;
-
-                    case 122:
-                        return 1;
-
-                    case 123:
-                        return 18;
-
-                    case 124:
-                        return 18;
-
-                    case 125:
-                        return 18;
-
-                    case 126:
-                        return 11;
-
-                    default:
-                        return 0;
-
-                }
-
-            } //end of get_pattern module
 
         } 
         // END: convertJson module

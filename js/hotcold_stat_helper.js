@@ -25,16 +25,13 @@ for ( var i = 32; i < 127; i++ ) {
     keys[ 32 ].key = 'space';
 
     if ( i >= 65 && i <= 90 ) {
-
-        //we have caps letters; assign them appropriate divs of small letters in the virtual keyboard;
-
+        //we have caps letters; assign them appropriate divs of small letters in the virtual keyboard
         var temp = String.fromCharCode( i ).toLowerCase().charCodeAt( 0 );
         keys[ i ].div_id = '#key_' + temp;
 
     }
 
     if ( i >= 48 && i <= 57 ) {
-
         // we have numbers (top row) assign them the appropriate divs	
         var temp = get_numeric_div( i );
         keys[ i ].div_id = '#key_' + temp;

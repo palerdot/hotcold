@@ -2,6 +2,8 @@
 
 var Hotcold = {
 
+    layout: "qwerty",
+
     key_interval: 0,
     hits: 0,
     correct: 0,

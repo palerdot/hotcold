@@ -18,6 +18,7 @@ var $el = {
     themes: $(".theme"),
 
     keys: $( '.keys' ),
+    keyboard_layout: $( "#keyboard_layout" ),
     f_canvas_holder: $( '#finger_canvas_holder' ),
     f_span_holder: $("#fin_spans"),
     backlit: $( '.backlit' ),

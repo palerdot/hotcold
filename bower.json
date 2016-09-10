@@ -1,58 +1,62 @@
 {
-    "name": "hotcold",
-    "description": "Interactive Touch Typing learning application with live graphs and statistics",
-    "main": "",
-    "authors": [
-        "palerdot"
-    ],
-    "license": "",
-    "keywords": [
-        "touch-typing"
-    ],
-    "homepage": "http://hotcoldtyping.com",
-    "moduleType": [
-        "globals"
-    ],
-    "private": true,
-    "ignore": [
-        "**/.*",
-        "node_modules",
-        "bower_components",
-        "test",
-        "tests"
-    ],
-    "dependencies": {
-        "jquery": "2.2.4",
-        "bootstrap": "^3.3.6",
-        "components-font-awesome": "^4.6.3"
+  "name": "hotcold",
+  "description": "Interactive Touch Typing learning application with live graphs and statistics",
+  "main": "",
+  "authors": [
+    "palerdot"
+  ],
+  "license": "",
+  "keywords": [
+    "touch-typing"
+  ],
+  "homepage": "http://hotcoldtyping.com",
+  "moduleType": [
+    "globals"
+  ],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "2.2.4",
+    "bootstrap": "^3.3.6",
+    "components-font-awesome": "^4.6.3",
+    "underscore": "^1.8.3"
+  },
+  "resolutions": {
+    "jquery": "2.2.4"
+  },
+  "overrides": {
+    "jquery": {
+      "main": "dist/jquery.min.js"
     },
-    "resolutions": {
-        "jquery": "2.2.4"
+    "underscore": {
+        "main": "underscore-min.js"
     },
-    "overrides": {
-        "jquery": {
-            "main": "dist/jquery.min.js"
-        },
-        "bootstrap": {
-            "main": [
-                "dist/js/bootstrap.min.js",
-                "dist/css/bootstrap.min.css",
-                "dist/fonts/glyphicons-halflings-regular.eot",
-                "dist/fonts/glyphicons-halflings-regular.svg",
-                "dist/fonts/glyphicons-halflings-regular.ttf",
-                "dist/fonts/glyphicons-halflings-regular.woff",
-                "dist/fonts/glyphicons-halflings-regular.woff2"
-            ]
-        },
-        "components-font-awesome": {
-            "main": [
-                "css/font-awesome.min.css",
-                "fonts/fontawesome-webfont.eot",
-                "fonts/fontawesome-webfont.woff",
-                "fonts/fontawesome-webfont.woff2",
-                "fonts/fontawesome-webfont.ttf",
-                "fonts/fontawesome-webfont.svg"
-            ]
-        } 
+    "bootstrap": {
+      "main": [
+        "dist/js/bootstrap.min.js",
+        "dist/css/bootstrap.min.css",
+        "dist/fonts/glyphicons-halflings-regular.eot",
+        "dist/fonts/glyphicons-halflings-regular.svg",
+        "dist/fonts/glyphicons-halflings-regular.ttf",
+        "dist/fonts/glyphicons-halflings-regular.woff",
+        "dist/fonts/glyphicons-halflings-regular.woff2"
+      ]
+    },
+    "components-font-awesome": {
+      "main": [
+        "css/font-awesome.min.css",
+        "fonts/fontawesome-webfont.eot",
+        "fonts/fontawesome-webfont.woff",
+        "fonts/fontawesome-webfont.woff2",
+        "fonts/fontawesome-webfont.ttf",
+        "fonts/fontawesome-webfont.svg"
+      ]
     }
+  }
 }

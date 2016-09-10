@@ -1,0 +1,262 @@
+{
+    "qwerty": {
+        
+        "num_row": [
+            {
+                "keys": ["~", "`"]
+            },
+            {
+                "keys": ["!", "1"]
+            },
+            {
+                "keys": ["@", "2"]
+            },
+            {
+                "keys": ["#", "3"]
+            },
+            {
+                "keys": ["$", "4"]
+            },
+            {
+                "keys": ["%", "5"]
+            },
+            {
+                "keys": ["^", "6"]
+            },
+            {
+                "keys": ["&", "7"]
+            },
+            {
+                "keys": ["*", "8"]
+            },
+            {
+                "keys": ["(", "9"]
+            },
+            {
+                "keys": [")", "0"]
+            },
+            {
+                "keys": ["-", "_"]
+            },
+            {
+                "keys": ["+", "="]
+            },
+            {
+                "keys": ["bksp", ""]
+            }
+        ],
+
+        "top_row": [
+
+            {
+                "special": "true",
+                "id": "tab_key",
+                "keys": ["Tab", ""]
+            },
+
+            {
+                "keys": ["Q", ""]
+            },
+
+            {
+                "keys": ["W", ""]
+            },
+
+            {
+                "keys": ["E", ""]
+            },
+
+            {
+                "keys": ["R", ""]
+            },
+
+            {
+                "keys": ["T", ""]
+            },
+
+            {
+                "keys": ["Y", ""]
+            },
+
+            {
+                "keys": ["U", ""]
+            },
+
+            {
+                "keys": ["I", ""]
+            },
+
+            {
+                "keys": ["O", ""]
+            },
+
+            {
+                "keys": ["P", ""]
+            },
+
+            {
+                "keys": ["{", "["]
+            },
+
+            {
+                "keys": ["}", "]"]
+            },
+
+            {
+                "keys": ["|", "\\"]
+            },
+
+        ],
+
+        "middle_row": [
+
+            {
+                "special": "true",
+                "id": "caps_key",
+                "keys": ["Caps", ""]
+            },
+
+            {
+                "keys": ["A", ""]
+            },
+
+            {
+                "keys": ["S", ""]
+            },
+
+            {
+                "keys": ["D", ""]
+            },
+
+            {
+                "keys": ["F", ""]
+            },
+
+            {
+                "keys": ["G", ""]
+            },
+
+            {
+                "keys": ["H", ""]
+            },
+
+            {
+                "keys": ["J", ""]
+            },
+
+            {
+                "keys": ["K", ""]
+            },
+
+            {
+                "keys": ["L", ""]
+            },
+
+            {
+                "keys": [":", ";"]
+            },
+
+            {
+                "keys": ["\"", "'"]
+            },
+
+            {
+                "special": "true",
+                "id": "enter_key",
+                "keys": ["Enter", ""]
+            }            
+
+        ],
+
+        "bottom_row": [
+
+            {
+                "special": "true",
+                "id": "shift_left",
+                "keys": ["Shift", ""]
+            },
+
+            {
+                "keys": ["Z", ""]
+            },
+
+            {
+                "keys": ["X", ""]
+            },
+
+            {
+                "keys": ["C", ""]
+            },
+
+            {
+                "keys": ["V", ""]
+            },
+
+            {
+                "keys": ["B", ""]
+            },
+
+            {
+                "keys": ["N", ""]
+            },
+
+            {
+                "keys": ["M", ""]
+            },
+
+            {
+                "keys": ["<", ","]
+            },
+
+            {
+                "keys": [">", "."]
+            },
+
+            {
+                "keys": ["?", "\/"]
+            },
+
+            {
+                "special": "true",
+                "id": "shift_right",
+                "keys": ["Shift", ""]
+            },
+
+        ],
+
+        "space_row": [
+
+            {
+                "special": "true",
+                "id": "ctrl_left",
+                "keys": ["Ctrl", ""]
+            },
+
+            {
+                "special": "true",
+                "id": "alt_left",
+                "keys": ["Alt", ""]
+            },
+
+            {
+                "special": "true",
+                "id": "key_32",
+                "keys": ["", ""]
+            },
+
+            {
+                "special": "true",
+                "id": "ctrl_right",
+                "keys": ["Ctrl", ""]
+            },
+
+            {
+                "special": "true",
+                "id": "alt_right",
+                "keys": ["Alt", ""]
+            }
+
+        ]
+
+    }
+}
