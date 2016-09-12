@@ -13,6 +13,12 @@ var $el = {
     c_tab: $( '#course_tab' ),
     c_course: $( '#create_course_tab' ),
 
+    lesson_headers: $(" #lesson-headers "),
+    lesson_details: $(" #lesson-details "),
+
+    template_lh: $("#lesson-header-template"),
+    template_ci: $( "#course-info-template" ),
+
     d_theme: $( '#day_theme' ),
     n_theme: $( '#night_theme' ),
     themes: $(".theme"),
@@ -56,32 +62,6 @@ var $el = {
     dtp: $( '#day_theme_preview' ),
     ntp: $( '#night_theme_preview' ),
 
-    lc_temp: $( '#launch_course_temp' ),
-
-    lc1: $( '#launch_course_1' ),
-    lc2: $( '#launch_course_2' ),
-    lc3: $( '#launch_course_3' ),
-    lc4: $( '#launch_course_4' ),
-    lc5: $( '#launch_course_5' ),
-    lc6: $( '#launch_course_6' ),
-    lc7: $( '#launch_course_7' ),
-    lc8: $( '#launch_course_8' ),
-    lc9: $( '#launch_course_9' ),
-    lc10: $( '#launch_course_10' ),
-    lc11: $( '#launch_course_11' ),
-    lc12: $( '#launch_course_12' ),
-    lc13: $( '#launch_course_13' ),
-    lc14: $( '#launch_course_14' ),
-    lc15: $( '#launch_course_15' ),
-    lc16: $( '#launch_course_16' ),
-    lc17: $( '#launch_course_17' ),
-    lc18: $( '#launch_course_18' ),
-
-    lp: $( '#launch_poem' ),
-    lq1: $( '#launch_quote_1' ),
-    lq2: $( '#launch_quote_2' ),
-    lq3: $( '#launch_quote_3' ),
-
     pause_button: $("#pause_button"),
     resume_button: $("#resume_button"),
 
@@ -100,10 +80,7 @@ var $el = {
     
 
     prepare_lesson: $( '#custom_lesson_launch' ),
-    sp1: $( '#show_all_key_page_1' ),
-    sp2: $( '#show_all_key_page_2' ),
-    akp1: $( '#all_key_page_1' ),
-    akp2: $( '#all_key_page_2' ),
+    
 
     space: $( '#key_32' ),
     space_to_start: $( '#space_to_start' ),

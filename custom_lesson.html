@@ -1,0 +1,111 @@
+<div id="custom_lesson_form" class="col-md-12">
+    <div id="lesson_input_holder" class="row">
+        <div class="col-md-12 p-none">
+            <div class="col-md-8 p-none">
+                <label for="custom_lesson_input" id="custom_lesson_input_label">Enter course text: </label>
+            </div>
+            <div class="col-md-4 text-right p-none">
+                <button id="clear_custom_lesson_input" class="btn btn-danger btn-xs">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Clear
+                </button>
+            </div>
+        </div>
+        <textarea id="custom_lesson_input" rows="5" class="col-md-12"></textarea>
+        <div id="total_char_label" class="row col-md-12">
+            <div class="col-md-3 p-none">Total Characters : </div>
+            <div id="total_characters" class="col-md-1 text-left">0</div>
+            <div class="col-md-8 p-none">
+                <div id="no_input_error" class="">
+                    Please enter Course Text!
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="custom_time_tables" class="text-center row">
+        <div class="col-md-3 p-none">
+            <table id="course_time" class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th class="text-center">Course Duration</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-left">
+                            <label class="radio">
+                                <input type="radio" name="custom_time" id="free_course_time" value="1" checked />1 minute
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="border-bot-none text-left">
+                            <label class="radio">
+                                <input type="radio" name="custom_time" id="custom_course_time" value="3" /> Custom
+                                <div class="pro-label"></div>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="border-top-none">
+                            <select id="custom_course_duration" class="form-control">
+                                <option value="2">2 minutes</option>
+                                <option value="3">3 minutes</option>
+                                <option value="4">4 minutes</option>
+                                <option value="5">5 minutes</option>
+                                <option value="6">6 minutes</option>
+                                <option value="7">7 minutes</option>
+                                <option value="8">8 minutes</option>
+                                <option value="9">9 minutes</option>
+                                <option value="10">10 minutes</option>
+                            </select>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-9 p-right-none">
+            <table id="course_time_info" class="table table-bordered">
+                <thead class="btn-inverse">
+                    <tr>
+                        <th width="20%">Timing info</th>
+                        <th width="40%">1 minute</th>
+                        <th width="40%">
+                            <span class="custom_duration_placeholder">2</span> minutes
+                            <span class="pro-label"></span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="btn-success">
+                        <td>easy</td>
+                        <td>&lt; 125 chars (approx)</td>
+                        <td>
+                            &lt;
+                            <span class="custom_duration_easy_placeholder">250</span> chars (approx)
+                        </td>
+                    </tr>
+                    <tr class="btn-warning">
+                        <td>medium</td>
+                        <td>125-250 chars (approx)</td>
+                        <td>
+                            <span class="custom_duration_medium_placeholder">250 - 500</span> chars (approx)
+                        </td>
+                    </tr>
+                    <tr class="btn-danger">
+                        <td>hard</td>
+                        <td>&gt; 250 chars (approx)</td>
+                        <td>
+                            &gt;
+                            <span class="custom_duration_hard_placeholder">500</span> chars (approx)
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class=" col-md-12 text-center">
+        <button id="custom_lesson_launch" class="btn btn-large btn-success">
+            Prepare and Launch
+        </button>
+    </div>
+</div>

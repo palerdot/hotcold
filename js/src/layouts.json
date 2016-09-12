@@ -42,7 +42,9 @@
                 "keys": ["+", "="]
             },
             {
-                "keys": ["bksp", ""]
+                "special": "true",
+                "id": "bksp_key",
+                "keys": ["Bksp", ""]
             }
         ],
 

@@ -1,53 +1,22 @@
 @import "_colors";
 
-.theme-group {
+.course-info {
+    .course-detail {
 
-    span {
-        background-color: inherit;
-        border: thin solid $HC_LIGHT_BLUE;
-        color: $HC_LIGHT_BLUE;
-        box-shadow: 0 0 0 $HC_LIGHT_BLUE;
-        font-weight: bold;
-        margin: 0.1em 0;
+        .course-gist {
+            font-size: 1em !important;
+            padding-bottom: 2%;
+            border-bottom: thin solid $home_highlight_text_color;
 
-            &:hover {
-                background-color: inherit;
-                color: $HC_LIGHT_BLUE;
-                box-shadow: 0 0 1.5em $HC_LIGHT_BLUE;
+            .label {
+                font-size: 0.7em;
+                padding: 3px 6px;
+                font-weight: 500;
             }
-
-            &.current-theme {
-                margin: 0;
-                color: $HC_LIGHT_BLUE;
-                border: medium solid $HC_LIGHT_BLUE;
-                box-shadow: 0 0 0.5em $HC_LIGHT_BLUE;   
-            }   
-    }
-}
-
-.pager li {
-
-    &.disabled {
-        a {
-            background-color: inherit;
-            opacity: 0.75;
-
-            &:hover {
-                background-color: inherit;
-                box-shadow: none;
-            } 
         }
-    }
-
-    a {
-        background-color: inherit;
-        border: medium solid $HC_LIGHT_BLUE;
-        color: $HC_LIGHT_BLUE;
-        font-weight: bold;
-
-        &:hover {
-            background-color: inherit;
-            box-shadow: 0 0 1.5em $HC_LIGHT_BLUE;    
-        }
-    }
+        .course-description {
+            font-size: 0.8em !important;
+            padding-top: 1%;
+        }        
+    }   
 }

@@ -37,7 +37,7 @@ for ( var i = 32; i < 127; i++ ) {
         keys[ i ].div_id = '#key_' + temp;
     }
 
-    if ( i == 91 || i == 93 || i == 59 || i == 39 || i == 92 || i == 44 || i == 46 || i == 47 ) {
+    if ( i == 91 || i == 93 || i == 59 || i == 39 || i == 92 || i == 44 || i == 46 || i == 47 || i == 95 || i == 43 ) {
         var temp = get_numeric_div( i );
         keys[ i ].div_id = '#key_' + temp;
     }
@@ -264,6 +264,15 @@ function get_numeric_div( code ) {
 
         case 47:
             return 63;
+
+        case 95:
+            return 45;
+
+        // note this for +; have to watch out in case of bugs;
+        // note this module is also used in stat course.js
+        case 43:
+            // return 61;
+            return 43;
 
     }
 

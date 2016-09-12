@@ -1,10 +1,11 @@
-var CourseWrapper = function ( HC, Canvas, $el, Timer, Fingers ) {
+var CourseWrapper = function ( HC, Canvas, $el, Timer, Fingers, KeyPatterns ) {
 
     var Hotcold = HC,
         Canvas = Canvas,
         $el = $el,
         Timer = Timer,
-        Fingers = Fingers;
+        Fingers = Fingers,
+        KeyPatterns = KeyPatterns;
 
     function Course() {
 
@@ -54,8 +55,8 @@ var CourseWrapper = function ( HC, Canvas, $el, Timer, Fingers ) {
 
             }
 
+            // numbers 0 - 9
             if ( i >= 48 && i <= 57 ) {
-
                 //we have numbers (top row) assign them the appropriate divs    
                 var code = get_numeric_div( i );
                 temp = '#key_' + code;
@@ -72,484 +73,61 @@ var CourseWrapper = function ( HC, Canvas, $el, Timer, Fingers ) {
 
         //initialize the course; get the contents from the json file and prepare the local variables;   
 
-        this.init = function ( course_no ) {
+        this.init = function ( course_details ) {
 
             var self = this; // save reference
 
-            switch ( course_no ) {
+            // note: lesson is defined globally in this object; careful of this gotcha
 
-                case 0:
+            if ( !course_details ) {
+                
+                lesson = convertJson();
+                // we need to check if it is default 1 min or custom time
+                minutes = $el.free_time.is(":checked") ? 1 : $el.custom_duration.val();
+                self.prepare();
+                // all done; lets return
+                return;
 
-                    lesson = convertJson();
-                    // we need to check if it is default 1 min or custom time
-                    minutes = $el.free_time.is(":checked") ? 1 : $el.custom_duration.val();
+            } else {
+
+                // we have one extra special case; check if course text is an array
+                if ( _.isArray( course_details.course_text ) ) {
+
+                    // for each line in course
+                    _.each( course_details.course_text, function (val, key) {
+                        
+                        lesson[ key ] = {};
+                        lesson[ key ].code = [];
+                        lesson[ key ].text = [];
+                        lesson[ key ].pattern = [];
+                        
+                        // convert each string in line to code and finger pattern
+                        _.each( val, function (str, index) {
+                            lesson[ key ].text.push( str );
+                            var code = str.charCodeAt( 0 );
+                            var pattern = get_finger_pattern( code );
+                            lesson[ key ].pattern.push( pattern );
+                            lesson[ key ].code.push( code );
+                        } );
+                        
+                    } );
+
+                    minutes = course_details.duration ? course_details.duration : 1;
                     self.prepare();
 
-                    break;
-
-                case 1:
-
-                    $.getJSON( 'lessons/lesson1.json', function ( data ) {
-
-                            $.each( data, function ( key, val ) {
-
-                                lesson[ key ] = {};
-                                lesson[ key ].code = val.code;
-                                lesson[ key ].text = val.text;
-                                lesson[ key ].pattern = val.pattern;
-
-                            } );
-
-                        } )
-                        .done( function () { self.prepare(); } )
-                        .fail( function ( data ) { /*console.log("error");*/ } );
-
-                    minutes = 1;
-
-                    break;
-
-                case 2:
-
-                    $.getJSON( 'lessons/lesson2.json', function ( data ) {
-
-                            $.each( data, function ( key, val ) {
-
-                                lesson[ key ] = {};
-                                lesson[ key ].code = val.code;
-                                lesson[ key ].text = val.text;
-                                lesson[ key ].pattern = val.pattern;
-
-                            } );
-
-                        } )
-                        .done( function () { self.prepare(); } )
-                        .fail( function ( data ) { /*console.log("error");*/ } );
-
-                    minutes = 3;
-
-                    break;
-
-                case 3:
-
-                    $.getJSON( 'lessons/lesson3.json', function ( data ) {
-
-                            $.each( data, function ( key, val ) {
-
-                                lesson[ key ] = {};
-                                lesson[ key ].code = val.code;
-                                lesson[ key ].text = val.text;
-                                lesson[ key ].pattern = val.pattern;
-
-                            } );
-
-                        } )
-                        .done( function () { self.prepare(); } )
-                        .fail( function ( data ) { /*console.log("error");*/ } );
-
-                    minutes = 3;
-
-                    break;
-
-                case 4:
-
-                    $.getJSON( 'lessons/lesson4.json', function ( data ) {
-
-                            $.each( data, function ( key, val ) {
-
-                                lesson[ key ] = {};
-                                lesson[ key ].code = val.code;
-                                lesson[ key ].text = val.text;
-                                lesson[ key ].pattern = val.pattern;
-
-                            } );
-
-                        } )
-                        .done( function () { self.prepare(); } )
-                        .fail( function ( data ) { /*console.log("error");*/ } );
-
-                    minutes = 3;
-
-                    break;
-
-                case 5:
-
-                    $.getJSON( 'lessons/lesson5.json', function ( data ) {
-
-                            $.each( data, function ( key, val ) {
-
-                                lesson[ key ] = {};
-                                lesson[ key ].code = val.code;
-                                lesson[ key ].text = val.text;
-                                lesson[ key ].pattern = val.pattern;
-
-                            } );
-
-                        } )
-                        .done( function () { self.prepare(); } )
-                        .fail( function ( data ) { /*console.log("error");*/ } );
-
-                    minutes = 3;
-
-                    break;
-
-                case 6:
-
-                    $.getJSON( 'lessons/lesson6.json', function ( data ) {
-
-                            $.each( data, function ( key, val ) {
-
-                                lesson[ key ] = {};
-                                lesson[ key ].code = val.code;
-                                lesson[ key ].text = val.text;
-                                lesson[ key ].pattern = val.pattern;
-
-                            } );
-
-                        } )
-                        .done( function () { self.prepare(); } )
-                        .fail( function ( data ) { /*console.log("error");*/ } );
-
-                    minutes = 3;
-
-                    break;
-
-                case 7:
-
-                    $.getJSON( 'lessons/lesson7.json', function ( data ) {
-
-                            $.each( data, function ( key, val ) {
-
-                                lesson[ key ] = {};
-                                lesson[ key ].code = val.code;
-                                lesson[ key ].text = val.text;
-                                lesson[ key ].pattern = val.pattern;
-
-                            } );
-
-                        } )
-                        .done( function () { self.prepare(); } )
-                        .fail( function ( data ) { /*console.log("error");*/ } );
-
-                    minutes = 3;
-
-                    break;
-
-                case 8:
-
-                    $.getJSON( 'lessons/lesson8.json', function ( data ) {
-
-                            $.each( data, function ( key, val ) {
-
-                                lesson[ key ] = {};
-                                lesson[ key ].code = val.code;
-                                lesson[ key ].text = val.text;
-                                lesson[ key ].pattern = val.pattern;
-
-                            } );
-
-                        } )
-                        .done( function () { self.prepare(); } )
-                        .fail( function ( data ) { /*console.log("error");*/ } );
-
-                    minutes = 3;
-
-                    break;
-
-                case 9:
-
-                    $.getJSON( 'lessons/lesson9.json', function ( data ) {
-
-                            $.each( data, function ( key, val ) {
-
-                                lesson[ key ] = {};
-                                lesson[ key ].code = val.code;
-                                lesson[ key ].text = val.text;
-                                lesson[ key ].pattern = val.pattern;
-
-                            } );
-
-                        } )
-                        .done( function () { self.prepare(); } )
-                        .fail( function ( data ) { /*console.log("error");*/ } );
-
-                    minutes = 3;
-
-                    break;
-
-                case 10:
-
-                    $.getJSON( 'lessons/lesson10.json', function ( data ) {
-
-                            $.each( data, function ( key, val ) {
-
-                                lesson[ key ] = {};
-                                lesson[ key ].code = val.code;
-                                lesson[ key ].text = val.text;
-                                lesson[ key ].pattern = val.pattern;
-
-                            } );
-
-                        } )
-                        .done( function () { self.prepare(); } )
-                        .fail( function ( data ) { /*console.log("error");*/ } );
-
-                    minutes = 3;
-
-                    break;
-
-                case 11:
-
-                    $.getJSON( 'lessons/lesson11.json', function ( data ) {
-
-                            $.each( data, function ( key, val ) {
-
-                                lesson[ key ] = {};
-                                lesson[ key ].code = val.code;
-                                lesson[ key ].text = val.text;
-                                lesson[ key ].pattern = val.pattern;
-
-                            } );
-
-                        } )
-                        .done( function () { self.prepare(); } )
-                        .fail( function ( data ) { /*console.log("error");*/ } );
-
-                    minutes = 3;
-
-                    break;
-
-                case 12:
-
-                    $.getJSON( 'lessons/lesson12.json', function ( data ) {
-
-                            $.each( data, function ( key, val ) {
-
-                                lesson[ key ] = {};
-                                lesson[ key ].code = val.code;
-                                lesson[ key ].text = val.text;
-                                lesson[ key ].pattern = val.pattern;
-
-                            } );
-
-                        } )
-                        .done( function () { self.prepare(); } )
-                        .fail( function ( data ) { /*console.log("error");*/ } );
-
-                    minutes = 3;
-
-                    break;
-
-                case 13:
-
-                    $.getJSON( 'lessons/lesson13.json', function ( data ) {
-
-                            $.each( data, function ( key, val ) {
-
-                                lesson[ key ] = {};
-                                lesson[ key ].code = val.code;
-                                lesson[ key ].text = val.text;
-                                lesson[ key ].pattern = val.pattern;
-
-                            } );
-
-                        } )
-                        .done( function () { self.prepare(); } )
-                        .fail( function ( data ) { /*console.log("error");*/ } );
-
-                    minutes = 3;
-
-                    break;
-
-                case 14:
-
-                    $.getJSON( 'lessons/lesson14.json', function ( data ) {
-
-                            $.each( data, function ( key, val ) {
-
-                                lesson[ key ] = {};
-                                lesson[ key ].code = val.code;
-                                lesson[ key ].text = val.text;
-                                lesson[ key ].pattern = val.pattern;
-
-                            } );
-
-                        } )
-                        .done( function () { self.prepare(); } )
-                        .fail( function ( data ) { /*console.log("error");*/ } );
-
-                    minutes = 3;
-
-                    break;
-
-                case 15:
-
-                    $.getJSON( 'lessons/lesson15.json', function ( data ) {
-
-                            $.each( data, function ( key, val ) {
-
-                                lesson[ key ] = {};
-                                lesson[ key ].code = val.code;
-                                lesson[ key ].text = val.text;
-                                lesson[ key ].pattern = val.pattern;
-
-                            } );
-
-                        } )
-                        .done( function () { self.prepare(); } )
-                        .fail( function ( data ) { /*console.log("error");*/ } );
-
-                    minutes = 3;
-
-                    break;
-
-                case 16:
-
-                    $.getJSON( 'lessons/lesson16.json', function ( data ) {
-
-                            $.each( data, function ( key, val ) {
-
-                                lesson[ key ] = {};
-                                lesson[ key ].code = val.code;
-                                lesson[ key ].text = val.text;
-                                lesson[ key ].pattern = val.pattern;
-
-                            } );
-
-                        } )
-                        .done( function () { self.prepare(); } )
-                        .fail( function ( data ) { /*console.log("error");*/ } );
-
-                    minutes = 3;
-
-                    break;
-
-                case 17:
-
-                    $.getJSON( 'lessons/lesson17.json', function ( data ) {
-
-                            $.each( data, function ( key, val ) {
-
-                                lesson[ key ] = {};
-                                lesson[ key ].code = val.code;
-                                lesson[ key ].text = val.text;
-                                lesson[ key ].pattern = val.pattern;
-
-                            } );
-
-                        } )
-                        .done( function () { self.prepare(); } )
-                        .fail( function ( data ) { /*console.log("error");*/ } );
-
-                    minutes = 3;
-
-                    break;
-
-                case 18:
-
-                    $.getJSON( 'lessons/lesson18.json', function ( data ) {
-
-                            $.each( data, function ( key, val ) {
-
-                                lesson[ key ] = {};
-                                lesson[ key ].code = val.code;
-                                lesson[ key ].text = val.text;
-                                lesson[ key ].pattern = val.pattern;
-
-                            } );
-
-                        } )
-                        .done( function () { self.prepare(); } )
-                        .fail( function ( data ) { /*console.log("error");*/ } );
-
-                    minutes = 3;
-
-                    break;
-
-                case 19:
-
-                    $.getJSON( 'lessons/poem.json', function ( data ) {
-
-                            $.each( data, function ( key, val ) {
-
-                                lesson[ key ] = {};
-                                lesson[ key ].code = val.code;
-                                lesson[ key ].text = val.text;
-                                lesson[ key ].pattern = val.pattern;
-
-                            } );
-
-                        } )
-                        .done( function () { self.prepare(); } )
-                        .fail( function ( data ) { /*console.log("error");*/ } );
-
-                    minutes = 5;
-
-                    break;
-
-                case 20:
-
-                    $.getJSON( 'lessons/quotes1.json', function ( data ) {
-
-                            $.each( data, function ( key, val ) {
-
-                                lesson[ key ] = {};
-                                lesson[ key ].code = val.code;
-                                lesson[ key ].text = val.text;
-                                lesson[ key ].pattern = val.pattern;
-
-                            } );
-
-                        } )
-                        .done( function () { self.prepare(); } )
-                        .fail( function ( data ) { /*console.log("error");*/ } );
-
-                    minutes = 5;
-
-                    break;
-
-                case 21:
-
-                    $.getJSON( 'lessons/quotes2.json', function ( data ) {
-
-                            $.each( data, function ( key, val ) {
-
-                                lesson[ key ] = {};
-                                lesson[ key ].code = val.code;
-                                lesson[ key ].text = val.text;
-                                lesson[ key ].pattern = val.pattern;
-
-                            } );
-
-                        } )
-                        .done( function () { self.prepare(); } )
-                        .fail( function ( data ) { /*console.log("error");*/ } );
-
-                    minutes = 5;
-
-                    break;
-
-                case 22:
-
-                    $.getJSON( 'lessons/quotes3.json', function ( data ) {
-
-                            $.each( data, function ( key, val ) {
-
-                                lesson[ key ] = {};
-                                lesson[ key ].code = val.code;
-                                lesson[ key ].text = val.text;
-                                lesson[ key ].pattern = val.pattern;
-
-                            } );
-
-                        } )
-                        .done( function () { self.prepare(); } )
-                        .fail( function ( data ) { /*console.log("error");*/ } );
-
-                    minutes = 5;
-
-                    break;
-
-            } //end of switch case
+                    // all done;
+                    return;
+                }
+
+                // it is a general lesson; parse the course text and other stuff from the course details
+                lesson = convertJson( course_details );
+                minutes = course_details.duration ? course_details.duration : 1;
+                self.prepare();
+                // all done; lets return  
+                return;
+            }
+
+            return;
 
         }; //end of init
 
@@ -566,12 +144,16 @@ var CourseWrapper = function ( HC, Canvas, $el, Timer, Fingers ) {
 
                 var result = JSON.parse( event.data );
 
+                // do not blindly remove all the class; let the "backlit class be there"
+                var has_backlit = $(result.highlight.div_id).hasClass("backlit") ? "backlit": "";
                 $(result.highlight.div_id).removeClass();
-                $(result.highlight.div_id).addClass( 'keys' )
+                $(result.highlight.div_id).addClass( 'keys ' + has_backlit );
                 $(result.highlight.div_id).addClass( result.highlight.div_class );
 
+                // do not blindly remove all the class; let the "backlit class be there"
+                var has_backlit = keys[ result.highlight.code ].hasClass("backlit") ? "backlit": "";
                 keys[ result.highlight.code ].removeClass();
-                keys[ result.highlight.code ].addClass( 'keys' );
+                keys[ result.highlight.code ].addClass( 'keys ' + has_backlit );
                 keys[ result.highlight.code ].addClass( result.highlight.div_class );
 
                 if ( result.highlight.format == 2 ) {
@@ -925,6 +507,10 @@ var CourseWrapper = function ( HC, Canvas, $el, Timer, Fingers ) {
         // START: Highlight key
         function highlight_key( code ) {
 
+            if ( Hotcold.prev_key != 0 ) {
+                keys[ Hotcold.prev_key ].removeClass( 'backlit' );
+            }
+
             var r_shift = $( '#shift_right' );
             var l_shift = $( '#shift_left' );
 
@@ -938,32 +524,21 @@ var CourseWrapper = function ( HC, Canvas, $el, Timer, Fingers ) {
                 Hotcold.left_shift = false;
             }
 
-            if ( Hotcold.prev_key != 0 )
-                keys[ Hotcold.prev_key ].removeClass( 'backlit' );
+            
 
-            if ( ( code >= 65 && code <= 71 ) || ( code >= 81 && code <= 84 ) || ( code >= 86 && code <= 88 ) || code == 90 ) {
+            var right_shift_patterns = KeyPatterns[ Hotcold.layout ].right,
+                is_right_shift = right_shift_patterns.indexOf(code) > -1,
+                left_shift_patterns = KeyPatterns[ Hotcold.layout ].left,
+                is_left_shift = left_shift_patterns.indexOf(code) > -1;
+
+            if ( is_right_shift ) {
                 Hotcold.right_shift = true;
                 r_shift.addClass( 'backlit' );
             }
 
-            if ( ( code >= 72 && code <= 80 ) || code == 85 || code == 89 ) {
+            if (is_left_shift) {
                 Hotcold.left_shift = true;
                 l_shift.addClass( 'backlit' );
-            }
-
-            //add for special characters
-            // let us first deal with special characters that need right shift highlight
-            var r_shift_special_char_codes = [33, 64, 35, 36, 37];
-            if ( $.inArray(code, r_shift_special_char_codes) > -1 ) {
-                Hotcold.right_shift = true;
-                r_shift.addClass("backlit");
-            }
-
-            // now let us deal with special chars for which left shift highlight is needed
-            var l_shift_special_char_codes = [94, 38, 42, 40, 41, 95, 43, 123, 124, 125, 58, 34, 60, 62, 63];
-            if ( $.inArray(code, l_shift_special_char_codes) > -1 ) {
-                Hotcold.left_shift = true;
-                l_shift.addClass("backlit");
             }
 
             keys[ code ].addClass( 'backlit' );
@@ -975,6 +550,7 @@ var CourseWrapper = function ( HC, Canvas, $el, Timer, Fingers ) {
 
         // START: get_numeric_div
         //module to get the right div ids for numbers and special characters;
+        // TODO: should tweak this for each keyboard layouts also in stat helper
         function get_numeric_div( code ) {
 
             switch ( code ) {
@@ -1036,8 +612,11 @@ var CourseWrapper = function ( HC, Canvas, $el, Timer, Fingers ) {
                 case 95:
                     return 45;
 
+                // note this for +; have to watch out in case of bugs;
+                // note this module is also used in stat helper
                 case 43:
-                    return 61;
+                    // return 61;
+                    return 43;
 
             }
 
@@ -1059,17 +638,16 @@ var CourseWrapper = function ( HC, Canvas, $el, Timer, Fingers ) {
         } //end of get_finger_pattern module
 
         // START: convertJson module
-        function convertJson() {
+        function convertJson( course_details ) {
 
-            var custom_lesson = $el.cli.val().trim();
+            var custom_lesson = course_details ? course_details.course_text : $el.cli.val().trim();
 
             var newString = custom_lesson.replace( /\r?\n|\r/g, " " );
 
             var str = new String( newString );
 
             var start_index = 0;
-            var last_index = 30;
-            var point = 30;
+            var last_index = course_details ? course_details.line_length : 30;
 
             var index = 0;
 

@@ -601,13 +601,14 @@ var CanvasWrapper = function ( HC, $el, Theme ) {
 module.exports = CanvasWrapper;
 
 },{}],3:[function(require,module,exports){
-var CourseWrapper = function ( HC, Canvas, $el, Timer, Fingers ) {
+var CourseWrapper = function ( HC, Canvas, $el, Timer, Fingers, KeyPatterns ) {
 
     var Hotcold = HC,
         Canvas = Canvas,
         $el = $el,
         Timer = Timer,
-        Fingers = Fingers;
+        Fingers = Fingers,
+        KeyPatterns = KeyPatterns;
 
     function Course() {
 
@@ -657,8 +658,8 @@ var CourseWrapper = function ( HC, Canvas, $el, Timer, Fingers ) {
 
             }
 
+            // numbers 0 - 9
             if ( i >= 48 && i <= 57 ) {
-
                 //we have numbers (top row) assign them the appropriate divs    
                 var code = get_numeric_div( i );
                 temp = '#key_' + code;
@@ -675,484 +676,61 @@ var CourseWrapper = function ( HC, Canvas, $el, Timer, Fingers ) {
 
         //initialize the course; get the contents from the json file and prepare the local variables;   
 
-        this.init = function ( course_no ) {
+        this.init = function ( course_details ) {
 
             var self = this; // save reference
 
-            switch ( course_no ) {
+            // note: lesson is defined globally in this object; careful of this gotcha
 
-                case 0:
+            if ( !course_details ) {
+                
+                lesson = convertJson();
+                // we need to check if it is default 1 min or custom time
+                minutes = $el.free_time.is(":checked") ? 1 : $el.custom_duration.val();
+                self.prepare();
+                // all done; lets return
+                return;
 
-                    lesson = convertJson();
-                    // we need to check if it is default 1 min or custom time
-                    minutes = $el.free_time.is(":checked") ? 1 : $el.custom_duration.val();
+            } else {
+
+                // we have one extra special case; check if course text is an array
+                if ( _.isArray( course_details.course_text ) ) {
+
+                    // for each line in course
+                    _.each( course_details.course_text, function (val, key) {
+                        
+                        lesson[ key ] = {};
+                        lesson[ key ].code = [];
+                        lesson[ key ].text = [];
+                        lesson[ key ].pattern = [];
+                        
+                        // convert each string in line to code and finger pattern
+                        _.each( val, function (str, index) {
+                            lesson[ key ].text.push( str );
+                            var code = str.charCodeAt( 0 );
+                            var pattern = get_finger_pattern( code );
+                            lesson[ key ].pattern.push( pattern );
+                            lesson[ key ].code.push( code );
+                        } );
+                        
+                    } );
+
+                    minutes = course_details.duration ? course_details.duration : 1;
                     self.prepare();
 
-                    break;
-
-                case 1:
-
-                    $.getJSON( 'lessons/lesson1.json', function ( data ) {
-
-                            $.each( data, function ( key, val ) {
-
-                                lesson[ key ] = {};
-                                lesson[ key ].code = val.code;
-                                lesson[ key ].text = val.text;
-                                lesson[ key ].pattern = val.pattern;
-
-                            } );
-
-                        } )
-                        .done( function () { self.prepare(); } )
-                        .fail( function ( data ) { /*console.log("error");*/ } );
-
-                    minutes = 1;
-
-                    break;
-
-                case 2:
-
-                    $.getJSON( 'lessons/lesson2.json', function ( data ) {
-
-                            $.each( data, function ( key, val ) {
-
-                                lesson[ key ] = {};
-                                lesson[ key ].code = val.code;
-                                lesson[ key ].text = val.text;
-                                lesson[ key ].pattern = val.pattern;
-
-                            } );
-
-                        } )
-                        .done( function () { self.prepare(); } )
-                        .fail( function ( data ) { /*console.log("error");*/ } );
-
-                    minutes = 3;
-
-                    break;
-
-                case 3:
-
-                    $.getJSON( 'lessons/lesson3.json', function ( data ) {
-
-                            $.each( data, function ( key, val ) {
-
-                                lesson[ key ] = {};
-                                lesson[ key ].code = val.code;
-                                lesson[ key ].text = val.text;
-                                lesson[ key ].pattern = val.pattern;
-
-                            } );
-
-                        } )
-                        .done( function () { self.prepare(); } )
-                        .fail( function ( data ) { /*console.log("error");*/ } );
-
-                    minutes = 3;
-
-                    break;
-
-                case 4:
-
-                    $.getJSON( 'lessons/lesson4.json', function ( data ) {
-
-                            $.each( data, function ( key, val ) {
-
-                                lesson[ key ] = {};
-                                lesson[ key ].code = val.code;
-                                lesson[ key ].text = val.text;
-                                lesson[ key ].pattern = val.pattern;
-
-                            } );
-
-                        } )
-                        .done( function () { self.prepare(); } )
-                        .fail( function ( data ) { /*console.log("error");*/ } );
-
-                    minutes = 3;
-
-                    break;
-
-                case 5:
-
-                    $.getJSON( 'lessons/lesson5.json', function ( data ) {
-
-                            $.each( data, function ( key, val ) {
-
-                                lesson[ key ] = {};
-                                lesson[ key ].code = val.code;
-                                lesson[ key ].text = val.text;
-                                lesson[ key ].pattern = val.pattern;
-
-                            } );
-
-                        } )
-                        .done( function () { self.prepare(); } )
-                        .fail( function ( data ) { /*console.log("error");*/ } );
-
-                    minutes = 3;
-
-                    break;
-
-                case 6:
-
-                    $.getJSON( 'lessons/lesson6.json', function ( data ) {
-
-                            $.each( data, function ( key, val ) {
-
-                                lesson[ key ] = {};
-                                lesson[ key ].code = val.code;
-                                lesson[ key ].text = val.text;
-                                lesson[ key ].pattern = val.pattern;
-
-                            } );
-
-                        } )
-                        .done( function () { self.prepare(); } )
-                        .fail( function ( data ) { /*console.log("error");*/ } );
-
-                    minutes = 3;
-
-                    break;
-
-                case 7:
-
-                    $.getJSON( 'lessons/lesson7.json', function ( data ) {
-
-                            $.each( data, function ( key, val ) {
-
-                                lesson[ key ] = {};
-                                lesson[ key ].code = val.code;
-                                lesson[ key ].text = val.text;
-                                lesson[ key ].pattern = val.pattern;
-
-                            } );
-
-                        } )
-                        .done( function () { self.prepare(); } )
-                        .fail( function ( data ) { /*console.log("error");*/ } );
-
-                    minutes = 3;
-
-                    break;
-
-                case 8:
-
-                    $.getJSON( 'lessons/lesson8.json', function ( data ) {
-
-                            $.each( data, function ( key, val ) {
-
-                                lesson[ key ] = {};
-                                lesson[ key ].code = val.code;
-                                lesson[ key ].text = val.text;
-                                lesson[ key ].pattern = val.pattern;
-
-                            } );
-
-                        } )
-                        .done( function () { self.prepare(); } )
-                        .fail( function ( data ) { /*console.log("error");*/ } );
-
-                    minutes = 3;
-
-                    break;
-
-                case 9:
-
-                    $.getJSON( 'lessons/lesson9.json', function ( data ) {
-
-                            $.each( data, function ( key, val ) {
-
-                                lesson[ key ] = {};
-                                lesson[ key ].code = val.code;
-                                lesson[ key ].text = val.text;
-                                lesson[ key ].pattern = val.pattern;
-
-                            } );
-
-                        } )
-                        .done( function () { self.prepare(); } )
-                        .fail( function ( data ) { /*console.log("error");*/ } );
-
-                    minutes = 3;
-
-                    break;
-
-                case 10:
-
-                    $.getJSON( 'lessons/lesson10.json', function ( data ) {
-
-                            $.each( data, function ( key, val ) {
-
-                                lesson[ key ] = {};
-                                lesson[ key ].code = val.code;
-                                lesson[ key ].text = val.text;
-                                lesson[ key ].pattern = val.pattern;
-
-                            } );
-
-                        } )
-                        .done( function () { self.prepare(); } )
-                        .fail( function ( data ) { /*console.log("error");*/ } );
-
-                    minutes = 3;
-
-                    break;
-
-                case 11:
-
-                    $.getJSON( 'lessons/lesson11.json', function ( data ) {
-
-                            $.each( data, function ( key, val ) {
-
-                                lesson[ key ] = {};
-                                lesson[ key ].code = val.code;
-                                lesson[ key ].text = val.text;
-                                lesson[ key ].pattern = val.pattern;
-
-                            } );
-
-                        } )
-                        .done( function () { self.prepare(); } )
-                        .fail( function ( data ) { /*console.log("error");*/ } );
-
-                    minutes = 3;
-
-                    break;
-
-                case 12:
-
-                    $.getJSON( 'lessons/lesson12.json', function ( data ) {
-
-                            $.each( data, function ( key, val ) {
-
-                                lesson[ key ] = {};
-                                lesson[ key ].code = val.code;
-                                lesson[ key ].text = val.text;
-                                lesson[ key ].pattern = val.pattern;
-
-                            } );
-
-                        } )
-                        .done( function () { self.prepare(); } )
-                        .fail( function ( data ) { /*console.log("error");*/ } );
-
-                    minutes = 3;
-
-                    break;
-
-                case 13:
-
-                    $.getJSON( 'lessons/lesson13.json', function ( data ) {
-
-                            $.each( data, function ( key, val ) {
-
-                                lesson[ key ] = {};
-                                lesson[ key ].code = val.code;
-                                lesson[ key ].text = val.text;
-                                lesson[ key ].pattern = val.pattern;
-
-                            } );
-
-                        } )
-                        .done( function () { self.prepare(); } )
-                        .fail( function ( data ) { /*console.log("error");*/ } );
-
-                    minutes = 3;
-
-                    break;
-
-                case 14:
-
-                    $.getJSON( 'lessons/lesson14.json', function ( data ) {
-
-                            $.each( data, function ( key, val ) {
-
-                                lesson[ key ] = {};
-                                lesson[ key ].code = val.code;
-                                lesson[ key ].text = val.text;
-                                lesson[ key ].pattern = val.pattern;
-
-                            } );
-
-                        } )
-                        .done( function () { self.prepare(); } )
-                        .fail( function ( data ) { /*console.log("error");*/ } );
-
-                    minutes = 3;
-
-                    break;
-
-                case 15:
-
-                    $.getJSON( 'lessons/lesson15.json', function ( data ) {
-
-                            $.each( data, function ( key, val ) {
-
-                                lesson[ key ] = {};
-                                lesson[ key ].code = val.code;
-                                lesson[ key ].text = val.text;
-                                lesson[ key ].pattern = val.pattern;
-
-                            } );
-
-                        } )
-                        .done( function () { self.prepare(); } )
-                        .fail( function ( data ) { /*console.log("error");*/ } );
-
-                    minutes = 3;
-
-                    break;
-
-                case 16:
-
-                    $.getJSON( 'lessons/lesson16.json', function ( data ) {
-
-                            $.each( data, function ( key, val ) {
-
-                                lesson[ key ] = {};
-                                lesson[ key ].code = val.code;
-                                lesson[ key ].text = val.text;
-                                lesson[ key ].pattern = val.pattern;
-
-                            } );
-
-                        } )
-                        .done( function () { self.prepare(); } )
-                        .fail( function ( data ) { /*console.log("error");*/ } );
-
-                    minutes = 3;
-
-                    break;
-
-                case 17:
-
-                    $.getJSON( 'lessons/lesson17.json', function ( data ) {
-
-                            $.each( data, function ( key, val ) {
-
-                                lesson[ key ] = {};
-                                lesson[ key ].code = val.code;
-                                lesson[ key ].text = val.text;
-                                lesson[ key ].pattern = val.pattern;
-
-                            } );
-
-                        } )
-                        .done( function () { self.prepare(); } )
-                        .fail( function ( data ) { /*console.log("error");*/ } );
-
-                    minutes = 3;
-
-                    break;
-
-                case 18:
-
-                    $.getJSON( 'lessons/lesson18.json', function ( data ) {
-
-                            $.each( data, function ( key, val ) {
-
-                                lesson[ key ] = {};
-                                lesson[ key ].code = val.code;
-                                lesson[ key ].text = val.text;
-                                lesson[ key ].pattern = val.pattern;
-
-                            } );
-
-                        } )
-                        .done( function () { self.prepare(); } )
-                        .fail( function ( data ) { /*console.log("error");*/ } );
-
-                    minutes = 3;
-
-                    break;
-
-                case 19:
-
-                    $.getJSON( 'lessons/poem.json', function ( data ) {
-
-                            $.each( data, function ( key, val ) {
-
-                                lesson[ key ] = {};
-                                lesson[ key ].code = val.code;
-                                lesson[ key ].text = val.text;
-                                lesson[ key ].pattern = val.pattern;
-
-                            } );
-
-                        } )
-                        .done( function () { self.prepare(); } )
-                        .fail( function ( data ) { /*console.log("error");*/ } );
-
-                    minutes = 5;
-
-                    break;
-
-                case 20:
-
-                    $.getJSON( 'lessons/quotes1.json', function ( data ) {
-
-                            $.each( data, function ( key, val ) {
-
-                                lesson[ key ] = {};
-                                lesson[ key ].code = val.code;
-                                lesson[ key ].text = val.text;
-                                lesson[ key ].pattern = val.pattern;
-
-                            } );
-
-                        } )
-                        .done( function () { self.prepare(); } )
-                        .fail( function ( data ) { /*console.log("error");*/ } );
-
-                    minutes = 5;
-
-                    break;
-
-                case 21:
-
-                    $.getJSON( 'lessons/quotes2.json', function ( data ) {
-
-                            $.each( data, function ( key, val ) {
-
-                                lesson[ key ] = {};
-                                lesson[ key ].code = val.code;
-                                lesson[ key ].text = val.text;
-                                lesson[ key ].pattern = val.pattern;
-
-                            } );
-
-                        } )
-                        .done( function () { self.prepare(); } )
-                        .fail( function ( data ) { /*console.log("error");*/ } );
-
-                    minutes = 5;
-
-                    break;
-
-                case 22:
-
-                    $.getJSON( 'lessons/quotes3.json', function ( data ) {
-
-                            $.each( data, function ( key, val ) {
-
-                                lesson[ key ] = {};
-                                lesson[ key ].code = val.code;
-                                lesson[ key ].text = val.text;
-                                lesson[ key ].pattern = val.pattern;
-
-                            } );
-
-                        } )
-                        .done( function () { self.prepare(); } )
-                        .fail( function ( data ) { /*console.log("error");*/ } );
-
-                    minutes = 5;
-
-                    break;
-
-            } //end of switch case
+                    // all done;
+                    return;
+                }
+
+                // it is a general lesson; parse the course text and other stuff from the course details
+                lesson = convertJson( course_details );
+                minutes = course_details.duration ? course_details.duration : 1;
+                self.prepare();
+                // all done; lets return  
+                return;
+            }
+
+            return;
 
         }; //end of init
 
@@ -1169,12 +747,16 @@ var CourseWrapper = function ( HC, Canvas, $el, Timer, Fingers ) {
 
                 var result = JSON.parse( event.data );
 
+                // do not blindly remove all the class; let the "backlit class be there"
+                var has_backlit = $(result.highlight.div_id).hasClass("backlit") ? "backlit": "";
                 $(result.highlight.div_id).removeClass();
-                $(result.highlight.div_id).addClass( 'keys' )
+                $(result.highlight.div_id).addClass( 'keys ' + has_backlit );
                 $(result.highlight.div_id).addClass( result.highlight.div_class );
 
+                // do not blindly remove all the class; let the "backlit class be there"
+                var has_backlit = keys[ result.highlight.code ].hasClass("backlit") ? "backlit": "";
                 keys[ result.highlight.code ].removeClass();
-                keys[ result.highlight.code ].addClass( 'keys' );
+                keys[ result.highlight.code ].addClass( 'keys ' + has_backlit );
                 keys[ result.highlight.code ].addClass( result.highlight.div_class );
 
                 if ( result.highlight.format == 2 ) {
@@ -1528,6 +1110,10 @@ var CourseWrapper = function ( HC, Canvas, $el, Timer, Fingers ) {
         // START: Highlight key
         function highlight_key( code ) {
 
+            if ( Hotcold.prev_key != 0 ) {
+                keys[ Hotcold.prev_key ].removeClass( 'backlit' );
+            }
+
             var r_shift = $( '#shift_right' );
             var l_shift = $( '#shift_left' );
 
@@ -1541,32 +1127,21 @@ var CourseWrapper = function ( HC, Canvas, $el, Timer, Fingers ) {
                 Hotcold.left_shift = false;
             }
 
-            if ( Hotcold.prev_key != 0 )
-                keys[ Hotcold.prev_key ].removeClass( 'backlit' );
+            
 
-            if ( ( code >= 65 && code <= 71 ) || ( code >= 81 && code <= 84 ) || ( code >= 86 && code <= 88 ) || code == 90 ) {
+            var right_shift_patterns = KeyPatterns[ Hotcold.layout ].right,
+                is_right_shift = right_shift_patterns.indexOf(code) > -1,
+                left_shift_patterns = KeyPatterns[ Hotcold.layout ].left,
+                is_left_shift = left_shift_patterns.indexOf(code) > -1;
+
+            if ( is_right_shift ) {
                 Hotcold.right_shift = true;
                 r_shift.addClass( 'backlit' );
             }
 
-            if ( ( code >= 72 && code <= 80 ) || code == 85 || code == 89 ) {
+            if (is_left_shift) {
                 Hotcold.left_shift = true;
                 l_shift.addClass( 'backlit' );
-            }
-
-            //add for special characters
-            // let us first deal with special characters that need right shift highlight
-            var r_shift_special_char_codes = [33, 64, 35, 36, 37];
-            if ( $.inArray(code, r_shift_special_char_codes) > -1 ) {
-                Hotcold.right_shift = true;
-                r_shift.addClass("backlit");
-            }
-
-            // now let us deal with special chars for which left shift highlight is needed
-            var l_shift_special_char_codes = [94, 38, 42, 40, 41, 95, 43, 123, 124, 125, 58, 34, 60, 62, 63];
-            if ( $.inArray(code, l_shift_special_char_codes) > -1 ) {
-                Hotcold.left_shift = true;
-                l_shift.addClass("backlit");
             }
 
             keys[ code ].addClass( 'backlit' );
@@ -1578,6 +1153,7 @@ var CourseWrapper = function ( HC, Canvas, $el, Timer, Fingers ) {
 
         // START: get_numeric_div
         //module to get the right div ids for numbers and special characters;
+        // TODO: should tweak this for each keyboard layouts also in stat helper
         function get_numeric_div( code ) {
 
             switch ( code ) {
@@ -1639,8 +1215,11 @@ var CourseWrapper = function ( HC, Canvas, $el, Timer, Fingers ) {
                 case 95:
                     return 45;
 
+                // note this for +; have to watch out in case of bugs;
+                // note this module is also used in stat helper
                 case 43:
-                    return 61;
+                    // return 61;
+                    return 43;
 
             }
 
@@ -1662,17 +1241,16 @@ var CourseWrapper = function ( HC, Canvas, $el, Timer, Fingers ) {
         } //end of get_finger_pattern module
 
         // START: convertJson module
-        function convertJson() {
+        function convertJson( course_details ) {
 
-            var custom_lesson = $el.cli.val().trim();
+            var custom_lesson = course_details ? course_details.course_text : $el.cli.val().trim();
 
             var newString = custom_lesson.replace( /\r?\n|\r/g, " " );
 
             var str = new String( newString );
 
             var start_index = 0;
-            var last_index = 30;
-            var point = 30;
+            var last_index = course_details ? course_details.line_length : 30;
 
             var index = 0;
 
@@ -2126,13 +1704,15 @@ module.exports = TimerWrapper;
 },{}],7:[function(require,module,exports){
 var Hotcold = require( "./Hotcold.js" ),
     jquery_el = require( "./jquery_el.js" ),
-    Fingers = require( "./fingers.json" ),
+    Fingers = require( "./finger_patterns.json" ),
+    KeyPatterns = require( "./key_patterns.json" ),
     Theme = require( "./Theme.js" ),
     Canvas = require( "./Canvas.js" )( Hotcold, jquery_el, Theme ),
     Timer = require( "./Timer.js" )( Hotcold, jquery_el, Theme, Canvas ),
     Canvas = require( "./Canvas.js" )( Hotcold, jquery_el, Theme ),
-    Course = require( "./Course.js" )( Hotcold, Canvas, jquery_el, Timer, Fingers ),
-    KB = require( "./layouts.json" );
+    Course = require( "./Course.js" )( Hotcold, Canvas, jquery_el, Timer, Fingers, KeyPatterns ),
+    KB = require( "./layouts.json" ),
+    Lessons = require("../../lessons/lessons.json");
 
 var HC_CONFIG = require( "../../config.json" );
 
@@ -2143,12 +1723,20 @@ var APP = {
     start: function () {
         console.log( "config ", HC_CONFIG, KB, _ );
 
+        // change underscore template settings
+        _.templateSettings = {
+            interpolate: /\{\{(.+?)\}\}/g
+        };
+
         this.initKeyboardLayouts();
+
+        this.initLayoutLessons();
 
         this.initializeEvents();
         this.initAppMode();
     },
 
+    // initializes keyboard layout in the course window
     initKeyboardLayouts: function () {
         console.log("Porumai! initing keyboard events ", Hotcold.layout, _.keys( KB ) );
         var self = this; // save reference
@@ -2235,6 +1823,61 @@ var APP = {
         // append the new layout to the keyboard div
         self.$el.keyboard_layout.html( $keyboard );
 
+        // last but not least, update the space jquery element reference
+        self.$el.space = self.$el.keyboard_layout.find("#key_32");
+
+    },
+
+    // initializes lessons for the selected keyboard layout
+    initLayoutLessons: function () {
+
+        var self = this; // save reference
+        
+        console.log("Porumai! will init lessons for ", Hotcold.layout, Lessons[Hotcold.layout] );
+
+        // generate lesson (in reverse) to prepend properly
+        var lessons = _.chain( Lessons[Hotcold.layout] )
+                        .reverse()
+                        .value();
+
+        // clear the lesson headers (except the custom course)
+        self.$el.lesson_headers.find(".lesson-header").remove();
+
+        // empty lesson details
+        self.$el.lesson_details.find(".lesson-detail").remove();
+
+        var lh_template = _.template( self.$el.template_lh.html() );
+        
+        _.each( lessons, function (lesson) {
+            // display the lesson headers
+            self.$el.lesson_headers.prepend( $( lh_template(lesson) ) );
+            
+            // get the course template string
+            var ci_template = _.template( self.$el.template_ci.html() );
+
+            // display the course row
+            var $course_row = $("<div>")
+                                    .attr("id", lesson.row_id)
+                                    .addClass("lesson-detail tab-pane");
+
+            // append the courses to the course row
+            _.each( lesson.courses, function (course) {
+                var $course = $( ci_template(course) );
+                // attach the course details to the launch button
+                $course
+                    .find(".launch-course")
+                    .data("hc-course", JSON.stringify(course) );
+
+                $course_row.append( $course ); 
+            } );
+
+            // append the course row
+            self.$el.lesson_details.prepend( $course_row );
+
+        } );
+
+        // click the first lesson
+        self.$el.lesson_headers.find(".lesson-header").first().find("a").click();
     },
 
     // ----------------------------------------------------
@@ -2402,8 +2045,8 @@ var APP = {
             self.set_night_theme();
         } );
 
-        // click the night theme manually for the first time
-        this.$el.n_theme.click();
+        // set the night theme manually for the first time
+        self.set_night_theme();
 
         // go to course home
         this.$el.c_home.click( function () {
@@ -2413,6 +2056,8 @@ var APP = {
 
             self.$el.c_win.hide();
             self.$el.c_tab.show();
+
+            self.cancelFullScreen();
         } );
 
         this.initLessons();
@@ -2435,23 +2080,8 @@ var APP = {
 
             self.$el.c_win.hide();
             self.$el.c_tab.show();
-        } );
 
-        // pagers
-        this.$el.sp1.click( function ( e ) {
-            e.preventDefault();
-            self.$el.akp2.fadeOut( 'fast' );
-            self.$el.akp1
-                .delay( 250 )
-                .fadeIn();
-        } );
-
-        this.$el.sp2.click( function ( e ) {
-            e.preventDefault();
-            self.$el.akp1.fadeOut( 'fast' );
-            self.$el.akp2
-                .delay( 250 )
-                .fadeIn();
+            self.cancelFullScreen();
         } );
 
         this.$el.fs_toggle.click( function () {
@@ -2493,6 +2123,18 @@ var APP = {
     initLessons: function () {
 
         var self = this;
+
+        this.$el.lesson_details.on("click", ".launch-course", function () {
+            console.log( $.parseJSON( $(this).data("hc-course") ) );
+            var course_details = $.parseJSON( $(this).data("hc-course") );
+            Hotcold.curr_course = new Course();
+            Hotcold.curr_course.init( course_details );
+            self.$el.c_tab.hide();
+            self.$el.c_win.fadeIn();
+            self.requestFullScreen();
+        });
+
+        return;
 
         // lesson 1
         this.$el.lc1.click( function () {
@@ -2946,7 +2588,7 @@ var APP = {
 // start the APP on doc ready
 APP.start();
 
-},{"../../config.json":1,"./Canvas.js":2,"./Course.js":3,"./Hotcold.js":4,"./Theme.js":5,"./Timer.js":6,"./fingers.json":8,"./jquery_el.js":9,"./layouts.json":10}],8:[function(require,module,exports){
+},{"../../config.json":1,"../../lessons/lessons.json":12,"./Canvas.js":2,"./Course.js":3,"./Hotcold.js":4,"./Theme.js":5,"./Timer.js":6,"./finger_patterns.json":8,"./jquery_el.js":9,"./key_patterns.json":10,"./layouts.json":11}],8:[function(require,module,exports){
 module.exports={
     "qwerty": {
         "0": 10,
@@ -3042,7 +2684,8 @@ module.exports={
         ">": 17,
         ".": 9,
         "?": 18,
-        "/": 10
+        "/": 10,
+        " ": 5
     },
 
     "dvorak": {
@@ -3157,6 +2800,12 @@ var $el = {
     c_tab: $( '#course_tab' ),
     c_course: $( '#create_course_tab' ),
 
+    lesson_headers: $(" #lesson-headers "),
+    lesson_details: $(" #lesson-details "),
+
+    template_lh: $("#lesson-header-template"),
+    template_ci: $( "#course-info-template" ),
+
     d_theme: $( '#day_theme' ),
     n_theme: $( '#night_theme' ),
     themes: $(".theme"),
@@ -3200,32 +2849,6 @@ var $el = {
     dtp: $( '#day_theme_preview' ),
     ntp: $( '#night_theme_preview' ),
 
-    lc_temp: $( '#launch_course_temp' ),
-
-    lc1: $( '#launch_course_1' ),
-    lc2: $( '#launch_course_2' ),
-    lc3: $( '#launch_course_3' ),
-    lc4: $( '#launch_course_4' ),
-    lc5: $( '#launch_course_5' ),
-    lc6: $( '#launch_course_6' ),
-    lc7: $( '#launch_course_7' ),
-    lc8: $( '#launch_course_8' ),
-    lc9: $( '#launch_course_9' ),
-    lc10: $( '#launch_course_10' ),
-    lc11: $( '#launch_course_11' ),
-    lc12: $( '#launch_course_12' ),
-    lc13: $( '#launch_course_13' ),
-    lc14: $( '#launch_course_14' ),
-    lc15: $( '#launch_course_15' ),
-    lc16: $( '#launch_course_16' ),
-    lc17: $( '#launch_course_17' ),
-    lc18: $( '#launch_course_18' ),
-
-    lp: $( '#launch_poem' ),
-    lq1: $( '#launch_quote_1' ),
-    lq2: $( '#launch_quote_2' ),
-    lq3: $( '#launch_quote_3' ),
-
     pause_button: $("#pause_button"),
     resume_button: $("#resume_button"),
 
@@ -3244,10 +2867,7 @@ var $el = {
     
 
     prepare_lesson: $( '#custom_lesson_launch' ),
-    sp1: $( '#show_all_key_page_1' ),
-    sp2: $( '#show_all_key_page_2' ),
-    akp1: $( '#all_key_page_1' ),
-    akp2: $( '#all_key_page_2' ),
+    
 
     space: $( '#key_32' ),
     space_to_start: $( '#space_to_start' ),
@@ -3282,6 +2902,64 @@ var $el = {
 module.exports = $el;
 
 },{}],10:[function(require,module,exports){
+module.exports={
+    "qwerty": {
+        "right": [
+            126,
+            33,
+            64,
+            35,
+            36,
+            37,
+            81,
+            87,
+            69,
+            82,
+            84,
+            65,
+            83,
+            68,
+            70,
+            71,
+            90,
+            88,
+            67,
+            86,
+            66
+        ],
+        "left": [
+            94,
+            38,
+            42,
+            40,
+            41,
+            45,
+            43,
+            66,
+            89,
+            85,
+            73,
+            79,
+            80,
+            123,
+            125,
+            124,
+            72,
+            74,
+            75,
+            76,
+            58,
+            34,
+            78,
+            77,
+            60,
+            62,
+            63
+        ]
+    }
+}
+
+},{}],11:[function(require,module,exports){
 module.exports={
     "qwerty": {
         
@@ -3326,7 +3004,9 @@ module.exports={
                 "keys": ["+", "="]
             },
             {
-                "keys": ["bksp", ""]
+                "special": "true",
+                "id": "bksp_key",
+                "keys": ["Bksp", ""]
             }
         ],
 
@@ -3543,5 +3223,322 @@ module.exports={
         ]
 
     }
+}
+},{}],12:[function(require,module,exports){
+module.exports={
+    "qwerty": [
+        {
+
+            "name": "Home Row, G, H",
+            "row_id": "qwerty-home-row",
+            "courses": [
+                {
+                    "id": 1,
+                    "name": "Keys Introduction",
+                    "duration": "3",
+                    "level": "easy",
+                    "line_length": 30,
+                    "description": "This course introduces the home row keys and keys G and H. Home row keys are: a, s, d, f, j, k, l and ;. Learn the key positions and appropriate fingers to type these keys.",
+                    "course_text": "asdf jkl; aa ss dd ff jj kk ll ;; adsf jlk; asdfg hjkl; gg hh gg hh aa dd ss ff jj ll kk ;; ff gg hh jj gf hj fg jh fj gh ghfj fjgh gghh ffjj fgfg jhjh ffgg jjhh aa hh ;; gg jj ff ss ll dd kk ss hh ll gg a; sl dk fj gh a; ls dk jf gh asdfg ;lkjh"
+                },
+
+                {
+                    "id": 2,
+                    "name": "Word practice",
+                    "duration": "3",
+                    "level": "medium",
+                    "line_length": 30,
+                    "description": "Practice home row keys, G, H by typing simple words",
+                    "course_text": "as all add ash all glad add dash all sad sad as dad glad as dad salsa lalalaa dallas flag alaska flag sad kafka glad kafka lakh flak half dash gas dash half flask ask glad dad ask sad dad dad had kafka had all kafka glad lad sad lad alaska lad glad dallas lad sad alaska lad sad dallas lad glad all lad glad all lad sad"
+                }
+            ]
+        },
+        {
+
+            "name": "Capital Letters", 
+            "row_id": "qwerty-capital-letters",
+            "courses": [
+                {
+                    "id": 3,
+                    "name": "Introducing Shift key",
+                    "duration": "3",
+                    "level": "easy",
+                    "line_length": 30,
+                    "description": "Shift key is used to type capital letters. Learn the key position and appropriate finger to type the shift key in this course. Practice typing home row keys in both capital and small letters.",
+                    "course_text": "ASDF JKL; Aa Ss Dd Ff Jj Kk Ll ;; aDsF JlK; aSDfg hJKl; gG hH Gg Hh aA dD sS fF jJ lL kK ;; fF Gg Hh jJ gF Hj fG jH FJ gh GhFj FjGh GgHh FfJj fgFG jhJH fFgG jJhH Aa Hh ;; Gg Jj Ff Ss Ll Dd Kk Ss Hh Ll Gg A; SL DK FJ GH A; lS Dk jF gH ASDFG ;LKJH"
+                },
+
+                {
+                    "id": 4,
+                    "name": "Word practice",
+                    "duration": "3",
+                    "level": "medium",
+                    "line_length": 30,
+                    "description": "Practice Shift key by typing simple words with both capital and small letters",
+                    "course_text": "AS ALL Add Ash All Glad add Dash all Sad SAD as DAD GLAD as DAD SalsA LaLaLaA DaLLas FLAG ALASka flag sad KAFKA glad KAFKA Lakh Flak Half Dash Gas Dash Half Flask ASK glad DAD ask sad dad Dad Had Kafka Had All Kafka Glad Lad Sad Lad Alaska LAD Glad Dallas Lad Sad Alaska Lad Sad Dallas Lad Glad ALL LAD GLAD ALL LAD SAD"
+                }
+            ]
+
+        },
+        {
+
+            "name": "keys E, I, R, U", 
+            "row_id": "qwerty-keys-eiru",
+            "courses": [
+                {
+                    "id": 5,
+                    "name": "Keys Introduction",
+                    "duration": "3",
+                    "level": "easy",
+                    "line_length": 30,
+                    "description": "This course introduces the keys E, I, R, U. Learn the key positions and appropriate finger to type these keys.",
+                    "course_text": "dede kiki eded ikik dDeE kKiI eEdD iIkK eidk dkei ekid ekid frju frju rfuj rfuj RrUu RrUu RUru RUru erui erui uire uire eiru eiru ruei ruei edfr ujik edrf ujik dfer dfer jkui jkui fger jhiu fger jhiu GRgr HUhu GRgr HUhu reRE reRE uiUI uiUI rReE uUiI rReE uUiI"
+                },
+
+                {
+                    "id": 6,
+                    "name": "Word Practice",
+                    "duration": "3",
+                    "level": "medium",
+                    "line_length": 30,
+                    "description": "",
+                    "course_text": "eureka skill if skill freud else fraud rural federal fraud useful fiddle useless life failure sugarlike farside duskier surreal ural isle fragile jailer real hurdle sharked redfish laughs sugared sulfide ruse useful fluid fuse asia safari ski red iris diesel fire field fluid redial failsafe adelaide file desk lead seal see sleek leaf red aura alike kids"
+                }
+            ]
+            
+        },
+        {
+
+            "name": "keys T, O, C, comma", 
+            "row_id": "qwerty-keys-toc",
+            "courses": [
+                {
+                    "id": 7,
+                    "name": "Keys Introduction",
+                    "duration": "3",
+                    "level": "easy",
+                    "line_length": 30,
+                    "description": "This course introduces the keys T, O, C and ,(Comma). Learn the key positions and appropriate finger to type these keys.",
+                    "course_text": "ftft lolo ftft lolo fFtT lLoO fFtT lLoO dcdc k,k, dcdc k,k, dDcC dDcC k,K, k,K, ddcc kk,, ddcc kk,, tctc o,o, tctc o,o, ttcc oo,, ttcc oo,, cCdD cCdD ,k,K ,k,K fFtT lLoO fFtT lLoO ftft lolo ftft lolo fFtT lLoO fFtT lLoO dcdc k,k, dcdc k,k, dDcC dDcC k,K, k,K, ttcc tTcC oO,, oO,, toto TOTO c,c, CCTO"
+                },
+
+                {
+                    "id": 8,
+                    "name": "Word Practice",
+                    "duration": "3",
+                    "level": "medium",
+                    "line_length": 30,
+                    "description": "Practice keys T, O, C and ,(Comma) by typing simple words",
+                    "course_text": "elucidate circus disgraceful soul to tie, out of foot colorado circus effect tickle crocodile cataract casual access to the deck later, resort to clerical class decode circle ratio kettle for karate trout cute cat, out of focus coffee out of cocoa, for tailor lifeguard outraged after shock authorise access to the feudalist lethargic cheat, curious article jostle fast, audio lost leaf rustle, cracker effect"
+                }
+            ]
+            
+        },
+        {
+
+            "name": "keys V, N, W, M", 
+            "row_id": "qwerty-keys-vnwm",
+            "courses": [
+                {
+                    "id": 9,
+                    "name": "Keys Introduction",
+                    "duration": "3",
+                    "level": "easy",
+                    "line_length": 30,
+                    "description": "This course introduces the keys V, N, W, M. Learn the key positions and appropriate finger to type these keys",
+                    "course_text": "fvfv jnjn fvfv jnjn ffvv jjnn ffvv jjnn swsw jmjm swsw jmjm ssww jjmm ssww jjmm vfnj vfnj vvff nnjj wwss mmjj wwss mmjj vVfF nNjJ wWsS mMjJ vVwW vVwW nNmM nNmM wmWM wmWM nvNV nvNV nnww nnww vvmm vvmm nNwW nNwW vVmM vVmM swfv jnjm swfv jnjm jvjm jvjm swsv swsv wWmM vVnN wvWV nmNM vvVV nnNN wwWW mmMM"
+                },
+
+                {
+                    "id": 10,
+                    "name": "Word Practice",
+                    "duration": "3",
+                    "level": "medium",
+                    "line_length": 30,
+                    "description": "Practice keys V, N, W, M by typing simple words",
+                    "course_text": "welcome meet me in manila not in vancouver overhauling warehouse dangerous glamour virtual Niles near Niagara sparrow missed narrow meadow Moscow wonder Wales winter saw Viking native near Nevada river maestro near magnet window throw minimum welcome varnish valve for nine vehicles eleven snowman near Manila jewel mania missed wallet wild fishmonger journalism virtual world for man"
+                }
+            ]
+            
+        },
+        {
+
+            "name": "keys Q, P, B, Y", 
+            "row_id": "qwerty-keys-qpby",
+            "courses": [
+                {
+                    "id": 11,
+                    "name": "Keys Introduction",
+                    "duration": "3",
+                    "level": "easy",
+                    "line_length": 30,
+                    "description": "This course introduces the keys Q, P, B, Y. Learn the key positions and appropriate finger to type these keys",
+                    "course_text": "aqaq ;p;p aqaq ;p;p aaqq ;;pp aaqq ;;pp ffbb jjyy bbff yyjj fbaq jy;p fbaq jy;p qQaA pP;; bByY bByY fbFB jyJY bBfF yYjJ fgbq jhyp qqbb ppyy qQbB pPyY bBqQ yYpP byBY byBY qpQP QPqp QPQP QPQP BYBY BYBY byby BYBY qpqp QPQP bbff BFBF jyjy JYJY qbqb QBQB pyPY pyPY bbyy bByY qpqp qPqP qpqp QPQP byby BYBY"
+                },
+
+                {
+                    "id": 12,
+                    "name": "Word Practice",
+                    "duration": "3",
+                    "level": "medium",
+                    "line_length": 30,
+                    "description": "Practice keys Q, P, B, Y by typing simple words",
+                    "course_text": "imponderably malnourished prepare quick equip power blaspheming filmography palindrome but jumble undesirably superfamily presumingly dangerous nasty yesterday dynasty pompous broadway request panama playground your royalty phillips queen dangerous grayhound opaque soap busy opera your yoga fluency paris party squire etiquette blueberry baby square barrel busy diary year maybe Bye Bye"
+                }
+            ]
+            
+        },
+        {
+
+            "name": "keys Z, X, period, ?", 
+            "row_id": "qwerty-keys-zx",
+            "courses": [
+                {
+                    "id": 13,
+                    "name": "Keys Introduction",
+                    "duration": "3",
+                    "level": "easy",
+                    "line_length": 30,
+                    "description": "This course introduces the keys Z, X, .(period), ?(question mark). Learn the key positions and appropriate finger to type these keys",
+                    "course_text": "azaz sxsx azaz sxsx aazz aazz ssxx ssxx zzxx .?.? zzxx ..?? zZaA xXsS aAzZ sSxX as? as? sax. sax. zasx zasx ZASX ZASX z?z? Z?Z? l.l. L.L. z?z? x.x. Z?Z? X.X. zaza ZAZA xsxs XSXS zasx. zasx? zasx. zasx? ZZXX zzxx zZ. zZ? xxzz XXZZ xz. XZ? a? a? s. s. z? z? x? x. zx.? zx.? ZX.? ZX.? zaza xsxs ZAZA XSXS la. la. laz? laz? ZZXX zzxx zZ. zZ?"
+                },
+
+                {
+                    "id": 14,
+                    "name": "Word Practice",
+                    "duration": "3",
+                    "level": "medium",
+                    "line_length": 30,
+                    "description": "Practice keys Z, X, .(period), ?(question mark) by typing simple words",
+                    "course_text": "jazz fixture zurich ? amazing wax fox ? flexible bazaar. zambia xylophone mixup ? zaire lizard tuxedo ? amazing zero pixel ? sixty annexure. azure buzzer. exact lexicon lizard ? jazz fox fly mixup ? sixty exact lexicon lizard. amazing zero jazz fox. jazz sax ? sax jazz. wax xylophone mixup ? amazing citizen ? zero. bazaar flexible fixture wax xylophone zurich lizard flexible ? amazing."
+                }
+            ]
+            
+        },
+        {
+
+            "name": "Numbers", 
+            "row_id": "qwerty-numbers",
+            "courses": [
+                {
+                    "id": 15,
+                    "name": "Keys Introduction",
+                    "duration": "3",
+                    "level": "easy",
+                    "line_length": 30,
+                    "description": "This course introduces the number keys (top row). Learn the key positions and appropriate finger to type these keys",
+                    "course_text": "aq1 a1 q1 aq1 sw2 s2 w2 sw2 de3 d3 e3 de3 fr4 f4 r4 fr4 gt5 g5 t5 gt5 hy6 h6 y6 hy6 ju7 j7 u7 ju7 ki8 k8 i8 ki8 lo9 l9 o9 lo9 ;p0 ;0 p0 ;p0"
+                },
+
+                {
+                    "id": 16,
+                    "name": "Word Practice",
+                    "duration": "3",
+                    "level": "medium",
+                    "line_length": 30,
+                    "description": "Practice typing simple words containing numbers",
+                    "course_text": "1 is one. one is 1. 2 is two. two is 2. 1 plus 2 is 3. 1 plus 3 is 4. 2 plus 2 is also 4. 3 plus 2 is 5. 1 plus 4 is also 5. 2 plus 4 is 6. 3 plus 3 is also 6. 1 plus 5 is what ? 2 plus 5 is 7. 4 plus 3 is also 7. 1 plus 2 plus 4 is what ? 2 times 4 is 8. 3 plus 5 is also 8. 6 plus 2 is what ? 3 times 3 is 9. 9 is a square. 5 plus 4 is what ? 0 is a special number. 0 before number is number but, 0 after number ? 0 is the real hero."
+                }
+            ]
+            
+        },
+        {
+
+            "name": "Special characters", 
+            "row_id": "qwerty-special-chars",
+            "courses": [
+                {
+                    "id": 17,
+                    "name": "Keys Introduction",
+                    "duration": "3",
+                    "level": "easy",
+                    "line_length": 30,
+                    "description": "This course introduces special characters and symbols. Learn the key positions and appropriate finger to type these keys",
+                    "course_text": "aq1! a! q! 1! aq1! sw2@ s@ w@ 2@ sw2@ de3# d# e# 3# de3# fr4$ f$ r$ 4$ fr4$ gt5% g% t% 5% gt5% hy6^ h^ y^ 6^ hy6^ ju7& j& u& 7& ju7& ki8* k* i* 8* ki8* lo9( l( o( 9( lo9( ;p0) ;) p) 0) ;p0) ;: ;: ;' ;\" ;\\ ;[ ;{ ;] ;} ;- ;_ ;= ;+ k, k, k< k< l. l. l> l> ;? ;? ;/ ;/"
+                },
+
+                {
+                    "id": 18,
+                    "name": "Word Practice",
+                    "duration": "3",
+                    "level": "medium",
+                    "line_length": 30,
+                    "description": "Practice typing simple words containing special characters and symbols",
+                    "course_text": "Hello ! Welcome ! email@domain.com # represents number 4$ is too much. 5% of 100 is what ? ^ is not carrot. & is and. * is star. 3*3 is what ? (90)*0 is what ? 4 + 4 = 3? 7 - 8 is positive ! [] are square brackets; {} are braces; Is 'you' really \"you\"? if (zero == '0') then true; 1 < 0 is true ! 0 > 9 is also true ?"
+                }
+            ]
+            
+        },
+        {
+
+            "name": "All keys practice", 
+            "row_id": "qwerty-all-keys",
+            "courses": [
+                {
+                    "id": 19,
+                    "name": "The Road Not Taken",
+                    "duration": "5",
+                    "level": "medium",
+                    "line_length": 30,
+                    "description": "The legendary classical poem 'The Road Not Taken' by Robert Frost",
+                    "course_text": [
+                        "The Road Not Taken",
+                        "Two roads diverged in a yellow wood,",
+                        "And sorry I could not travel both",
+                        "And be one traveler, long I stood",
+                        "And looked down one as far as I could",
+                        "To where it bent in the undergrowth;",
+                        "Then took the other, as just as fair,",
+                        "And having perhaps the better claim,",
+                        "Because it was grassy and wanted wear;",
+                        "Though as for that the passing there",
+                        "Had worn them really about the same,",
+                        "And both that morning equally lay",
+                        "In leaves no step had trodden black.",
+                        "Oh, I kept the first for another day!",
+                        "Yet knowing how way leads on to way,",
+                        "I doubted if I should ever come back.",
+                        "I shall be telling this with a sigh",
+                        "Somewhere ages and ages hence:",
+                        "Two roads diverged in a wood, and I-",
+                        "I took the one less traveled by,",
+                        "And that has made all the difference.",
+                        "- Robert Frost."
+                    ]
+                },
+
+                {
+                    "id": 20,
+                    "name": "Albert Einstein Quotes : Part 1",
+                    "duration": "5",
+                    "level": "hard",
+                    "line_length": 30,
+                    "description": "A collection of great quotes of Albert Einstein from wikiquote",
+                    "course_text": "A happy man is too satisfied with the present to dwell too much on the future. Unthinking respect for authority is the greatest enemy of truth. Nature shows us only the tail of the lion. But there is no doubt in my mind that the lion belongs with it even if he cannot reveal himself to the eye all at once because of his huge dimension. How does it happen that a properly endowed natural scientist comes to concern himself with epistemology? Concepts that have proven useful in ordering things easily achieve such authority over us that we forget their earthly origins and accept them as unalterable givens. 'How much do I love that noble man More than I could tell with words I fear though he'll remain alone With a holy halo of his own.' Subtle is the Lord, but malicious He is not. I have second thoughts. Maybe God is malicious. In science, moreover, the work of the individual is so bound up with that of his scientific predecessors and contemporaries that it appears almost as an impersonal product of his generation. [I do not] carry such information in my mind since it is readily available in books....The value of a college education is not the learning of many facts but the training of the mind to think. I, at any rate, am convinced that He does not throw dice. As I have said so many times, God doesn't play dice with the world. Whether you can observe a thing or not depends on the theory which you use. It is the theory which decides what can be observed."
+                },
+
+                {
+                    "id": 21,
+                    "name": "Albert Einstein Quotes : Part 2",
+                    "duration": "5",
+                    "level": "hard",
+                    "line_length": 30,
+                    "description": "A collection of great quotes of Albert Einstein from wikiquote",
+                    "course_text": "Try and penetrate with our limited means the secrets of nature and you will find that, behind all the discernible concatenations, there remains something subtle, intangible and inexplicable. Veneration for this force beyond anything that we can comprehend is my religion. To that extent I am, in point of fact, religious. I believe in Spinoza's God, Who reveals Himself in the lawful harmony of the world, not in a God Who concerns Himself with the fate and the doings of mankind. If A is success in life, then A = x + y + z. Work is x, play is y and z is keeping your mouth shut. Life is like riding a bicycle. To keep your balance you must keep moving. I believe that whatever we do or live for has its causality; it is good, however, that we cannot see through to it. To punish me for my contempt of authority, Fate has made me an authority myself. I never think of the future. It comes soon enough. It is my view that a vegetarian manner of living by its purely physical effect on the human temperament would most beneficially influence the lot of mankind. Why does this magnificent applied science which saves work and makes life easier bring us so little happiness? The simple answer runs: Because we have not yet learned to make sensible use of it. I believe in intuition and inspiration. … At times I feel certain I am right while not knowing the reason. When the eclipse of 1919 confirmed my intuition, I was not in the least surprised. In fact I would have been astonished had it turned out otherwise. Imagination is more important than knowledge. For knowledge is limited, whereas imagination embraces the entire world, stimulating progress, giving birth to evolution. It is, strictly speaking, a real factor in scientific research."
+                },
+
+                {
+                    "id": 22,
+                    "name": "Albert Einstein Quotes : Part 3",
+                    "duration": "5",
+                    "level": "hard",
+                    "line_length": 30,
+                    "description": "A collection of great quotes of Albert Einstein from wikiquote",
+                    "course_text": "Everyone sits in the prison of his own ideas; he must burst it open, and that in his youth, and so try to test his ideas on reality. I see a clock, but I cannot envision the clockmaker. The human mind is unable to conceive of the four dimensions, so how can it conceive of a God, before whom a thousand years and a thousand dimensions are as one ? Only a life lived for others is a life worthwhile. Our experience hitherto justifies us in trusting that nature is the realization of the simplest that is mathematically conceivable. It can scarcely be denied that the supreme goal of all theory is to make the irreducible basic elements as simple and as few as possible without having to surrender the adequate representation of a single datum of experience. Everything should be made as simple as possible, but no simpler. All of science is nothing more than the refinement of everyday thinking. One may say 'the eternal mystery of the world is its comprehensibility. All religions, arts and sciences are branches of the same tree. All these aspirations are directed toward ennobling man's life, lifting it from the sphere of mere physical existence and leading the individual towards freedom. Physical concepts are free creations of the human mind, and are not, however it may seem, uniquely determined by the external world. Still, there are moments when one feels free from one's own identification with human limitations and inadequacies. At such moments, one imagines that one stands on some spot of a small planet, gazing in amazement at the cold yet profoundly moving beauty of the eternal, the unfathomable: life and death flow into one, and there is neither evolution nor destiny; only being'."
+                }
+            ]
+            
+        }
+    ]
 }
 },{}]},{},[7]);

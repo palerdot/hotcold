@@ -6,6 +6,7 @@
         <title>Hotcold typing</title>
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
 
         <!-- favicon -->
         <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
@@ -25,7 +26,7 @@
 
     </head>
 
-    <body class="container-fluid">
+    <body class="container-fluid night-theme">
 
         <div class="col-md-1"></div>
 
@@ -61,80 +62,85 @@
                             </span>
                         </div>
 
-                        <div class="btn-group theme-group" role="group" aria-label="...">
+                        <!-- <div class="btn-group theme-group" role="group" aria-label="...">
                             <span id="night_theme" class="btn theme">
                                 <i class="glyphicon glyphicon-star-empty"></i> Night
                             </span>
                             <span id="day_theme" class="btn theme">
                                 <i class="glyphicon glyphicon-star"></i> Day
                             </span>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </nav>
             <!-- END: end of top navbar holding the home, courses and about tabs -->
+
+            <div class="alert info-div text-center m-top-none">
+                <strong>Typing Tip: </strong>   Please note that correcting/backspace is not allowed as it will affect the accuracy of your typing. Focus on accuracy rather than speed and you will soon become a typing PRO! Also keep an eye on the key glow colors. Anything not red, you are doing fine.
+            </div>
 
             <!-- START: start of course tab; contains information on all courses; it appears on clicking 'courses' in top main nav -->
             <div id="courses_page_holder" class="container-fluid page_holder">
 
                 <div class="tabbable tabs-left row">
 
-                    <ul class="nav nav-pills nav-stacked col-md-2">
-                        <li class="active">
+                    <ul id="lesson-headers" class="nav nav-pills nav-stacked col-md-3">
+
+                        <li class="active lesson-header">
                             <a href="#home_row_courses" data-toggle="tab">
                                 <i class="icon-chevron-right pull-right"></i>
                                 <strong>Home row, G, H</strong>
                             </a>
                         </li>
-                        <li>
+                        <li class="lesson-header">
                             <a href="#course_row_2" data-toggle="tab">
                                 <i class="icon-chevron-right pull-right"></i>
                                 <strong>Capital letters</strong>
                             </a>
                         </li>
-                        <li>
+                        <li class="lesson-header">
                             <a href="#course_row_3" data-toggle="tab">
                                 <i class="icon-chevron-right pull-right"></i>
                                 <strong>keys E, I, R, U</strong>
                             </a>
                         </li>
-                        <li>
+                        <li class="lesson-header">
                             <a href="#course_row_4" data-toggle="tab">
                                 <i class="icon-chevron-right pull-right"></i>
-                                <strong>keys T, O, C, comma</strong>
+                                <strong>Keys T, O, C, comma</strong>
                             </a>
                         </li>
-                        <li>
+                        <li class="lesson-header">
                             <a href="#course_row_5" data-toggle="tab">
                                 <i class="icon-chevron-right pull-right"></i>
                                 <strong>keys V, N, W, M</strong>
                             </a>
                         </li>
-                        <li>
+                        <li class="lesson-header">
                             <a href="#course_row_6" data-toggle="tab">
                                 <i class="icon-chevron-right pull-right"></i>
                                 <strong>keys Q, P, B, Y</strong>
                             </a>
                         </li>
-                        <li>
+                        <li class="lesson-header">
                             <a href="#course_row_7" data-toggle="tab">
                                 <i class="icon-chevron-right pull-right"></i>
                                 <strong>keys Z, X, period, ?</strong>
                             </a>
                         </li>
-                        <li>
+                        <li class="lesson-header">
                             <a href="#course_row_8" data-toggle="tab">
                                 <i class="icon-chevron-right pull-right"></i>
                                 <strong>Numbers</strong>
                             </a>
                         </li>
-                        <li>
+                        <li class="lesson-header">
                             <a href="#course_row_9" data-toggle="tab">
                                 <i class="icon-chevron-right pull-right"></i>
                                 <strong>Special characters</strong>
                             </a>
                         </li>
-                        <li>
+                        <li class="lesson-header">
                             <a href="#all_key_row" data-toggle="tab">
                                 <i class="icon-chevron-right pull-right"></i>
                                 <strong>All keys practice</strong>
@@ -148,10 +154,10 @@
                         </li>
                     </ul>
 
-                    <div class="tab-content col-md-10">
+                    <div id="lesson-details" class="tab-content col-md-9">
 
                         <!-- START: start of home row courses div; this holds multiple div pages on courses information (at present no div pages) -->
-                        <div class="tab-pane course_pages active" id="home_row_courses">
+                        <div class="tab-pane course_pagesi lesson-detail active" id="home_row_courses">
                             <div class="course_info">
                                 <div class="row">
                                     <div class="col-md-6 alert alert-info text-center">
@@ -207,7 +213,7 @@
                         <!-- END: end of home row courses div; this holds multiple div pages on courses information (at present no div pages) -->
 
                         <!-- START: start of capital letter course div -->
-                        <div class="tab-pane course_pages" id="course_row_2">
+                        <div class="tab-pane course_pagesi lesson-detail" id="course_row_2">
                             <div class="course_info">
                                 <div class="row">
                                     <div class="col-md-6 alert alert-info text-center">
@@ -263,7 +269,7 @@
                         <!-- END: start of capital letter course div -->
 
                         <!-- START: start of  course div -->
-                        <div class="tab-pane course_pages" id="course_row_3">
+                        <div class="tab-pane course_pagesi lesson-detail" id="course_row_3">
                             <div class="course_info">
                                 <div class="row">
                                     <div class="col-md-6 alert alert-info text-center">
@@ -319,7 +325,7 @@
                         <!-- END: end of  course div -->
 
                         <!-- START: start of  course div -->
-                        <div class="tab-pane course_pages" id="course_row_4">
+                        <div class="tab-pane course_pagesi lesson-detail" id="course_row_4">
                             <div class="course_info">
                                 <div class="row">
                                     <div class="col-md-6 alert alert-info text-center">
@@ -375,7 +381,7 @@
                         <!-- END: end of  course div -->
 
                         <!-- START: start of  course div -->
-                        <div class="tab-pane course_pages" id="course_row_5">
+                        <div class="tab-pane course_pagesi lesson-detail" id="course_row_5">
                             <div class="course_info">
                                 <div class="row">
                                     <div class="col-md-6 alert alert-info text-center">
@@ -431,7 +437,7 @@
                         <!-- END: end of  course div -->
 
                         <!-- START: start of  course div -->
-                        <div class="tab-pane course_pages" id="course_row_6">
+                        <div class="tab-pane course_pagesi lesson-detail" id="course_row_6">
                             <div class="course_info">
                                 <div class="row">
                                     <div class="col-md-6 alert alert-info text-center">
@@ -487,7 +493,7 @@
                         <!-- END: end of  course div -->
 
                         <!-- START: start of  course div -->
-                        <div class="tab-pane course_pages" id="course_row_7">
+                        <div class="tab-pane course_pagesi lesson-detail" id="course_row_7">
                             <div class="course_info">
                                 <div class="row">
                                     <div class="col-md-6 alert alert-info text-center">
@@ -543,7 +549,7 @@
                         <!-- END: end of  course div -->
 
                         <!-- START: start of  course div -->
-                        <div class="tab-pane course_pages" id="course_row_8">
+                        <div class="tab-pane course_pagesi lesson-detail" id="course_row_8">
                             <div class="course_info">
                                 <div class="row">
                                     <div class="col-md-6 alert alert-info text-center">
@@ -599,7 +605,7 @@
                         <!-- END: end of  course div -->
 
                         <!-- START: start of  course div -->
-                        <div class="tab-pane course_pages" id="course_row_9">
+                        <div class="tab-pane course_pagesi lesson-detail" id="course_row_9">
                             <div class="course_info">
                                 <div class="row">
                                     <div class="col-md-6 alert alert-info text-center">
@@ -655,7 +661,7 @@
                         <!-- END: end of  course div -->
 
                         <!-- START: start of all key practice div -->
-                        <section class="tab-pane" id="all_key_row">
+                        <section class="tab-pane course_pagesi lesson-detail" id="all_key_row">
 
                             <!-- START: start of  page 1 -->
                             <div id="all_key_page_1">
@@ -800,7 +806,7 @@
                         </section>
                         <!-- END: end of all key practice div div; this holds multiple div pages on courses information (at present no div pages) -->
 
-                        <div class="tab-pane course_pages row" id="create_course_row">
+                        <div class="tab-pane row" id="create_course_row">
 
                             <div id="custom_lesson_form" class="col-md-12">
 
@@ -1116,7 +1122,48 @@
 
         <div class="col-md-1"></div>
 
+        <!-- START: Templates -->
+        <script type="text/template" id="lesson-header-template">
+            <li class="lesson-header">
+                <a href="#{{row_id}}" data-toggle="tab">
+                    <i class="icon-chevron-right pull-right"></i>
+                    <strong>{{name}}</strong>
+                </a>
+            </li>
+        </script>
+
+        <script type="text/template" id="course-info-template">
+            <div class="course-info">
+                <div class="row course-detail">
+                    <div class="col-md-12 info-section text-center m-top-none">
+                        <div class="col-md-12 course-gist">
+                            <div class="col-md-6">{{name}}</div>
+                            <div class="col-md-1">
+                                <span class="label label-success difficulty">{{level}}</span>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="label alert-yellow">
+                                    <strong>Duration:</strong> {{duration}} minutes
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <button id="course_{{id}}" class="btn btn-successi btn-primary launch-course">
+                                    <strong>Launch course</strong>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-md-12 course-description">{{description}}</div>
+                    </div>
+                </div>
+            </div>
+        </script>
+        <!-- END: Templates -->
+
         <script src='js/APP.js'></script>
+
+        <footer class="col-md-12 hc-footer text-center">
+            Please give your feedbacks and suggestions by email or through twitter. Also, please subscribe for updates on new features.
+        </footer>
 
     </body>
 

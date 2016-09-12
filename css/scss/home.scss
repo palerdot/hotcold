@@ -36,19 +36,6 @@ body {
         }    
     }
 
-    .info-section {
-        background-color: $home_highlight_bg_color;
-        color: $home_highlight_text_color;
-        margin: 0.5em 0;
-        padding: 1em;
-        font-size: 1.33em;
-        border-radius: 3px;
-        line-height: 2em;
-            &.tiny-text {
-                font-size: 1em;
-            }
-    }
-
     .download-section {
         margin: 1em 0;
     }

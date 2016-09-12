@@ -117,12 +117,10 @@
     display: none;
 }
 
-.space_start{
-    background-color: #FFFF00;
-}
-
-.space_resume{
-    background-color: #FFFF00;
+.space_start, .space_resume, .info_space_bar {
+    color: #cc6600;
+    background-color: $HC_ALERT_YELLOW;
+    border-color: $HC_ALERT_YELLOW_BORDER;
 }
 // END: close bar label styles
 

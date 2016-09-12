@@ -1,12 +1,14 @@
 var Hotcold = require( "./Hotcold.js" ),
     jquery_el = require( "./jquery_el.js" ),
-    Fingers = require( "./fingers.json" ),
+    Fingers = require( "./finger_patterns.json" ),
+    KeyPatterns = require( "./key_patterns.json" ),
     Theme = require( "./Theme.js" ),
     Canvas = require( "./Canvas.js" )( Hotcold, jquery_el, Theme ),
     Timer = require( "./Timer.js" )( Hotcold, jquery_el, Theme, Canvas ),
     Canvas = require( "./Canvas.js" )( Hotcold, jquery_el, Theme ),
-    Course = require( "./Course.js" )( Hotcold, Canvas, jquery_el, Timer, Fingers ),
-    KB = require( "./layouts.json" );
+    Course = require( "./Course.js" )( Hotcold, Canvas, jquery_el, Timer, Fingers, KeyPatterns ),
+    KB = require( "./layouts.json" ),
+    Lessons = require("../../lessons/lessons.json");
 
 var HC_CONFIG = require( "../../config.json" );
 
@@ -17,12 +19,20 @@ var APP = {
     start: function () {
         console.log( "config ", HC_CONFIG, KB, _ );
 
+        // change underscore template settings
+        _.templateSettings = {
+            interpolate: /\{\{(.+?)\}\}/g
+        };
+
         this.initKeyboardLayouts();
+
+        this.initLayoutLessons();
 
         this.initializeEvents();
         this.initAppMode();
     },
 
+    // initializes keyboard layout in the course window
     initKeyboardLayouts: function () {
         console.log("Porumai! initing keyboard events ", Hotcold.layout, _.keys( KB ) );
         var self = this; // save reference
@@ -109,6 +119,61 @@ var APP = {
         // append the new layout to the keyboard div
         self.$el.keyboard_layout.html( $keyboard );
 
+        // last but not least, update the space jquery element reference
+        self.$el.space = self.$el.keyboard_layout.find("#key_32");
+
+    },
+
+    // initializes lessons for the selected keyboard layout
+    initLayoutLessons: function () {
+
+        var self = this; // save reference
+        
+        console.log("Porumai! will init lessons for ", Hotcold.layout, Lessons[Hotcold.layout] );
+
+        // generate lesson (in reverse) to prepend properly
+        var lessons = _.chain( Lessons[Hotcold.layout] )
+                        .reverse()
+                        .value();
+
+        // clear the lesson headers (except the custom course)
+        self.$el.lesson_headers.find(".lesson-header").remove();
+
+        // empty lesson details
+        self.$el.lesson_details.find(".lesson-detail").remove();
+
+        var lh_template = _.template( self.$el.template_lh.html() );
+        
+        _.each( lessons, function (lesson) {
+            // display the lesson headers
+            self.$el.lesson_headers.prepend( $( lh_template(lesson) ) );
+            
+            // get the course template string
+            var ci_template = _.template( self.$el.template_ci.html() );
+
+            // display the course row
+            var $course_row = $("<div>")
+                                    .attr("id", lesson.row_id)
+                                    .addClass("lesson-detail tab-pane");
+
+            // append the courses to the course row
+            _.each( lesson.courses, function (course) {
+                var $course = $( ci_template(course) );
+                // attach the course details to the launch button
+                $course
+                    .find(".launch-course")
+                    .data("hc-course", JSON.stringify(course) );
+
+                $course_row.append( $course ); 
+            } );
+
+            // append the course row
+            self.$el.lesson_details.prepend( $course_row );
+
+        } );
+
+        // click the first lesson
+        self.$el.lesson_headers.find(".lesson-header").first().find("a").click();
     },
 
     // ----------------------------------------------------
@@ -276,8 +341,8 @@ var APP = {
             self.set_night_theme();
         } );
 
-        // click the night theme manually for the first time
-        this.$el.n_theme.click();
+        // set the night theme manually for the first time
+        self.set_night_theme();
 
         // go to course home
         this.$el.c_home.click( function () {
@@ -287,6 +352,8 @@ var APP = {
 
             self.$el.c_win.hide();
             self.$el.c_tab.show();
+
+            self.cancelFullScreen();
         } );
 
         this.initLessons();
@@ -309,23 +376,8 @@ var APP = {
 
             self.$el.c_win.hide();
             self.$el.c_tab.show();
-        } );
 
-        // pagers
-        this.$el.sp1.click( function ( e ) {
-            e.preventDefault();
-            self.$el.akp2.fadeOut( 'fast' );
-            self.$el.akp1
-                .delay( 250 )
-                .fadeIn();
-        } );
-
-        this.$el.sp2.click( function ( e ) {
-            e.preventDefault();
-            self.$el.akp1.fadeOut( 'fast' );
-            self.$el.akp2
-                .delay( 250 )
-                .fadeIn();
+            self.cancelFullScreen();
         } );
 
         this.$el.fs_toggle.click( function () {
@@ -367,6 +419,18 @@ var APP = {
     initLessons: function () {
 
         var self = this;
+
+        this.$el.lesson_details.on("click", ".launch-course", function () {
+            console.log( $.parseJSON( $(this).data("hc-course") ) );
+            var course_details = $.parseJSON( $(this).data("hc-course") );
+            Hotcold.curr_course = new Course();
+            Hotcold.curr_course.init( course_details );
+            self.$el.c_tab.hide();
+            self.$el.c_win.fadeIn();
+            self.requestFullScreen();
+        });
+
+        return;
 
         // lesson 1
         this.$el.lc1.click( function () {
