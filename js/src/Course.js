@@ -63,7 +63,11 @@ var CourseWrapper = function ( HC, Canvas, $el, Timer, Fingers, KeyPatterns ) {
                 keys[ i ] = $( temp );
             }
 
-            if ( i == 91 || i == 93 || i == 59 || i == 39 || i == 92 || i == 44 || i == 46 || i == 47 || i == 95 || i == 43 ) {
+            // mapping all the symbols to appropriate div
+            // 91 => [, 93 => ], 59 => ; , 39 => ' (single quote) , 92 => \, 44 => ,(comma),
+            // 46 => . (period), 47 => /, 95 => _ (underscore), 43 => +, 96 => `(tick), 45 => hyphen() 
+            // NOTE: for keyboard change, this has to be dynamic
+            if ( i == 91 || i == 93 || i == 59 || i == 39 || i == 92 || i == 44 || i == 46 || i == 47 || i == 43 || i == 96 || i == 45) {
                 var code = get_numeric_div( i );
                 temp = '#key_' + code;
                 keys[ i ] = $( temp );
@@ -524,8 +528,6 @@ var CourseWrapper = function ( HC, Canvas, $el, Timer, Fingers, KeyPatterns ) {
                 Hotcold.left_shift = false;
             }
 
-            
-
             var right_shift_patterns = KeyPatterns[ Hotcold.layout ].right,
                 is_right_shift = right_shift_patterns.indexOf(code) > -1,
                 left_shift_patterns = KeyPatterns[ Hotcold.layout ].left,
@@ -609,8 +611,16 @@ var CourseWrapper = function ( HC, Canvas, $el, Timer, Fingers, KeyPatterns ) {
                 case 47:
                     return 63;
 
-                case 95:
-                    return 45;
+                // case 95:
+                //     return 45;
+
+                // tick => `, mapping to ~
+                case 96:
+                    return 126;
+
+                // hyphen mapping to underscore
+                case 45: 
+                    return 95;
 
                 // note this for +; have to watch out in case of bugs;
                 // note this module is also used in stat helper
@@ -627,7 +637,7 @@ var CourseWrapper = function ( HC, Canvas, $el, Timer, Fingers, KeyPatterns ) {
 
         //1-10 correponding finger from left to right
         //11-14 right shift plus left hand four fingers
-        //15-18 left shift plus right hand four fingers
+        //15-18 left shift plus right hand four fingers (starting from index)
         function get_finger_pattern( code ) {
 
             var char = String.fromCharCode( code ),

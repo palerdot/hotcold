@@ -666,7 +666,11 @@ var CourseWrapper = function ( HC, Canvas, $el, Timer, Fingers, KeyPatterns ) {
                 keys[ i ] = $( temp );
             }
 
-            if ( i == 91 || i == 93 || i == 59 || i == 39 || i == 92 || i == 44 || i == 46 || i == 47 || i == 95 || i == 43 ) {
+            // mapping all the symbols to appropriate div
+            // 91 => [, 93 => ], 59 => ; , 39 => ' (single quote) , 92 => \, 44 => ,(comma),
+            // 46 => . (period), 47 => /, 95 => _ (underscore), 43 => +, 96 => `(tick), 45 => hyphen() 
+            // NOTE: for keyboard change, this has to be dynamic
+            if ( i == 91 || i == 93 || i == 59 || i == 39 || i == 92 || i == 44 || i == 46 || i == 47 || i == 43 || i == 96 || i == 45) {
                 var code = get_numeric_div( i );
                 temp = '#key_' + code;
                 keys[ i ] = $( temp );
@@ -1127,8 +1131,6 @@ var CourseWrapper = function ( HC, Canvas, $el, Timer, Fingers, KeyPatterns ) {
                 Hotcold.left_shift = false;
             }
 
-            
-
             var right_shift_patterns = KeyPatterns[ Hotcold.layout ].right,
                 is_right_shift = right_shift_patterns.indexOf(code) > -1,
                 left_shift_patterns = KeyPatterns[ Hotcold.layout ].left,
@@ -1212,8 +1214,16 @@ var CourseWrapper = function ( HC, Canvas, $el, Timer, Fingers, KeyPatterns ) {
                 case 47:
                     return 63;
 
-                case 95:
-                    return 45;
+                // case 95:
+                //     return 45;
+
+                // tick => `, mapping to ~
+                case 96:
+                    return 126;
+
+                // hyphen mapping to underscore
+                case 45: 
+                    return 95;
 
                 // note this for +; have to watch out in case of bugs;
                 // note this module is also used in stat helper
@@ -1230,7 +1240,7 @@ var CourseWrapper = function ( HC, Canvas, $el, Timer, Fingers, KeyPatterns ) {
 
         //1-10 correponding finger from left to right
         //11-14 right shift plus left hand four fingers
-        //15-18 left shift plus right hand four fingers
+        //15-18 left shift plus right hand four fingers (starting from index)
         function get_finger_pattern( code ) {
 
             var char = String.fromCharCode( code ),
@@ -2601,91 +2611,89 @@ module.exports={
         "7": 7,
         "8": 8,
         "9": 9,
-        "~": 11,
-        "`": 1,
+        " ": 5,
         "!": 11,
-        "@": 12,
+        "\"": 18,
         "#": 13,
         "$": 14,
         "%": 14,
-        "^": 15,
         "&": 15,
-        "*": 16,
+        "'": 10,
         "(": 17,
         ")": 18,
-        "_": 18,
-        "-": 18,
-        "+": 8,
-        "=": 10,
-        "q": 1,
-        "Q": 11,
-        "w": 2,
-        "W": 12,
-        "e": 3,
-        "E": 13,
-        "r": 4,
-        "R": 14,
-        "t": 4,
-        "T": 14,
-        "y": 7,
-        "Y": 15,
-        "u": 7,
-        "U": 15,
-        "i": 8,
-        "I": 16,
-        "o": 9,
-        "O": 17,
-        "p": 10,
-        "P": 18,
-        "{": 18,
-        "[": 10,
-        "}": 18,
-        "]": 10,
-        "|": 18,
-        "\\": 10,
-        "a": 1,
-        "A": 11,
-        "s": 2,
-        "S": 12,
-        "d": 3,
-        "D": 13,
-        "f": 4,
-        "F": 14,
-        "g": 4,
-        "G": 14,
-        "h": 7,
-        "H": 15,
-        "j": 7,
-        "J": 15,
-        "k": 8,
-        "K": 16,
-        "l": 9,
-        "L": 17,
+        "*": 16,
+        "+": 18,
+        ",": 8,
+        "-": 10,
+        ".": 9,
+        "/": 10,
         ":": 18,
         ";": 10,
-        "\"": 18,
-        "'": 10,
-        "z": 1,
-        "Z": 11,
-        "x": 2,
-        "X": 12,
-        "c": 3,
-        "C": 13,
-        "v": 4,
-        "V": 14,
-        "b": 4,
-        "B": 14,
-        "n": 7,
-        "N": 15,
-        "m": 7,
-        "M": 15,
         "<": 16,
-        ",": 0,
+        "=": 10,
         ">": 17,
-        ".": 9,
         "?": 18,
-        "/": 10,
-        " ": 5
+        "@": 12,
+        "A": 11,
+        "B": 14,
+        "C": 13,
+        "D": 13,
+        "E": 13,
+        "F": 14,
+        "G": 14,
+        "H": 15,
+        "I": 16,
+        "J": 15,
+        "K": 16,
+        "L": 17,
+        "M": 15,
+        "N": 15,
+        "O": 17,
+        "P": 18,
+        "Q": 11,
+        "R": 14,
+        "S": 12,
+        "T": 14,
+        "U": 15,
+        "V": 14,
+        "W": 12,
+        "X": 12,
+        "Y": 15,
+        "Z": 11,
+        "[": 10,
+        "\\": 10,
+        "]": 10,
+        "^": 15,
+        "_": 18,
+        "a": 1,
+        "b": 4,
+        "c": 3,
+        "d": 3,
+        "e": 3,
+        "f": 4,
+        "g": 4,
+        "h": 7,
+        "i": 8,
+        "j": 7,
+        "k": 8,
+        "l": 9,
+        "m": 7,
+        "n": 7,
+        "o": 9,
+        "p": 10,
+        "q": 1,
+        "r": 4,
+        "s": 2,
+        "t": 4,
+        "u": 7,
+        "v": 4,
+        "w": 2,
+        "x": 2,
+        "y": 7,
+        "z": 1,
+        "{": 18,
+        "|": 18,
+        "}": 18
     },
 
     "dvorak": {
@@ -2998,7 +3006,7 @@ module.exports={
                 "keys": [")", "0"]
             },
             {
-                "keys": ["-", "_"]
+                "keys": ["_", "-"]
             },
             {
                 "keys": ["+", "="]

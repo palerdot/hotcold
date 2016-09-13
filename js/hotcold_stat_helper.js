@@ -37,7 +37,9 @@ for ( var i = 32; i < 127; i++ ) {
         keys[ i ].div_id = '#key_' + temp;
     }
 
-    if ( i == 91 || i == 93 || i == 59 || i == 39 || i == 92 || i == 44 || i == 46 || i == 47 || i == 95 || i == 43 ) {
+    // 91 => [, 93 => ], 59 => ; , 39 => ' (single quote) , 92 => \, 44 => ,(comma),
+    // 46 => . (period), 47 => /, 95 => _ (underscore), 43 => +, 96 => `(tick) 
+    if ( i == 91 || i == 93 || i == 59 || i == 39 || i == 92 || i == 44 || i == 46 || i == 47 || i == 43 || i == 96 || i == 45 ) {
         var temp = get_numeric_div( i );
         keys[ i ].div_id = '#key_' + temp;
     }
@@ -265,8 +267,16 @@ function get_numeric_div( code ) {
         case 47:
             return 63;
 
-        case 95:
-            return 45;
+        // case 95:
+        //     return 45;
+
+        // tick => `, mapping to ~
+        case 96:
+            return 126;
+
+        // hyphen mapping to underscore
+        case 45: 
+            return 95;
 
         // note this for +; have to watch out in case of bugs;
         // note this module is also used in stat course.js

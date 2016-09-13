@@ -278,7 +278,7 @@ _.each( layouts[current], function (val, key) {
     PATTERN.left = _.union( PATTERN.left, patterns.left );
 } );
 
-console.log("final pattern", PATTERN);
+console.log("KEY", PATTERN);
 copy(PATTERN);
 
 function generate_right_left_shifts(row, klist) {
