@@ -129,12 +129,12 @@ var APP = {
 
         var self = this; // save reference
         
-        console.log("Porumai! will init lessons for ", Hotcold.layout, Lessons[Hotcold.layout] );
-
+        // note make a copy, to prevent reversing of source
+        var lessons = _.map( Lessons[Hotcold.layout], _.clone() );
         // generate lesson (in reverse) to prepend properly
-        var lessons = _.chain( Lessons[Hotcold.layout] )
-                        .reverse()
-                        .value();
+        lessons = _.chain( lessons )
+                    .reverse()
+                    .value();
 
         // clear the lesson headers (except the custom course)
         self.$el.lesson_headers.find(".lesson-header").remove();
@@ -327,6 +327,14 @@ var APP = {
 
         console.log( "initing events ", this, this.$el.d_theme );
 
+        // initialize layout change
+        this.$el.kb_layout.on("change", function () {
+            Hotcold.layout = $(this).val();
+            console.log("porumai! layout changed - ", Hotcold.layout);
+            // show lessons for the new layout
+            self.initLayoutLessons();
+        });
+
         this.initHelpGuide();
 
         // day theme setting
@@ -421,6 +429,10 @@ var APP = {
         var self = this;
 
         this.$el.lesson_details.on("click", ".launch-course", function () {
+
+            // change the keyboard layout
+            self.initKeyboardLayouts();
+
             console.log( $.parseJSON( $(this).data("hc-course") ) );
             var course_details = $.parseJSON( $(this).data("hc-course") );
             Hotcold.curr_course = new Course();
@@ -431,183 +443,6 @@ var APP = {
         });
 
         return;
-
-        // lesson 1
-        this.$el.lc1.click( function () {
-            Hotcold.curr_course = new Course();
-            Hotcold.curr_course.init( 1 );
-            self.$el.c_tab.hide();
-            self.$el.c_win.fadeIn();
-            self.requestFullScreen();
-        } );
-
-        // lesson 2
-        this.$el.lc2.click( function () {
-            Hotcold.curr_course = new Course();
-            Hotcold.curr_course.init( 2 );
-            self.$el.c_tab.hide();
-            self.$el.c_win.fadeIn();
-        } );
-
-        // lesson 3
-        this.$el.lc3.click( function () {
-            Hotcold.curr_course = new Course();
-            Hotcold.curr_course.init( 3 );
-            self.$el.c_tab.hide();
-            self.$el.c_win.fadeIn();
-        } );
-
-        // lesson 4
-        this.$el.lc4.click( function () {
-            Hotcold.curr_course = new Course();
-            Hotcold.curr_course.init( 4 );
-            self.$el.c_tab.hide();
-            self.$el.c_win.fadeIn();
-        } );
-
-        // lesson 5
-        this.$el.lc5.click( function () {
-            Hotcold.curr_course = new Course();
-            Hotcold.curr_course.init( 5 );
-            self.$el.c_tab.hide();
-            self.$el.c_win.fadeIn();
-        } );
-
-        // lesson 6
-        this.$el.lc6.click( function () {
-            Hotcold.curr_course = new Course();
-            Hotcold.curr_course.init( 6 );
-            self.$el.c_tab.hide();
-            self.$el.c_win.fadeIn();
-        } );
-
-        // lesson 7
-        this.$el.lc7.click( function () {
-            Hotcold.curr_course = new Course();
-            Hotcold.curr_course.init( 7 );
-            self.$el.c_tab.hide();
-            self.$el.c_win.fadeIn();
-        } );
-
-        // lesson 8
-        this.$el.lc8.click( function () {
-            Hotcold.curr_course = new Course();
-            Hotcold.curr_course.init( 8 );
-            self.$el.c_tab.hide();
-            self.$el.c_win.fadeIn();
-        } );
-
-        // lesson 9
-        this.$el.lc9.click( function () {
-            Hotcold.curr_course = new Course();
-            Hotcold.curr_course.init( 9 );
-            self.$el.c_tab.hide();
-            self.$el.c_win.fadeIn();
-        } );
-
-        // lesson 10
-        this.$el.lc10.click( function () {
-            Hotcold.curr_course = new Course();
-            Hotcold.curr_course.init( 10 );
-            self.$el.c_tab.hide();
-            self.$el.c_win.fadeIn();
-        } );
-
-        // lesson 11
-        this.$el.lc11.click( function () {
-            Hotcold.curr_course = new Course();
-            Hotcold.curr_course.init( 11 );
-            self.$el.c_tab.hide();
-            self.$el.c_win.fadeIn();
-        } );
-
-        // lesson 12
-        this.$el.lc12.click( function () {
-            Hotcold.curr_course = new Course();
-            Hotcold.curr_course.init( 12 );
-            self.$el.c_tab.hide();
-            self.$el.c_win.fadeIn();
-        } );
-
-        // lesson 13
-        this.$el.lc13.click( function () {
-            Hotcold.curr_course = new Course();
-            Hotcold.curr_course.init( 13 );
-            self.$el.c_tab.hide();
-            self.$el.c_win.fadeIn();
-        } );
-
-        // lesson 14
-        this.$el.lc14.click( function () {
-            Hotcold.curr_course = new Course();
-            Hotcold.curr_course.init( 14 );
-            self.$el.c_tab.hide();
-            self.$el.c_win.fadeIn();
-        } );
-
-        // lesson 15
-        this.$el.lc15.click( function () {
-            Hotcold.curr_course = new Course();
-            Hotcold.curr_course.init( 15 );
-            self.$el.c_tab.hide();
-            self.$el.c_win.fadeIn();
-        } );
-
-        // lesson 16
-        this.$el.lc16.click( function () {
-            Hotcold.curr_course = new Course();
-            Hotcold.curr_course.init( 16 );
-            self.$el.c_tab.hide();
-            self.$el.c_win.fadeIn();
-        } );
-
-        // lesson 17
-        this.$el.lc17.click( function () {
-            Hotcold.curr_course = new Course();
-            Hotcold.curr_course.init( 17 );
-            self.$el.c_tab.hide();
-            self.$el.c_win.fadeIn();
-        } );
-
-        // lesson 18
-        this.$el.lc18.click( function () {
-            Hotcold.curr_course = new Course();
-            Hotcold.curr_course.init( 18 );
-            self.$el.c_tab.hide();
-            self.$el.c_win.fadeIn();
-        } );
-
-        // launch poem
-        this.$el.lp.click( function () {
-            Hotcold.curr_course = new Course();
-            Hotcold.curr_course.init( 19 );
-            self.$el.c_tab.hide();
-            self.$el.c_win.fadeIn();
-        } );
-
-        // launch quotes 1
-        this.$el.lq1.click( function () {
-            Hotcold.curr_course = new Course();
-            Hotcold.curr_course.init( 20 );
-            self.$el.c_tab.hide();
-            self.$el.c_win.fadeIn();
-        } );
-
-        // launch quotes 2
-        this.$el.lq2.click( function () {
-            Hotcold.curr_course = new Course();
-            Hotcold.curr_course.init( 21 );
-            self.$el.c_tab.hide();
-            self.$el.c_win.fadeIn();
-        } );
-
-        // launch quotes 3
-        this.$el.lq3.click( function () {
-            Hotcold.curr_course = new Course();
-            Hotcold.curr_course.init( 22 );
-            self.$el.c_tab.hide();
-            self.$el.c_win.fadeIn();
-        } );
 
     },
 

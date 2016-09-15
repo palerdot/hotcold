@@ -23,6 +23,8 @@ var $el = {
     n_theme: $( '#night_theme' ),
     themes: $(".theme"),
 
+    kb_layout: $("#keyboard-layout"),
+
     keys: $( '.keys' ),
     keyboard_layout: $( "#keyboard_layout" ),
     f_canvas_holder: $( '#finger_canvas_holder' ),

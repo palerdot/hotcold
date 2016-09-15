@@ -14,6 +14,8 @@
 
         <!-- Bootstrap -->
         <link href="lib/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <!-- font awesome -->
+        <link href="lib/css/font-awesome.min.css" rel="stylesheet" media="screen">
 
         <!-- main css file -->
         <link href="css/hotcold.css" rel="stylesheet" media="screen">
@@ -35,23 +37,52 @@
 
             <!-- START: start of top navbar -->
             <nav id="hotcold-navigation-bar" class="navbar navbar-default navbar-inverse">
-                <div class="container-fluid row">
-                    <div class="navbar-header col-md-6">
-                        <a class="navbar-brand hotcold-brand" href="./">
-                            <span class="hotcold-letter h">H</span>
-                            <span class="hotcold-letter o">o</span>
-                            <span class="hotcold-letter t">t</span>
-                            <span class="hotcold-letter c">c</span>
-                            <span class="hotcold-letter o-blue">o</span>
-                            <span class="hotcold-letter l">l</span>
-                            <span class="hotcold-letter d">d</span>
-
-                            <small>
-                                <strong> typing</strong>
-                            </small>
+                <div class="col-md-12 hotcold-brand">
+                    <div class="col-md-4 text-left p-top-half-em">
+                        <a href="./">
+                            <div class="col-md-2 p-none logo-section">
+                                <img class="img-responsive" src="icon/icon-32.png" />    
+                            </div>
+                            <div class="col-md-10 p-none">
+                                Hotcold Typing    
+                            </div>
                         </a>
                     </div>
-                    <div class="col-md-6 navbar-brand text-right">
+                    <div class="col-md-4 text-center p-top-half-em keyboard-section">
+                        <i class="fa fa-keyboard-o"></i>
+                        <select id="keyboard-layout">
+                            <option value="qwerty">QWERTY</option>
+                            <option value="dvorak">DVORAK</option>
+                        </select>    
+                    </div>
+                    <div class="col-md-4 text-right">
+                        <div class="btn-group header-info-group m-right-half-em" role="group" aria-label="...">
+                            <a href="./" id="web-home" class="btn btn-sm info-link">
+                                <i class="glyphicon glyphicon-home"></i> Home
+                            </a>
+                            <span id="help-guide" class="btn btn-sm info-link">
+                                <i class="glyphicon glyphicon-info-sign"></i> Help
+                            </span>
+                        </div>
+                    </div>    
+                </div>
+                <!-- <div class="container-fluid row hotcold-brand">
+                    <div class="navbar-header col-md-4 text-left logo-section">
+                        <div class="col-md-12">
+                            <a class="" href="./">
+                                <div class="col-md-3">
+                                    <img class="img-responsive" src="icon/icon-32.png" />    
+                                </div>
+                                <span class="col-md-9">
+                                    <strong>Hotcold <small>Typing</small> </strong>
+                                </span>
+                            </a>    
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        Porumai! keyboard switch
+                    </div>
+                    <div class="col-md-4 text-right">
 
                         <div class="btn-group header-info-group m-right-half-em" role="group" aria-label="...">
                             <a href="./" id="web-home" class="btn info-link">
@@ -61,17 +92,8 @@
                                 <i class="glyphicon glyphicon-info-sign"></i> Help
                             </span>
                         </div>
-
-                        <!-- <div class="btn-group theme-group" role="group" aria-label="...">
-                            <span id="night_theme" class="btn theme">
-                                <i class="glyphicon glyphicon-star-empty"></i> Night
-                            </span>
-                            <span id="day_theme" class="btn theme">
-                                <i class="glyphicon glyphicon-star"></i> Day
-                            </span>
-                        </div> -->
                     </div>
-                </div>
+                </div> -->
             </nav>
             <!-- END: end of top navbar holding the home, courses and about tabs -->
 

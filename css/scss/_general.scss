@@ -175,6 +175,10 @@ html, body {
     padding: 0 !important;
 }
 
+.p-top-half-em {
+    padding-top: 0.5em !important;
+}
+
 .p-right-none {
     padding-right: 0 !important;
 }
@@ -256,8 +260,27 @@ html, body {
 // START: hotcold header letter styles
 
 .hotcold-brand {
-    height: auto;
-    width: auto;
+        margin: auto 0;
+        padding: 0;
+        div {
+            margin-top: 3px;
+            vertical-align: middle;
+        }
+        .logo-section {
+            margin: 0;
+        }
+        .keyboard-section {
+            margin-top: 0;
+            font-size: 1.5em;
+            select {
+                font-size: 0.75em;    
+            }
+            
+        }
+        a {
+            color: white;
+            text-decoration: none;
+        }
 }
 
 .hotcold-letter {

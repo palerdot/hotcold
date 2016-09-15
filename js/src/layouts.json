@@ -260,5 +260,268 @@
 
         ]
 
+    },
+
+    "dvorak": {
+        
+        "num_row": [
+            {
+                "keys": ["~", "`"]
+            },
+            {
+                "keys": ["!", "1"]
+            },
+            {
+                "keys": ["@", "2"]
+            },
+            {
+                "keys": ["#", "3"]
+            },
+            {
+                "keys": ["$", "4"]
+            },
+            {
+                "keys": ["%", "5"]
+            },
+            {
+                "keys": ["^", "6"]
+            },
+            {
+                "keys": ["&", "7"]
+            },
+            {
+                "keys": ["*", "8"]
+            },
+            {
+                "keys": ["(", "9"]
+            },
+            {
+                "keys": [")", "0"]
+            },
+            {
+                "keys": ["_", "-"]
+            },
+            {
+                "keys": ["+", "="]
+            },
+            {
+                "special": "true",
+                "id": "bksp_key",
+                "keys": ["Bksp", ""]
+            }
+        ],
+
+        "top_row": [
+
+            {
+                "special": "true",
+                "id": "tab_key",
+                "keys": ["Tab", ""]
+            },
+
+            {
+                "keys": ["\"", "'"]
+            },
+
+            {
+                "keys": ["<", ","]
+            },
+
+            {
+                "keys": [">", "."]
+            },
+
+            {
+                "keys": ["P", ""]
+            },
+
+            {
+                "keys": ["Y", ""]
+            },
+
+            {
+                "keys": ["F", ""]
+            },
+
+            {
+                "keys": ["G", ""]
+            },
+
+            {
+                "keys": ["C", ""]
+            },
+
+            {
+                "keys": ["R", ""]
+            },
+
+            {
+                "keys": ["L", ""]
+            },
+
+            {
+                "keys": ["?", "\/"]
+            },
+
+            {
+                "keys": ["+", "="]
+            },
+
+            {
+                "keys": ["|", "\\"]
+            }
+
+        ],
+
+        "middle_row": [
+
+            {
+                "special": "true",
+                "id": "caps_key",
+                "keys": ["Caps", ""]
+            },
+
+            {
+                "keys": ["A", ""]
+            },
+
+            {
+                "keys": ["O", ""]
+            },
+
+            {
+                "keys": ["E", ""]
+            },
+
+            {
+                "keys": ["U", ""]
+            },
+
+            {
+                "keys": ["I", ""]
+            },
+
+            {
+                "keys": ["D", ""]
+            },
+
+            {
+                "keys": ["H", ""]
+            },
+
+            {
+                "keys": ["T", ""]
+            },
+
+            {
+                "keys": ["N", ""]
+            },
+
+            {
+                "keys": ["S", ""]
+            },
+
+            {
+                "keys": ["_", "-"]
+            },
+
+            {
+                "special": "true",
+                "id": "enter_key",
+                "keys": ["Enter", ""]
+            }            
+
+        ],
+
+        "bottom_row": [
+
+            {
+                "special": "true",
+                "id": "shift_left",
+                "keys": ["Shift", ""]
+            },
+
+            {
+                "keys": [":", ";"]
+            },
+
+            {
+                "keys": ["Q", ""]
+            },
+
+            {
+                "keys": ["J", ""]
+            },
+
+            {
+                "keys": ["K", ""]
+            },
+
+            {
+                "keys": ["X", ""]
+            },
+
+            {
+                "keys": ["B", ""]
+            },
+
+            {
+                "keys": ["M", ""]
+            },
+
+            {
+                "keys": ["W", ""]
+            },
+
+            {
+                "keys": ["V", ""]
+            },
+
+            {
+                "keys": ["Z", ""]
+            },
+
+            {
+                "special": "true",
+                "id": "shift_right",
+                "keys": ["Shift", ""]
+            },
+
+        ],
+
+        "space_row": [
+
+            {
+                "special": "true",
+                "id": "ctrl_left",
+                "keys": ["Ctrl", ""]
+            },
+
+            {
+                "special": "true",
+                "id": "alt_left",
+                "keys": ["Alt", ""]
+            },
+
+            {
+                "special": "true",
+                "id": "key_32",
+                "keys": ["", ""]
+            },
+
+            {
+                "special": "true",
+                "id": "ctrl_right",
+                "keys": ["Ctrl", ""]
+            },
+
+            {
+                "special": "true",
+                "id": "alt_right",
+                "keys": ["Alt", ""]
+            }
+
+        ]
+
     }
 }
