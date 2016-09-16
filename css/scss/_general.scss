@@ -268,17 +268,21 @@ html, body {
         }
         .logo-section {
             margin: 0;
+            font-size: 1.2em;
         }
         .keyboard-section {
             margin-top: 0;
+            padding-top: 0.4em !important;
             font-size: 1.5em;
+            color: $link_color;
             select {
+                color: $link_color;
+                border: thin solid $link_color;
                 font-size: 0.75em;    
             }
             
         }
         a {
-            color: white;
             text-decoration: none;
         }
 }
@@ -386,13 +390,14 @@ html, body {
 
 .header-info-group {
     .info-link {
-        border: medium solid $HC_ORANGE;
-        color: $HC_ORANGE;
-        box-shadow: 0 0 0.5em $HC_ORANGE;
+        border: thin solid $HC_LIGHT_BLUE;
+        color: $HC_LIGHT_BLUE;
+        margin-top: 0.3em !important;
+        // box-shadow: 0 0 0.5em $HC_LIGHT_BLUE;
         font-weight: bold;
 
             &:hover {
-                box-shadow: 0 0 1.5em $HC_ORANGE;
+                box-shadow: 0 0 1.5em $HC_LIGHT_BLUE;
             }   
     }
 }
