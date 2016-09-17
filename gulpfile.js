@@ -23,7 +23,8 @@ var gulp = require( "gulp" ),
     async = require( "async" ),
     pump = require( "pump" ),
     json_editor = require( "gulp-json-editor" ),
-    uglify = require( "gulp-uglify" )
+    uglify = require( "gulp-uglify" ),
+    gutil = require("gulp-util"),
     
     git_info = require( "git-rev" ),
     git = require( "gulp-git" ),
@@ -209,7 +210,7 @@ gulp.task( "copy-web-files", function ( cb ) {
                                 compress: {
                                     drop_console: true
                                 }  
-                            }) 
+                            }).on('error', gutil.log) 
                         )
                         .pipe( gulp.dest( destination ) );
 

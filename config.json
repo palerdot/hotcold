@@ -15,6 +15,7 @@
         "github_link": "https://github.com/palerdot/hotcold",
         "chrome_free_app": "https://chrome.google.com/webstore/detail/hotcold-typing/gikgnaajhiofmngkodahgpjnpgacmhlc",
         "chrome_pro_app": "https://chrome.google.com/webstore/detail/hotcold-typing-pro/aoceloicmloamkmaljmpejphndalilgp",
+        "mailchimp_css": "<link href='//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css' rel='stylesheet' type='text/css'>",
         "gaq_script": "<script src='js/gaq_script.js' type='text/javascript'></script>"
     },
     "messages": {

@@ -47,6 +47,7 @@
     "gulp-shell": "^0.5.2",
     "gulp-tar": "^1.9.0",
     "gulp-uglify": "^1.5.4",
+    "gulp-util": "^3.0.7",
     "gulp-zip": "^3.2.0",
     "main-bower-files": "^2.13.1",
     "merge-stream": "^1.0.0",

@@ -8,11 +8,26 @@
             padding-bottom: 2%;
             border-bottom: thin solid $home_highlight_text_color;
 
-            .label {
-                font-size: 0.7em;
-                padding: 3px 6px;
-                font-weight: 500;
+            .label-easy {
+                background: $alert_green;
             }
+
+            .label-medium {
+                background: $alert_orange;
+            }
+
+            .label-hard {
+                background: $alert_red;
+            }
+
+            .difficulty {
+                padding: 0;
+                .label {
+                    font-size: 0.6em;
+                    color: white;
+                }
+            }
+
         }
         .course-description {
             font-size: 0.8em !important;

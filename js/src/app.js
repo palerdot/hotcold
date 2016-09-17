@@ -7,6 +7,7 @@ var Hotcold = require( "./Hotcold.js" ),
     Timer = require( "./Timer.js" )( Hotcold, jquery_el, Theme, Canvas ),
     Canvas = require( "./Canvas.js" )( Hotcold, jquery_el, Theme ),
     Course = require( "./Course.js" )( Hotcold, Canvas, jquery_el, Timer, Fingers, KeyPatterns ),
+    Support = require( "./Support.js" )( jquery_el ),
     KB = require( "./layouts.json" ),
     Lessons = require("../../lessons/lessons.json");
 
@@ -30,6 +31,9 @@ var APP = {
 
         this.initializeEvents();
         this.initAppMode();
+
+        // check for canvas/web workers support
+        Support.check();
     },
 
     // initializes keyboard layout in the course window

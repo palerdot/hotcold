@@ -143,6 +143,12 @@ html, body {
 
 }
 
+// overriding alert color styles
+.alert-danger {
+    background: $alert_red;
+    color: white;
+}
+
 #read_info {
     position: static;
 }

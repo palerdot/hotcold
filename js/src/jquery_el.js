@@ -16,6 +16,8 @@ var $el = {
     lesson_headers: $(" #lesson-headers "),
     lesson_details: $(" #lesson-details "),
 
+    tt: $( "#typing-tip" ),
+
     template_lh: $("#lesson-header-template"),
     template_ci: $( "#course-info-template" ),
 

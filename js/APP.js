@@ -16,6 +16,7 @@ module.exports={
         "github_link": "https://github.com/palerdot/hotcold",
         "chrome_free_app": "https://chrome.google.com/webstore/detail/hotcold-typing/gikgnaajhiofmngkodahgpjnpgacmhlc",
         "chrome_pro_app": "https://chrome.google.com/webstore/detail/hotcold-typing-pro/aoceloicmloamkmaljmpejphndalilgp",
+        "mailchimp_css": "<link href='//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css' rel='stylesheet' type='text/css'>",
         "gaq_script": "<script src='js/gaq_script.js' type='text/javascript'></script>"
     },
     "messages": {
@@ -1503,6 +1504,46 @@ var Hotcold = {
 
 module.exports = Hotcold;
 },{}],5:[function(require,module,exports){
+var SupportWrapper = function ($el) {
+
+    var Support = {
+
+        check: function () {
+
+            console.log("checking canvas, web worker support ");
+
+            var status = {
+                canvas: this.canvas_support(),
+                worker: this.web_worker_support()
+            };
+
+            if ( !status.worker ) {
+                var msg = "You are using an old browser that does not support instant key glows and statistics. You can still practice touch typing without instant feedback. Please update to <a href='http://browsehappy.com' target='_blank'>latest browser by clicking here.</a> ";
+                $el.tt.html( msg ).addClass("alert alert-danger");
+            } else if ( !status.canvas ) {
+                var msg = "You are using an old browser that does not support instant graphs. You can still practice touch typing without instant feedback. Please update to <a href='http://browsehappy.com' target='_blank'>latest browser by clicking here.</a> ";
+                $el.tt.html( msg ).addClass("alert alert-danger");
+            }
+
+        },
+
+        canvas_support: function () {
+            return !!document.createElement( 'canvas' ).getContext;
+        },
+
+        web_worker_support: function () {
+            return !!window.Worker;
+        }
+
+    };
+
+    return Support;
+
+};
+
+module.exports = SupportWrapper;
+
+},{}],6:[function(require,module,exports){
 var Theme = {
 
     current: "night",
@@ -1546,7 +1587,7 @@ var Theme = {
 };
 
 module.exports = Theme;
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 var TimerWrapper = function ( HC, $el, Theme, Canvas ) {
 
     var Hotcold = HC,
@@ -1712,7 +1753,7 @@ var TimerWrapper = function ( HC, $el, Theme, Canvas ) {
 
 module.exports = TimerWrapper;
 
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 var Hotcold = require( "./Hotcold.js" ),
     jquery_el = require( "./jquery_el.js" ),
     Fingers = require( "./finger_patterns.json" ),
@@ -1722,6 +1763,7 @@ var Hotcold = require( "./Hotcold.js" ),
     Timer = require( "./Timer.js" )( Hotcold, jquery_el, Theme, Canvas ),
     Canvas = require( "./Canvas.js" )( Hotcold, jquery_el, Theme ),
     Course = require( "./Course.js" )( Hotcold, Canvas, jquery_el, Timer, Fingers, KeyPatterns ),
+    Support = require( "./Support.js" )( jquery_el ),
     KB = require( "./layouts.json" ),
     Lessons = require("../../lessons/lessons.json");
 
@@ -1745,6 +1787,9 @@ var APP = {
 
         this.initializeEvents();
         this.initAppMode();
+
+        // check for canvas/web workers support
+        Support.check();
     },
 
     // initializes keyboard layout in the course window
@@ -2434,7 +2479,7 @@ var APP = {
 // start the APP on doc ready
 APP.start();
 
-},{"../../config.json":1,"../../lessons/lessons.json":12,"./Canvas.js":2,"./Course.js":3,"./Hotcold.js":4,"./Theme.js":5,"./Timer.js":6,"./finger_patterns.json":8,"./jquery_el.js":9,"./key_patterns.json":10,"./layouts.json":11}],8:[function(require,module,exports){
+},{"../../config.json":1,"../../lessons/lessons.json":13,"./Canvas.js":2,"./Course.js":3,"./Hotcold.js":4,"./Support.js":5,"./Theme.js":6,"./Timer.js":7,"./finger_patterns.json":9,"./jquery_el.js":10,"./key_patterns.json":11,"./layouts.json":12}],9:[function(require,module,exports){
 module.exports={
     "qwerty": {
         "0": 10,
@@ -2722,7 +2767,7 @@ module.exports={
 
 }
 
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 // all the jquery elements of the Hotcold app
 var $el = {
 
@@ -2740,6 +2785,8 @@ var $el = {
 
     lesson_headers: $(" #lesson-headers "),
     lesson_details: $(" #lesson-details "),
+
+    tt: $( "#typing-tip" ),
 
     template_lh: $("#lesson-header-template"),
     template_ci: $( "#course-info-template" ),
@@ -2841,7 +2888,7 @@ var $el = {
 
 module.exports = $el;
 
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 module.exports={
     "qwerty": {
         "right": [
@@ -3006,7 +3053,7 @@ module.exports={
     }
 }
 
-},{}],11:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 module.exports={
     "qwerty": {
 
@@ -3783,7 +3830,7 @@ module.exports={
 
 }
 
-},{}],12:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 module.exports={
     "qwerty": [
         {
@@ -4731,4 +4778,4 @@ module.exports={
     ]
 
 }
-},{}]},{},[7]);
+},{}]},{},[8]);
