@@ -1,6 +1,6 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 module.exports={
-    "VERSION": "2.0.2",
+    "VERSION": "2.1.0",
     "APPMODE": "FREE",
     "PRO_CRX_URL": "https://chrome.google.com/webstore/detail/hotcold-typing-pro/aoceloicmloamkmaljmpejphndalilgp",
     "type": "web",
@@ -2621,6 +2621,102 @@ module.exports={
         "y": 4,
         "z": 10,
         "|": 18
+    },
+
+    "colemak": {
+        "0": 10,
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4,
+        "5": 4,
+        "6": 7,
+        "7": 7,
+        "8": 8,
+        "9": 9,
+        " ": 5,
+        "!": 11,
+        "\"": 18,
+        "#": 13,
+        "$": 14,
+        "%": 14,
+        "&": 15,
+        "'": 10,
+        "(": 17,
+        ")": 18,
+        "*": 16,
+        "+": 18,
+        ",": 8,
+        "-": 10,
+        ".": 9,
+        "/": 10,
+        ":": 18,
+        ";": 10,
+        "<": 16,
+        "=": 10,
+        ">": 17,
+        "?": 18,
+        "@": 12,
+        "A": 11,
+        "B": 14,
+        "C": 13,
+        "D": 14,
+        "E": 16,
+        "F": 13,
+        "G": 14,
+        "H": 15,
+        "I": 17,
+        "J": 15,
+        "K": 15,
+        "L": 15,
+        "M": 15,
+        "N": 15,
+        "O": 18,
+        "P": 14,
+        "Q": 11,
+        "R": 12,
+        "S": 13,
+        "T": 14,
+        "U": 16,
+        "V": 14,
+        "W": 12,
+        "X": 12,
+        "Y": 17,
+        "Z": 11,
+        "[": 10,
+        "\\": 10,
+        "]": 10,
+        "^": 15,
+        "_": 18,
+        "a": 1,
+        "b": 4,
+        "c": 3,
+        "d": 4,
+        "e": 8,
+        "f": 3,
+        "g": 4,
+        "h": 7,
+        "i": 9,
+        "j": 7,
+        "k": 7,
+        "l": 7,
+        "m": 7,
+        "n": 7,
+        "o": 10,
+        "p": 4,
+        "q": 1,
+        "r": 2,
+        "s": 3,
+        "t": 4,
+        "u": 8,
+        "v": 4,
+        "w": 2,
+        "x": 2,
+        "y": 9,
+        "z": 1,
+        "{": 18,
+        "|": 18,
+        "}": 18
     }
 
 }
@@ -2851,59 +2947,99 @@ module.exports={
             86,
             90
         ]
+    },
+
+    "colemak": {
+        "right": [
+            126,
+            33,
+            64,
+            35,
+            36,
+            37,
+            81,
+            87,
+            70,
+            80,
+            71,
+            65,
+            82,
+            83,
+            84,
+            68,
+            90,
+            88,
+            67,
+            86,
+            66
+        ],
+        "left": [
+            94,
+            38,
+            42,
+            40,
+            41,
+            95,
+            43,
+            66,
+            74,
+            76,
+            85,
+            89,
+            58,
+            123,
+            125,
+            124,
+            72,
+            78,
+            69,
+            73,
+            79,
+            34,
+            75,
+            77,
+            60,
+            62,
+            63
+        ]
     }
 }
 
 },{}],11:[function(require,module,exports){
 module.exports={
     "qwerty": {
-        
-        "num_row": [
-            {
-                "keys": ["~", "`"]
-            },
-            {
-                "keys": ["!", "1"]
-            },
-            {
-                "keys": ["@", "2"]
-            },
-            {
-                "keys": ["#", "3"]
-            },
-            {
-                "keys": ["$", "4"]
-            },
-            {
-                "keys": ["%", "5"]
-            },
-            {
-                "keys": ["^", "6"]
-            },
-            {
-                "keys": ["&", "7"]
-            },
-            {
-                "keys": ["*", "8"]
-            },
-            {
-                "keys": ["(", "9"]
-            },
-            {
-                "keys": [")", "0"]
-            },
-            {
-                "keys": ["_", "-"]
-            },
-            {
-                "keys": ["+", "="]
-            },
-            {
-                "special": "true",
-                "id": "bksp_key",
-                "keys": ["Bksp", ""]
-            }
-        ],
+
+        "num_row": [{
+            "keys": ["~", "`"]
+        }, {
+            "keys": ["!", "1"]
+        }, {
+            "keys": ["@", "2"]
+        }, {
+            "keys": ["#", "3"]
+        }, {
+            "keys": ["$", "4"]
+        }, {
+            "keys": ["%", "5"]
+        }, {
+            "keys": ["^", "6"]
+        }, {
+            "keys": ["&", "7"]
+        }, {
+            "keys": ["*", "8"]
+        }, {
+            "keys": ["(", "9"]
+        }, {
+            "keys": [")", "0"]
+        }, {
+            "keys": ["_", "-"]
+        }, {
+            "keys": ["+", "="]
+        }, {
+            "special": "true",
+            "id": "bksp_key",
+            "keys": ["Bksp", ""]
+        }],
 
         "top_row": [
 
@@ -3023,7 +3159,7 @@ module.exports={
                 "special": "true",
                 "id": "enter_key",
                 "keys": ["Enter", ""]
-            }            
+            }
 
         ],
 
@@ -3120,53 +3256,38 @@ module.exports={
     },
 
     "dvorak": {
-        
-        "num_row": [
-            {
-                "keys": ["~", "`"]
-            },
-            {
-                "keys": ["!", "1"]
-            },
-            {
-                "keys": ["@", "2"]
-            },
-            {
-                "keys": ["#", "3"]
-            },
-            {
-                "keys": ["$", "4"]
-            },
-            {
-                "keys": ["%", "5"]
-            },
-            {
-                "keys": ["^", "6"]
-            },
-            {
-                "keys": ["&", "7"]
-            },
-            {
-                "keys": ["*", "8"]
-            },
-            {
-                "keys": ["(", "9"]
-            },
-            {
-                "keys": [")", "0"]
-            },
-            {
-                "keys": ["_", "-"]
-            },
-            {
-                "keys": ["+", "="]
-            },
-            {
-                "special": "true",
-                "id": "bksp_key",
-                "keys": ["Bksp", ""]
-            }
-        ],
+
+        "num_row": [{
+            "keys": ["~", "`"]
+        }, {
+            "keys": ["!", "1"]
+        }, {
+            "keys": ["@", "2"]
+        }, {
+            "keys": ["#", "3"]
+        }, {
+            "keys": ["$", "4"]
+        }, {
+            "keys": ["%", "5"]
+        }, {
+            "keys": ["^", "6"]
+        }, {
+            "keys": ["&", "7"]
+        }, {
+            "keys": ["*", "8"]
+        }, {
+            "keys": ["(", "9"]
+        }, {
+            "keys": [")", "0"]
+        }, {
+            "keys": ["_", "-"]
+        }, {
+            "keys": ["+", "="]
+        }, {
+            "special": "true",
+            "id": "bksp_key",
+            "keys": ["Bksp", ""]
+        }],
 
         "top_row": [
 
@@ -3286,7 +3407,7 @@ module.exports={
                 "special": "true",
                 "id": "enter_key",
                 "keys": ["Enter", ""]
-            }            
+            }
 
         ],
 
@@ -3380,8 +3501,287 @@ module.exports={
 
         ]
 
+    },
+
+    "colemak": {
+
+        "num_row": [
+
+            {
+                "keys": ["~", "`"]
+            },
+
+            {
+                "keys": ["!", "1"]
+            },
+
+            {
+                "keys": ["@", "2"]
+            },
+
+            {
+                "keys": ["#", "3"]
+            },
+
+            {
+                "keys": ["$", "4"]
+            },
+
+            {
+                "keys": ["%", "5"]
+            },
+
+            {
+                "keys": ["^", "6"]
+            },
+
+            {
+                "keys": ["&", "7"]
+            },
+
+            {
+                "keys": ["*", "8"]
+            },
+
+            {
+                "keys": ["(", "9"]
+            },
+
+            {
+                "keys": [")", "0"]
+            },
+
+            {
+                "keys": ["_", "-"]
+            },
+
+            {
+                "keys": ["+", "="]
+            },
+
+            {
+                "special": "true",
+                "id": "bksp_key",
+                "keys": ["Bksp", ""]
+            }
+        ],
+
+        "top_row": [
+
+            {
+                "special": "true",
+                "id": "tab_key",
+                "keys": ["Tab", ""]
+            },
+
+            {
+                "keys": ["Q", ""]
+            },
+
+            {
+                "keys": ["W", ""]
+            },
+
+            {
+                "keys": ["F", ""]
+            },
+
+            {
+                "keys": ["P", ""]
+            },
+
+            {
+                "keys": ["G", ""]
+            },
+
+            {
+                "keys": ["J", ""]
+            },
+
+            {
+                "keys": ["L", ""]
+            },
+
+            {
+                "keys": ["U", ""]
+            },
+
+            {
+                "keys": ["Y", ""]
+            },
+
+            {
+                "keys": [":", ";"]
+            },
+
+            {
+                "keys": ["{", "["]
+            },
+
+            {
+                "keys": ["}", "]"]
+            },
+
+            {
+                "keys": ["|", "\\"]
+            }
+
+        ],
+
+        "middle_row": [
+
+            {
+                "special": "true",
+                "id": "caps_key",
+                "keys": ["Caps", ""]
+            },
+
+            {
+                "keys": ["A", ""]
+            },
+
+            {
+                "keys": ["R", ""]
+            },
+
+            {
+                "keys": ["S", ""]
+            },
+
+            {
+                "keys": ["T", ""]
+            },
+
+            {
+                "keys": ["D", ""]
+            },
+
+            {
+                "keys": ["H", ""]
+            },
+
+            {
+                "keys": ["N", ""]
+            },
+
+            {
+                "keys": ["E", ""]
+            },
+
+            {
+                "keys": ["I", ""]
+            },
+
+            {
+                "keys": ["O", ""]
+            },
+
+            {
+                "keys": ["\"", "'"]
+            },
+
+            {
+                "special": "true",
+                "id": "enter_key",
+                "keys": ["Enter", ""]
+            }
+
+        ],
+
+        "bottom_row": [
+
+            {
+                "special": "true",
+                "id": "shift_left",
+                "keys": ["Shift", ""]
+            },
+
+            {
+                "keys": ["Z", ""]
+            },
+
+            {
+                "keys": ["X", ""]
+            },
+
+            {
+                "keys": ["C", ""]
+            },
+
+            {
+                "keys": ["V", ""]
+            },
+
+            {
+                "keys": ["B", ""]
+            },
+
+            {
+                "keys": ["K", ""]
+            },
+
+            {
+                "keys": ["M", ""]
+            },
+
+            {
+                "keys": ["<", ","]
+            },
+
+            {
+                "keys": [">", "."]
+            },
+
+            {
+                "keys": ["?", "\/"]
+            },
+
+            {
+                "special": "true",
+                "id": "shift_right",
+                "keys": ["Shift", ""]
+            }
+
+        ],
+
+        "space_row": [
+
+            {
+                "special": "true",
+                "id": "ctrl_left",
+                "keys": ["Ctrl", ""]
+            },
+
+            {
+                "special": "true",
+                "id": "alt_left",
+                "keys": ["Alt", ""]
+            },
+
+            {
+                "special": "true",
+                "id": "key_32",
+                "keys": ["", ""]
+            },
+
+            {
+                "special": "true",
+                "id": "ctrl_right",
+                "keys": ["Ctrl", ""]
+            },
+
+            {
+                "special": "true",
+                "id": "alt_right",
+                "keys": ["Alt", ""]
+            }
+
+        ]
+
     }
+
 }
+
 },{}],12:[function(require,module,exports){
 module.exports={
     "qwerty": [
@@ -3891,7 +4291,7 @@ module.exports={
         {
 
             "name": "Numbers", 
-            "row_id": "qwerty-numbers",
+            "row_id": "dvorak-numbers",
             "courses": [
                 {
                     "id": 15,
@@ -3918,7 +4318,7 @@ module.exports={
         {
 
             "name": "Special characters", 
-            "row_id": "qwerty-special-chars",
+            "row_id": "dvorak-special-chars",
             "courses": [
                 {
                     "id": 17,
@@ -3945,7 +4345,322 @@ module.exports={
         {
 
             "name": "All keys practice", 
-            "row_id": "qwerty-all-keys",
+            "row_id": "dvorak-all-keys",
+            "courses": [
+                {
+                    "id": 19,
+                    "name": "The Road Not Taken",
+                    "duration": "5",
+                    "level": "medium",
+                    "line_length": 30,
+                    "description": "The legendary classical poem 'The Road Not Taken' by Robert Frost",
+                    "course_text": [
+                        "The Road Not Taken",
+                        "Two roads diverged in a yellow wood,",
+                        "And sorry I could not travel both",
+                        "And be one traveler, long I stood",
+                        "And looked down one as far as I could",
+                        "To where it bent in the undergrowth;",
+                        "Then took the other, as just as fair,",
+                        "And having perhaps the better claim,",
+                        "Because it was grassy and wanted wear;",
+                        "Though as for that the passing there",
+                        "Had worn them really about the same,",
+                        "And both that morning equally lay",
+                        "In leaves no step had trodden black.",
+                        "Oh, I kept the first for another day!",
+                        "Yet knowing how way leads on to way,",
+                        "I doubted if I should ever come back.",
+                        "I shall be telling this with a sigh",
+                        "Somewhere ages and ages hence:",
+                        "Two roads diverged in a wood, and I-",
+                        "I took the one less traveled by,",
+                        "And that has made all the difference.",
+                        "- Robert Frost."
+                    ]
+                },
+
+                {
+                    "id": 20,
+                    "name": "Albert Einstein Quotes : Part 1",
+                    "duration": "5",
+                    "level": "hard",
+                    "line_length": 30,
+                    "description": "A collection of great quotes of Albert Einstein from wikiquote",
+                    "course_text": "A happy man is too satisfied with the present to dwell too much on the future. Unthinking respect for authority is the greatest enemy of truth. Nature shows us only the tail of the lion. But there is no doubt in my mind that the lion belongs with it even if he cannot reveal himself to the eye all at once because of his huge dimension. How does it happen that a properly endowed natural scientist comes to concern himself with epistemology? Concepts that have proven useful in ordering things easily achieve such authority over us that we forget their earthly origins and accept them as unalterable givens. 'How much do I love that noble man More than I could tell with words I fear though he'll remain alone With a holy halo of his own.' Subtle is the Lord, but malicious He is not. I have second thoughts. Maybe God is malicious. In science, moreover, the work of the individual is so bound up with that of his scientific predecessors and contemporaries that it appears almost as an impersonal product of his generation. [I do not] carry such information in my mind since it is readily available in books....The value of a college education is not the learning of many facts but the training of the mind to think. I, at any rate, am convinced that He does not throw dice. As I have said so many times, God doesn't play dice with the world. Whether you can observe a thing or not depends on the theory which you use. It is the theory which decides what can be observed."
+                },
+
+                {
+                    "id": 21,
+                    "name": "Albert Einstein Quotes : Part 2",
+                    "duration": "5",
+                    "level": "hard",
+                    "line_length": 30,
+                    "description": "A collection of great quotes of Albert Einstein from wikiquote",
+                    "course_text": "Try and penetrate with our limited means the secrets of nature and you will find that, behind all the discernible concatenations, there remains something subtle, intangible and inexplicable. Veneration for this force beyond anything that we can comprehend is my religion. To that extent I am, in point of fact, religious. I believe in Spinoza's God, Who reveals Himself in the lawful harmony of the world, not in a God Who concerns Himself with the fate and the doings of mankind. If A is success in life, then A = x + y + z. Work is x, play is y and z is keeping your mouth shut. Life is like riding a bicycle. To keep your balance you must keep moving. I believe that whatever we do or live for has its causality; it is good, however, that we cannot see through to it. To punish me for my contempt of authority, Fate has made me an authority myself. I never think of the future. It comes soon enough. It is my view that a vegetarian manner of living by its purely physical effect on the human temperament would most beneficially influence the lot of mankind. Why does this magnificent applied science which saves work and makes life easier bring us so little happiness? The simple answer runs: Because we have not yet learned to make sensible use of it. I believe in intuition and inspiration. … At times I feel certain I am right while not knowing the reason. When the eclipse of 1919 confirmed my intuition, I was not in the least surprised. In fact I would have been astonished had it turned out otherwise. Imagination is more important than knowledge. For knowledge is limited, whereas imagination embraces the entire world, stimulating progress, giving birth to evolution. It is, strictly speaking, a real factor in scientific research."
+                },
+
+                {
+                    "id": 22,
+                    "name": "Albert Einstein Quotes : Part 3",
+                    "duration": "5",
+                    "level": "hard",
+                    "line_length": 30,
+                    "description": "A collection of great quotes of Albert Einstein from wikiquote",
+                    "course_text": "Everyone sits in the prison of his own ideas; he must burst it open, and that in his youth, and so try to test his ideas on reality. I see a clock, but I cannot envision the clockmaker. The human mind is unable to conceive of the four dimensions, so how can it conceive of a God, before whom a thousand years and a thousand dimensions are as one ? Only a life lived for others is a life worthwhile. Our experience hitherto justifies us in trusting that nature is the realization of the simplest that is mathematically conceivable. It can scarcely be denied that the supreme goal of all theory is to make the irreducible basic elements as simple and as few as possible without having to surrender the adequate representation of a single datum of experience. Everything should be made as simple as possible, but no simpler. All of science is nothing more than the refinement of everyday thinking. One may say 'the eternal mystery of the world is its comprehensibility. All religions, arts and sciences are branches of the same tree. All these aspirations are directed toward ennobling man's life, lifting it from the sphere of mere physical existence and leading the individual towards freedom. Physical concepts are free creations of the human mind, and are not, however it may seem, uniquely determined by the external world. Still, there are moments when one feels free from one's own identification with human limitations and inadequacies. At such moments, one imagines that one stands on some spot of a small planet, gazing in amazement at the cold yet profoundly moving beauty of the eternal, the unfathomable: life and death flow into one, and there is neither evolution nor destiny; only being'."
+                }
+            ]
+            
+        }
+    ],
+
+    "colemak": [
+        {
+
+            "name": "Home Row",
+            "row_id": "colemak-home-row",
+            "courses": [
+                {
+                    "id": 1,
+                    "name": "Keys Introduction",
+                    "duration": "3",
+                    "level": "easy",
+                    "line_length": 30,
+                    "description": "This course introduces the home row keys. Home row keys are: a, r, s, t, d, h, n, e, i, o, \"(double quote), '(single quote). Learn the key positions and appropriate fingers to type these keys.",
+                    "course_text": "a;sg kflj aa ;; ss gg kk ff ll jj as;g klfj a;sgd hkflj dd hh dd hh aa ss ;; gg kk ll ff jj gg dd hh kk dg hk gd kh gk dh dhgk gkdh ddhh ggkk gdgd khkh ggdd kkhh aa hh jj dd kk gg ;; ll ss ff ;; hh ll dd aj ;l sf gk dh aj l; sf kg dh a;sgd jlfkh"
+                },
+
+                {
+                    "id": 2,
+                    "name": "Word practice",
+                    "duration": "3",
+                    "level": "medium",
+                    "line_length": 30,
+                    "description": "Practice home row keys by typing simple words",
+                    "course_text": "tarnished ordinates notarised hardstone hairstone tradeins strained senorita sedation rationed randiest otarines ordinate notarise notaries hoariest hedonist hardnose hardiest handrest handiest hairnets asteroid antihero aneroids adhesion treason trashed trained tradein toadish tirades tinders thrones throned threads thorned tarnish"
+                }
+            ]
+        },
+        {
+
+            "name": "Capital Letters", 
+            "row_id": "colemak-capital-letters",
+            "courses": [
+                {
+                    "id": 3,
+                    "name": "Introducing Shift key",
+                    "duration": "3",
+                    "level": "easy",
+                    "line_length": 30,
+                    "description": "Shift key is used to type capital letters. Learn the key position and appropriate finger to type the shift key in this course. Practice typing home row keys in both capital and small letters.",
+                    "course_text": "A;SG KFLj Aa ;; Ss Gg Kk Ff Ll jj aS;G KlFj a;Sgd hKFlj dD hH Dd Hh aA sS ;; gG kK lL fF jj gG Dd Hh kK dG Hk gD kH GK dh DhGk GkDh DdHh GgKk gdGD khKH gGdD kKhH Aa Hh jj Dd Kk Gg ;; Ll Ss Ff ;; Hh Ll Dd Aj ;L SF GK DH Aj l; Sf kG dH A;SGD jLFKH"
+                },
+
+                {
+                    "id": 4,
+                    "name": "Word practice",
+                    "duration": "3",
+                    "level": "medium",
+                    "line_length": 30,
+                    "description": "Practice Shift key by typing simple words with both capital and small letters",
+                    "course_text": "tArnISheD oRDInATes NotarIseD HARdSTOnE haIrStoNE TrADEINs STraInEd SeNOrITA SEdATION ratiOneD rAnDieSt otARINEs oRdiNaTE nOtariSE NOtARIEs HOAriEst heDonIst HaRdnoSE haRdIeST haNdreST HAndIeSt hAIRNets AsTeRoid ANtIheRO AnEROiDS aDHEsIon treAsON trASHEd TraINEd TraDEin toaDisH tirADeS tinDERs tHrONEs THRoNeD ThrEAds THoRNeD TaRNIsh"
+                }
+            ]
+
+        },
+        {
+
+            "name": "keys F, U, P, L", 
+            "row_id": "colemak-keys-fupl",
+            "courses": [
+                {
+                    "id": 5,
+                    "name": "Keys Introduction",
+                    "duration": "3",
+                    "level": "easy",
+                    "line_length": 30,
+                    "description": "This course introduces the keys F, U, P, L. Learn the key positions and appropriate finger to type these keys.",
+                    "course_text": "sfsf flfl fsfs lflf sSfF fFlL fFsS lLfF flsf sffl ffls ffls g;kl g;kl ;glk ;glk ;;Ll ;;Ll ;L;l ;L;l f;ll f;ll ll;f ll;f fl;l fl;l ;lfl ;lfl fsg; lklf fs;g lklf sgf; sgf; kfll kfll gdf; khll gdf; khll D;d; HLhl D;d; HLhl ;f;F ;f;F llLL llLL ;;fF lLlL ;;fF lLlL"
+                },
+
+                {
+                    "id": 6,
+                    "name": "Word Practice",
+                    "duration": "3",
+                    "level": "medium",
+                    "line_length": 30,
+                    "description": "",
+                    "course_text": "pathFiNDeRS neUTROphILS fLUOrinaTEs FLUoriNATED FLUoRidATEs dEPuraTiOns unpolIshED suLFonaTED SphEROiDal shoplIfTER shoplIFTed SHIPlOaDER pReDAtIons plANetOiDs PHILaNDErs pAtRONiSeD pATHfInDEr OutLANdisH NEutrOPhil hOuSETrain HousePlANt hOUSEpaInT fOrEsTLAND fLUORINatE FluoRIdATe flourIsHed flAShpoINt diSHpaNfuL dEPuratION"
+                }
+            ]
+            
+        },
+        {
+
+            "name": "keys G, Y, J, comma", 
+            "row_id": "colemak-keys-toc",
+            "courses": [
+                {
+                    "id": 7,
+                    "name": "Keys Introduction",
+                    "duration": "3",
+                    "level": "easy",
+                    "line_length": 30,
+                    "description": "This course introduces the keys G, Y, J and ,(Comma). Learn the key positions and appropriate finger to type these keys.",
+                    "course_text": "gggg ljlj gggg ljlj gGgG lLjJ gGgG lLjJ sjsj f,f, sjsj f,f, sSjJ sSjJ f,F, f,F, ssjj ff,, ssjj ff,, gjgj j,j, gjgj j,j, ggjj jj,, ggjj jj,, jJsS jJsS ,f,F ,f,F gGgG lLjJ gGgG lLjJ gggg ljlj gggg ljlj gGgG lLjJ gGgG lLjJ sjsj f,f, sjsj f,f, sSjJ sSjJ f,F, f,F, ggjj gGjJ jJ,, jJ,, gjgj GJGJ j,j, JJGJ"
+                },
+
+                {
+                    "id": 8,
+                    "name": "Word Practice",
+                    "duration": "3",
+                    "level": "medium",
+                    "line_length": 30,
+                    "description": "Practice keys G, Y, J and ,(Comma) by typing simple words",
+                    "course_text": "UpHOLstErInG sHaRPTOngUED PrEadjUSTinG OUtSPrEaDiNG heRnIoplAsTY fArsIgHTeDly UrOGENItals SUlFhYdRATE stENOGrAPHY SHOuLDERiNg RiGHtEoUSLY rhiNoplasty ReuplOaDINg REguLaTIons ReaDjUStIng PROseLyTing ProfligatES PLeuRODyniA plAygrOUNDs pERsoNAlIty PEnDuLoSiTy PatHfIndeRS NEutROPHIls NeFArIOUSLY lADYfingeRs JouRNalISed"
+                }
+            ]
+            
+        },
+        {
+
+            "name": "keys V, K, W, M", 
+            "row_id": "qwerty-keys-vnwm",
+            "courses": [
+                {
+                    "id": 9,
+                    "name": "Keys Introduction",
+                    "duration": "3",
+                    "level": "easy",
+                    "line_length": 30,
+                    "description": "This course introduces the keys V, K, W, M. Learn the key positions and appropriate finger to type these keys",
+                    "course_text": "gkgk kkkk gkgk kkkk ggkk kkkk ggkk kkkk ;w;w kmkm ;w;w kmkm ;;ww kkmm ;;ww kkmm kgkk kgkk kkgg kkkk ww;; mmkk ww;; mmkk kKgG kKkK wW;; mMkK kKwW kKwW kKmM kKmM wmWM wmWM kkKK kkKK kkww kkww kkmm kkmm kKwW kKwW kKmM kKmM ;wgk kkkm ;wgk kkkm kkkm kkkm ;w;k ;w;k wWmM kKkK wkWK kmKM kkKK kkKK wwWW mmMM"
+                },
+
+                {
+                    "id": 10,
+                    "name": "Word Practice",
+                    "duration": "3",
+                    "level": "medium",
+                    "line_length": 30,
+                    "description": "Practice keys V, K, W, M by typing simple words",
+                    "course_text": "DRAUghtSwoMEN vAPordENsITY uphoLStEriNg shovElmAkiNg shArPtOnGUEd prEaDJusTiNg OVeRSTUdyInG OVErSAmpLING oUTsPREADINg NightwALKeRS multIpRONGED MOThERsiNlAw mETALWOrkIng MaudlINwORTS MALNOuRiShEd KYmOGraPhiES HoUsEwArmiNg hErNIOpLAsTY faRSiGHtedLY EArThmOVINGs doWNLIghteRs DePLuMAtIOns DEmogrAPHist WorKmansHIP wORdMAnSHIP"
+                }
+            ]
+            
+        },
+        {
+
+            "name": "keys Q, ;(semi-colon), B, J", 
+            "row_id": "colemak-keys-qbj",
+            "courses": [
+                {
+                    "id": 11,
+                    "name": "Keys Introduction",
+                    "duration": "3",
+                    "level": "easy",
+                    "line_length": 30,
+                    "description": "This course introduces the keys Q, ;(semi-colon), B, J. Learn the key positions and appropriate finger to type these keys",
+                    "course_text": "aqaq j;j; aqaq j;j; aaqq jj;; aaqq jj;; ggbb kkjj bbgg jjkk gbaq kjj; gbaq kjj; qQaA ;;jj bBjJ bBjJ gbGB kjKJ bBgG jJkK gdbq khj; qqbb ;;jj qQbB ;;jJ bBqQ jJ;; bjBJ bjBJ q;Q; Q;q; Q;Q; Q;Q; BJBJ BJBJ bjbj BJBJ q;q; Q;Q; bbgg BGBG kjkj KJKJ qbqb QBQB ;j;J ;j;J bbjj bBjJ q;q; q;q; q;q; Q;Q; bjbj BJBJ"
+                },
+
+                {
+                    "id": 12,
+                    "name": "Word Practice",
+                    "duration": "3",
+                    "level": "medium",
+                    "line_length": 30,
+                    "description": "Practice keys Q, ;(semi-colon), B, J by typing simple words",
+                    "course_text": "uNbLAMewoRThY TROUBlEmakINg suBORdinaTelY DrauGHTSWomen vApoRDeNsITY UPHoLstering UNprofitablY uNprOfItAblE uniMpRoVaBLe uNhoSPitaBLy UnHOspitABle unfORGivAbLY uNForgivaBlE SuBNorMALitY STrOnGLIMBED sHOVelMakINg SHArptONgUEd qUEstIOnABly PrEaDJustinG oVeRStUdyiNG oVErSAMplIng oUtsprEaDIng NIGhtWALkeRS MULtiprONGED MOtheRsinlaw mETALWORKIng MaUdLiNwoRts"
+                }
+            ]
+            
+        },
+        {
+
+            "name": "keys Z, X, period, ?", 
+            "row_id": "colemak-keys-zx",
+            "courses": [
+                {
+                    "id": 13,
+                    "name": "Keys Introduction",
+                    "duration": "3",
+                    "level": "easy",
+                    "line_length": 30,
+                    "description": "This course introduces the keys Z, X, .(period), ?(question mark). Learn the key positions and appropriate finger to type these keys",
+                    "course_text": "azaz sxsx azaz sxsx aazz aazz ssxx ssxx zzxx .?.? zzxx ..?? zZaA xXsS aAzZ sSxX as? as? sax. sax. zasx zasx ZASX ZASX z?z? Z?Z? l.l. L.L. z?z? x.x. Z?Z? X.X. zaza ZAZA xsxs XSXS zasx. zasx? zasx. zasx? ZZXX zzxx zZ. zZ? xxzz XXZZ xz. XZ? a? a? s. s. z? z? x? x. zx.? zx.? ZX.? ZX.? zaza xsxs ZAZA XSXS la. la. laz? laz? ZZXX zzxx zZ. zZ?"
+                },
+
+                {
+                    "id": 14,
+                    "name": "Word Practice",
+                    "duration": "3",
+                    "level": "medium",
+                    "line_length": 30,
+                    "description": "Practice keys Z, X, .(period), ?(question mark) by typing simple words",
+                    "course_text": "jazz fixture zurich ? amazing wax fox ? flexible bazaar. zambia xylophone mixup ? zaire lizard tuxedo ? amazing zero pixel ? sixty annexure. azure buzzer. exact lexicon lizard ? jazz fox fly mixup ? sixty exact lexicon lizard. amazing zero jazz fox. jazz sax ? sax jazz. wax xylophone mixup ? amazing citizen ? zero. bazaar flexible fixture wax xylophone zurich lizard flexible ? amazing."
+                }
+            ]
+            
+        },
+        {
+
+            "name": "Numbers", 
+            "row_id": "colemak-numbers",
+            "courses": [
+                {
+                    "id": 15,
+                    "name": "Keys Introduction",
+                    "duration": "3",
+                    "level": "easy",
+                    "line_length": 30,
+                    "description": "This course introduces the number keys (top row). Learn the key positions and appropriate finger to type these keys",
+                    "course_text": "aq1 a1 q1 aq1 sw2 s2 w2 sw2 de3 d3 e3 de3 fr4 f4 r4 fr4 gt5 g5 t5 gt5 hy6 h6 y6 hy6 ju7 j7 u7 ju7 ki8 k8 i8 ki8 lo9 l9 o9 lo9 ;p0 ;0 p0 ;p0"
+                },
+
+                {
+                    "id": 16,
+                    "name": "Word Practice",
+                    "duration": "3",
+                    "level": "medium",
+                    "line_length": 30,
+                    "description": "Practice typing simple words containing numbers",
+                    "course_text": "1 is one. one is 1. 2 is two. two is 2. 1 plus 2 is 3. 1 plus 3 is 4. 2 plus 2 is also 4. 3 plus 2 is 5. 1 plus 4 is also 5. 2 plus 4 is 6. 3 plus 3 is also 6. 1 plus 5 is what ? 2 plus 5 is 7. 4 plus 3 is also 7. 1 plus 2 plus 4 is what ? 2 times 4 is 8. 3 plus 5 is also 8. 6 plus 2 is what ? 3 times 3 is 9. 9 is a square. 5 plus 4 is what ? 0 is a special number. 0 before number is number but, 0 after number ? 0 is the real hero."
+                }
+            ]
+            
+        },
+        {
+
+            "name": "Special characters", 
+            "row_id": "colemak-special-chars",
+            "courses": [
+                {
+                    "id": 17,
+                    "name": "Keys Introduction",
+                    "duration": "3",
+                    "level": "easy",
+                    "line_length": 30,
+                    "description": "This course introduces special characters and symbols. Learn the key positions and appropriate finger to type these keys",
+                    "course_text": "aq1! a! q! 1! aq1! sw2@ s@ w@ 2@ sw2@ de3# d# e# 3# de3# fr4$ f$ r$ 4$ fr4$ gt5% g% t% 5% gt5% hy6^ h^ y^ 6^ hy6^ ju7& j& u& 7& ju7& ki8* k* i* 8* ki8* lo9( l( o( 9( lo9( ;p0) ;) p) 0) ;p0) ;: ;: ;' ;\" ;\\ ;[ ;{ ;] ;} ;- ;_ ;= ;+ k, k, k< k< l. l. l> l> ;? ;? ;/ ;/"
+                },
+
+                {
+                    "id": 18,
+                    "name": "Word Practice",
+                    "duration": "3",
+                    "level": "medium",
+                    "line_length": 30,
+                    "description": "Practice typing simple words containing special characters and symbols",
+                    "course_text": "Hello ! Welcome ! email@domain.com # represents number 4$ is too much. 5% of 100 is what ? ^ is not carrot. & is and. * is star. 3*3 is what ? (90)*0 is what ? 4 + 4 = 3? 7 - 8 is positive ! [] are square brackets; {} are braces; Is 'you' really \"you\"? if (zero == '0') then true; 1 < 0 is true ! 0 > 9 is also true ?"
+                }
+            ]
+            
+        },
+        {
+
+            "name": "All keys practice", 
+            "row_id": "colemak-all-keys",
             "courses": [
                 {
                     "id": 19,

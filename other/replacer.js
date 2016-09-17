@@ -1,39 +1,39 @@
 // replaces lesson text with appropriate letters for the corresponding layouts
-// qwerty => dvorak
-var lesson_text = "azaz sxsx azaz sxsx aazz aazz ssxx ssxx zzxx .?.? zzxx ..?? zZaA xXsS aAzZ sSxX as? as? sax. sax. zasx zasx ZASX ZASX z?z? Z?Z? l.l. L.L. z?z? x.x. Z?Z? X.X. zaza ZAZA xsxs XSXS zasx. zasx? zasx. zasx? ZZXX zzxx zZ. zZ? xxzz XXZZ xz. XZ? a? a? s. s. z? z? x? x. zx.? zx.? ZX.? ZX.? zaza xsxs ZAZA XSXS la. la. laz? laz? ZZXX zzxx zZ. zZ?";
+// qwerty => colemak
+var lesson_text = "asdf jkl; aa ss dd ff jj kk ll ;; adsf jlk; asdfg hjkl; gg hh gg hh aa dd ss ff jj ll kk ;; ff gg hh jj gf hj fg jh fj gh ghfj fjgh gghh ffjj fgfg jhjh ffgg jjhh aa hh ;; gg jj ff ss ll dd kk ss hh ll gg a; sl dk fj gh a; ls dk jf gh asdfg ;lkjh";
 
 var RULES = {
     "a": "a",
-    "s": "o",
-    "d": "e",
-    "f": "u",
-    "g": "i",
-    "h": "d",
-    "j": "h",
-    "k": "t",
-    "l": "n",
-    ":": "s",
-    ";": "s",
-    "\"": "_",
-    "'": "-",
-    "e": ">",
-    "i": "c",
+    "s": "r",
+    "d": "s",
+    "f": "t",
+    "g": "d",
+    "h": "h",
+    "j": "n",
+    "k": "e",
+    "l": "i",
+    ":": "o",
+    ";": "o",
+    "\"": "\"",
+    "'": "'",
+    "e": "f",
+    "i": "u",
     "r": "p",
-    "u": "g",
-    "t": "y",
-    "o": "r",
+    "u": "l",
+    "t": "g",
+    "o": "y",
     "c": "j",
-    ",": "w",
-    "v": "k",
-    "n": "b",
-    "w": "<",
+    ",": ",",
+    "v": "v",
+    "n": "k",
+    "w": "w",
     "m": "m",
-    "q": "\"",
-    "p" : "l",
-    "b": "x",
-    "y": "f",
-    "z": ";",
-    "x": "q"
+    "q": "q",
+    "p" : ";",
+    "b": "b",
+    "y": "j",
+    "z": "z",
+    "x": "x"
 };
 
 _.each( RULES, function (val, index) {

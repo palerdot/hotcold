@@ -275,6 +275,11 @@ html, body {
             padding-top: 0.4em !important;
             font-size: 1.5em;
             color: $link_color;
+
+            i {
+                margin-right: 10px !important;
+            }
+
             select {
                 color: $link_color;
                 border: thin solid $link_color;

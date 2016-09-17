@@ -249,53 +249,38 @@ var layouts = {
     },
 
     "dvorak": {
-        
-        "num_row": [
-            {
-                "keys": ["~", "`"]
-            },
-            {
-                "keys": ["!", "1"]
-            },
-            {
-                "keys": ["@", "2"]
-            },
-            {
-                "keys": ["#", "3"]
-            },
-            {
-                "keys": ["$", "4"]
-            },
-            {
-                "keys": ["%", "5"]
-            },
-            {
-                "keys": ["^", "6"]
-            },
-            {
-                "keys": ["&", "7"]
-            },
-            {
-                "keys": ["*", "8"]
-            },
-            {
-                "keys": ["(", "9"]
-            },
-            {
-                "keys": [")", "0"]
-            },
-            {
-                "keys": ["_", "-"]
-            },
-            {
-                "keys": ["+", "="]
-            },
-            {
-                "special": "true",
-                "id": "bksp_key",
-                "keys": ["Bksp", ""]
-            }
-        ],
+
+        "num_row": [{
+            "keys": ["~", "`"]
+        }, {
+            "keys": ["!", "1"]
+        }, {
+            "keys": ["@", "2"]
+        }, {
+            "keys": ["#", "3"]
+        }, {
+            "keys": ["$", "4"]
+        }, {
+            "keys": ["%", "5"]
+        }, {
+            "keys": ["^", "6"]
+        }, {
+            "keys": ["&", "7"]
+        }, {
+            "keys": ["*", "8"]
+        }, {
+            "keys": ["(", "9"]
+        }, {
+            "keys": [")", "0"]
+        }, {
+            "keys": ["_", "-"]
+        }, {
+            "keys": ["+", "="]
+        }, {
+            "special": "true",
+            "id": "bksp_key",
+            "keys": ["Bksp", ""]
+        }],
 
         "top_row": [
 
@@ -415,7 +400,7 @@ var layouts = {
                 "special": "true",
                 "id": "enter_key",
                 "keys": ["Enter", ""]
-            }            
+            }
 
         ],
 
@@ -509,11 +494,286 @@ var layouts = {
 
         ]
 
+    },
+
+    "colemak": {
+
+        "num_row": [{
+                "keys": ["~", "`"]
+            },
+
+            {
+                "keys": ["!", "1"]
+            },
+
+            {
+                "keys": ["@", "2"]
+            },
+
+            {
+                "keys": ["#", "3"]
+            },
+
+            {
+                "keys": ["$", "4"]
+            },
+
+            {
+                "keys": ["%", "5"]
+            },
+
+            {
+                "keys": ["^", "6"]
+            },
+
+            {
+                "keys": ["&", "7"]
+            },
+
+            {
+                "keys": ["*", "8"]
+            },
+
+            {
+                "keys": ["(", "9"]
+            },
+
+            {
+                "keys": [")", "0"]
+            },
+
+            {
+                "keys": ["_", "-"]
+            },
+
+            {
+                "keys": ["+", "="]
+            },
+
+            {
+                "special": "true",
+                "id": "bksp_key",
+                "keys": ["Bksp", ""]
+            }
+        ],
+
+        "top_row": [
+
+            {
+                "special": "true",
+                "id": "tab_key",
+                "keys": ["Tab", ""]
+            },
+
+            {
+                "keys": ["Q", ""]
+            },
+
+            {
+                "keys": ["W", ""]
+            },
+
+            {
+                "keys": ["F", ""]
+            },
+
+            {
+                "keys": ["P", ""]
+            },
+
+            {
+                "keys": ["G", ""]
+            },
+
+            {
+                "keys": ["J", ""]
+            },
+
+            {
+                "keys": ["L", ""]
+            },
+
+            {
+                "keys": ["U", ""]
+            },
+
+            {
+                "keys": ["Y", ""]
+            },
+
+            {
+                "keys": [":", ";"]
+            },
+
+            {
+                "keys": ["{", "["]
+            },
+
+            {
+                "keys": ["}", "]"]
+            },
+
+            {
+                "keys": ["|", "\\"]
+            }
+
+        ],
+
+        "middle_row": [
+
+            {
+                "special": "true",
+                "id": "caps_key",
+                "keys": ["Caps", ""]
+            },
+
+            {
+                "keys": ["A", ""]
+            },
+
+            {
+                "keys": ["R", ""]
+            },
+
+            {
+                "keys": ["S", ""]
+            },
+
+            {
+                "keys": ["T", ""]
+            },
+
+            {
+                "keys": ["D", ""]
+            },
+
+            {
+                "keys": ["H", ""]
+            },
+
+            {
+                "keys": ["N", ""]
+            },
+
+            {
+                "keys": ["E", ""]
+            },
+
+            {
+                "keys": ["I", ""]
+            },
+
+            {
+                "keys": ["O", ""]
+            },
+
+            {
+                "keys": ["\"", "'"]
+            },
+
+            {
+                "special": "true",
+                "id": "enter_key",
+                "keys": ["Enter", ""]
+            }
+
+        ],
+
+        "bottom_row": [
+
+            {
+                "special": "true",
+                "id": "shift_left",
+                "keys": ["Shift", ""]
+            },
+
+            {
+                "keys": ["Z", ""]
+            },
+
+            {
+                "keys": ["X", ""]
+            },
+
+            {
+                "keys": ["C", ""]
+            },
+
+            {
+                "keys": ["V", ""]
+            },
+
+            {
+                "keys": ["B", ""]
+            },
+
+            {
+                "keys": ["K", ""]
+            },
+
+            {
+                "keys": ["M", ""]
+            },
+
+            {
+                "keys": ["<", ","]
+            },
+
+            {
+                "keys": [">", "."]
+            },
+
+            {
+                "keys": ["?", "\/"]
+            },
+
+            {
+                "special": "true",
+                "id": "shift_right",
+                "keys": ["Shift", ""]
+            }
+
+        ],
+
+        "space_row": [
+
+            {
+                "special": "true",
+                "id": "ctrl_left",
+                "keys": ["Ctrl", ""]
+            },
+
+            {
+                "special": "true",
+                "id": "alt_left",
+                "keys": ["Alt", ""]
+            },
+
+            {
+                "special": "true",
+                "id": "key_32",
+                "keys": ["", ""]
+            },
+
+            {
+                "special": "true",
+                "id": "ctrl_right",
+                "keys": ["Ctrl", ""]
+            },
+
+            {
+                "special": "true",
+                "id": "alt_right",
+                "keys": ["Alt", ""]
+            }
+
+        ]
+
     }
 };
 
 
-var current = "dvorak";
+var current = "colemak";
 
 var PATTERN = {
     "right": [],
