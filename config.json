@@ -14,7 +14,8 @@
         "dev_derby_down_link": "https://blog.mozilla.org/community/2015/12/18/saying-goodbye-to-demo-studio/",
         "github_link": "https://github.com/palerdot/hotcold",
         "chrome_free_app": "https://chrome.google.com/webstore/detail/hotcold-typing/gikgnaajhiofmngkodahgpjnpgacmhlc",
-        "chrome_pro_app": "https://chrome.google.com/webstore/detail/hotcold-typing-pro/aoceloicmloamkmaljmpejphndalilgp"
+        "chrome_pro_app": "https://chrome.google.com/webstore/detail/hotcold-typing-pro/aoceloicmloamkmaljmpejphndalilgp",
+        "gaq_script": "<script src='js/gaq_script.js' type='text/javascript'></script>"
     },
     "messages": {
         "crx": "You can specify a custom time for your own course in PRO version. Get the Chrome App for the Pro Version!",
