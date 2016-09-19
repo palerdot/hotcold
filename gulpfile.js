@@ -389,7 +389,8 @@ function copy_crx_files (mode, async_cb) {
         copy_manifest, 
         copy_init_script, 
         copy_icons,
-        copy_config
+        copy_config,
+        copy_favicon
     ];
 
     var parallel_tasks = _.map( tasks, function (task) {
@@ -556,7 +557,8 @@ function copy_electron_files (mode, async_cb) {
         copy_init_script, 
         copy_node_package_json,
         copy_icons,
-        copy_config
+        copy_config,
+        copy_favicon
     ];
 
     var parallel_tasks = _.map( tasks, function (task) {
