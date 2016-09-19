@@ -362,7 +362,7 @@ function copy_crx_files (mode, async_cb) {
 
     var copy_lessons = gulp.src( "./lessons/**/*", { base: "." } );
 
-    var copy_images = gulp.src( "./images/viralgal.png", { base: "." } );
+    var copy_images = gulp.src( "./images/**/*", { base: "." } );
 
     var copy_manifest = gulp.src( "./manifest.json" )
                             .pipe( 
@@ -533,7 +533,7 @@ function copy_electron_files (mode, async_cb) {
 
     var copy_lessons = gulp.src( "./lessons/**/*", { base: "." } );
 
-    var copy_images = gulp.src( "./images/viralgal.png", { base: "." } );
+    var copy_images = gulp.src( "./images/**/*", { base: "." } );
 
     var copy_init_script = gulp.src( "./electron.js", { base: "." } );
 

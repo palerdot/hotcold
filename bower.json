@@ -25,7 +25,8 @@
     "jquery": "2.2.4",
     "bootstrap": "^3.3.6",
     "components-font-awesome": "^4.6.3",
-    "underscore": "^1.8.3"
+    "underscore": "^1.8.3",
+    "mustache.js": "mustache#^2.2.1"
   },
   "resolutions": {
     "jquery": "2.2.4"
@@ -35,7 +36,7 @@
       "main": "dist/jquery.min.js"
     },
     "underscore": {
-        "main": "underscore-min.js"
+      "main": "underscore-min.js"
     },
     "bootstrap": {
       "main": [
@@ -57,6 +58,10 @@
         "fonts/fontawesome-webfont.ttf",
         "fonts/fontawesome-webfont.svg"
       ]
+    },
+    // using mustache instead of underscore _.template() which is causing problem with chrome extensions and electron apps
+    "mustache.js": {
+      "main": "mustache.min.js"
     }
   }
 }

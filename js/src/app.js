@@ -20,11 +20,6 @@ var APP = {
     start: function () {
         console.log( "config ", HC_CONFIG, KB, _ );
 
-        // change underscore template settings
-        _.templateSettings = {
-            interpolate: /\{\{(.+?)\}\}/g
-        };
-
         this.initKeyboardLayouts();
 
         this.initLayoutLessons();
@@ -145,15 +140,13 @@ var APP = {
 
         // empty lesson details
         self.$el.lesson_details.find(".lesson-detail").remove();
-
-        var lh_template = _.template( self.$el.template_lh.html() );
+        
         
         _.each( lessons, function (lesson) {
+
+            var lh_template = Mustache.render( self.$el.template_lh.html(), lesson );
             // display the lesson headers
-            self.$el.lesson_headers.prepend( $( lh_template(lesson) ) );
-            
-            // get the course template string
-            var ci_template = _.template( self.$el.template_ci.html() );
+            self.$el.lesson_headers.prepend( lh_template );
 
             // display the course row
             var $course_row = $("<div>")
@@ -162,7 +155,9 @@ var APP = {
 
             // append the courses to the course row
             _.each( lesson.courses, function (course) {
-                var $course = $( ci_template(course) );
+                // rendering with mustache js
+                var ci_template = Mustache.render( self.$el.template_ci.html(), course );
+                var $course = $( ci_template );
                 // attach the course details to the launch button
                 $course
                     .find(".launch-course")

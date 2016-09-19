@@ -11,12 +11,6 @@ chrome.app.runtime.onLaunched.addListener( function () {
         'minHeight': 666
     } );
 
-    chrome.contextMenus.create({
-        "title": "Test porumai item", 
-        "id": "porumai",
-        "contexts": ["all"]
-    });
-
 } );
 
 // on 'APP INSTALL'
