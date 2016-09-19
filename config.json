@@ -1,20 +1,22 @@
 {
-    "VERSION": "2.0.2",
+    "VERSION": "2.1.0",
     "APPMODE": "FREE",
     "PRO_CRX_URL": "https://chrome.google.com/webstore/detail/hotcold-typing-pro/aoceloicmloamkmaljmpejphndalilgp",
     "type": "web",
     "links": {
-        "linux_32": "https://www.dropbox.com/s/h7t9lymfs86qrqn/Hotcold-2.0.1-linux-ia32.tar.gz?dl=1",
-        "linux_64": "https://www.dropbox.com/s/8j99vyxhuybivbs/Hotcold-2.0.1-linux-x64.tar.gz?dl=1",
-        "windows_32": "https://www.dropbox.com/s/pr9bf5dobt6cgil/Hotcold-2.0.1-win32-ia32.zip?dl=1",
-        "windows_64": "https://www.dropbox.com/s/l4eqw1cb1rwzs4c/Hotcold-2.0.1-win32-x64.zip?dl=1",
+        "linux_32": "https://www.dropbox.com/s/7ojyh90smuhoud9/Hotcold-2.1.0-linux-ia32.tar.gz?dl=1",
+        "linux_64": "https://www.dropbox.com/s/k5fiz2a7j33x7ox/Hotcold-2.1.0-linux-x64.tar.gz?dl=1",
+        "windows_32": "https://www.dropbox.com/s/reugle6jlbd17yy/Hotcold-2.1.0-win32-ia32.zip?dl=1",
+        "windows_64": "https://www.dropbox.com/s/ut7udc4mtef4q9v/Hotcold-2.1.0-win32-x64.zip?dl=1",
         "mac_64": "https://www.google.co.in/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#newwindow=1&q=mac+64+bit",
         "dev_derby_blog_url": "https://hacks.mozilla.org/2013/06/announcing-the-winners-of-the-april-2013-dev-derby/",
         "dev_derby_hc_cached": "http://web.archive.org/web/20131107013950/https://developer.mozilla.org/en-US/demos/detail/hot-cold-typing",
         "dev_derby_down_link": "https://blog.mozilla.org/community/2015/12/18/saying-goodbye-to-demo-studio/",
         "github_link": "https://github.com/palerdot/hotcold",
         "chrome_free_app": "https://chrome.google.com/webstore/detail/hotcold-typing/gikgnaajhiofmngkodahgpjnpgacmhlc",
-        "chrome_pro_app": "https://chrome.google.com/webstore/detail/hotcold-typing-pro/aoceloicmloamkmaljmpejphndalilgp"
+        "chrome_pro_app": "https://chrome.google.com/webstore/detail/hotcold-typing-pro/aoceloicmloamkmaljmpejphndalilgp",
+        "mailchimp_css": "<link href='//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css' rel='stylesheet' type='text/css'>",
+        "gaq_script": "<script src='js/gaq_script.js' type='text/javascript'></script>"
     },
     "messages": {
         "crx": "You can specify a custom time for your own course in PRO version. Get the Chrome App for the Pro Version!",

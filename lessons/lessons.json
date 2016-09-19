@@ -1,0 +1,947 @@
+{
+    "qwerty": [
+        {
+
+            "name": "Home Row, G, H",
+            "row_id": "qwerty-home-row",
+            "courses": [
+                {
+                    "id": 1,
+                    "name": "Keys Introduction",
+                    "duration": "3",
+                    "level": "easy",
+                    "line_length": 30,
+                    "description": "This course introduces the home row keys and keys G and H. Home row keys are: a, s, d, f, j, k, l and ;. Learn the key positions and appropriate fingers to type these keys.",
+                    "course_text": "asdf jkl; aa ss dd ff jj kk ll ;; adsf jlk; asdfg hjkl; gg hh gg hh aa dd ss ff jj ll kk ;; ff gg hh jj gf hj fg jh fj gh ghfj fjgh gghh ffjj fgfg jhjh ffgg jjhh aa hh ;; gg jj ff ss ll dd kk ss hh ll gg a; sl dk fj gh a; ls dk jf gh asdfg ;lkjh"
+                },
+
+                {
+                    "id": 2,
+                    "name": "Word practice",
+                    "duration": "3",
+                    "level": "medium",
+                    "line_length": 30,
+                    "description": "Practice home row keys, G, H by typing simple words",
+                    "course_text": "as all add ash all glad add dash all sad sad as dad glad as dad salsa lalalaa dallas flag alaska flag sad kafka glad kafka lakh flak half dash gas dash half flask ask glad dad ask sad dad dad had kafka had all kafka glad lad sad lad alaska lad glad dallas lad sad alaska lad sad dallas lad glad all lad glad all lad sad"
+                }
+            ]
+        },
+        {
+
+            "name": "Capital Letters", 
+            "row_id": "qwerty-capital-letters",
+            "courses": [
+                {
+                    "id": 3,
+                    "name": "Introducing Shift key",
+                    "duration": "3",
+                    "level": "easy",
+                    "line_length": 30,
+                    "description": "Shift key is used to type capital letters. Learn the key position and appropriate finger to type the shift key in this course. Practice typing home row keys in both capital and small letters.",
+                    "course_text": "ASDF JKL; Aa Ss Dd Ff Jj Kk Ll ;; aDsF JlK; aSDfg hJKl; gG hH Gg Hh aA dD sS fF jJ lL kK ;; fF Gg Hh jJ gF Hj fG jH FJ gh GhFj FjGh GgHh FfJj fgFG jhJH fFgG jJhH Aa Hh ;; Gg Jj Ff Ss Ll Dd Kk Ss Hh Ll Gg A; SL DK FJ GH A; lS Dk jF gH ASDFG ;LKJH"
+                },
+
+                {
+                    "id": 4,
+                    "name": "Word practice",
+                    "duration": "3",
+                    "level": "medium",
+                    "line_length": 30,
+                    "description": "Practice Shift key by typing simple words with both capital and small letters",
+                    "course_text": "AS ALL Add Ash All Glad add Dash all Sad SAD as DAD GLAD as DAD SalsA LaLaLaA DaLLas FLAG ALASka flag sad KAFKA glad KAFKA Lakh Flak Half Dash Gas Dash Half Flask ASK glad DAD ask sad dad Dad Had Kafka Had All Kafka Glad Lad Sad Lad Alaska LAD Glad Dallas Lad Sad Alaska Lad Sad Dallas Lad Glad ALL LAD GLAD ALL LAD SAD"
+                }
+            ]
+
+        },
+        {
+
+            "name": "keys E, I, R, U", 
+            "row_id": "qwerty-keys-eiru",
+            "courses": [
+                {
+                    "id": 5,
+                    "name": "Keys Introduction",
+                    "duration": "3",
+                    "level": "easy",
+                    "line_length": 30,
+                    "description": "This course introduces the keys E, I, R, U. Learn the key positions and appropriate finger to type these keys.",
+                    "course_text": "dede kiki eded ikik dDeE kKiI eEdD iIkK eidk dkei ekid ekid frju frju rfuj rfuj RrUu RrUu RUru RUru erui erui uire uire eiru eiru ruei ruei edfr ujik edrf ujik dfer dfer jkui jkui fger jhiu fger jhiu GRgr HUhu GRgr HUhu reRE reRE uiUI uiUI rReE uUiI rReE uUiI"
+                },
+
+                {
+                    "id": 6,
+                    "name": "Word Practice",
+                    "duration": "3",
+                    "level": "medium",
+                    "line_length": 30,
+                    "description": "",
+                    "course_text": "eureka skill if skill freud else fraud rural federal fraud useful fiddle useless life failure sugarlike farside duskier surreal ural isle fragile jailer real hurdle sharked redfish laughs sugared sulfide ruse useful fluid fuse asia safari ski red iris diesel fire field fluid redial failsafe adelaide file desk lead seal see sleek leaf red aura alike kids"
+                }
+            ]
+            
+        },
+        {
+
+            "name": "keys T, O, C, comma", 
+            "row_id": "qwerty-keys-toc",
+            "courses": [
+                {
+                    "id": 7,
+                    "name": "Keys Introduction",
+                    "duration": "3",
+                    "level": "easy",
+                    "line_length": 30,
+                    "description": "This course introduces the keys T, O, C and ,(Comma). Learn the key positions and appropriate finger to type these keys.",
+                    "course_text": "ftft lolo ftft lolo fFtT lLoO fFtT lLoO dcdc k,k, dcdc k,k, dDcC dDcC k,K, k,K, ddcc kk,, ddcc kk,, tctc o,o, tctc o,o, ttcc oo,, ttcc oo,, cCdD cCdD ,k,K ,k,K fFtT lLoO fFtT lLoO ftft lolo ftft lolo fFtT lLoO fFtT lLoO dcdc k,k, dcdc k,k, dDcC dDcC k,K, k,K, ttcc tTcC oO,, oO,, toto TOTO c,c, CCTO"
+                },
+
+                {
+                    "id": 8,
+                    "name": "Word Practice",
+                    "duration": "3",
+                    "level": "medium",
+                    "line_length": 30,
+                    "description": "Practice keys T, O, C and ,(Comma) by typing simple words",
+                    "course_text": "elucidate circus disgraceful soul to tie, out of foot colorado circus effect tickle crocodile cataract casual access to the deck later, resort to clerical class decode circle ratio kettle for karate trout cute cat, out of focus coffee out of cocoa, for tailor lifeguard outraged after shock authorise access to the feudalist lethargic cheat, curious article jostle fast, audio lost leaf rustle, cracker effect"
+                }
+            ]
+            
+        },
+        {
+
+            "name": "keys V, N, W, M", 
+            "row_id": "qwerty-keys-vnwm",
+            "courses": [
+                {
+                    "id": 9,
+                    "name": "Keys Introduction",
+                    "duration": "3",
+                    "level": "easy",
+                    "line_length": 30,
+                    "description": "This course introduces the keys V, N, W, M. Learn the key positions and appropriate finger to type these keys",
+                    "course_text": "fvfv jnjn fvfv jnjn ffvv jjnn ffvv jjnn swsw jmjm swsw jmjm ssww jjmm ssww jjmm vfnj vfnj vvff nnjj wwss mmjj wwss mmjj vVfF nNjJ wWsS mMjJ vVwW vVwW nNmM nNmM wmWM wmWM nvNV nvNV nnww nnww vvmm vvmm nNwW nNwW vVmM vVmM swfv jnjm swfv jnjm jvjm jvjm swsv swsv wWmM vVnN wvWV nmNM vvVV nnNN wwWW mmMM"
+                },
+
+                {
+                    "id": 10,
+                    "name": "Word Practice",
+                    "duration": "3",
+                    "level": "medium",
+                    "line_length": 30,
+                    "description": "Practice keys V, N, W, M by typing simple words",
+                    "course_text": "welcome meet me in manila not in vancouver overhauling warehouse dangerous glamour virtual Niles near Niagara sparrow missed narrow meadow Moscow wonder Wales winter saw Viking native near Nevada river maestro near magnet window throw minimum welcome varnish valve for nine vehicles eleven snowman near Manila jewel mania missed wallet wild fishmonger journalism virtual world for man"
+                }
+            ]
+            
+        },
+        {
+
+            "name": "keys Q, P, B, Y", 
+            "row_id": "qwerty-keys-qpby",
+            "courses": [
+                {
+                    "id": 11,
+                    "name": "Keys Introduction",
+                    "duration": "3",
+                    "level": "easy",
+                    "line_length": 30,
+                    "description": "This course introduces the keys Q, P, B, Y. Learn the key positions and appropriate finger to type these keys",
+                    "course_text": "aqaq ;p;p aqaq ;p;p aaqq ;;pp aaqq ;;pp ffbb jjyy bbff yyjj fbaq jy;p fbaq jy;p qQaA pP;; bByY bByY fbFB jyJY bBfF yYjJ fgbq jhyp qqbb ppyy qQbB pPyY bBqQ yYpP byBY byBY qpQP QPqp QPQP QPQP BYBY BYBY byby BYBY qpqp QPQP bbff BFBF jyjy JYJY qbqb QBQB pyPY pyPY bbyy bByY qpqp qPqP qpqp QPQP byby BYBY"
+                },
+
+                {
+                    "id": 12,
+                    "name": "Word Practice",
+                    "duration": "3",
+                    "level": "medium",
+                    "line_length": 30,
+                    "description": "Practice keys Q, P, B, Y by typing simple words",
+                    "course_text": "imponderably malnourished prepare quick equip power blaspheming filmography palindrome but jumble undesirably superfamily presumingly dangerous nasty yesterday dynasty pompous broadway request panama playground your royalty phillips queen dangerous grayhound opaque soap busy opera your yoga fluency paris party squire etiquette blueberry baby square barrel busy diary year maybe Bye Bye"
+                }
+            ]
+            
+        },
+        {
+
+            "name": "keys Z, X, period, ?", 
+            "row_id": "qwerty-keys-zx",
+            "courses": [
+                {
+                    "id": 13,
+                    "name": "Keys Introduction",
+                    "duration": "3",
+                    "level": "easy",
+                    "line_length": 30,
+                    "description": "This course introduces the keys Z, X, .(period), ?(question mark). Learn the key positions and appropriate finger to type these keys",
+                    "course_text": "azaz sxsx azaz sxsx aazz aazz ssxx ssxx zzxx .?.? zzxx ..?? zZaA xXsS aAzZ sSxX as? as? sax. sax. zasx zasx ZASX ZASX z?z? Z?Z? l.l. L.L. z?z? x.x. Z?Z? X.X. zaza ZAZA xsxs XSXS zasx. zasx? zasx. zasx? ZZXX zzxx zZ. zZ? xxzz XXZZ xz. XZ? a? a? s. s. z? z? x? x. zx.? zx.? ZX.? ZX.? zaza xsxs ZAZA XSXS la. la. laz? laz? ZZXX zzxx zZ. zZ?"
+                },
+
+                {
+                    "id": 14,
+                    "name": "Word Practice",
+                    "duration": "3",
+                    "level": "medium",
+                    "line_length": 30,
+                    "description": "Practice keys Z, X, .(period), ?(question mark) by typing simple words",
+                    "course_text": "jazz fixture zurich ? amazing wax fox ? flexible bazaar. zambia xylophone mixup ? zaire lizard tuxedo ? amazing zero pixel ? sixty annexure. azure buzzer. exact lexicon lizard ? jazz fox fly mixup ? sixty exact lexicon lizard. amazing zero jazz fox. jazz sax ? sax jazz. wax xylophone mixup ? amazing citizen ? zero. bazaar flexible fixture wax xylophone zurich lizard flexible ? amazing."
+                }
+            ]
+            
+        },
+        {
+
+            "name": "Numbers", 
+            "row_id": "qwerty-numbers",
+            "courses": [
+                {
+                    "id": 15,
+                    "name": "Keys Introduction",
+                    "duration": "3",
+                    "level": "easy",
+                    "line_length": 30,
+                    "description": "This course introduces the number keys (top row). Learn the key positions and appropriate finger to type these keys",
+                    "course_text": "aq1 a1 q1 aq1 sw2 s2 w2 sw2 de3 d3 e3 de3 fr4 f4 r4 fr4 gt5 g5 t5 gt5 hy6 h6 y6 hy6 ju7 j7 u7 ju7 ki8 k8 i8 ki8 lo9 l9 o9 lo9 ;p0 ;0 p0 ;p0"
+                },
+
+                {
+                    "id": 16,
+                    "name": "Word Practice",
+                    "duration": "3",
+                    "level": "medium",
+                    "line_length": 30,
+                    "description": "Practice typing simple words containing numbers",
+                    "course_text": "1 is one. one is 1. 2 is two. two is 2. 1 plus 2 is 3. 1 plus 3 is 4. 2 plus 2 is also 4. 3 plus 2 is 5. 1 plus 4 is also 5. 2 plus 4 is 6. 3 plus 3 is also 6. 1 plus 5 is what ? 2 plus 5 is 7. 4 plus 3 is also 7. 1 plus 2 plus 4 is what ? 2 times 4 is 8. 3 plus 5 is also 8. 6 plus 2 is what ? 3 times 3 is 9. 9 is a square. 5 plus 4 is what ? 0 is a special number. 0 before number is number but, 0 after number ? 0 is the real hero."
+                }
+            ]
+            
+        },
+        {
+
+            "name": "Special characters", 
+            "row_id": "qwerty-special-chars",
+            "courses": [
+                {
+                    "id": 17,
+                    "name": "Keys Introduction",
+                    "duration": "3",
+                    "level": "easy",
+                    "line_length": 30,
+                    "description": "This course introduces special characters and symbols. Learn the key positions and appropriate finger to type these keys",
+                    "course_text": "aq1! a! q! 1! aq1! sw2@ s@ w@ 2@ sw2@ de3# d# e# 3# de3# fr4$ f$ r$ 4$ fr4$ gt5% g% t% 5% gt5% hy6^ h^ y^ 6^ hy6^ ju7& j& u& 7& ju7& ki8* k* i* 8* ki8* lo9( l( o( 9( lo9( ;p0) ;) p) 0) ;p0) ;: ;: ;' ;\" ;\\ ;[ ;{ ;] ;} ;- ;_ ;= ;+ k, k, k< k< l. l. l> l> ;? ;? ;/ ;/"
+                },
+
+                {
+                    "id": 18,
+                    "name": "Word Practice",
+                    "duration": "3",
+                    "level": "medium",
+                    "line_length": 30,
+                    "description": "Practice typing simple words containing special characters and symbols",
+                    "course_text": "Hello ! Welcome ! email@domain.com # represents number 4$ is too much. 5% of 100 is what ? ^ is not carrot. & is and. * is star. 3*3 is what ? (90)*0 is what ? 4 + 4 = 3? 7 - 8 is positive ! [] are square brackets; {} are braces; Is 'you' really \"you\"? if (zero == '0') then true; 1 < 0 is true ! 0 > 9 is also true ?"
+                }
+            ]
+            
+        },
+        {
+
+            "name": "All keys practice", 
+            "row_id": "qwerty-all-keys",
+            "courses": [
+                {
+                    "id": 19,
+                    "name": "The Road Not Taken",
+                    "duration": "5",
+                    "level": "medium",
+                    "line_length": 30,
+                    "description": "The legendary classical poem 'The Road Not Taken' by Robert Frost",
+                    "course_text": [
+                        "The Road Not Taken",
+                        "Two roads diverged in a yellow wood,",
+                        "And sorry I could not travel both",
+                        "And be one traveler, long I stood",
+                        "And looked down one as far as I could",
+                        "To where it bent in the undergrowth;",
+                        "Then took the other, as just as fair,",
+                        "And having perhaps the better claim,",
+                        "Because it was grassy and wanted wear;",
+                        "Though as for that the passing there",
+                        "Had worn them really about the same,",
+                        "And both that morning equally lay",
+                        "In leaves no step had trodden black.",
+                        "Oh, I kept the first for another day!",
+                        "Yet knowing how way leads on to way,",
+                        "I doubted if I should ever come back.",
+                        "I shall be telling this with a sigh",
+                        "Somewhere ages and ages hence:",
+                        "Two roads diverged in a wood, and I-",
+                        "I took the one less traveled by,",
+                        "And that has made all the difference.",
+                        "- Robert Frost."
+                    ]
+                },
+
+                {
+                    "id": 20,
+                    "name": "Albert Einstein Quotes : Part 1",
+                    "duration": "5",
+                    "level": "hard",
+                    "line_length": 30,
+                    "description": "A collection of great quotes of Albert Einstein from wikiquote",
+                    "course_text": "A happy man is too satisfied with the present to dwell too much on the future. Unthinking respect for authority is the greatest enemy of truth. Nature shows us only the tail of the lion. But there is no doubt in my mind that the lion belongs with it even if he cannot reveal himself to the eye all at once because of his huge dimension. How does it happen that a properly endowed natural scientist comes to concern himself with epistemology? Concepts that have proven useful in ordering things easily achieve such authority over us that we forget their earthly origins and accept them as unalterable givens. 'How much do I love that noble man More than I could tell with words I fear though he'll remain alone With a holy halo of his own.' Subtle is the Lord, but malicious He is not. I have second thoughts. Maybe God is malicious. In science, moreover, the work of the individual is so bound up with that of his scientific predecessors and contemporaries that it appears almost as an impersonal product of his generation. [I do not] carry such information in my mind since it is readily available in books....The value of a college education is not the learning of many facts but the training of the mind to think. I, at any rate, am convinced that He does not throw dice. As I have said so many times, God doesn't play dice with the world. Whether you can observe a thing or not depends on the theory which you use. It is the theory which decides what can be observed."
+                },
+
+                {
+                    "id": 21,
+                    "name": "Albert Einstein Quotes : Part 2",
+                    "duration": "5",
+                    "level": "hard",
+                    "line_length": 30,
+                    "description": "A collection of great quotes of Albert Einstein from wikiquote",
+                    "course_text": "Try and penetrate with our limited means the secrets of nature and you will find that, behind all the discernible concatenations, there remains something subtle, intangible and inexplicable. Veneration for this force beyond anything that we can comprehend is my religion. To that extent I am, in point of fact, religious. I believe in Spinoza's God, Who reveals Himself in the lawful harmony of the world, not in a God Who concerns Himself with the fate and the doings of mankind. If A is success in life, then A = x + y + z. Work is x, play is y and z is keeping your mouth shut. Life is like riding a bicycle. To keep your balance you must keep moving. I believe that whatever we do or live for has its causality; it is good, however, that we cannot see through to it. To punish me for my contempt of authority, Fate has made me an authority myself. I never think of the future. It comes soon enough. It is my view that a vegetarian manner of living by its purely physical effect on the human temperament would most beneficially influence the lot of mankind. Why does this magnificent applied science which saves work and makes life easier bring us so little happiness? The simple answer runs: Because we have not yet learned to make sensible use of it. I believe in intuition and inspiration. … At times I feel certain I am right while not knowing the reason. When the eclipse of 1919 confirmed my intuition, I was not in the least surprised. In fact I would have been astonished had it turned out otherwise. Imagination is more important than knowledge. For knowledge is limited, whereas imagination embraces the entire world, stimulating progress, giving birth to evolution. It is, strictly speaking, a real factor in scientific research."
+                },
+
+                {
+                    "id": 22,
+                    "name": "Albert Einstein Quotes : Part 3",
+                    "duration": "5",
+                    "level": "hard",
+                    "line_length": 30,
+                    "description": "A collection of great quotes of Albert Einstein from wikiquote",
+                    "course_text": "Everyone sits in the prison of his own ideas; he must burst it open, and that in his youth, and so try to test his ideas on reality. I see a clock, but I cannot envision the clockmaker. The human mind is unable to conceive of the four dimensions, so how can it conceive of a God, before whom a thousand years and a thousand dimensions are as one ? Only a life lived for others is a life worthwhile. Our experience hitherto justifies us in trusting that nature is the realization of the simplest that is mathematically conceivable. It can scarcely be denied that the supreme goal of all theory is to make the irreducible basic elements as simple and as few as possible without having to surrender the adequate representation of a single datum of experience. Everything should be made as simple as possible, but no simpler. All of science is nothing more than the refinement of everyday thinking. One may say 'the eternal mystery of the world is its comprehensibility. All religions, arts and sciences are branches of the same tree. All these aspirations are directed toward ennobling man's life, lifting it from the sphere of mere physical existence and leading the individual towards freedom. Physical concepts are free creations of the human mind, and are not, however it may seem, uniquely determined by the external world. Still, there are moments when one feels free from one's own identification with human limitations and inadequacies. At such moments, one imagines that one stands on some spot of a small planet, gazing in amazement at the cold yet profoundly moving beauty of the eternal, the unfathomable: life and death flow into one, and there is neither evolution nor destiny; only being'."
+                }
+            ]
+            
+        }
+    ],
+
+    "dvorak": [
+        {
+
+            "name": "Home Row",
+            "row_id": "dvorak-home-row",
+            "courses": [
+                {
+                    "id": 1,
+                    "name": "Keys Introduction",
+                    "duration": "3",
+                    "level": "easy",
+                    "line_length": 30,
+                    "description": "This course introduces the home row keys. Home row keys are: a, o, e, u, i, d, h, t, n, s, _, -. Learn the key positions and appropriate fingers to type these keys.",
+                    "course_text": "aoeu htns aa oo ee uu hh tt nn ss aeou hnts aoeui dhtns ii dd ii dd aa ee oo uu hh nn tt ss uu ii dd hh iu dh ui hd uh id iduh uhid iidd uuhh uiui hdhd uuii hhdd aa dd ss ii hh uu oo nn ee tt oo dd nn ii as on et uh id as no et hu id aoeui snthd"
+                },
+
+                {
+                    "id": 2,
+                    "name": "Word practice",
+                    "duration": "3",
+                    "level": "medium",
+                    "line_length": 30,
+                    "description": "Practice home row keys by typing simple words",
+                    "course_text": "inhausted outshined adhesion adustion aidoneus andosite astonied audients dianthus dishaunt esthonia handiest handouts hedonist hideouts hudsonia neishout oundiest outshine inhausted outshined adhesion adustion aidoneus andosite"
+                }
+            ]
+        },
+        {
+
+            "name": "Capital Letters", 
+            "row_id": "dvorak-capital-letters",
+            "courses": [
+                {
+                    "id": 3,
+                    "name": "Introducing Shift key",
+                    "duration": "3",
+                    "level": "easy",
+                    "line_length": 30,
+                    "description": "Shift key is used to type capital letters. Learn the key position and appropriate finger to type the shift key in this course. Practice typing home row keys in both capital and small letters.",
+                    "course_text": "AOEU HTNs Aa Oo Ee Uu Hh Tt Nn ss aEoU HnTs aOEui dHTns iI dD Ii Dd aA eE oO uU hH nN tT ss uU Ii Dd hH iU Dh uI hD UH id IdUh UhId IiDd UuHh uiUI hdHD uUiI hHdD Aa Dd ss Ii Hh Uu Oo Nn Ee Tt Oo Dd Nn Ii As ON ET UH ID As nO Et hU iD AOEUI sNTHD"
+                },
+
+                {
+                    "id": 4,
+                    "name": "Word practice",
+                    "duration": "3",
+                    "level": "medium",
+                    "line_length": 30,
+                    "description": "Practice Shift key by typing simple words with both capital and small letters",
+                    "course_text": "iNhAUstEd OUTsHINED adHesION ADUsTiOn aIdONeUS aNdOSITe ASToNIEd AUDiEnts DiaNtHUS DIsHAUnT esthoNia hAnDieST haNDOuts hedoNISt hidEouTS HuDsOniA NEisHOuT oUnDiEst OUtSHInE inHaUSteD OUtsHINeD aDHesion aDUstion AiDoneus andoSItE HeDONiSt HidEOUtS hudSoNIa nEISHout OuNDIESt outSHINE inhausTed ouTsHInED"
+                }
+            ]
+
+        },
+        {
+
+            "name": "keys >, C, P, G", 
+            "row_id": "dvorak-keys-cpg",
+            "courses": [
+                {
+                    "id": 5,
+                    "name": "Keys Introduction",
+                    "duration": "3",
+                    "level": "easy",
+                    "line_length": 30,
+                    "description": "This course introduces the keys >, C, P, G. Learn the key positions and appropriate finger to type these keys.",
+                    "course_text": ">>>> tctc >>>> ctct >>>> tTcC >>>> cCtT >c>t >t>c >tc> >tc> gphg gphg pggh pggh PpGg PpGg PGpg PGpg >pgc >pgc gcp> gcp> >cpg >cpg pg>c pg>c >>gp ghct >>pg ghct >g>p >g>p htgc htgc gc>p hdcg gc>p hdcg CPcp DGdg CPcp DGdg p>P> p>P> gcGC gcGC pP>> gGcC pP>> gGcC"
+                },
+
+                {
+                    "id": 6,
+                    "name": "Word Practice",
+                    "duration": "3",
+                    "level": "medium",
+                    "line_length": 30,
+                    "description": "Practice simple words with >, C, P, G",
+                    "course_text": "DicTAPHONES deSPaTcHInG pODcASTinG pAUnchIESt paTHOgEniC nIgHtSCOPE hOuSepAInT hEaDCoUNTs EDUCaTioNs DICTaPHone DeaCoNsHIp unSIghteD UnsCAtHED tOUcHpADS TENaciOus teAChIngs SUCtIoNeD stauNCHed SpACEDoUT SEdUCtIOn puncHiEst poUNdAgES phoNeTics paTHogeNs ouTSHiNED OutpAcING NIgHTCaPS naugHtIeS hEPTagoNS HeAdCOUnt GuiDEpOSt guIDAnces eDuCaTion EDuCatiNG"
+                }
+            ]
+            
+        },
+        {
+
+            "name": "keys Y, R, J, W", 
+            "row_id": "dvorak-keys-yrjw",
+            "courses": [
+                {
+                    "id": 7,
+                    "name": "Keys Introduction",
+                    "duration": "3",
+                    "level": "easy",
+                    "line_length": 30,
+                    "description": "This course introduces the keys Y, R, J, W. Learn the key positions and appropriate finger to type these keys.",
+                    "course_text": "gygy nrnr gygy nrnr gGyY nNrR gGyY nNrR >j>j ywyw >j>j ywyw >>jJ >>jJ ywYw ywYw >>jj yyww >>jj yyww yjyj rwrw yjyj rwrw yyjj rrww yyjj rrww jJ>> jJ>> wywY wywY gGyY nNrR gGyY nNrR gygy nrnr gygy nrnr gGyY nNrR gGyY nNrR >j>j ywyw >j>j ywyw >>jJ >>jJ ywYw ywYw yyjj yYjJ rRww rRww yryr YRYR jwjw JJYR"
+                },
+
+                {
+                    "id": 8,
+                    "name": "Word Practice",
+                    "duration": "3",
+                    "level": "medium",
+                    "line_length": 30,
+                    "description": "Practice keys Y, R, J, W by typing simple words",
+                    "course_text": "uNcopYrighTEd stENogrAphIC shARpTONGuED prEadJusTINg ouTSPREadINg waREhoUSing uNsEAWOrThY uNPRAcTISEd sTeNOgRapHy ShORtWinGEd rOuGHCaSTed reADJuStiNg PROseCuting pRojeCtiNgs PrEscOUTing preCAuTIoNs pOStcARdiNg outrEAcHIng neUROPaThiC hypErActiOn dIscoGRaphY DIctAPhoNES deSPaTcHIng DEPuRAtiOns dEPAstUring decrYPtIons cOuNtRYWidE cOuNTRySide COPyRIghTeD ACHONDrItEs wInGsPReAd waINScotEd UNStARChEd UnscRiptED"
+                }
+            ]
+            
+        },
+        {
+
+            "name": "keys K, B, <, M", 
+            "row_id": "dvorak-keys-kbm",
+            "courses": [
+                {
+                    "id": 9,
+                    "name": "Keys Introduction",
+                    "duration": "3",
+                    "level": "easy",
+                    "line_length": 30,
+                    "description": "This course introduces the keys K, B, <, M. Learn the key positions and appropriate finger to type these keys",
+                    "course_text": "gkgk hbhb gkgk hbhb ggkk hhbb ggkk hhbb r<r< hmhm r<r< hmhm rr<< hhmm rr<< hhmm kgbh kgbh kkgg bbhh <<rr mmhh <<rr mmhh kKgG bBhH <<rR mMhH kK<< kK<< bBmM bBmM <m<M <m<M bkBK bkBK bb<< bb<< kkmm kkmm bB<< bB<< kKmM kKmM r<gk hbhm r<gk hbhm hkhm hkhm r<rk r<rk <<mM kKbB <k<K bmBM kkKK bbBB <<<< mmMM"
+                },
+
+                {
+                    "id": 10,
+                    "name": "Word Practice",
+                    "duration": "3",
+                    "level": "medium",
+                    "line_length": 30,
+                    "description": "Practice keys K, B, <, M by typing simple words",
+                    "course_text": "hypeRaBDucTIoN hYdrOmAgNetIcS uncOpYrIGHtEd precOMbuStiNg pNEUmoGAsTRiC MuSICoTHeRApY hYDRoMaGnetIC dRAughTsWOmeN StenoGrAPhIC sHaRpTONgued sCYTHemakiNG pReADjUstING PaCKINgHouSE oUtSpREaDING OUtSCreamINg KYMoGrAPhIES KEyBoardINGs kEanuPhOBiCs JoBSEaRChiNg HoUSewarMING gErmAphobicS DeMOGRapHist deMOGraphICS BOdYpaInTers"
+                }
+            ]
+            
+        },
+        {
+
+            "name": "keys \", L, X, F", 
+            "row_id": "dvorak-keys-lxf",
+            "courses": [
+                {
+                    "id": 11,
+                    "name": "Keys Introduction",
+                    "duration": "3",
+                    "level": "easy",
+                    "line_length": 30,
+                    "description": "This course introduces the keys \", L, X, F. Learn the key positions and appropriate finger to type these keys",
+                    "course_text": "a\"a\" slsl a\"a\" slsl aa\"\" ssll aa\"\" ssll ggxx hhff xxgg ffhh gxa\" hfsl gxa\" hfsl \"\"aA lLss xXfF xXfF gxGX hfHF xXgG fFhH gjx\" hdfl \"\"xx llff \"\"xX lLfF xX\"\" fFlL xfXF xfXF \"l\"L \"L\"l \"L\"L \"L\"L XFXF XFXF xfxf XFXF \"l\"l \"L\"L xxgg XGXG hfhf HFHF \"x\"x \"X\"X lfLF lfLF xxff xXfF \"l\"l \"L\"L \"l\"l \"L\"L xfxf XFXF"
+                },
+
+                {
+                    "id": 12,
+                    "name": "Word Practice",
+                    "duration": "3",
+                    "level": "medium",
+                    "line_length": 30,
+                    "description": "Practice keys \"(double quote), L, X, F by typing simple words",
+                    "course_text": "UncOPyrIgHtaBlE DErmaTogLYphicS HypeRabducTion hydrOmagnEtIcS dERMAtoGlYpHic ambIdExtROUsly uNpRobLEmatic UNpReDicTAbLy UNCoPYrIgHted unbLaMeWoRtHy tRoublEmAKinG suBORdinaTeLy SaLPinGEctOMY reobFUsCATiNg pReCOMbusTING pnEUmOgaSTRic MuSIcOtHeRApy mUlTIbranChed HyPnOsURgIcAl hydRoMagnETiC endoLyMPHAtIC dRAUGHtswOmEn deobfuSCaTing cOpYRIgHTaBle uphOlsteriNg UnPrOFITABLy uNPROfitaBLe unprOClAImed unMEthODiCaL"
+                }
+            ]
+            
+        },
+        {
+
+            "name": "keys ;, Q, V, Z", 
+            "row_id": "dvorak-keys-qvz",
+            "courses": [
+                {
+                    "id": 13,
+                    "name": "Keys Introduction",
+                    "duration": "3",
+                    "level": "easy",
+                    "line_length": 30,
+                    "description": "This course introduces the keys ;(semi-colon), Q, V, Z. Learn the key positions and appropriate finger to type these keys",
+                    "course_text": "a;a; rqrq a;a; rqrq aa;; aa;; rrqq rrqq ;;qq .z.z ;;qq ..zz ;;aA qQrR aA;; rRqQ arz arz raq. raq. ;arq ;arq ;ARQ ;ARQ ;z;z ;z;z q.q. Q.Q. ;z;z q.q. ;z;z Q.Q. ;a;a ;A;A qrqr QRQR ;arq. ;arqz ;arq. ;arqz ;;QQ ;;qq ;;. ;;z qq;; QQ;; q;. Q;z az az r. r. ;z ;z qz q. ;q.z ;q.z ;Q.z ;Q.z ;a;a qrqr ;A;A QRQR qa. qa. qa;z qa;z ;;QQ ;;qq ;;. ;;z"
+                },
+
+                {
+                    "id": 14,
+                    "name": "Word Practice",
+                    "duration": "3",
+                    "level": "medium",
+                    "line_length": 30,
+                    "description": "Practice keys ;(semi-colon), Q, V, Z by typing simple words",
+                    "course_text": "jazz fixture zurich ? amazing wax fox ? flexible bazaar. zambia xylophone mixup ? zaire lizard tuxedo ? amazing zero pixel ? sixty annexure. azure buzzer. exact lexicon lizard ? jazz fox fly mixup ? sixty exact lexicon lizard. amazing zero jazz fox. jazz sax ? sax jazz. wax xylophone mixup ? amazing citizen ? zero. bazaar flexible fixture wax xylophone zurich lizard flexible ? amazing."
+                }
+            ]
+            
+        },
+        {
+
+            "name": "Numbers", 
+            "row_id": "dvorak-numbers",
+            "courses": [
+                {
+                    "id": 15,
+                    "name": "Keys Introduction",
+                    "duration": "3",
+                    "level": "easy",
+                    "line_length": 30,
+                    "description": "This course introduces the number keys (top row). Learn the key positions and appropriate finger to type these keys",
+                    "course_text": "aq1 a1 q1 aq1 sw2 s2 w2 sw2 de3 d3 e3 de3 fr4 f4 r4 fr4 gt5 g5 t5 gt5 hy6 h6 y6 hy6 ju7 j7 u7 ju7 ki8 k8 i8 ki8 lo9 l9 o9 lo9 ;p0 ;0 p0 ;p0"
+                },
+
+                {
+                    "id": 16,
+                    "name": "Word Practice",
+                    "duration": "3",
+                    "level": "medium",
+                    "line_length": 30,
+                    "description": "Practice typing simple words containing numbers",
+                    "course_text": "1 is one. one is 1. 2 is two. two is 2. 1 plus 2 is 3. 1 plus 3 is 4. 2 plus 2 is also 4. 3 plus 2 is 5. 1 plus 4 is also 5. 2 plus 4 is 6. 3 plus 3 is also 6. 1 plus 5 is what ? 2 plus 5 is 7. 4 plus 3 is also 7. 1 plus 2 plus 4 is what ? 2 times 4 is 8. 3 plus 5 is also 8. 6 plus 2 is what ? 3 times 3 is 9. 9 is a square. 5 plus 4 is what ? 0 is a special number. 0 before number is number but, 0 after number ? 0 is the real hero."
+                }
+            ]
+            
+        },
+        {
+
+            "name": "Special characters", 
+            "row_id": "dvorak-special-chars",
+            "courses": [
+                {
+                    "id": 17,
+                    "name": "Keys Introduction",
+                    "duration": "3",
+                    "level": "easy",
+                    "line_length": 30,
+                    "description": "This course introduces special characters and symbols. Learn the key positions and appropriate finger to type these keys",
+                    "course_text": "aq1! a! q! 1! aq1! sw2@ s@ w@ 2@ sw2@ de3# d# e# 3# de3# fr4$ f$ r$ 4$ fr4$ gt5% g% t% 5% gt5% hy6^ h^ y^ 6^ hy6^ ju7& j& u& 7& ju7& ki8* k* i* 8* ki8* lo9( l( o( 9( lo9( ;p0) ;) p) 0) ;p0) ;: ;: ;' ;\" ;\\ ;[ ;{ ;] ;} ;- ;_ ;= ;+ k, k, k< k< l. l. l> l> ;? ;? ;/ ;/"
+                },
+
+                {
+                    "id": 18,
+                    "name": "Word Practice",
+                    "duration": "3",
+                    "level": "medium",
+                    "line_length": 30,
+                    "description": "Practice typing simple words containing special characters and symbols",
+                    "course_text": "Hello ! Welcome ! email@domain.com # represents number 4$ is too much. 5% of 100 is what ? ^ is not carrot. & is and. * is star. 3*3 is what ? (90)*0 is what ? 4 + 4 = 3? 7 - 8 is positive ! [] are square brackets; {} are braces; Is 'you' really \"you\"? if (zero == '0') then true; 1 < 0 is true ! 0 > 9 is also true ?"
+                }
+            ]
+            
+        },
+        {
+
+            "name": "All keys practice", 
+            "row_id": "dvorak-all-keys",
+            "courses": [
+                {
+                    "id": 19,
+                    "name": "The Road Not Taken",
+                    "duration": "5",
+                    "level": "medium",
+                    "line_length": 30,
+                    "description": "The legendary classical poem 'The Road Not Taken' by Robert Frost",
+                    "course_text": [
+                        "The Road Not Taken",
+                        "Two roads diverged in a yellow wood,",
+                        "And sorry I could not travel both",
+                        "And be one traveler, long I stood",
+                        "And looked down one as far as I could",
+                        "To where it bent in the undergrowth;",
+                        "Then took the other, as just as fair,",
+                        "And having perhaps the better claim,",
+                        "Because it was grassy and wanted wear;",
+                        "Though as for that the passing there",
+                        "Had worn them really about the same,",
+                        "And both that morning equally lay",
+                        "In leaves no step had trodden black.",
+                        "Oh, I kept the first for another day!",
+                        "Yet knowing how way leads on to way,",
+                        "I doubted if I should ever come back.",
+                        "I shall be telling this with a sigh",
+                        "Somewhere ages and ages hence:",
+                        "Two roads diverged in a wood, and I-",
+                        "I took the one less traveled by,",
+                        "And that has made all the difference.",
+                        "- Robert Frost."
+                    ]
+                },
+
+                {
+                    "id": 20,
+                    "name": "Albert Einstein Quotes : Part 1",
+                    "duration": "5",
+                    "level": "hard",
+                    "line_length": 30,
+                    "description": "A collection of great quotes of Albert Einstein from wikiquote",
+                    "course_text": "A happy man is too satisfied with the present to dwell too much on the future. Unthinking respect for authority is the greatest enemy of truth. Nature shows us only the tail of the lion. But there is no doubt in my mind that the lion belongs with it even if he cannot reveal himself to the eye all at once because of his huge dimension. How does it happen that a properly endowed natural scientist comes to concern himself with epistemology? Concepts that have proven useful in ordering things easily achieve such authority over us that we forget their earthly origins and accept them as unalterable givens. 'How much do I love that noble man More than I could tell with words I fear though he'll remain alone With a holy halo of his own.' Subtle is the Lord, but malicious He is not. I have second thoughts. Maybe God is malicious. In science, moreover, the work of the individual is so bound up with that of his scientific predecessors and contemporaries that it appears almost as an impersonal product of his generation. [I do not] carry such information in my mind since it is readily available in books....The value of a college education is not the learning of many facts but the training of the mind to think. I, at any rate, am convinced that He does not throw dice. As I have said so many times, God doesn't play dice with the world. Whether you can observe a thing or not depends on the theory which you use. It is the theory which decides what can be observed."
+                },
+
+                {
+                    "id": 21,
+                    "name": "Albert Einstein Quotes : Part 2",
+                    "duration": "5",
+                    "level": "hard",
+                    "line_length": 30,
+                    "description": "A collection of great quotes of Albert Einstein from wikiquote",
+                    "course_text": "Try and penetrate with our limited means the secrets of nature and you will find that, behind all the discernible concatenations, there remains something subtle, intangible and inexplicable. Veneration for this force beyond anything that we can comprehend is my religion. To that extent I am, in point of fact, religious. I believe in Spinoza's God, Who reveals Himself in the lawful harmony of the world, not in a God Who concerns Himself with the fate and the doings of mankind. If A is success in life, then A = x + y + z. Work is x, play is y and z is keeping your mouth shut. Life is like riding a bicycle. To keep your balance you must keep moving. I believe that whatever we do or live for has its causality; it is good, however, that we cannot see through to it. To punish me for my contempt of authority, Fate has made me an authority myself. I never think of the future. It comes soon enough. It is my view that a vegetarian manner of living by its purely physical effect on the human temperament would most beneficially influence the lot of mankind. Why does this magnificent applied science which saves work and makes life easier bring us so little happiness? The simple answer runs: Because we have not yet learned to make sensible use of it. I believe in intuition and inspiration. … At times I feel certain I am right while not knowing the reason. When the eclipse of 1919 confirmed my intuition, I was not in the least surprised. In fact I would have been astonished had it turned out otherwise. Imagination is more important than knowledge. For knowledge is limited, whereas imagination embraces the entire world, stimulating progress, giving birth to evolution. It is, strictly speaking, a real factor in scientific research."
+                },
+
+                {
+                    "id": 22,
+                    "name": "Albert Einstein Quotes : Part 3",
+                    "duration": "5",
+                    "level": "hard",
+                    "line_length": 30,
+                    "description": "A collection of great quotes of Albert Einstein from wikiquote",
+                    "course_text": "Everyone sits in the prison of his own ideas; he must burst it open, and that in his youth, and so try to test his ideas on reality. I see a clock, but I cannot envision the clockmaker. The human mind is unable to conceive of the four dimensions, so how can it conceive of a God, before whom a thousand years and a thousand dimensions are as one ? Only a life lived for others is a life worthwhile. Our experience hitherto justifies us in trusting that nature is the realization of the simplest that is mathematically conceivable. It can scarcely be denied that the supreme goal of all theory is to make the irreducible basic elements as simple and as few as possible without having to surrender the adequate representation of a single datum of experience. Everything should be made as simple as possible, but no simpler. All of science is nothing more than the refinement of everyday thinking. One may say 'the eternal mystery of the world is its comprehensibility. All religions, arts and sciences are branches of the same tree. All these aspirations are directed toward ennobling man's life, lifting it from the sphere of mere physical existence and leading the individual towards freedom. Physical concepts are free creations of the human mind, and are not, however it may seem, uniquely determined by the external world. Still, there are moments when one feels free from one's own identification with human limitations and inadequacies. At such moments, one imagines that one stands on some spot of a small planet, gazing in amazement at the cold yet profoundly moving beauty of the eternal, the unfathomable: life and death flow into one, and there is neither evolution nor destiny; only being'."
+                }
+            ]
+            
+        }
+    ],
+
+    "colemak": [
+        {
+
+            "name": "Home Row",
+            "row_id": "colemak-home-row",
+            "courses": [
+                {
+                    "id": 1,
+                    "name": "Keys Introduction",
+                    "duration": "3",
+                    "level": "easy",
+                    "line_length": 30,
+                    "description": "This course introduces the home row keys. Home row keys are: a, r, s, t, d, h, n, e, i, o, \"(double quote), '(single quote). Learn the key positions and appropriate fingers to type these keys.",
+                    "course_text": "a;sg kflj aa ;; ss gg kk ff ll jj as;g klfj a;sgd hkflj dd hh dd hh aa ss ;; gg kk ll ff jj gg dd hh kk dg hk gd kh gk dh dhgk gkdh ddhh ggkk gdgd khkh ggdd kkhh aa hh jj dd kk gg ;; ll ss ff ;; hh ll dd aj ;l sf gk dh aj l; sf kg dh a;sgd jlfkh"
+                },
+
+                {
+                    "id": 2,
+                    "name": "Word practice",
+                    "duration": "3",
+                    "level": "medium",
+                    "line_length": 30,
+                    "description": "Practice home row keys by typing simple words",
+                    "course_text": "tarnished ordinates notarised hardstone hairstone tradeins strained senorita sedation rationed randiest otarines ordinate notarise notaries hoariest hedonist hardnose hardiest handrest handiest hairnets asteroid antihero aneroids adhesion treason trashed trained tradein toadish tirades tinders thrones throned threads thorned tarnish"
+                }
+            ]
+        },
+        {
+
+            "name": "Capital Letters", 
+            "row_id": "colemak-capital-letters",
+            "courses": [
+                {
+                    "id": 3,
+                    "name": "Introducing Shift key",
+                    "duration": "3",
+                    "level": "easy",
+                    "line_length": 30,
+                    "description": "Shift key is used to type capital letters. Learn the key position and appropriate finger to type the shift key in this course. Practice typing home row keys in both capital and small letters.",
+                    "course_text": "A;SG KFLj Aa ;; Ss Gg Kk Ff Ll jj aS;G KlFj a;Sgd hKFlj dD hH Dd Hh aA sS ;; gG kK lL fF jj gG Dd Hh kK dG Hk gD kH GK dh DhGk GkDh DdHh GgKk gdGD khKH gGdD kKhH Aa Hh jj Dd Kk Gg ;; Ll Ss Ff ;; Hh Ll Dd Aj ;L SF GK DH Aj l; Sf kG dH A;SGD jLFKH"
+                },
+
+                {
+                    "id": 4,
+                    "name": "Word practice",
+                    "duration": "3",
+                    "level": "medium",
+                    "line_length": 30,
+                    "description": "Practice Shift key by typing simple words with both capital and small letters",
+                    "course_text": "tArnISheD oRDInATes NotarIseD HARdSTOnE haIrStoNE TrADEINs STraInEd SeNOrITA SEdATION ratiOneD rAnDieSt otARINEs oRdiNaTE nOtariSE NOtARIEs HOAriEst heDonIst HaRdnoSE haRdIeST haNdreST HAndIeSt hAIRNets AsTeRoid ANtIheRO AnEROiDS aDHEsIon treAsON trASHEd TraINEd TraDEin toaDisH tirADeS tinDERs tHrONEs THRoNeD ThrEAds THoRNeD TaRNIsh"
+                }
+            ]
+
+        },
+        {
+
+            "name": "keys F, U, P, L", 
+            "row_id": "colemak-keys-fupl",
+            "courses": [
+                {
+                    "id": 5,
+                    "name": "Keys Introduction",
+                    "duration": "3",
+                    "level": "easy",
+                    "line_length": 30,
+                    "description": "This course introduces the keys F, U, P, L. Learn the key positions and appropriate finger to type these keys.",
+                    "course_text": "sfsf flfl fsfs lflf sSfF fFlL fFsS lLfF flsf sffl ffls ffls g;kl g;kl ;glk ;glk ;;Ll ;;Ll ;L;l ;L;l f;ll f;ll ll;f ll;f fl;l fl;l ;lfl ;lfl fsg; lklf fs;g lklf sgf; sgf; kfll kfll gdf; khll gdf; khll D;d; HLhl D;d; HLhl ;f;F ;f;F llLL llLL ;;fF lLlL ;;fF lLlL"
+                },
+
+                {
+                    "id": 6,
+                    "name": "Word Practice",
+                    "duration": "3",
+                    "level": "medium",
+                    "line_length": 30,
+                    "description": "",
+                    "course_text": "pathFiNDeRS neUTROphILS fLUOrinaTEs FLUoriNATED FLUoRidATEs dEPuraTiOns unpolIshED suLFonaTED SphEROiDal shoplIfTER shoplIFTed SHIPlOaDER pReDAtIons plANetOiDs PHILaNDErs pAtRONiSeD pATHfInDEr OutLANdisH NEutrOPhil hOuSETrain HousePlANt hOUSEpaInT fOrEsTLAND fLUORINatE FluoRIdATe flourIsHed flAShpoINt diSHpaNfuL dEPuratION"
+                }
+            ]
+            
+        },
+        {
+
+            "name": "keys G, Y, J, comma", 
+            "row_id": "colemak-keys-toc",
+            "courses": [
+                {
+                    "id": 7,
+                    "name": "Keys Introduction",
+                    "duration": "3",
+                    "level": "easy",
+                    "line_length": 30,
+                    "description": "This course introduces the keys G, Y, J and ,(Comma). Learn the key positions and appropriate finger to type these keys.",
+                    "course_text": "gggg ljlj gggg ljlj gGgG lLjJ gGgG lLjJ sjsj f,f, sjsj f,f, sSjJ sSjJ f,F, f,F, ssjj ff,, ssjj ff,, gjgj j,j, gjgj j,j, ggjj jj,, ggjj jj,, jJsS jJsS ,f,F ,f,F gGgG lLjJ gGgG lLjJ gggg ljlj gggg ljlj gGgG lLjJ gGgG lLjJ sjsj f,f, sjsj f,f, sSjJ sSjJ f,F, f,F, ggjj gGjJ jJ,, jJ,, gjgj GJGJ j,j, JJGJ"
+                },
+
+                {
+                    "id": 8,
+                    "name": "Word Practice",
+                    "duration": "3",
+                    "level": "medium",
+                    "line_length": 30,
+                    "description": "Practice keys G, Y, J and ,(Comma) by typing simple words",
+                    "course_text": "UpHOLstErInG sHaRPTOngUED PrEadjUSTinG OUtSPrEaDiNG heRnIoplAsTY fArsIgHTeDly UrOGENItals SUlFhYdRATE stENOGrAPHY SHOuLDERiNg RiGHtEoUSLY rhiNoplasty ReuplOaDINg REguLaTIons ReaDjUStIng PROseLyTing ProfligatES PLeuRODyniA plAygrOUNDs pERsoNAlIty PEnDuLoSiTy PatHfIndeRS NEutROPHIls NeFArIOUSLY lADYfingeRs JouRNalISed"
+                }
+            ]
+            
+        },
+        {
+
+            "name": "keys V, K, W, M", 
+            "row_id": "qwerty-keys-vnwm",
+            "courses": [
+                {
+                    "id": 9,
+                    "name": "Keys Introduction",
+                    "duration": "3",
+                    "level": "easy",
+                    "line_length": 30,
+                    "description": "This course introduces the keys V, K, W, M. Learn the key positions and appropriate finger to type these keys",
+                    "course_text": "gkgk kkkk gkgk kkkk ggkk kkkk ggkk kkkk ;w;w kmkm ;w;w kmkm ;;ww kkmm ;;ww kkmm kgkk kgkk kkgg kkkk ww;; mmkk ww;; mmkk kKgG kKkK wW;; mMkK kKwW kKwW kKmM kKmM wmWM wmWM kkKK kkKK kkww kkww kkmm kkmm kKwW kKwW kKmM kKmM ;wgk kkkm ;wgk kkkm kkkm kkkm ;w;k ;w;k wWmM kKkK wkWK kmKM kkKK kkKK wwWW mmMM"
+                },
+
+                {
+                    "id": 10,
+                    "name": "Word Practice",
+                    "duration": "3",
+                    "level": "medium",
+                    "line_length": 30,
+                    "description": "Practice keys V, K, W, M by typing simple words",
+                    "course_text": "DRAUghtSwoMEN vAPordENsITY uphoLStEriNg shovElmAkiNg shArPtOnGUEd prEaDJusTiNg OVeRSTUdyInG OVErSAmpLING oUTsPREADINg NightwALKeRS multIpRONGED MOThERsiNlAw mETALWOrkIng MaudlINwORTS MALNOuRiShEd KYmOGraPhiES HoUsEwArmiNg hErNIOpLAsTY faRSiGHtedLY EArThmOVINGs doWNLIghteRs DePLuMAtIOns DEmogrAPHist WorKmansHIP wORdMAnSHIP"
+                }
+            ]
+            
+        },
+        {
+
+            "name": "keys Q, ;(semi-colon), B, J", 
+            "row_id": "colemak-keys-qbj",
+            "courses": [
+                {
+                    "id": 11,
+                    "name": "Keys Introduction",
+                    "duration": "3",
+                    "level": "easy",
+                    "line_length": 30,
+                    "description": "This course introduces the keys Q, ;(semi-colon), B, J. Learn the key positions and appropriate finger to type these keys",
+                    "course_text": "aqaq j;j; aqaq j;j; aaqq jj;; aaqq jj;; ggbb kkjj bbgg jjkk gbaq kjj; gbaq kjj; qQaA ;;jj bBjJ bBjJ gbGB kjKJ bBgG jJkK gdbq khj; qqbb ;;jj qQbB ;;jJ bBqQ jJ;; bjBJ bjBJ q;Q; Q;q; Q;Q; Q;Q; BJBJ BJBJ bjbj BJBJ q;q; Q;Q; bbgg BGBG kjkj KJKJ qbqb QBQB ;j;J ;j;J bbjj bBjJ q;q; q;q; q;q; Q;Q; bjbj BJBJ"
+                },
+
+                {
+                    "id": 12,
+                    "name": "Word Practice",
+                    "duration": "3",
+                    "level": "medium",
+                    "line_length": 30,
+                    "description": "Practice keys Q, ;(semi-colon), B, J by typing simple words",
+                    "course_text": "uNbLAMewoRThY TROUBlEmakINg suBORdinaTelY DrauGHTSWomen vApoRDeNsITY UPHoLstering UNprofitablY uNprOfItAblE uniMpRoVaBLe uNhoSPitaBLy UnHOspitABle unfORGivAbLY uNForgivaBlE SuBNorMALitY STrOnGLIMBED sHOVelMakINg SHArptONgUEd qUEstIOnABly PrEaDJustinG oVeRStUdyiNG oVErSAMplIng oUtsprEaDIng NIGhtWALkeRS MULtiprONGED MOtheRsinlaw mETALWORKIng MaUdLiNwoRts"
+                }
+            ]
+            
+        },
+        {
+
+            "name": "keys Z, X, period, ?", 
+            "row_id": "colemak-keys-zx",
+            "courses": [
+                {
+                    "id": 13,
+                    "name": "Keys Introduction",
+                    "duration": "3",
+                    "level": "easy",
+                    "line_length": 30,
+                    "description": "This course introduces the keys Z, X, .(period), ?(question mark). Learn the key positions and appropriate finger to type these keys",
+                    "course_text": "azaz sxsx azaz sxsx aazz aazz ssxx ssxx zzxx .?.? zzxx ..?? zZaA xXsS aAzZ sSxX as? as? sax. sax. zasx zasx ZASX ZASX z?z? Z?Z? l.l. L.L. z?z? x.x. Z?Z? X.X. zaza ZAZA xsxs XSXS zasx. zasx? zasx. zasx? ZZXX zzxx zZ. zZ? xxzz XXZZ xz. XZ? a? a? s. s. z? z? x? x. zx.? zx.? ZX.? ZX.? zaza xsxs ZAZA XSXS la. la. laz? laz? ZZXX zzxx zZ. zZ?"
+                },
+
+                {
+                    "id": 14,
+                    "name": "Word Practice",
+                    "duration": "3",
+                    "level": "medium",
+                    "line_length": 30,
+                    "description": "Practice keys Z, X, .(period), ?(question mark) by typing simple words",
+                    "course_text": "jazz fixture zurich ? amazing wax fox ? flexible bazaar. zambia xylophone mixup ? zaire lizard tuxedo ? amazing zero pixel ? sixty annexure. azure buzzer. exact lexicon lizard ? jazz fox fly mixup ? sixty exact lexicon lizard. amazing zero jazz fox. jazz sax ? sax jazz. wax xylophone mixup ? amazing citizen ? zero. bazaar flexible fixture wax xylophone zurich lizard flexible ? amazing."
+                }
+            ]
+            
+        },
+        {
+
+            "name": "Numbers", 
+            "row_id": "colemak-numbers",
+            "courses": [
+                {
+                    "id": 15,
+                    "name": "Keys Introduction",
+                    "duration": "3",
+                    "level": "easy",
+                    "line_length": 30,
+                    "description": "This course introduces the number keys (top row). Learn the key positions and appropriate finger to type these keys",
+                    "course_text": "aq1 a1 q1 aq1 sw2 s2 w2 sw2 de3 d3 e3 de3 fr4 f4 r4 fr4 gt5 g5 t5 gt5 hy6 h6 y6 hy6 ju7 j7 u7 ju7 ki8 k8 i8 ki8 lo9 l9 o9 lo9 ;p0 ;0 p0 ;p0"
+                },
+
+                {
+                    "id": 16,
+                    "name": "Word Practice",
+                    "duration": "3",
+                    "level": "medium",
+                    "line_length": 30,
+                    "description": "Practice typing simple words containing numbers",
+                    "course_text": "1 is one. one is 1. 2 is two. two is 2. 1 plus 2 is 3. 1 plus 3 is 4. 2 plus 2 is also 4. 3 plus 2 is 5. 1 plus 4 is also 5. 2 plus 4 is 6. 3 plus 3 is also 6. 1 plus 5 is what ? 2 plus 5 is 7. 4 plus 3 is also 7. 1 plus 2 plus 4 is what ? 2 times 4 is 8. 3 plus 5 is also 8. 6 plus 2 is what ? 3 times 3 is 9. 9 is a square. 5 plus 4 is what ? 0 is a special number. 0 before number is number but, 0 after number ? 0 is the real hero."
+                }
+            ]
+            
+        },
+        {
+
+            "name": "Special characters", 
+            "row_id": "colemak-special-chars",
+            "courses": [
+                {
+                    "id": 17,
+                    "name": "Keys Introduction",
+                    "duration": "3",
+                    "level": "easy",
+                    "line_length": 30,
+                    "description": "This course introduces special characters and symbols. Learn the key positions and appropriate finger to type these keys",
+                    "course_text": "aq1! a! q! 1! aq1! sw2@ s@ w@ 2@ sw2@ de3# d# e# 3# de3# fr4$ f$ r$ 4$ fr4$ gt5% g% t% 5% gt5% hy6^ h^ y^ 6^ hy6^ ju7& j& u& 7& ju7& ki8* k* i* 8* ki8* lo9( l( o( 9( lo9( ;p0) ;) p) 0) ;p0) ;: ;: ;' ;\" ;\\ ;[ ;{ ;] ;} ;- ;_ ;= ;+ k, k, k< k< l. l. l> l> ;? ;? ;/ ;/"
+                },
+
+                {
+                    "id": 18,
+                    "name": "Word Practice",
+                    "duration": "3",
+                    "level": "medium",
+                    "line_length": 30,
+                    "description": "Practice typing simple words containing special characters and symbols",
+                    "course_text": "Hello ! Welcome ! email@domain.com # represents number 4$ is too much. 5% of 100 is what ? ^ is not carrot. & is and. * is star. 3*3 is what ? (90)*0 is what ? 4 + 4 = 3? 7 - 8 is positive ! [] are square brackets; {} are braces; Is 'you' really \"you\"? if (zero == '0') then true; 1 < 0 is true ! 0 > 9 is also true ?"
+                }
+            ]
+            
+        },
+        {
+
+            "name": "All keys practice", 
+            "row_id": "colemak-all-keys",
+            "courses": [
+                {
+                    "id": 19,
+                    "name": "The Road Not Taken",
+                    "duration": "5",
+                    "level": "medium",
+                    "line_length": 30,
+                    "description": "The legendary classical poem 'The Road Not Taken' by Robert Frost",
+                    "course_text": [
+                        "The Road Not Taken",
+                        "Two roads diverged in a yellow wood,",
+                        "And sorry I could not travel both",
+                        "And be one traveler, long I stood",
+                        "And looked down one as far as I could",
+                        "To where it bent in the undergrowth;",
+                        "Then took the other, as just as fair,",
+                        "And having perhaps the better claim,",
+                        "Because it was grassy and wanted wear;",
+                        "Though as for that the passing there",
+                        "Had worn them really about the same,",
+                        "And both that morning equally lay",
+                        "In leaves no step had trodden black.",
+                        "Oh, I kept the first for another day!",
+                        "Yet knowing how way leads on to way,",
+                        "I doubted if I should ever come back.",
+                        "I shall be telling this with a sigh",
+                        "Somewhere ages and ages hence:",
+                        "Two roads diverged in a wood, and I-",
+                        "I took the one less traveled by,",
+                        "And that has made all the difference.",
+                        "- Robert Frost."
+                    ]
+                },
+
+                {
+                    "id": 20,
+                    "name": "Albert Einstein Quotes : Part 1",
+                    "duration": "5",
+                    "level": "hard",
+                    "line_length": 30,
+                    "description": "A collection of great quotes of Albert Einstein from wikiquote",
+                    "course_text": "A happy man is too satisfied with the present to dwell too much on the future. Unthinking respect for authority is the greatest enemy of truth. Nature shows us only the tail of the lion. But there is no doubt in my mind that the lion belongs with it even if he cannot reveal himself to the eye all at once because of his huge dimension. How does it happen that a properly endowed natural scientist comes to concern himself with epistemology? Concepts that have proven useful in ordering things easily achieve such authority over us that we forget their earthly origins and accept them as unalterable givens. 'How much do I love that noble man More than I could tell with words I fear though he'll remain alone With a holy halo of his own.' Subtle is the Lord, but malicious He is not. I have second thoughts. Maybe God is malicious. In science, moreover, the work of the individual is so bound up with that of his scientific predecessors and contemporaries that it appears almost as an impersonal product of his generation. [I do not] carry such information in my mind since it is readily available in books....The value of a college education is not the learning of many facts but the training of the mind to think. I, at any rate, am convinced that He does not throw dice. As I have said so many times, God doesn't play dice with the world. Whether you can observe a thing or not depends on the theory which you use. It is the theory which decides what can be observed."
+                },
+
+                {
+                    "id": 21,
+                    "name": "Albert Einstein Quotes : Part 2",
+                    "duration": "5",
+                    "level": "hard",
+                    "line_length": 30,
+                    "description": "A collection of great quotes of Albert Einstein from wikiquote",
+                    "course_text": "Try and penetrate with our limited means the secrets of nature and you will find that, behind all the discernible concatenations, there remains something subtle, intangible and inexplicable. Veneration for this force beyond anything that we can comprehend is my religion. To that extent I am, in point of fact, religious. I believe in Spinoza's God, Who reveals Himself in the lawful harmony of the world, not in a God Who concerns Himself with the fate and the doings of mankind. If A is success in life, then A = x + y + z. Work is x, play is y and z is keeping your mouth shut. Life is like riding a bicycle. To keep your balance you must keep moving. I believe that whatever we do or live for has its causality; it is good, however, that we cannot see through to it. To punish me for my contempt of authority, Fate has made me an authority myself. I never think of the future. It comes soon enough. It is my view that a vegetarian manner of living by its purely physical effect on the human temperament would most beneficially influence the lot of mankind. Why does this magnificent applied science which saves work and makes life easier bring us so little happiness? The simple answer runs: Because we have not yet learned to make sensible use of it. I believe in intuition and inspiration. … At times I feel certain I am right while not knowing the reason. When the eclipse of 1919 confirmed my intuition, I was not in the least surprised. In fact I would have been astonished had it turned out otherwise. Imagination is more important than knowledge. For knowledge is limited, whereas imagination embraces the entire world, stimulating progress, giving birth to evolution. It is, strictly speaking, a real factor in scientific research."
+                },
+
+                {
+                    "id": 22,
+                    "name": "Albert Einstein Quotes : Part 3",
+                    "duration": "5",
+                    "level": "hard",
+                    "line_length": 30,
+                    "description": "A collection of great quotes of Albert Einstein from wikiquote",
+                    "course_text": "Everyone sits in the prison of his own ideas; he must burst it open, and that in his youth, and so try to test his ideas on reality. I see a clock, but I cannot envision the clockmaker. The human mind is unable to conceive of the four dimensions, so how can it conceive of a God, before whom a thousand years and a thousand dimensions are as one ? Only a life lived for others is a life worthwhile. Our experience hitherto justifies us in trusting that nature is the realization of the simplest that is mathematically conceivable. It can scarcely be denied that the supreme goal of all theory is to make the irreducible basic elements as simple and as few as possible without having to surrender the adequate representation of a single datum of experience. Everything should be made as simple as possible, but no simpler. All of science is nothing more than the refinement of everyday thinking. One may say 'the eternal mystery of the world is its comprehensibility. All religions, arts and sciences are branches of the same tree. All these aspirations are directed toward ennobling man's life, lifting it from the sphere of mere physical existence and leading the individual towards freedom. Physical concepts are free creations of the human mind, and are not, however it may seem, uniquely determined by the external world. Still, there are moments when one feels free from one's own identification with human limitations and inadequacies. At such moments, one imagines that one stands on some spot of a small planet, gazing in amazement at the cold yet profoundly moving beauty of the eternal, the unfathomable: life and death flow into one, and there is neither evolution nor destiny; only being'."
+                }
+            ]
+            
+        }
+    ]
+
+}

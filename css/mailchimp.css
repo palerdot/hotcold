@@ -1,0 +1,17 @@
+#mc_embed_signup {
+    background: #282828;
+    clear: left;
+    font: 14px Helvetica, Arial, sans-serif;
+    width: 100%;
+}
+
+#mc_embed_signup input.email {
+    background: #444;
+    border: #333;
+    color: white;
+}
+
+#mc_embed_signup #mc-embedded-subscribe {
+    background: #337ab7;
+    color: white;
+}

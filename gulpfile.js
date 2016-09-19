@@ -23,7 +23,8 @@ var gulp = require( "gulp" ),
     async = require( "async" ),
     pump = require( "pump" ),
     json_editor = require( "gulp-json-editor" ),
-    uglify = require( "gulp-uglify" )
+    uglify = require( "gulp-uglify" ),
+    gutil = require("gulp-util"),
     
     git_info = require( "git-rev" ),
     git = require( "gulp-git" ),
@@ -209,7 +210,7 @@ gulp.task( "copy-web-files", function ( cb ) {
                                 compress: {
                                     drop_console: true
                                 }  
-                            }) 
+                            }).on('error', gutil.log) 
                         )
                         .pipe( gulp.dest( destination ) );
 
@@ -361,7 +362,7 @@ function copy_crx_files (mode, async_cb) {
 
     var copy_lessons = gulp.src( "./lessons/**/*", { base: "." } );
 
-    var copy_images = gulp.src( "./images/viralgal.png", { base: "." } );
+    var copy_images = gulp.src( "./images/**/*", { base: "." } );
 
     var copy_manifest = gulp.src( "./manifest.json" )
                             .pipe( 
@@ -388,7 +389,8 @@ function copy_crx_files (mode, async_cb) {
         copy_manifest, 
         copy_init_script, 
         copy_icons,
-        copy_config
+        copy_config,
+        copy_favicon
     ];
 
     var parallel_tasks = _.map( tasks, function (task) {
@@ -532,7 +534,7 @@ function copy_electron_files (mode, async_cb) {
 
     var copy_lessons = gulp.src( "./lessons/**/*", { base: "." } );
 
-    var copy_images = gulp.src( "./images/viralgal.png", { base: "." } );
+    var copy_images = gulp.src( "./images/**/*", { base: "." } );
 
     var copy_init_script = gulp.src( "./electron.js", { base: "." } );
 
@@ -555,7 +557,8 @@ function copy_electron_files (mode, async_cb) {
         copy_init_script, 
         copy_node_package_json,
         copy_icons,
-        copy_config
+        copy_config,
+        copy_favicon
     ];
 
     var parallel_tasks = _.map( tasks, function (task) {
