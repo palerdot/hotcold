@@ -1774,7 +1774,19 @@ var APP = {
     $el: jquery_el,
 
     start: function () {
+        
         console.log( "config ", HC_CONFIG, KB, _ );
+
+        // add google analytics script in the web version
+        if (HC_CONFIG.type == "web") {
+            var gaq_script = "/js/gaq_script.js";
+            $.getScript( gaq_script, function( data, textStatus, jqxhr ) {
+                // console.log( data ); // Data returned
+                console.log( textStatus ); // Success
+                console.log( jqxhr.status ); // 200
+                console.log( "gaq Load was performed." );
+            });
+        }
 
         this.initKeyboardLayouts();
 
