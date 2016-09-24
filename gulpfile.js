@@ -236,6 +236,10 @@ gulp.task( "copy-web-files", function ( cb ) {
     var copy_gulpfile = gulp.src( "./gulpfile.js" )
                             .pipe( gulp.dest( destination ) );
 
+    // copy CNAME file for github to publish to our custom domain "http://hotcoldtyping.com"
+    var copy_cname = gulp.src( "./CNAME" )
+                            .pipe( gulp.dest( destination ) );
+
     return merge_stream( 
                 copy_home_page,
                 copy_courses_page, 
@@ -247,7 +251,8 @@ gulp.task( "copy-web-files", function ( cb ) {
                 copy_images, 
                 copy_favicon,
                 copy_config,
-                copy_gulpfile 
+                copy_gulpfile,
+                copy_cname 
             );
 
 } );
