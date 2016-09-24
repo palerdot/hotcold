@@ -125,8 +125,15 @@ gulp.task( "check-branch", function ( cb ) {
 
 // ----------------------------------------------------------------------------------------------------
 // START: build web tasks
+var DROP_CONSOLE = true;
 
 gulp.task( "build-web", function (cb) {
+    DROP_CONSOLE = true;
+    runSequence( ["web-basics"], ["clean-web"], ["copy-web-files"], cb );
+} );
+
+gulp.task( "build-web-test", function (cb) {
+    DROP_CONSOLE = false;
     runSequence( ["web-basics"], ["clean-web"], ["copy-web-files"], cb );
 } );
 
@@ -208,7 +215,7 @@ gulp.task( "copy-web-files", function ( cb ) {
                         .pipe( 
                             uglify({ 
                                 compress: {
-                                    drop_console: true
+                                    drop_console: DROP_CONSOLE
                                 }  
                             }).on('error', gutil.log) 
                         )
