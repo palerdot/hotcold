@@ -432,6 +432,11 @@ html, body {
     line-height: 1.5em;
 }
 
+.try-now {
+    color: $HC_LIGHT_BLUE !important;
+    // font-weight: bold !important;
+}
+
 // footer style
 .hc-footer {
     border-top: thin solid $home_highlight_bg_color;
