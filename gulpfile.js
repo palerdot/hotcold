@@ -102,7 +102,7 @@ gulp.task( "init-default-config", function (cb) {
                 .pipe( 
                     json_editor({
                         "type": "web",
-                        "APPMODE": "FREE"
+                        "APPMODE": "PRO"
                     }) 
                 )
                 .pipe( gulp.dest( "." ) );
@@ -147,7 +147,7 @@ gulp.task( "init-web-config", function (cb) {
                 .pipe( 
                     json_editor({
                         "type": "web",
-                        "APPMODE": "FREE"
+                        "APPMODE": "PRO"
                     }) 
                 )
                 .pipe( gulp.dest( "." ) );
@@ -334,12 +334,13 @@ function init_crx_mode (mode, async_cb) {
 
 function init_crx_config (mode, cb) {
     console.log("initing crx config ", mode);
+    console.log("Making APP Free (PRO MODE)");
 
     gulp.src( "./config.json" )
         .pipe( 
             json_editor({
                 "type": "crx",
-                "APPMODE": mode
+                "APPMODE": "PRO"
             }) 
         )
         .pipe( gulp.dest( "." ) )
@@ -494,12 +495,13 @@ function init_electron_mode (mode, async_cb) {
 
 function init_electron_config (mode, async_cb) {
     console.log("initing electron config ", mode);
+    console.log("Making APP Free (PRO MODE)");
 
     gulp.src( "./config.json" )
         .pipe( 
             json_editor({
                 "type": "desktop",
-                "APPMODE": mode
+                "APPMODE": "PRO"
             }) 
         )
         .pipe( gulp.dest( "." ) )

@@ -1,6 +1,6 @@
 {
     "VERSION": "2.1.0",
-    "APPMODE": "FREE",
+    "APPMODE": "PRO",
     "PRO_CRX_URL": "https://chrome.google.com/webstore/detail/hotcold-typing-pro/aoceloicmloamkmaljmpejphndalilgp",
     "type": "web",
     "links": {
